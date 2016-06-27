@@ -1,0 +1,436 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+
+<channel>
+	<title>Planet Eclipse</title>
+	<link>http://planeteclipse.org/planet/</link>
+	<language>en</language>
+	<description>Planet Eclipse - http://planeteclipse.org/planet/</description>
+
+<item>
+	<title>Maximilian and Jonas: EMF Forms and EMF Client Platform 1.9.0 released!</title>
+	<guid isPermaLink="false">http://eclipsesource.com/blogs/?p=26770</guid>
+	<link>http://eclipsesource.com/blogs/2016/06/27/emf-forms-and-emf-client-platform-1-9-0-released/</link>
+	<description>&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;We are happy to announce that together with Neon, we have released  &lt;/span&gt;&lt;a href=&quot;http://eclipse.org/ecp/emfforms&quot;&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;EMF Forms&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt; and &lt;/span&gt;&lt;a href=&quot;http://eclipse.org/ecp&quot;&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;EMF Client Platform&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt; 1.9.0! We want to thank all committers and contributors for their work as well as the active ecosystem of users and adopters for the feedback and support!&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;EMF Forms is a framework focused on the creation of form-based UIs. EMF Client Platform is designed to support the development of applications based on an EMF data model. If you are not yet familiar with EMF Forms, please refer to &lt;/span&gt;&lt;a href=&quot;http://eclipsesource.com/blogs/tutorials/getting-started-with-EMF-Forms/&quot;&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;this tutorial&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt; for a introduction.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Both frameworks are part of Eclipse Modeling Tools Neon, but you can also find the new release on our download pages:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style=&quot;font-weight: 400;&quot;&gt;&lt;a href=&quot;http://eclipse.org/ecp/download.html&quot;&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Download EMF Client Platform&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li style=&quot;font-weight: 400;&quot;&gt;&lt;a href=&quot;http://eclipse.org/ecp/emfforms/download.html&quot;&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Download EMF Forms&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Both projects have been amazing successes since their inception over 5 years ago. We are proud of having a continuously active team of 15 contributors:&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;We also would like to thank all of our customers and sponsors for making this success possible. EMF Forms and ECP are great examples, that business models based on open source work well and that open source can continuously save costs. The contributions and sponsoring of the last years have created an incredible value, which is successfully used by many projects for their benefit. At the same time the costs have been shared among many contributors. If you believe in code stats, we are close to total costs of 9 Million Dollar (see below). However non of the existing contributor or sponsor has accounted for more than a small fraction of this.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;It is also amazing to see, that EMF Forms and ECP are used in a huge variety of application domains from engineering over e-commerce to finance, from high technology vendors to sailing associations. While the managed data is completely different in those domains, the cross-cutting requirements are often shared. This is part of the success of sharing the code. Especially in the last months, we often had very similar feature requests from completely different domains, sometimes literally within a week. If every contributor or sponsor takes over a small piece, they benefit from all the other pieces, which are already there.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;So what is next? You might have noticed, that we have started on a new renderer for EMF Forms based on a native web stack called &lt;/span&gt;&lt;a href=&quot;http://jsoforms.org&quot;&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;JSON Forms&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;. We see it as the optimal complement for EMF Forms and hope to make the idea of declarative UI development even more attractive. We are amazed by the progress of JSON Forms and we will soon start a blog series to introduce it more in detail. However, as you can see in the EMF Forms / ECP repository, we have not in anyway reduced our effort for the existing frameworks and do not have any plans to do so.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;As always, we will also blog about new features of the EMF Forms / ECP1.9.0 release in the upcoming weeks! Please follow this blog or follow us on twitter to get notified about the new posts.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;div style=&quot;display: inline-block;&quot;&gt;&lt;a href=&quot;https://twitter.com/intent/tweet?source=webclient&amp;amp;text=EMF+Forms+and+EMF+Client+Platform+1.9.0+released%21&amp;amp;via=eclipsesource&amp;amp;url=http://eclipsesource.com/blogs/2016/06/27/emf-forms-and-emf-client-platform-1-9-0-released/&quot; style=&quot;margin-right: 5px;&quot; target=&quot;_blank&quot; title=&quot;Share on Twitter&quot;&gt;&lt;img alt=&quot;Twitter&quot; src=&quot;http://eclipsesource.com/blogs/wp-content/plugins/custom-about-author/images/social_media/twitter.png&quot; title=&quot;Twitter&quot; /&gt;&lt;/a&gt;&lt;a href=&quot;https://plus.google.com/share?url=http://eclipsesource.com/blogs/2016/06/27/emf-forms-and-emf-client-platform-1-9-0-released/&quot; style=&quot;margin-right: 5px;&quot; target=&quot;_blank&quot; title=&quot;+1&quot;&gt;&lt;img alt=&quot;Google+&quot; src=&quot;http://eclipsesource.com/blogs/wp-content/plugins/custom-about-author/images/social_media/google_plus.png&quot; title=&quot;Google+&quot; /&gt;&lt;/a&gt;&lt;a href=&quot;http://www.linkedin.com/cws/share?url=http://eclipsesource.com/blogs/2016/06/27/emf-forms-and-emf-client-platform-1-9-0-released/&quot; style=&quot;margin-right: 5px;&quot; target=&quot;_blank&quot; title=&quot;Share on LinkedIn&quot;&gt;&lt;img alt=&quot;LinkedIn&quot; src=&quot;http://eclipsesource.com/blogs/wp-content/plugins/custom-about-author/images/social_media/linkedin.png&quot; title=&quot;LinkedIn&quot; /&gt;&lt;/a&gt;&lt;a href=&quot;https://www.facebook.com/sharer/sharer.php?u=http://eclipsesource.com/blogs/2016/06/27/emf-forms-and-emf-client-platform-1-9-0-released/&amp;amp;t=EMF+Forms+and+EMF+Client+Platform+1.9.0+released%21&quot; style=&quot;margin-right: 5px;&quot; target=&quot;_blank&quot; title=&quot;Facebook&quot;&gt;&lt;img alt=&quot;Facebook&quot; src=&quot;http://eclipsesource.com/blogs/wp-content/plugins/custom-about-author/images/social_media/facebook.png&quot; title=&quot;Facebook&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;a href=&quot;http://eclipsesource.com/blogs/2016/06/27/emf-forms-and-emf-client-platform-1-9-0-released/#respond&quot;&gt;Leave a Comment&lt;/a&gt;. Tagged with &lt;a href=&quot;http://eclipsesource.com/blogs/tag/eclipse/&quot; title=&quot;eclipse Tag&quot;&gt;eclipse&lt;/a&gt;, &lt;a href=&quot;http://eclipsesource.com/blogs/tag/emf/&quot; title=&quot;emf Tag&quot;&gt;emf&lt;/a&gt;, &lt;a href=&quot;http://eclipsesource.com/blogs/tag/emfcp/&quot; title=&quot;emfcp Tag&quot;&gt;emfcp&lt;/a&gt;, &lt;a href=&quot;http://eclipsesource.com/blogs/tag/emfforms/&quot; title=&quot;emfforms Tag&quot;&gt;emfforms&lt;/a&gt;, &lt;a href=&quot;http://eclipsesource.com/blogs/tag/eclipse/&quot; title=&quot;eclipse Tag&quot;&gt;eclipse&lt;/a&gt;, &lt;a href=&quot;http://eclipsesource.com/blogs/tag/emf/&quot; title=&quot;emf Tag&quot;&gt;emf&lt;/a&gt;, &lt;a href=&quot;http://eclipsesource.com/blogs/tag/emfcp/&quot; title=&quot;emfcp Tag&quot;&gt;emfcp&lt;/a&gt;, &lt;a href=&quot;http://eclipsesource.com/blogs/tag/emfforms/&quot; title=&quot;emfforms Tag&quot;&gt;emfforms&lt;/a&gt;&lt;p&gt;&lt;/p&gt;</description>
+	<pubDate>Mon, 27 Jun 2016 07:45:19 +0000</pubDate>
+</item>
+<item>
+	<title>Holger Voormann: Eclipse Neon: 5:30-minute demo of 22 nice improvements</title>
+	<guid isPermaLink="false">http://eclipsehowl.wordpress.com/?p=1138</guid>
+	<link>https://eclipsehowl.wordpress.com/2016/06/26/eclipse-neon-530-minute-demo-of-22-nice-improvements/</link>
+	<description>&lt;p&gt;Watch a 5:30-minute demo of 22 nice Eclipse Neon improvements, including IDE, Java and Web/JavaScript:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://youtu.be/lCsd681yo1c&quot;&gt;&lt;img alt=&quot;Eclipse Neon: 5:30-minute demo of 22 nice improvements&quot; class=&quot;aligncenter size-full wp-image-1139&quot; height=&quot;253&quot; src=&quot;https://eclipsehowl.files.wordpress.com/2016/06/22_eclipse_neon_improvements_video.png?w=450&amp;amp;h=253&quot; width=&quot;450&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For more details there are 4:34:25 hours of &lt;a href=&quot;https://www.youtube.com/playlist?list=PLy7t4z5SYNaTzWo4OTOxRisfKNby7dENY&quot;&gt;Eclipse Neon Webinars&lt;/a&gt;.&lt;/p&gt;&lt;br /&gt;  &lt;a href=&quot;http://feeds.wordpress.com/1.0/gocomments/eclipsehowl.wordpress.com/1138/&quot; rel=&quot;nofollow&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/comments/eclipsehowl.wordpress.com/1138/&quot; /&gt;&lt;/a&gt; &lt;img alt=&quot;&quot; border=&quot;0&quot; height=&quot;1&quot; src=&quot;https://pixel.wp.com/b.gif?host=eclipsehowl.wordpress.com&amp;amp;blog=11064764&amp;amp;post=1138&amp;amp;subd=eclipsehowl&amp;amp;ref=&amp;amp;feed=1&quot; width=&quot;1&quot; /&gt;</description>
+	<pubDate>Sun, 26 Jun 2016 16:31:16 +0000</pubDate>
+</item>
+<item>
+	<title>Michael Vorburger: Solve weird java.io.EOFException at java.io.DataInputStream.readFully in Oomph with Eclipse Neon</title>
+	<guid isPermaLink="false">tag:blogger.com,1999:blog-2224194412636345302.post-1423286513725005168</guid>
+	<link>http://blog2.vorburger.ch/2016/06/solve-weird-javaioeofexception-at.html</link>
+	<description>If you are getting the first error (1) below when using an Eclipse Installer (Oomph) v2441, then just re-download a fresh later version from https://www.eclipse.org/downloads/ (e.g. 2444 at the time of writing), and it will work again.  For some reason, the Auto Update does not work to get from Oomph 2441 to 2444.&lt;br /&gt;&lt;br /&gt;If you are then still getting the second error (2) below, after having upgraded Oomph, then simply retry by restarting Oomph or even simply by using the &amp;lt;Back and Next&amp;gt; and this appears to go away.  Alternatively, perhaps you would like to blow away your entire p2 cache via rm -rf ~/.p2 (although normally this should not be required).&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot;font-size: xx-small;&quot;&gt;&lt;span&gt;(1) Fetching content.xml.xz from http://download.eclipse.org/technology/epp/packages/neon/&lt;br /&gt;ERROR: org.eclipse.equinox.p2.metadata.repository code=1002 Unable to read repository at http://download.eclipse.org/technology/epp/packages/neon.&lt;br /&gt;java.io.EOFException&lt;br /&gt;  at java.io.DataInputStream.readFully(DataInputStream.java:197)&lt;br /&gt;  at java.io.DataInputStream.readFully(DataInputStream.java:169)&lt;br /&gt;  at org.tukaani.xz.SingleXZInputStream.initialize(Unknown Source)&lt;br /&gt;  at org.tukaani.xz.SingleXZInputStream.&amp;lt;init&amp;gt;(Unknown Source)&lt;br /&gt;  at org.tukaani.xz.XZInputStream.&amp;lt;init&amp;gt;(Unknown Source)&lt;br /&gt;  at org.tukaani.xz.XZInputStream.&amp;lt;init&amp;gt;(Unknown Source)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.XZedSimpleMetadataRepositoryFactory.load(XZedSimpleMetadataRepositoryFactory.java:80)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)&lt;br /&gt;  at sun.reflect.GeneratedMethodAccessor14.invoke(Unknown Source)&lt;br /&gt;  at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&lt;br /&gt;  at java.lang.reflect.Method.invoke(Method.java:498)&lt;br /&gt;  at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:116)&lt;br /&gt;  at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:370)&lt;br /&gt;  at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:177)&lt;br /&gt;  at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:437)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)&lt;br /&gt;  at org.eclipse.oomph.p2.internal.core.ProfileTransactionImpl$RepositoryLoader$Worker.perform(ProfileTransactionImpl.java:1625)&lt;br /&gt;  at org.eclipse.oomph.util.WorkerPool$Worker.run(WorkerPool.java:416)&lt;br /&gt;  at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;(2) ERROR: org.eclipse.equinox.p2.metadata.repository code=1002 Unable to read repository at http://download.eclipse.org/releases/neon.&lt;br /&gt;ERROR: org.eclipse.equinox.p2.repository code=0 An error occurred while downloading http://download.eclipse.org/technology/epp/packages/neon/content.xml.xz. The cache file /home/vorburger/.p2/org.eclipse.equinox.p2.repository/cache/downloading/2079680757 could not be renamed to /home/vorburger/.p2/org.eclipse.equinox.p2.repository/cache/2079680757.&lt;br /&gt;  at org.eclipse.equinox.internal.p2.repository.CacheManager.updateCache(CacheManager.java:428)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.repository.CacheManager.createCacheFromFile(CacheManager.java:132)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.XZedSimpleMetadataRepositoryFactory.getLocalFile(XZedSimpleMetadataRepositoryFactory.java:56)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.XZedSimpleMetadataRepositoryFactory.load(XZedSimpleMetadataRepositoryFactory.java:78)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)&lt;br /&gt;  at sun.reflect.GeneratedMethodAccessor16.invoke(Unknown Source)&lt;br /&gt;  at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&lt;br /&gt;  at java.lang.reflect.Method.invoke(Method.java:498)&lt;br /&gt;  at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:116)&lt;br /&gt;  at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:370)&lt;br /&gt;  at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:177)&lt;br /&gt;  at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:437)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.&amp;lt;init&amp;gt;(CompositeMetadataRepository.java:106)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)&lt;br /&gt;  at sun.reflect.GeneratedMethodAccessor16.invoke(Unknown Source)&lt;br /&gt;  at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&lt;br /&gt;  at java.lang.reflect.Method.invoke(Method.java:498)&lt;br /&gt;  at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:116)&lt;br /&gt;  at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:370)&lt;br /&gt;  at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:177)&lt;br /&gt;  at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:437)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)&lt;br /&gt;  at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)&lt;br /&gt;  at org.eclipse.oomph.p2.internal.core.ProfileTransactionImpl$RepositoryLoader$Worker.perform(ProfileTransactionImpl.java:1625)&lt;br /&gt;  at org.eclipse.oomph.util.WorkerPool$Worker.run(WorkerPool.java:416)&lt;br /&gt;  at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)&lt;/span&gt;&lt;/span&gt;</description>
+	<pubDate>Sun, 26 Jun 2016 07:35:59 +0000</pubDate>
+	<author>noreply@blogger.com (Michael Vorburger)</author>
+</item>
+<item>
+	<title>InfoQ Eclipse feed: Presentation: Best Practices Using the CDT Debugger</title>
+	<guid isPermaLink="true">http://www.infoq.com/presentations/best-practices-cdt-debugger?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=Eclipse</guid>
+	<link>http://www.infoq.com/presentations/best-practices-cdt-debugger?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=Eclipse</link>
+	<description>&lt;img src=&quot;http://www.infoq.com/resource/presentations/best-practices-cdt-debugger/en/mediumimage/Marcbig.JPG&quot; /&gt;&lt;p&gt;Marc Khouzam presents best practices for debugging using dynamic printf, reverse debugging, the GDB console, the standalone debugger, a Docker container and connecting CDT to a running GDB session.&lt;/p&gt; &lt;i&gt;By Marc Khouzam&lt;/i&gt;</description>
+	<pubDate>Sat, 25 Jun 2016 19:03:00 +0000</pubDate>
+</item>
+<item>
+	<title>InfoQ Eclipse feed: Presentation: Scripting Eclipse with Python</title>
+	<guid isPermaLink="true">http://www.infoq.com/presentations/script-eclipse-python-ease?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=Eclipse</guid>
+	<link>http://www.infoq.com/presentations/script-eclipse-python-ease?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=Eclipse</link>
+	<description>&lt;img src=&quot;http://www.infoq.com/resource/presentations/script-eclipse-python-ease/en/mediumimage/Trabig.JPG&quot; /&gt;&lt;p&gt;Tracy Miranda demonstrate using Python with the Eclipse Advanced Scripting Environment (EASE) for collaboration, reproducible research, and exploratory computation and data analysis.&lt;/p&gt; &lt;i&gt;By Tracy Miranda&lt;/i&gt;</description>
+	<pubDate>Sat, 25 Jun 2016 17:57:00 +0000</pubDate>
+</item>
+<item>
+	<title>Geniutec: Boost Eclipse Neon JavaScript Development with JSjet</title>
+	<guid isPermaLink="false">https://www.genuitec.com/?p=486881</guid>
+	<link>https://www.genuitec.com/boost-eclipse-neon-javascript-development-with-jsjet/</link>
+	<description>&lt;p&gt;While far from an expert, I’ve been working with JavaScript for ages. I started off using JavaScript for DHTML (anyone remember that term?) when cross-browser meant your site would work with Internet Explorer and Netscape Navigator. I moved on to using JavaScript for desktop widgets and finally, browser extensions for Firefox and Chrome. A big […]&lt;/p&gt;
+&lt;p&gt;The post &lt;a href=&quot;https://www.genuitec.com/boost-eclipse-neon-javascript-development-with-jsjet/&quot; rel=&quot;nofollow&quot;&gt;Boost Eclipse Neon JavaScript Development with JSjet&lt;/a&gt; appeared first on &lt;a href=&quot;https://www.genuitec.com&quot; rel=&quot;nofollow&quot;&gt;Genuitec&lt;/a&gt;.&lt;/p&gt;</description>
+	<pubDate>Fri, 24 Jun 2016 14:14:21 +0000</pubDate>
+</item>
+<item>
+	<title>JBoss Tools Team: Eclipse Webinar series - JSDT and Docker Tooling for Eclipse Neon</title>
+	<guid isPermaLink="true">http://tools.jboss.org/blog/eclipse_neon_webinar_series.html</guid>
+	<link>http://tools.jboss.org/blog/eclipse_neon_webinar_series.html</link>
+	<description>&lt;div&gt;&lt;div id=&quot;preamble&quot;&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;To celebrate the release of &lt;a href=&quot;http://eclipse.org&quot;&gt;Eclipse Neon&lt;/a&gt;, the Eclipse Foundation
+      produced a &lt;a href=&quot;https://www.eclipse.org/community/webinars/&quot;&gt;webinar series&lt;/a&gt; with a list of
+       &lt;strong&gt;7 of the Top New &amp;amp; Noteworthy Features&lt;/strong&gt; that are integral to the Eclipse Neon Release.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Amongst those webinars, &lt;a href=&quot;https://developer.jboss.org/people/ibuziuk&quot;&gt;Ilya&lt;/a&gt; and
+      &lt;a href=&quot;https://developer.jboss.org/people/gercan&quot;&gt;Gorkem&lt;/a&gt; presented the Eclipse JavaScript Development Tools (JSDT)
+      and I presented the Docker tooling.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;jsdt-tooling&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;http://tools.jboss.org/blog/news.atom#jsdt-tooling&quot;&gt;&lt;/a&gt;JSDT Tooling&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;The Eclipse JavaScript Development Tools have reached a new level of features and usability with Eclipse Neon.
+      Many things were implemented as part of the JSDT 2.0 release that is now available with &lt;a href=&quot;http://eclipse.org&quot;&gt;Eclipse Neon&lt;/a&gt;.
+      This webinar demonstrates the following new features:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;Package managers (npm / bower)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Build systems (grunt / gulp)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Node.js Tools&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;ECMAScript 2015 (ES6) parser&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;The talk also features plans for the future of JavaScript development in Eclipse IDE.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;videoblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;The slides for the presentation are available &lt;a href=&quot;http://www.slideshare.net/IlyaBuziuk/eclipse-neon-webinar-jsdt-20&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;docker-tooling&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;http://tools.jboss.org/blog/news.atom#docker-tooling&quot;&gt;&lt;/a&gt;Docker Tooling&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Docker is awesome, but how to use it well when doing development?
+      In this talk you will get a quick introduction on how to use Docker effectively, especially for development from within Eclipse.
+      We will show how the release of Eclipse Neon supports Docker to make it even more integrated into your day-to-day work from within your IDE.
+      In particular, you’ll see how you can pull and run an image for a database, build a custom image for an application server, run it and deploy an application using data volume, exposed ports and container links.
+      We will also take a look at some of the newest features, such as support for Docker Machine, TM Terminal integration, run configurations for containers, and a variety of other UI improvements.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;videoblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;The slides for the presentation are available &lt;a href=&quot;http://www.slideshare.net/XavierCoulon/eclipse-neon-webinar-docker-tooling-for-developers&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;other-webinars&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;http://tools.jboss.org/blog/news.atom#other-webinars&quot;&gt;&lt;/a&gt;Other Webinars&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Other webinars have also been recorded and are available on the &lt;a href=&quot;https://www.youtube.com/playlist?list=PLy7t4z5SYNaTzWo4OTOxRisfKNby7dENY&quot;&gt;Eclipse Neon Webinar Series&lt;/a&gt; on Youtube.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Enjoy !&lt;br /&gt;
+      Xavier Coulon&lt;br /&gt;
+      &lt;a href=&quot;http://twitter.com/xcoulon&quot;&gt;@xcoulon&lt;/a&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;&lt;/div&gt;</description>
+	<pubDate>Fri, 24 Jun 2016 10:23:09 +0000</pubDate>
+</item>
+<item>
+	<title>vert.x project: Vert.x 3.3.0 is released !</title>
+	<guid isPermaLink="true">http://vertx.io/blog/vert-x-3-3-0-is-released</guid>
+	<link>http://vertx.io/blog/vert-x-3-3-0-is-released</link>
+	<description>&lt;article&gt;&lt;p&gt;That was a long run …. but here we are. We are very pleased to announce the release of Vert.x 3.3.0!&lt;/p&gt;
+&lt;p&gt;This release is huge with lots of new features, improvements, and obviously bug fixes. We won’t detail all the new features here (some are highlighted below), and full release notes are available: &lt;a href=&quot;https://github.com/vert-x3/wiki/wiki/3.3.0---Release-Notes&quot;&gt;https://github.com/vert-x3/wiki/wiki/3.3.0---Release-Notes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Breaking changes are there: &lt;a href=&quot;https://github.com/vert-x3/wiki/wiki/3.3.0---Breaking-Changes&quot;&gt;https://github.com/vert-x3/wiki/wiki/3.3.0---Breaking-Changes&lt;/a&gt;. Be sure to read them before migrating.&lt;/p&gt;
+&lt;p&gt;The event bus client using the SockJS bridge are available from NPM, Bower and as a WebJar:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.npmjs.com/package/vertx3-eventbus-client&quot;&gt;https://www.npmjs.com/package/vertx3-eventbus-client&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/vert-x3/vertx-bus-bower&quot;&gt;https://github.com/vert-x3/vertx-bus-bower&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.webjars.org/&quot;&gt;http://www.webjars.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Docker images are also available on the &lt;a href=&quot;https://hub.docker.com/u/vertx/&quot;&gt;Docker Hub&lt;/a&gt;. The Vert.x distribution is also available from &lt;a href=&quot;http://sdkman.io/index.html&quot;&gt;SDKMan&lt;/a&gt; and &lt;a href=&quot;http://brew.sh/&quot;&gt;HomeBrew&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s highlight some of the major features shipped with this release.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vertx 3.3.0 is the first version to support &lt;strong&gt;HTTP2&lt;/strong&gt; (client and server). You can now configure HTTP servers and clients to use HTTP2. Proxy support for TCP and HTTP client has also been added.&lt;/li&gt;
+&lt;li&gt;This version shows also the introduction of a bridge with &lt;strong&gt;Apache Camel&lt;/strong&gt;. So, integrating Vert.x applications with legacy systems (using EIP) has never been so easy.&lt;/li&gt;
+&lt;li&gt;Several new components have been developed to implement microservice-based applications. First, a pluggable &lt;strong&gt;service discovery&lt;/strong&gt; is now available. An implementation of the &lt;strong&gt;circuit breaker&lt;/strong&gt; pattern has also been provided.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AMQP 1.0&lt;/strong&gt; support has been also integrated thanks to a bridge to send and receive messages from AMQP. A client has also been shipped to interact directly with an AMQP broker or router.&lt;/li&gt;
+&lt;li&gt;New metrics has also been introduced to ease the monitoring of running applications. For instance, it’s now possible to monitor the thread usage in the &lt;strong&gt;worker thread pool&lt;/strong&gt; and in the &lt;strong&gt;JDBC connection pools&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;With this version, you can configure the TCP aspects of the event bus for, for instance, use SSL. Also notice a bridge between the  event bus of Vert.x 2 and  the one from Vert.x 3.&lt;/li&gt;
+&lt;li&gt;Most of the delivered components are now deployable in &lt;strong&gt;OSGi&lt;/strong&gt; environments. So you can easily integrate Vert.x in Apache Karaf, Service Mix, or Apache Sling.&lt;/li&gt;
+&lt;li&gt;Vert.x Unit usability has been greatly improved. It is now possible to write test using Hamcrest, AssertJ, Rest Assured, or any assertion libraries you want.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Many thanks to all the committers and community whose contributions made this possible, especially to Alex Lehman, Paul Bakker, Robbie Gemmel, Claus Ibsen, Michael Kremer, and many many other!&lt;/p&gt;
+&lt;p&gt;The artifacts have been deployed to &lt;a href=&quot;http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.vertx%22%20AND%20v%3A%223.3.0%22&quot;&gt;Maven Central&lt;/a&gt; and you can get the distribution on &lt;a href=&quot;https://bintray.com/vertx/downloads/distribution/3.3.0/view&quot;&gt;Bintray&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Just a word about the future. As we did last, year, a poll will be organized in the next few weeks to collect ideas and prioritize the Vert.x 3.4 and beyond roadmap. Stay tuned, we love hearing about your ideas and issues.&lt;/p&gt;
+&lt;p&gt;Happy coding !&lt;/p&gt;
+&lt;/article&gt;</description>
+	<pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
+</item>
+<item>
+	<title>Eclipse Announcements: Eclipse Newsletter - Eclipse Neon Shines Bright</title>
+	<guid isPermaLink="true">http://feedproxy.google.com/~r/eclipse/fnews/~3/Sk2LVbIIgOw/</guid>
+	<link>http://feedproxy.google.com/~r/eclipse/fnews/~3/Sk2LVbIIgOw/</link>
+	<description>Read about the top ten Neon features, the new Eclipse User Storage Service (USS), Eclipse CDT 9.0, and Eclipse PDT 4.0.&lt;img alt=&quot;&quot; height=&quot;1&quot; src=&quot;http://feeds.feedburner.com/~r/eclipse/fnews/~4/Sk2LVbIIgOw&quot; width=&quot;1&quot; /&gt;</description>
+	<pubDate>Thu, 23 Jun 2016 14:00:00 +0000</pubDate>
+</item>
+<item>
+	<title>Geniutec: New Eclipse Neon Packages for JavaScript and Android</title>
+	<guid isPermaLink="false">https://www.genuitec.com/?p=486837</guid>
+	<link>https://www.genuitec.com/new-eclipse-neon-packages-for-javascript-and-android/</link>
+	<description>&lt;p&gt;Eclipse Neon Android Package Now that Eclipse Neon is just around the corner, I was pleased to see that Eclipse for Android Developers is back. We’ve all waited a long time for it! This package bundles the Andmore-Eclipse Android Tooling—a fork of Google’s ADT (Android Development Tools) plugins for Eclipse. These are maintained separately from […]&lt;/p&gt;
+&lt;p&gt;The post &lt;a href=&quot;https://www.genuitec.com/new-eclipse-neon-packages-for-javascript-and-android/&quot; rel=&quot;nofollow&quot;&gt;New Eclipse Neon Packages for JavaScript and Android&lt;/a&gt; appeared first on &lt;a href=&quot;https://www.genuitec.com&quot; rel=&quot;nofollow&quot;&gt;Genuitec&lt;/a&gt;.&lt;/p&gt;</description>
+	<pubDate>Thu, 23 Jun 2016 13:24:12 +0000</pubDate>
+</item>
+<item>
+	<title>Gunnar Wagenknecht: Eclipse Neon and ssh-agent</title>
+	<guid isPermaLink="false">http://wagenknecht.org/blog/?p=855</guid>
+	<link>http://feedproxy.google.com/~r/eclipseguru/~3/xaL117nW3BE/eclipse-neon-and-ssh-agent.html</link>
+	<description>&lt;p&gt;&lt;a href=&quot;http://www.eclipse.org/neon/&quot; target=&quot;_blank&quot;&gt;Eclipse Neon is out.&lt;/a&gt; Time to give &lt;a href=&quot;https://bugs.eclipse.org/179924&quot; target=&quot;_blank&quot;&gt;a long awaited feature&lt;/a&gt; a try again. It’s support for re-using the identify from &lt;strong&gt;ssh-agent&lt;/strong&gt; running on my system within Eclipse. I want this primarily for the Eclipse Git integration.&lt;/p&gt;
+&lt;p&gt;As it turns out, the core support is part of Eclipse Neon. The SSH interface had been made extensible for additional identity discovery. The remaining missing piece is the actual code that bridges the ssh-agent connection into the Eclipse SSH interface (powered by JSch). The reason for this are – of course – legal issues. It would be great if those can be addressed and this can be shipped out of the box in Eclipse.&lt;/p&gt;
+&lt;p&gt;I forked the initial work from the JSch folks and made it consumable as an update site.&lt;/p&gt;
+&lt;p&gt;Please give it a try:&lt;br /&gt;
+&lt;strong&gt;&lt;a href=&quot;https://eclipseguru.github.io/eclipse-jsch-agent-proxy/&quot; target=&quot;_blank&quot;&gt;https://eclipseguru.github.io/eclipse-jsch-agent-proxy/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;feedflare&quot;&gt;
+&lt;a href=&quot;http://feeds.feedburner.com/~ff/eclipseguru?a=xaL117nW3BE:q9Pozdtq_tY:yIl2AUoC8zA&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;http://feeds.feedburner.com/~ff/eclipseguru?d=yIl2AUoC8zA&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;http://feeds.feedburner.com/~ff/eclipseguru?a=xaL117nW3BE:q9Pozdtq_tY:qj6IDK7rITs&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;http://feeds.feedburner.com/~ff/eclipseguru?d=qj6IDK7rITs&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;http://feeds.feedburner.com/~ff/eclipseguru?a=xaL117nW3BE:q9Pozdtq_tY:V_sGLiPBpWU&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;http://feeds.feedburner.com/~ff/eclipseguru?i=xaL117nW3BE:q9Pozdtq_tY:V_sGLiPBpWU&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;http://feeds.feedburner.com/~ff/eclipseguru?a=xaL117nW3BE:q9Pozdtq_tY:D7DqB2pKExk&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;http://feeds.feedburner.com/~ff/eclipseguru?i=xaL117nW3BE:q9Pozdtq_tY:D7DqB2pKExk&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;http://feeds.feedburner.com/~ff/eclipseguru?a=xaL117nW3BE:q9Pozdtq_tY:F7zBnMyn0Lo&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;http://feeds.feedburner.com/~ff/eclipseguru?i=xaL117nW3BE:q9Pozdtq_tY:F7zBnMyn0Lo&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;http://feeds.feedburner.com/~ff/eclipseguru?a=xaL117nW3BE:q9Pozdtq_tY:gIN9vFwOqvQ&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;http://feeds.feedburner.com/~ff/eclipseguru?i=xaL117nW3BE:q9Pozdtq_tY:gIN9vFwOqvQ&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;&lt;img alt=&quot;&quot; height=&quot;1&quot; src=&quot;http://feeds.feedburner.com/~r/eclipseguru/~4/xaL117nW3BE&quot; width=&quot;1&quot; /&gt;</description>
+	<pubDate>Thu, 23 Jun 2016 12:31:02 +0000</pubDate>
+</item>
+<item>
+	<title>Frank Appel: Clean Sheet Update for Eclipse Neon</title>
+	<guid isPermaLink="false">https://facon-biz.prossl.de/?p=13296</guid>
+	<link>http://www.codeaffine.com/2016/06/23/clean-sheet-update-for-eclipse-neon/</link>
+	<description>&lt;p&gt;Written by &lt;a href=&quot;http://www.codeaffine.com/author/fappel/&quot; rel=&quot;nofollow&quot;&gt;Frank Appel&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In celebration of the latest Eclipse release, we provide a Clean Sheet Update for Eclipse Neon. Congratulations and a big ‘thank you’ to all the diligent Eclipse committers and contributors that made the Neon version happen, great work! While the Clean Sheet Update for Eclipse Neon primarily ensures compatibility it comes also with some nice Look-and-Feel improvements. This post gives a short overview of the most important innovations of the feature’s new version (0.4).&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div class=&quot;notification lock cannothide&quot;&gt;&lt;div class=&quot;boximg infoimg&quot;&gt;&lt;/div&gt;&lt;h2&gt;The Clean Sheet Eclipse Design&lt;/h2&gt;
+
+In case you've missed out on the topic and you are wondering what I'm talking about, here is a screenshot of my real world setup using the Clean Sheet theme (click on the image to enlarge).
+
+&lt;a href=&quot;http://fappel.github.io/xiliary/clean-sheet-screenshot.html&quot;&gt;&lt;img alt=&quot;Eclipse IDE Look and Feel: Clean Sheet Screenshot&quot; class=&quot;alignnone size-full wp-image-12279&quot; height=&quot;408&quot; src=&quot;http://www.codeaffine.com/wp-content/uploads/2015/11/clean-sheet-eclipse-theme.png&quot; width=&quot;850&quot; /&gt;&lt;/a&gt;
+
+For more information please refer to the features landing page at &lt;a href=&quot;http://fappel.github.io/xiliary/clean-sheet.html&quot; target=&quot;_blank&quot;&gt;http://fappel.github.io/xiliary/clean-sheet.html&lt;/a&gt;, read the introductory Clean Sheet feature description &lt;a href=&quot;http://www.codeaffine.com/2015/11/04/clean-sheet-an-ergonomic-eclipse-theme-for-windows-10/&quot;&gt;blog post&lt;/a&gt;, and check out the &lt;a href=&quot;http://fappel.github.io/xiliary/clean-sheet-new-and-noteworthy.html&quot; target=&quot;_blank&quot;&gt;New &amp;amp; Noteworthy&lt;/a&gt; page.&lt;/div&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h2&gt;FlatScrollBar Overlay for ScrolledComposite&lt;/h2&gt;
+&lt;p&gt;Styling capabilities have been enhanced to allow adoption of ScrolledComposite widgets and derivatives by the FlatScrollBar overlay mechanism on Windows platforms. The picture shows how the content area of the preference dialog blends in the Clean Sheet scrollbars on diminution.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;Clean Sheet Update for Eclipse Neon: Scrolled Composite Overlay&quot; class=&quot;alignnone size-full wp-image-13301&quot; height=&quot;422&quot; src=&quot;http://www.codeaffine.com/wp-content/uploads/2016/06/scrolled-composite.png&quot; width=&quot;598&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;Forms Style Adjustment&lt;/h2&gt;
+&lt;p&gt;The styling of &lt;a href=&quot;https://eclipse.org/articles/Article-Forms/article.html&quot; target=&quot;_blank&quot;&gt;FormToolkit&lt;/a&gt; based views and editors has been overhauled. Together with the FlatScrollBar overlay mechanism on ScrolledForms (Windows only), UI parts like the PDE Manifest editor integrate now quite nicely with the overall look and feel of the Clean Sheet theme.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;Clean Sheet Update for Eclipse Neon: Forms Look and Feel&quot; class=&quot;alignnone size-full wp-image-13302&quot; height=&quot;649&quot; src=&quot;http://www.codeaffine.com/wp-content/uploads/2016/06/forms.png&quot; width=&quot;1022&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;Clean Sheet Installation&lt;/h2&gt;
+
+&lt;p&gt;Drag the 'Install' link below to your running Eclipse instance&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;drag&quot; href=&quot;http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2588223&quot; title=&quot;Drag to your running Eclipse installation to install Clean Sheet&quot;&gt;&lt;img alt=&quot;Drag to your running Eclipse installation to install Clean Sheet&quot; src=&quot;http://marketplace.eclipse.org/sites/all/themes/solstice/_themes/solstice_marketplace/public/images/btn-install.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;or&lt;/p&gt;
+
+&lt;p&gt;Select Help &amp;gt; Install New Software.../Check for Updates.&lt;br /&gt;
+P2 repository software site: @ &lt;a href=&quot;http://fappel.github.io/xiliary/&quot;&gt;http://fappel.github.io/xiliary/&lt;/a&gt;&lt;br /&gt;
+Feature: Code Affine Theme&lt;/p&gt;
+
+&lt;p&gt;After feature installation and workbench restart select the ‘Clean Sheet’ theme:&lt;br /&gt;
+Preferences: General &amp;gt; Appearance &amp;gt; Theme: Clean Sheet&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h2&gt;On a Final Note, …&lt;/h2&gt;
+&lt;p&gt;Of course, it’s interesting to hear suggestions or find out about potential issues that need to be resolved. In particular, as the ScrolledComposite widget has some interesting layout mechanisms by itself there still might be some uncovered spots with the newly added scrollbar overlay mechanism. Feel free to use the &lt;a href=&quot;https://github.com/fappel/xiliary/issues&quot; target=&quot;_blank&quot;&gt;Xiliary Issue Tracker&lt;/a&gt; or the comment section below for reporting.&lt;/p&gt;
+&lt;p&gt;With this in mind, I’d like to thank all adopters for the support and hope that everybody likes the Clean Sheet Update for Eclipse Neon as much as we do &lt;img alt=&quot;😉&quot; class=&quot;wp-smiley&quot; src=&quot;http://s.w.org/images/core/emoji/72x72/1f609.png&quot; style=&quot;height: 1em;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;The post &lt;a href=&quot;http://www.codeaffine.com/2016/06/23/clean-sheet-update-for-eclipse-neon/&quot; rel=&quot;nofollow&quot;&gt;Clean Sheet Update for Eclipse Neon&lt;/a&gt; appeared first on &lt;a href=&quot;http://www.codeaffine.com&quot; rel=&quot;nofollow&quot;&gt;Code Affine&lt;/a&gt;.&lt;/p&gt;</description>
+	<pubDate>Thu, 23 Jun 2016 05:37:21 +0000</pubDate>
+</item>
+<item>
+	<title>Ian Skerrett: Eclipse Marketplace: Neon and 20 Million</title>
+	<guid isPermaLink="false">http://ianskerrett.wordpress.com/?p=3607</guid>
+	<link>http://feedproxy.google.com/~r/IanSkerrett/~3/ifIoKEYnNYE/</link>
+	<description>&lt;p&gt;The Eclipse Neon release is &lt;a href=&quot;https://www.eclipse.org/neon/&quot;&gt;now out&lt;/a&gt;. I also noticed &lt;a href=&quot;http://marketplace.eclipse.org/&quot;&gt;Eclipse Marketplace&lt;/a&gt; just passed the 20 million successful install milestone. Wow, that is a lot of developers using Eclipse Marketplace.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;Eclipse Marketplace - 20 million&quot; class=&quot;alignnone size-full wp-image-3614&quot; src=&quot;https://ianskerrett.files.wordpress.com/2016/06/eclipse-marketplace-20-million.png?w=450&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;For the Neon release, there are two key features that I think will accelerate the use of Eclipse Marketplace Client (MPC).&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Eclipse MPC now allows you to store your Favorite with your Eclipse account. The other very cool feature is you can import someone else &lt;a href=&quot;https://marketplace.eclipse.org/user/iskerrett/favorites&quot;&gt;favorite list&lt;/a&gt;. Here is my favorite list if you are to give it a try.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt=&quot;mpc favorites&quot; class=&quot;  wp-image-3627 aligncenter&quot; height=&quot;400&quot; src=&quot;https://ianskerrett.files.wordpress.com/2016/06/mpc-favorites1.png?w=382&amp;amp;h=400&quot; width=&quot;382&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;2. In Eclipse Neon, selecting the text editor for associated file types now allows a user to search Eclipse Marketplace Client for plug-ins that support that file type. This should make it a lot easier for developers to find the appropriate plug-in from Eclipse Marketplace.&lt;/p&gt;
+&lt;p&gt;Congratulations to everyone that made the Eclipse Neon release possible. Another great community collaboration.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;&lt;br /&gt;  &lt;a href=&quot;http://feeds.wordpress.com/1.0/gocomments/ianskerrett.wordpress.com/3607/&quot; rel=&quot;nofollow&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/comments/ianskerrett.wordpress.com/3607/&quot; /&gt;&lt;/a&gt; &lt;img alt=&quot;&quot; border=&quot;0&quot; height=&quot;1&quot; src=&quot;https://pixel.wp.com/b.gif?host=ianskerrett.wordpress.com&amp;amp;blog=405862&amp;amp;post=3607&amp;amp;subd=ianskerrett&amp;amp;ref=&amp;amp;feed=1&quot; width=&quot;1&quot; /&gt;&lt;img alt=&quot;&quot; height=&quot;1&quot; src=&quot;http://feeds.feedburner.com/~r/IanSkerrett/~4/ifIoKEYnNYE&quot; width=&quot;1&quot; /&gt;</description>
+	<pubDate>Wed, 22 Jun 2016 19:40:49 +0000</pubDate>
+</item>
+<item>
+	<title>Orion: New and noteworthy for codeEdit widget 12</title>
+	<guid isPermaLink="false">http://planetorion.org/news/?p=856</guid>
+	<link>http://planetorion.org/news/2016/06/new-and-noteworthy-for-codeedit-widget-12/</link>
+	<description>&lt;p&gt;&lt;a href=&quot;http://planetorion.org/news/2015/07/orion-9-0-code-edit-widget-with-language-tooling/&quot;&gt;Orion codeEdit widget&lt;/a&gt; debuted just one year ago in &lt;a href=&quot;http://planetorion.org/news/2015/06/language-tooling-goodness-in-orion-9-0/&quot;&gt;Orion 9.0&lt;/a&gt;. Thanks to all the valuable user feedback over the past year, now in &lt;a href=&quot;http://planetorion.org/news/2016/06/announcing-orion-12/&quot;&gt;Orion 12&lt;/a&gt;, the widget has been improved a lot for both usability and customizability. We’ve updated the &lt;a href=&quot;https://wiki.eclipse.org/Orion/How_Tos/Code_Edit&quot;&gt;widget wiki page&lt;/a&gt; to include the latest features, summarizing user feedback in the &lt;a href=&quot;https://wiki.eclipse.org/Orion/How_Tos/Code_Edit#Frequent_asked_questions&quot;&gt;FAQ section&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;http://libingw.github.io/OrionCodeEditTern/&quot;&gt;codeEdit demo page&lt;/a&gt; shows you two of the biggest improvements in the widget: &lt;a href=&quot;https://wiki.eclipse.org/Orion/How_Tos/Code_Edit#editorConfig_Parameter&quot;&gt;customizable editor configurations&lt;/a&gt; and &lt;a href=&quot;https://wiki.eclipse.org/Orion/How_Tos/Code_Edit#Options_to_tune_your_.tern-project_and_.eslintrc_files&quot;&gt;fine tuning your web language tooling&lt;/a&gt;. In Orion 11.0 we introduced &lt;a href=&quot;http://planetorion.org/news/2016/04/configuring-your-orion-project/&quot;&gt;tern project&lt;/a&gt; – now this feature is integrated into the widget. In the demo you will see a zoom ruler in each editor, enabled by an editor configuration change. You will also see how the javascript file validation behavior changes while live editing the tern project and eslint rule files.&lt;/p&gt;
+&lt;p&gt;Aside from that, there are other major improvements that are not shown in the demo.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://wiki.eclipse.org/Orion/How_Tos/Code_Edit#userPlugins_Parameter&quot;&gt;Plug-able user implementations of services&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://wiki.eclipse.org/Orion/How_Tos/Code_Edit#codeEdit.importFiles_API&quot;&gt;Ability to import multiple files into the widget&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://wiki.eclipse.org/Orion/How_Tos/Code_Edit#codeEdit.exportFiles_API&quot;&gt;Ability to export multiple files outside of the widget&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div&gt;
+&lt;p&gt;With all the improvements so far, we found it’s been much easier for the existing users to consume and customize the widget. We are still improving in other areas so please stay tuned.&lt;/p&gt;
+&lt;/div&gt;</description>
+	<pubDate>Wed, 22 Jun 2016 18:25:38 +0000</pubDate>
+</item>
+<item>
+	<title>Orion: New and Noteworthy in Javascript tooling for Orion 12.0</title>
+	<guid isPermaLink="false">http://planetorion.org/news/?p=835</guid>
+	<link>http://planetorion.org/news/2016/06/new-and-noteworthy-in-javascript-tooling-for-orion-12-0/</link>
+	<description>&lt;p&gt;As noted in our Orion 12.0 announcement, a tonne of work has gone into this release of Orion.  Over 350 Bugzilla reports were fixed.  Here are some of the many things we have been working on for the JavaScript language tooling.  Expect more in-depth looks at these items in the next few weeks.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Cross-file linting&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;The &lt;a href=&quot;http://eslint.org&quot;&gt;ESLint&lt;/a&gt; based validation in our JavaScript tools up to Orion 11 was only focused on the single file you were editing.  No consideration was given to the rest of your project setup.  With 12.0 the linting is now aware of the other files in your workspace and the project configuration you have set up.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;no-undef&lt;/em&gt;: Warn when a global variable has not been defined&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;no-undef-expression&lt;/em&gt;:  Warn when a function (member expression) has not been defined&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;no-unused-vars&lt;/em&gt;: Warn when declared variables are not used.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;unknown-require&lt;/em&gt;:  Unknown required library&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;type-checked-consistent-return&lt;/em&gt;: Discouraged inconsistent returns&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So we can now in many cases tell you that you are using a function that doesn’t exist.  Especially helpful when you mistype the name or use the wrong casing.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Make the tools consumable&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;We have created a new API and webpack build that will package up the JavaScript tooling in one consumable bundle that can be used to drive language plugins for other IDEs, such as Brackets or Atom.&lt;/p&gt;
+&lt;p&gt;A deep-dive into the new API is coming in a subsequent blog post. To get a jump on it, we have provided two wiki pages: (1) &lt;a href=&quot;http://wiki.eclipse.org/Orion/JavaScript/API&quot;&gt;JavaScript tools API&lt;/a&gt; and, (2) &lt;a href=&quot;http://wiki.eclipse.org/Orion/JavaScript/Build&quot;&gt;Building the JavaScript API&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Improved Tern integration&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;In Orion 12.0 we moved the remainder of our client-side services to be Tern plugins.&lt;/p&gt;
+&lt;p&gt;These new plugins include:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;ESlint&lt;/li&gt;
+&lt;li&gt;Occurrences&lt;/li&gt;
+&lt;li&gt;Templates / templating&lt;/li&gt;
+&lt;li&gt;Quickfixes&lt;/li&gt;
+&lt;li&gt;Outlining&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The move to be more Tern-centric with our features carries many benefits, but most importantly it allows us to cut down on message passing, improve memory use and make the features more portable.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;ECMA 2015 support&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Orion 12.0 supports all of the &lt;a href=&quot;http://www.ecma-international.org/ecma-262/6.0/&quot;&gt;ECMA 2015&lt;/a&gt; specification like arrow functions, import/export statements and classes.&lt;/p&gt;
+&lt;p&gt;The tooling completely understands the new language syntax with new quick fixes and code templates also being available to get you started.  The linting rules have also been updated to respect the new ECMA 2015 code patterns.&lt;/p&gt;
+&lt;p&gt;Outlining has been updated:&lt;/p&gt;
+&lt;div class=&quot;wp-caption alignnone&quot; id=&quot;attachment_848&quot; style=&quot;width: 491px;&quot;&gt;&lt;a href=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/es6-outline.png&quot;&gt;&lt;img alt=&quot;ECMA 2015 outlining support&quot; class=&quot;size-full wp-image-848&quot; height=&quot;188&quot; src=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/es6-outline.png&quot; width=&quot;481&quot; /&gt;&lt;/a&gt;&lt;p class=&quot;wp-caption-text&quot;&gt;ECMA 2015 outlining support&lt;/p&gt;&lt;/div&gt;
+&lt;p&gt;Occurrences has been updated:&lt;/p&gt;
+&lt;div class=&quot;wp-caption alignnone&quot; id=&quot;attachment_849&quot; style=&quot;width: 314px;&quot;&gt;&lt;a href=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/es6-occurrences.png&quot;&gt;&lt;img alt=&quot;ECMA 2015 occurrences support&quot; class=&quot;size-full wp-image-849&quot; height=&quot;124&quot; src=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/es6-occurrences.png&quot; width=&quot;304&quot; /&gt;&lt;/a&gt;&lt;p class=&quot;wp-caption-text&quot;&gt;ECMA 2015 occurrences support&lt;/p&gt;&lt;/div&gt;
+&lt;p&gt;Linting has been updated:&lt;/p&gt;
+&lt;div class=&quot;wp-caption alignnone&quot; id=&quot;attachment_850&quot; style=&quot;width: 311px;&quot;&gt;&lt;a href=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/es6-linting.png&quot;&gt;&lt;img alt=&quot;Lint rules updated for ECMA 2015&quot; class=&quot;size-full wp-image-850&quot; height=&quot;138&quot; src=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/es6-linting.png&quot; width=&quot;301&quot; /&gt;&lt;/a&gt;&lt;p class=&quot;wp-caption-text&quot;&gt;Lint rules updated for ECMA 2015&lt;/p&gt;&lt;/div&gt;
+&lt;p&gt;We also support import and export statements which require the source type to be “module”. This is set through the .tern-project file – and you can use a handy quickfix to write it all for you.&lt;/p&gt;
+&lt;div class=&quot;wp-caption alignnone&quot; id=&quot;attachment_847&quot; style=&quot;width: 564px;&quot;&gt;&lt;a href=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/sourcetype-qf.png&quot;&gt;&lt;img alt=&quot;Change sourceType quickfix&quot; class=&quot;size-full wp-image-847&quot; height=&quot;135&quot; src=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/sourcetype-qf.png&quot; width=&quot;554&quot; /&gt;&lt;/a&gt;&lt;p class=&quot;wp-caption-text&quot;&gt;Change sourceType quickfix&lt;/p&gt;&lt;/div&gt;
+&lt;h3&gt;&lt;strong&gt;Support for ESLint project configuration files&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Users can now include &lt;a href=&quot;http://eslint.org/docs/user-guide/configuring&quot;&gt;.eslintrc&lt;/a&gt; files in their projects.  These files can configure all of the ESLint settings that your files are validated with, including rule severities.&lt;/p&gt;
+&lt;div class=&quot;wp-caption alignnone&quot; id=&quot;attachment_842&quot; style=&quot;width: 578px;&quot;&gt;&lt;a href=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/eslint-rc.png&quot;&gt;&lt;img alt=&quot;.eslintrc file example&quot; class=&quot;wp-image-842 size-full&quot; height=&quot;165&quot; src=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/eslint-rc.png&quot; width=&quot;568&quot; /&gt;&lt;/a&gt;&lt;p class=&quot;wp-caption-text&quot;&gt;.eslintrc file example&lt;/p&gt;&lt;/div&gt;
+&lt;p&gt;When this file is present, the rule values will override any workspace settings.  If you go from editing your project to changing settings the page will warn you that an .eslintrc file is present.&lt;/p&gt;
+&lt;div class=&quot;wp-caption alignnone&quot; id=&quot;attachment_843&quot; style=&quot;width: 928px;&quot;&gt;&lt;a href=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/eslint-rc-prefs.png&quot;&gt;&lt;img alt=&quot;Preference warning banner for .eslintrc overrides&quot; class=&quot;wp-image-843 size-full&quot; height=&quot;241&quot; src=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/eslint-rc-prefs.png&quot; width=&quot;918&quot; /&gt;&lt;/a&gt;&lt;p class=&quot;wp-caption-text&quot;&gt;Preference warning banner for .eslintrc overrides&lt;/p&gt;&lt;/div&gt;
+&lt;p&gt;We support other forms of ESLint configuration too, such as settings in package.json. There is a hierarchy of configuration files that you can use. Read the full details on &lt;a href=&quot;http://eslint.org/docs/user-guide/configuring&quot;&gt;ESLint’s configuration page&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;wp-caption alignnone&quot; id=&quot;attachment_844&quot; style=&quot;width: 593px;&quot;&gt;&lt;a href=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/package-json-eslint.png&quot;&gt;&lt;img alt=&quot;Package.json ESlint configuration section&quot; class=&quot;wp-image-844 size-full&quot; height=&quot;174&quot; src=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/package-json-eslint.png&quot; width=&quot;583&quot; /&gt;&lt;/a&gt;&lt;p class=&quot;wp-caption-text&quot;&gt;Package.json ESlint configuration section&lt;/p&gt;&lt;/div&gt;
+&lt;h3&gt;&lt;strong&gt;Support for in-project definition files&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;You can define and use your own &lt;a href=&quot;http://ternjs.net/doc/manual.html#typedef&quot;&gt;definition files&lt;/a&gt; in your project. See the file &lt;a href=&quot;http://git.eclipse.org/c/orion/org.eclipse.orion.client.git/tree/bundles/org.eclipse.orion.client.javascript/web/javascript/ternPlugins/IndexCreation.md&quot;&gt;IndexCreation.md&lt;/a&gt; to find out how to proceed.&lt;/p&gt;
+&lt;div class=&quot;wp-caption alignnone&quot; id=&quot;attachment_840&quot; style=&quot;width: 747px;&quot;&gt;&lt;a href=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/defs-folder.png&quot;&gt;&lt;img alt=&quot;Tern index file example&quot; class=&quot;wp-image-840 size-full&quot; height=&quot;195&quot; src=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/defs-folder.png&quot; width=&quot;737&quot; /&gt;&lt;/a&gt;&lt;p class=&quot;wp-caption-text&quot;&gt;Tern index file example&lt;/p&gt;&lt;/div&gt;
+&lt;p&gt;The tooling will include all the type information found in your definitions to improve content assist, tooltip hovers and more.&lt;/p&gt;
+&lt;div class=&quot;wp-caption alignnone&quot; id=&quot;attachment_839&quot; style=&quot;width: 650px;&quot;&gt;&lt;a href=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/use-in-code-defs.png&quot;&gt;&lt;img alt=&quot;Content assist for example in-project index file&quot; class=&quot;wp-image-839 size-large&quot; height=&quot;149&quot; src=&quot;http://planetorion.org/news/wp-content/uploads/2016/06/use-in-code-defs-1024x239.png&quot; width=&quot;640&quot; /&gt;&lt;/a&gt;&lt;p class=&quot;wp-caption-text&quot;&gt;Content assist for example in-project index file&lt;/p&gt;&lt;/div&gt;
+&lt;h3&gt;&lt;strong&gt;Updated third-party libraries&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Most of our third-party libraries have been refreshed:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Acorn 3.1.0&lt;/li&gt;
+&lt;li&gt;Doctrine 1.2.1&lt;/li&gt;
+&lt;li&gt;ESrecurse 4.1.0&lt;/li&gt;
+&lt;li&gt;Estraverse 4.1.1&lt;/li&gt;
+&lt;li&gt;Escope 4.2.0&lt;/li&gt;
+&lt;li&gt;Tern 0.18.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A notable change to our consumed library lineup is that we have discontinued use of the Esprima parser in favour of Acorn.  There are many reasons for the switch, but the main reasons are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Acorn has complete ECMA 2015 support (with recovery for most of it).&lt;/li&gt;
+&lt;li&gt;We can easily extend the Acorn parser via its &lt;a href=&quot;https://github.com/ternjs/acorn#plugins&quot;&gt;plugin mechanism&lt;/a&gt;, so there is no need to edit parser code to have our Orion customizations.&lt;/li&gt;
+&lt;li&gt;Acorn has robust recovery support right out of the box (no more editing the parser to hack our own in).&lt;/li&gt;
+&lt;/ul&gt;</description>
+	<pubDate>Wed, 22 Jun 2016 17:15:52 +0000</pubDate>
+</item>
+<item>
+	<title>Vladimir Piskarev: Announcing Handly 0.5</title>
+	<guid isPermaLink="false">http://pisv.wordpress.com/?p=582</guid>
+	<link>https://pisv.wordpress.com/2016/06/22/announcing-handly-0-5/</link>
+	<description>&lt;p&gt;I am very pleased to announce the availability of the &lt;a href=&quot;https://projects.eclipse.org/projects/technology.handly/releases/0.5&quot; target=&quot;_blank&quot;&gt;Handly 0.5&lt;/a&gt; release, a true “2.0” version in spirit. This release introduces an entirely new design that gives the implementor of a Handly-based model complete control over the model API. Among other things, this should make it possible to use &lt;a href=&quot;http://www.eclipse.org/handly&quot; target=&quot;_blank&quot;&gt;Handly&lt;/a&gt; for (re-)implementing handle-based models where the model API is a given, just as in the case of a preexisting model API that needs to be preserved for backward compatibility. Many of the core APIs have been revised in this release to make Handly even more flexible and robust.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://wiki.eclipse.org/Handly/NewIn05&quot; target=&quot;_blank&quot;&gt;New and Noteworthy&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://wiki.eclipse.org/Handly/Migration05&quot;&gt;Migration Guide&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://projects.eclipse.org/projects/technology.handly/downloads&quot;&gt;Downloads&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Any feedback would be greatly appreciated.&lt;/p&gt;
+&lt;p&gt;Many thanks to all who contributed to this release:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ondrej Ilcik, head of IDE Team at &lt;a href=&quot;https://www.codasip.com/&quot; target=&quot;_blank&quot;&gt;Codasip&lt;/a&gt;, has kindly contributed a navigator view for the Java model example, which made its way into this release. This is the first significant (~ 4K LOC) contribution to the project by a non-committer. &lt;a href=&quot;https://www.codasip.com/products/studio2/&quot;&gt;Codasip Studio&lt;/a&gt; is one of the earliest adopters of Handly, and it is really great to see that a major adopter becomes a significant contributor. Also, Ondrej has been so kind as to share a great &lt;a href=&quot;https://wiki.eclipse.org/Handly/Adopters&quot; target=&quot;_blank&quot;&gt;success story&lt;/a&gt; of Codasip Studio and Handly, which is all the more valuable as the first success story published by a Handly adopter.&lt;/li&gt;
+&lt;li&gt;Vlad Dumitrescu, the project lead of &lt;a href=&quot;http://erlide.org/&quot; target=&quot;_blank&quot;&gt;erlide&lt;/a&gt;, has been actively participating in discussions on the project’s &lt;a href=&quot;https://dev.eclipse.org/mailman/listinfo/handly-dev&quot; target=&quot;_blank&quot;&gt;mailing list&lt;/a&gt;. His earlier feedback helped inspire the new design introduced in this release, and he has also contributed great ideas about restructuring the project’s &lt;a href=&quot;http://www.eclipse.org/handly&quot; target=&quot;_blank&quot;&gt;web page&lt;/a&gt; to make it more readable.&lt;/li&gt;
+&lt;li&gt;Peter Gribanov, &lt;a href=&quot;http://1c.com/&quot; target=&quot;_blank&quot;&gt;1C&lt;/a&gt;, has contributed a &lt;a href=&quot;https://wiki.eclipse.org/Handly/Adopters&quot; target=&quot;_blank&quot;&gt;success story&lt;/a&gt; describing how &lt;a href=&quot;http://1c-dn.com/1c_enterprise/1c_enterprise_developmet_tools_graphite/&quot; target=&quot;_blank&quot;&gt;1C:Enterprise Development Tools&lt;/a&gt;, the earliest adopter of the project, is using Handly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Thank you for contributing!&lt;/p&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; height=&quot;1&quot; src=&quot;https://pixel.wp.com/b.gif?host=pisv.wordpress.com&amp;amp;blog=63898667&amp;amp;post=582&amp;amp;subd=pisv&amp;amp;ref=&amp;amp;feed=1&quot; width=&quot;1&quot; /&gt;</description>
+	<pubDate>Wed, 22 Jun 2016 17:00:44 +0000</pubDate>
+</item>
+<item>
+	<title>Alexander Nyssen: GEF4 Dot Oh Dot Oh</title>
+	<guid isPermaLink="false">tag:blogger.com,1999:blog-7387747921278902619.post-7143736488095793307</guid>
+	<link>http://nyssen.blogspot.com/2016/06/gef4-dot-oh-dot-oh.html</link>
+	<description>&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;I am proud to announce that with today's Eclipse Neon release we have officially published the new &lt;a href=&quot;https://wiki.eclipse.org/GEF/GEF4&quot;&gt;GEF4&lt;/a&gt; components in version 1.0.0, exposing their up to now only preliminary API. We have worked intensively on the code base since the 0.2.0 (Mars.1) release and have achieved quite a lot.&lt;br /&gt;&lt;br /&gt;&lt;h3&gt;Polishing API&lt;/h3&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;From an adopters viewpoint, the (up to now provisional) API has been cleaned up and harmonized in nearly all places. We have for instance adopted JavaFX collections and properties throughout, so that we can now use only a single notification mechanism in all places. As outlined in detail in an earlier &lt;a href=&quot;http://nyssen.blogspot.de/2016/04/gef4-common-collections-and-properties.html&quot; target=&quot;_blank&quot;&gt;post&lt;/a&gt;, this also enables us to use JavaFX bindings, which makes framework and client code more concise. Especially the GEF4 FX component has profited a lot from this. We have further simplified the contract of the GEF4 Layout component to no longer rely on own interface abstractions for data exchange, but to use a GEF4 Graph model, similar to what GEF4 Zest already did for rendering. And we have harmonized the GEF4 Zest API, especially those parts related to JFace. The &lt;a href=&quot;https://wiki.eclipse.org/GEF/New_and_Noteworthy&quot;&gt;New and Noteworthy&lt;/a&gt; page gives a quite detailed overview of the most important API changes. &lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;h3&gt;Improving DOT&lt;/h3&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;From an end-users viewpoint, the GEF4 DOT component has been brought a huge step nearer to its final goal of being a full Graphviz DOT authoring environment (even if its still a far way to go). The Xtext editor can now also parse and validate certain attribute values, and the Graph view is capable of rendering a first set of node shapes, as well as edge styles and decorations. All DOT spline types are now also supported. In addition to the 'emulated' layout we provided so far, where a GEF4 Layout algorithm is used to mimic the Graphviz layout, we now support a 'native' mode, in which the native dot executable (the path to which is specified via a preference) is used:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;a href=&quot;https://3.bp.blogspot.com/-SmBXiq7uzuw/V2pIsMT1phI/AAAAAAAAARI/9b2UzUsvWcAkvP_NLa75DbKTnsi0UXMjwCKgB/s1600/Bildschirmfoto%2B2016-05-27%2Bum%2B13.53.18.png&quot; style=&quot;clear: left; float: left; margin-bottom: 1em; margin-right: 1em; text-align: justify;&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;https://3.bp.blogspot.com/-SmBXiq7uzuw/V2pIsMT1phI/AAAAAAAAARI/9b2UzUsvWcAkvP_NLa75DbKTnsi0UXMjwCKgB/s400/Bildschirmfoto%2B2016-05-27%2Bum%2B13.53.18.png&quot; /&gt;&lt;/a&gt;&lt;br /&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;h3&gt;'Pimping' FX and MVC&lt;/h3&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Connection handling has been significantly improved. We have added support for orthogonal routing in addition to straight routing, and we have separated out an IConnectionRouter, which is responsible for manipulating the bend/control points, as well as an IConnectionInterpolator, which determines the to be rendered curve geometry. Routers and interpolators can be freely combined, so a connection can now be routed orthogonally, while it can still be rendered ‚smoothly‘ using Bézier curves:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;a href=&quot;https://4.bp.blogspot.com/-DNFdsNZXOFw/V2pROT42uRI/AAAAAAAAARk/UMuSuApouKwWH9dSAxcyte-FO2cF2V-egCKgB/s1600/Bildschirmfoto%2B2016-06-22%2Bum%2B10.49.48.png&quot; style=&quot;clear: left; float: left; margin-bottom: 1em; margin-right: 1em; text-align: justify;&quot;&gt;&lt;img border=&quot;0&quot; height=&quot;280&quot; src=&quot;https://4.bp.blogspot.com/-DNFdsNZXOFw/V2pROT42uRI/AAAAAAAAARk/UMuSuApouKwWH9dSAxcyte-FO2cF2V-egCKgB/s320/Bildschirmfoto%2B2016-06-22%2Bum%2B10.49.48.png&quot; width=&quot;320&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;In addition, connection decorations are now properly clipped (which lies within the responsibility of the interpolator), and a 'clickable area‘ (a transparent fat curve that overlays the connection) can now be used to make a connection clickable even when the zoom level is large (we have added this functionality to the GeometryNode so it is usable in an even broader scope). &lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Within GEF4 MVC we have accordingly enhanced FXBendConnectionPolicy to provide interaction support for manipulating connections that are orthogonally routed. These can now be manipulated using segment handles rather than handles for way/control points:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;a href=&quot;https://4.bp.blogspot.com/-kJdZvpgzilA/V2pUXD_f-YI/AAAAAAAAAR8/FIW7vicpZBofKqwlDNNY1R7Z9Pp7VPSMQCLcB/s1600/Bildschirmfoto%2B2016-06-22%2Bum%2B11.02.38.png&quot; style=&quot;margin-left: 1em; margin-right: 1em;&quot;&gt;&lt;img border=&quot;0&quot; height=&quot;131&quot; src=&quot;https://4.bp.blogspot.com/-kJdZvpgzilA/V2pUXD_f-YI/AAAAAAAAAR8/FIW7vicpZBofKqwlDNNY1R7Z9Pp7VPSMQCLcB/s320/Bildschirmfoto%2B2016-06-22%2Bum%2B11.02.38.png&quot; width=&quot;320&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;We have further enabled that distinct bindings can be specified for viewers with different roles. That allows us to use an FXViewer both as palette and content viewer, so a palette can now be easily realized. We have augmented the MVC Logo example to serve as a demonstrator:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;a href=&quot;https://3.bp.blogspot.com/-_e749NiLvJU/V2pVLojE-2I/AAAAAAAAASI/NSs_paAWsbgZPw009nV0f8HKuT957gQOACLcB/s1600/Bildschirmfoto%2B2016-06-22%2Bum%2B11.06.23.png&quot; style=&quot;margin-left: 1em; margin-right: 1em;&quot;&gt;&lt;img border=&quot;0&quot; height=&quot;288&quot; src=&quot;https://3.bp.blogspot.com/-_e749NiLvJU/V2pVLojE-2I/AAAAAAAAASI/NSs_paAWsbgZPw009nV0f8HKuT957gQOACLcB/s640/Bildschirmfoto%2B2016-06-22%2Bum%2B11.06.23.png&quot; width=&quot;640&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;a href=&quot;https://www.eclipse.org/gef/&quot; target=&quot;_blank&quot;&gt;Try it out!&lt;/a&gt;&lt;/div&gt;</description>
+	<pubDate>Wed, 22 Jun 2016 15:33:25 +0000</pubDate>
+	<author>noreply@blogger.com (Alexander Nyßen)</author>
+</item>
+<item>
+	<title>Orion: Announcing Orion 12</title>
+	<guid isPermaLink="false">http://planetorion.org/news/?p=837</guid>
+	<link>http://planetorion.org/news/2016/06/announcing-orion-12/</link>
+	<description>&lt;p&gt;We are pleased to announce the twelfth release of Orion, “Your IDE in the Cloud”. You can run it now on &lt;a href=&quot;https://orionhub.org&quot;&gt;OrionHub&lt;/a&gt; or &lt;a href=&quot;http://download.eclipse.org/orion/drops/R-12.0-201606220105/index.html&quot;&gt;download the server&lt;/a&gt; to run your own instance. Once again, thank you to all committers and contributors for your hard work this release.  There were over 350 &lt;a href=&quot;https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=RESOLVED&amp;amp;bug_status=VERIFIED&amp;amp;bug_status=CLOSED&amp;amp;chfieldfrom=2016-02-24&amp;amp;chfieldto=Now&amp;amp;classification=ECD&amp;amp;list_id=14631304&amp;amp;product=Orion&amp;amp;query_format=advanced&amp;amp;resolution=FIXED&quot;&gt;bugs and enhancements&lt;/a&gt; fixed, across more than 900 commits from 22 authors!&lt;/p&gt;
+&lt;p&gt;What’s new in Orion 12?  The Orion 12 release continues to emphasize our JavaScript tooling.  In particular, we now have full support for the &lt;a href=&quot;https://bugs.eclipse.org/bugs/show_bug.cgi?id=460728&quot;&gt;ECMA 2015 spec&lt;/a&gt;, vastly improved project configuration capabilities, support for eslintrc.* files and much much more!&lt;/p&gt;
+&lt;p&gt;The other focus of this release is consumability. To make Orion easier to use for end users, admins and everyone in between, we created an experimental node.js server (which can be used on &lt;a href=&quot;http://orion.eclipse.org&quot;&gt;orion.eclipse.org&lt;/a&gt; or locally), a metrics service for plugins, some &lt;a href=&quot;http://planetorion.org/news/2016/06/new-and-noteworthy-for-codeedit-widget-12/&quot;&gt;super cool updates to the code edit widget&lt;/a&gt; and a whole lot more!&lt;/p&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;</description>
+	<pubDate>Wed, 22 Jun 2016 15:27:24 +0000</pubDate>
+</item>
+<item>
+	<title>Webtools News: WTP 3.8 Released!</title>
+	<guid isPermaLink="false">http://www.eclipse.org/webtools/news.php#permalink173</guid>
+	<link>http://eclipse.org/webtools/releases/3.8.0/</link>
+	<description>&lt;div&gt;
+        The Eclipse Web Tools Platform 3.8 (Neon) has been released!  Featured in the
+        &lt;a href=&quot;http://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/neonr&quot;&gt;Eclipse IDE for Java EE Developers&lt;/a&gt;,
+        you'll also find parts of WTP in many of the
+        &lt;a href=&quot;http://www.eclipse.org/downloads/packages/release/Neon/R&quot;&gt;Neon packages&lt;/a&gt;. Of course you can still download the raw
+        &lt;a href=&quot;http://download.eclipse.org/webtools/downloads/drops/R3.8.0/R-3.8.0-20160608130753/&quot;&gt;WTP 3.8 build&lt;/a&gt; manually--don't forget the dependencies if you do.
+        Anyone with a working Eclipse 4.6, or Neon package, can
+        &lt;a href=&quot;https://wiki.eclipse.org/WTP_FAQ#How_do_I_install_WTP.3F&quot;&gt;install WTP&lt;/a&gt;
+        by working with the
+        &lt;a href=&quot;http://download.eclipse.org/releases/neon/&quot;&gt;Neon&lt;/a&gt; and corresponding &lt;a href=&quot;http://download.eclipse.org/webtools/repository/neon/&quot;&gt;WTP&lt;/a&gt; Update
+            Sites.
+    &lt;/div&gt;&lt;p&gt;&lt;a href=&quot;http://www.eclipse.org/webtools/news.php#permalink173&quot;&gt;More news&lt;/a&gt;&lt;/p&gt;</description>
+	<pubDate>Wed, 22 Jun 2016 15:14:30 +0000</pubDate>
+</item>
+<item>
+	<title>InfoQ Eclipse feed: Eclipse Foundation Releases Neon</title>
+	<guid isPermaLink="true">http://www.infoq.com/news/2016/06/eclipse-neon?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=Eclipse</guid>
+	<link>http://www.infoq.com/news/2016/06/eclipse-neon?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=Eclipse</link>
+	<description>&lt;img src=&quot;http://www.infoq.com/styles/i/logo_bigger.jpg&quot; /&gt;&lt;p&gt;Today, the Eclipse Foundation announced the release of Eclipse Neon, the eponymous IDE which provides support for Java, JavaScript, C/C++, PHP and Fortran, amongst others. This release marks the eleventh release of the combined release train, with contributions from 779 developers (of which 331 are committers) and totalling 69 million lines of code. Read on to find out what's new in this release.&lt;/p&gt; &lt;i&gt;By Alex Blewitt&lt;/i&gt;</description>
+	<pubDate>Wed, 22 Jun 2016 14:00:00 +0000</pubDate>
+</item>
+
+</channel>
+</rss>
