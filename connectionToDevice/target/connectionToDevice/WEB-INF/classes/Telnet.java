@@ -2,8 +2,12 @@ public class Telnet implements INTERFACE {
 	@Override
 	boolean connect ()
 	{
-		Socket s = new Socket();
-		yfguj
+		ServerSocket s = new ServerSocket(2000);
+		while(true)
+		{
+			Socket soc = s.accept();
+			run(soc);
+		}dsadf
 	}
 	
 }
