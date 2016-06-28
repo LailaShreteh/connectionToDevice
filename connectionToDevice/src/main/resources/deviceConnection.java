@@ -1,4 +1,5 @@
 
-public class deviceConnection {
-
+public class Telnetclient implements INTERFACE {
+	
+	
 }
