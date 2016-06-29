@@ -1,5 +1,4 @@
 package connectionToDevice;
-import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.io.InputStream;
 import org.apache.commons.net.telnet.TelnetClient;
@@ -17,11 +16,8 @@ public class Telnet implements INTERFACE {
     		return true;
 		}catch (Exception e)
 		{
-			e.printStackTrace();
 			return false;
-		}
-		
-	    
+		}   
 
 	}
 	

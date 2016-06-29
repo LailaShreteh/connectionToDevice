@@ -2,7 +2,7 @@ package connectionToDevice;
 
 public class SSH implements INTERFACE {
 	
-	public boolean connect ()
+	public boolean connect (String host, int port)
 	{
 	 return false;
 	}
