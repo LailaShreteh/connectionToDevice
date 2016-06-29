@@ -1,5 +1,0 @@
-connectionToDevice\SNMP.class
-connectionToDevice\INTERFACE.class
-connectionToDevice\parsing.class
-connectionToDevice\Telnet.class
-connectionToDevice\SSH.class
