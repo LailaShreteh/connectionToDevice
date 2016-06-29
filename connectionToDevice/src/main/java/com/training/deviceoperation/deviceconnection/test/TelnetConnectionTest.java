@@ -1,4 +1,4 @@
-package connectionToDevice;
+package com.training.deviceoperation.deviceconnection.test;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -6,9 +6,17 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.training.deviceoperation.deviceconnection.Connection;
+import com.training.deviceoperation.deviceconnection.TelnetConnection;
+
 import junit.framework.TestCase;
 
-public class Tests extends TestCase {
+/**
+ * 
+ * @author hamada1
+ *
+ */
+public class TelnetConnectionTest extends TestCase {
 	private Exception exception = null;
 	/**
 	* @throws java.lang.Exception
@@ -45,9 +53,10 @@ public class Tests extends TestCase {
 	@Test
 	public void testConnect() throws Exception {
 	   // fail();
-	// create instance
-	INTERFACE t = new  Telnet();
-	String host="";
-	boolean result = t.connect(host,23);
+		// create instance
+		Connection telnetConnection= new TelnetConnection();
+		String host="";
+		String result = telnetConnection.connectClass(host,23);
+		
 	}
 }

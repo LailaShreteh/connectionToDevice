@@ -1,11 +1,20 @@
-package connectionToDevice;
+package com.training.deviceoperation.deviceconnection;
 import java.io.PrintStream;
 import java.io.InputStream;
 import org.apache.commons.net.telnet.TelnetClient;
 
-public class Telnet implements INTERFACE {
+/**
+ * 
+ * @author hamada1
+ *
+ */
+public class TelnetConnection implements Connection {
 	
-	public boolean connect (String host, int port)
+	/**
+	 * @param host host address to connect
+	 * @param port port number
+	 */
+	public String connectClass (String host, int port)
 	{
 		TelnetClient telnet = new TelnetClient();
 		
@@ -13,10 +22,10 @@ public class Telnet implements INTERFACE {
     		telnet.connect(host, 23);
     		InputStream in = telnet.getInputStream();
     		PrintStream out = new PrintStream(telnet.getOutputStream());
-    		return true;
+    		return "Sucess";
 		}catch (Exception e)
 		{
-			return false;
+			return e.getMessage();
 		}   
 
 	}

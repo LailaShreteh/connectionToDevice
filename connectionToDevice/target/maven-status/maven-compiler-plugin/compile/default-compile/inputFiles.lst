@@ -1,6 +1,5 @@
-C:\Users\hamada1\git\connectionToDevice\connectionToDevice\src\main\java\connectionToDevice\SNMP_par.java
-C:\Users\hamada1\git\connectionToDevice\connectionToDevice\src\main\java\connectionToDevice\Telnet.java
-C:\Users\hamada1\git\connectionToDevice\connectionToDevice\src\main\java\connectionToDevice\SSH.java
-C:\Users\hamada1\git\connectionToDevice\connectionToDevice\src\main\java\connectionToDevice\INTERFACE.java
-C:\Users\hamada1\git\connectionToDevice\connectionToDevice\src\main\java\connectionToDevice\parsing.java
-C:\Users\hamada1\git\connectionToDevice\connectionToDevice\src\main\java\connectionToDevice\SNMP.java
+C:\Users\hamada1\git\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\SNMP_par.java
+C:\Users\hamada1\git\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\TelnetConnection.java
+C:\Users\hamada1\git\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\SSH.java
+C:\Users\hamada1\git\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\Connection.java
+C:\Users\hamada1\git\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\test\TelnetConnectionTest.java

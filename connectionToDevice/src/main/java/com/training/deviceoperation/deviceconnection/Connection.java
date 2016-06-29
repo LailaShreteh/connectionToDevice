@@ -1,13 +1,13 @@
-package connectionToDevice;
+package com.training.deviceoperation.deviceconnection;
 
-public interface INTERFACE {
+public interface Connection {
 	
 	String ip = "4.4.4.4";
 	String id="";
 	String version="";
 
 	
-	public boolean connect (String host,int port);
+	public String connectClass (String host,int port);
 	
 
 	
