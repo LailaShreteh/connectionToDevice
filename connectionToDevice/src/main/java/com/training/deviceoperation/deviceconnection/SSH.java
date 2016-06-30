@@ -1,6 +1,7 @@
 package com.training.deviceoperation.deviceconnection;
 
 import java.io.File;
+import net.schmizz.sshj.SSHClient;
 import java.net.InetAddress;
 import java.io.*;
 import java.util.*;
@@ -18,7 +19,8 @@ public class SSH implements Connection {
 		 
 		// create new SshHostKeys instance
 		SshHostKeys keys = new SshHostKeys();
-		 
+		  
+		SSHClient client=null;
 		// specify valid remote server address
 		InetAddress address = InetAddress.getByName(hostname);
 		 
