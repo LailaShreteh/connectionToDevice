@@ -1,5 +1,7 @@
 package com.training.deviceoperation.deviceconnection;
 
+import java.io.IOException;
+
 public interface Connection {
 	
 	String ip = "4.4.4.4";
@@ -7,7 +9,7 @@ public interface Connection {
 	String version="";
 
 	
-	public String connectClass (String host,int port);
+	public String connectClass (String host,int port) throws IOException, InterruptedException, Exception;
 	
 
 	

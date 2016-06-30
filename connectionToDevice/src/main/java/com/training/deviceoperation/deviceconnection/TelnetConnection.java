@@ -5,7 +5,7 @@ import org.apache.commons.net.telnet.TelnetClient;
 
 /**
  * 
- * @author hamada1
+ * @author Laila
  *
  */
 public class TelnetConnection implements Connection {

@@ -25,6 +25,15 @@
    <version>0.8.1</version>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/org.apache.sshd/sshd-core -->
+<dependency>
+    <groupId>org.apache.sshd</groupId>
+    <artifactId>sshd-core</artifactId>
+    <version>0.7.0</version>
+</dependency>
+
+
+
   </dependencies>
   <build>
     <finalName>connectionToDevice</finalName>

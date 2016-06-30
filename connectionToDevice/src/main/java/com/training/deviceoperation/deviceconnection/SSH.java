@@ -1,47 +1,57 @@
 package com.training.deviceoperation.deviceconnection;
 
-import java.io.File;
-import net.schmizz.sshj.SSHClient;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
+import org.apache.sshd.ClientSession;
+import org.apache.sshd.SshClient;
+
+
+/**
+ * 
+ * @author Reem
+ *
+ */
 public class SSH implements Connection {
-	
-	public String connectClass (String host, int port)
-	{
-		String hostname = "ssh.myhost.com";
-		String username = "reem";
-		 String password="";
+	/**
+	 * @param host host address to connect
+	 * @param port port number
+	 * @throws Exception 
+	 */
+	public String connectClass (String host, int port)throws Exception { 
 		
-		// create new SshParameters instance
-		SshParameters params = new SshParameters(hostname, port, username, password);
-		// create new SshHostKeys instance
-		SshHostKeys keys = new SshHostKeys();
-		  
-		SSHClient ssh=new SSHClient();
-		// specify valid remote server address
-		try {
-			InetAddress address = InetAddress.getByName(hostname);
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
-		// add valid fingerprint to SshHostKeys instance
-		//keys.addKey(address, "18:bc:ec:a5:0f:9a:fc:1a:60:96:7a:17:c8:ed:73:ac");
-		 
-		// update SshParameters instance to validate against fingerprint in SshHostKeys instance
-		//params.setHostKeys(keys, false);
-		 
-		// create new Ssh instance
-		//SsH ssh = new SsH(params);
-		
-		//ssh.connect();
-		
-		// gets updated host keys (if updated)
-		//keys = ssh.getHostKeys();
+		String login = System.getProperty("user.name");// user name !! O_o
+		 SshClient client = SshClient.setUpDefaultClient();
+		    client.start();
+
+		    try{
+	            boolean hasKeys = false;	
+	            ClientSession session = client.connect(host, port).await().getSession();
+	            int ret = ClientSession.WAIT_AUTH;
+
+	            while ((ret & ClientSession.WAIT_AUTH) != 0) {
+	                if (hasKeys) {
+	                    session.authAgent(login);
+	                    ret = session.waitFor(ClientSession.WAIT_AUTH | ClientSession.CLOSED | ClientSession.AUTHED, 0);
+	                } else {
+	                    System.out.print("Password:");
+	                    BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+	                    String password = r.readLine();
+	                    session.authPassword(login, password);
+	                    ret = session.waitFor(ClientSession.WAIT_AUTH | ClientSession.CLOSED | ClientSession.AUTHED, 0);
+	                }
+	                // here just connect authentication without any exchanging for information :D 
+	            }
+	            if ((ret & ClientSession.CLOSED) != 0) {
+	                System.err.println("error");
+	                System.exit(-1);
+	            }
+	            session.close(false);
+		    } finally { // The finally block is executed always after the try(-catch) block, if an exception is thrown or not.
+	            client.stop();
+	        }
+		    
 	 return "";
 	}
 }
