@@ -2,12 +2,6 @@ package com.training.deviceoperation.deviceconnection;
 
 import org.apache.commons.net.telnet.TelnetClient;
 
-import java.io.PrintStream;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.io.IOException;
-import java.io.InputStream;
-
 /**
  * 
  * @author Reem Jazi
@@ -18,21 +12,22 @@ public class TelnetConnection implements Connection {
 	/**
 	 * @param host-host address to connect
 	 * @param port-port number
-	 * @throws IOException 
-	 * @throws UnknownHostException 
 	 */
-	public String connectClass(String host, int port) throws UnknownHostException, IOException {
+	public String connectClass(String host, int port) {
+		if (host == null || host.length() == 0)
+		{
+			throw new IllegalArgumentException();
+		}
 		TelnetClient telnet = new TelnetClient();
 		try {
 			
-			telnet.connect(host, 23);
-			System.out.println(":P");
-			InputStream in = telnet.getInputStream();
-			PrintStream out = new PrintStream(telnet.getOutputStream());
+			telnet.connect(host, port);
+			//InputStream in = telnet.getInputStream();
+			//PrintStream out = new PrintStream(telnet.getOutputStream());
 			return "Sucess";
 
 		} catch (Exception e) {
-			return e.getMessage() + "  X_X fail to connect x_x" ;
+			return e.getMessage() + "  X_X sorry fails to connect x_x" ;
 		}
 	}
 }
