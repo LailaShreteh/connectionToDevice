@@ -1,7 +1,6 @@
 package com.training.deviceoperation.deviceconnection;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
 import org.apache.sshd.ClientSession;
@@ -20,8 +19,8 @@ public class SSHConnection implements Connection {
 	 * @throws Exception
 	 */
 	public String connectClass(String host, int port) throws Exception {
-
-		String login = System.getProperty("user.name");
+	
+		String login = System.getProperty("laila");
 		SshClient client = SshClient.setUpDefaultClient();
 		client.start();
 
@@ -40,7 +39,9 @@ public class SSHConnection implements Connection {
 					BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
 					String password = r.readLine();
 					session.authPassword(login, password);
+					System.out.println(":P :P");
 					ret = session.waitFor(ClientSession.WAIT_AUTH | ClientSession.CLOSED | ClientSession.AUTHED, 0);
+					return "Sucess";
 				}
 
 			}
@@ -54,7 +55,7 @@ public class SSHConnection implements Connection {
 					// block, if an exception is thrown or not.
 			client.stop();
 		}
+		return"";
 
-		return "sucess";
 	}
 }
