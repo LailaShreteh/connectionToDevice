@@ -11,8 +11,8 @@ import org.apache.commons.net.telnet.TelnetClient;
 public class TelnetConnection implements Connection {
 	
 	/**
-	 * @param host host address to connect
-	 * @param port port number
+	 * @param host-host address to connect
+	 * @param port-port number
 	 */
 	public String connectClass (String host, int port)
 	{

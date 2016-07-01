@@ -1,5 +1,9 @@
 package com.training.deviceoperation.deviceconnection.test;
 
+import org.apache.mina.core.future.CloseFuture;
+import org.apache.sshd.ClientSession;
+import org.apache.sshd.SshClient;
+import org.apache.sshd.client.future.AuthFuture;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -7,13 +11,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.training.deviceoperation.deviceconnection.Connection;
+import com.training.deviceoperation.deviceconnection.SSHConnection;
 import com.training.deviceoperation.deviceconnection.TelnetConnection;
 
 import junit.framework.TestCase;
 
 /**
  * 
- * @author hamada1
+ * @author Reem 
  *
  */
 public class TelnetConnectionTest extends TestCase {
@@ -51,12 +56,23 @@ public class TelnetConnectionTest extends TestCase {
 	}
 
 	@Test
-	public void testConnect() throws Exception {
-	   // fail();
+	public void testTelnetConnection() throws Exception {
 		// create instance
 		Connection telnetConnection= new TelnetConnection();
 		String host="";
 		String result = telnetConnection.connectClass(host,23);
-		
+		assertEquals(result, "sucess");
 	}
+	   @Test
+	    public void testCloseBeforeAuthSucceed() throws Exception {
+	        SshClient client = SshClient.setUpDefaultClient();
+	        client.start();
+	        ClientSession session = client.connect("localhost", 22).await().getSession();
+	        AuthFuture authFuture = session.authPassword("reembzu1121412", "reembzu1121412");
+	        org.apache.sshd.common.future.CloseFuture closeFuture = session.close(false);
+	        authFuture.await();
+	        closeFuture.await();
+	        assertNotNull(authFuture.getException());
+	        assertTrue(closeFuture.isClosed());
+	    }
 }

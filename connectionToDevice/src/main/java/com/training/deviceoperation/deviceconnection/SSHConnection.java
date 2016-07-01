@@ -13,7 +13,7 @@ import org.apache.sshd.SshClient;
  * @author Reem
  *
  */
-public class SSH implements Connection {
+public class SSHConnection implements Connection {
 	/**
 	 * @param host host address to connect
 	 * @param port port number
@@ -21,7 +21,7 @@ public class SSH implements Connection {
 	 */
 	public String connectClass (String host, int port)throws Exception { 
 		
-		String login = System.getProperty("user.name");// user name !! O_o
+		String login = System.getProperty("user.name");
 		 SshClient client = SshClient.setUpDefaultClient();
 		    client.start();
 
@@ -34,24 +34,25 @@ public class SSH implements Connection {
 	                if (hasKeys) {
 	                    session.authAgent(login);
 	                    ret = session.waitFor(ClientSession.WAIT_AUTH | ClientSession.CLOSED | ClientSession.AUTHED, 0);
-	                } else {
+	                } else { // here just connect authentication without exchanging any information ;)
 	                    System.out.print("Password:");
 	                    BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
 	                    String password = r.readLine();
 	                    session.authPassword(login, password);
 	                    ret = session.waitFor(ClientSession.WAIT_AUTH | ClientSession.CLOSED | ClientSession.AUTHED, 0);
 	                }
-	                // here just connect authentication without any exchanging for information :D 
+	                
 	            }
 	            if ((ret & ClientSession.CLOSED) != 0) {
 	                System.err.println("error");
 	                System.exit(-1);
+	                return"fail";
 	            }
 	            session.close(false);
-		    } finally { // The finally block is executed always after the try(-catch) block, if an exception is thrown or not.
+		    } finally { // The finally block is executed always after the try-catch block, if an exception is thrown or not.
 	            client.stop();
 	        }
 		    
-	 return "";
+	 return "sucess";
 	}
 }

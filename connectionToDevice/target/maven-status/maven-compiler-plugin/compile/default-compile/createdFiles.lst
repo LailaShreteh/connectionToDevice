@@ -1,4 +1,4 @@
 com\training\deviceoperation\deviceconnection\TelnetConnection.class
 com\training\deviceoperation\deviceconnection\SshParameters.class
-com\training\deviceoperation\deviceconnection\SSH.class
 com\training\deviceoperation\deviceconnection\Connection.class
+com\training\deviceoperation\deviceconnection\SSHConnection.class
