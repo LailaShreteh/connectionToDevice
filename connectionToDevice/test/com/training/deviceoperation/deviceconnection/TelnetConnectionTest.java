@@ -21,6 +21,7 @@ public class TelnetConnectionTest {
 		String result = connection.connectClass("8.8.8.8", 53);
 		assertNotNull(result);
 		assertEquals("Sucess" , result);
+		//System.out.println(":3 :3");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
