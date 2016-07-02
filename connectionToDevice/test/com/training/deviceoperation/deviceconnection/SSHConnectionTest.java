@@ -24,16 +24,16 @@ public class SSHConnectionTest {
 	}
 	
 	@Test
-	public void test() {
+	public void testConnectClass_SucessCase() {
 		String result = null;
 		try {
 			result = connection.connectClass("8.8.8.8", 53);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println(":P :P LLLLLL");
+			//System.out.println(":P :P LLLLLL");
 			e.getMessage();
 		}
-		assertEquals("Sucess" , result);
+			assertEquals("Sucess" , result);
 		}
 	
 	@After

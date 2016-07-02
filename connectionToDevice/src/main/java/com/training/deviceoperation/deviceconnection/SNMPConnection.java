@@ -13,10 +13,12 @@ public class SNMPConnection implements Connection{
 		TransportMapping transport = new DefaultUdpTransportMapping();
 		 Snmp snmp = new Snmp(transport);
 		 try{
-		transport.listen();
-		return "sucess";}
-		 catch (Exception e) {
-				return e.getMessage() + " Fail" ;
+			 	transport.listen();
+			 	return "Sucess";
+			 	
+		 	}catch (Exception e) {
+		 		return e.getMessage() + "  X_X sorry fails to connect x_x" ;
 			}
-	}}
+	}
+}
 

@@ -23,18 +23,23 @@ public class SNMPConnectionTest {
 	}
 
 	@Test
-	public void test() {
+	public void testConnectClass_SucessCase() {
 		String result = null;
 		try {
 			result = SnmpClient.connectClass("127.0.0.1", 161);
 			assertNotNull(result);
-			// assertEquals("Sucess" , result);
+			assertEquals("Sucess" , result);
+			//System.out.println(":3 :3");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			assertEquals("Fail", result);
 		}
 
 	}
+	
+	
+	
+	
 	@After
 	public void teardown ()
 	{

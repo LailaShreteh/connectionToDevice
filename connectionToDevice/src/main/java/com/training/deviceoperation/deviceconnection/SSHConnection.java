@@ -40,8 +40,8 @@ public class SSHConnection implements Connection {
 						System.out.print("Password:");
 						BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
 						String password = r.readLine();
-						session.authPassword(login, password);
 						System.out.println("true !!! pass ");
+						session.authPassword(login, password);
 						ret = session.waitFor(ClientSession.WAIT_AUTH | ClientSession.CLOSED | ClientSession.AUTHED, 0);
 						return "Sucess";
 					}
@@ -53,9 +53,7 @@ public class SSHConnection implements Connection {
 					return "fails to Connect x_x";
 				}
 				session.close(false);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.getMessage();
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				System.out.println(":P :P");
@@ -66,7 +64,6 @@ public class SSHConnection implements Connection {
 					// block, if an exception is thrown or not.
 			client.stop();
 		}
-		return"";
-
+		return"fail";
 	}
 }
