@@ -12,13 +12,15 @@ import org.apache.sshd.SshClient;
  * @author Laila Shreteh
  *
  */
-public class SSHConnection implements Connection {
+public class SSHConnection extends CLIConnection {
+	
 	/**
 	 * @param host-host address to connect
 	 * @param port-port number
 	 * @throws Exception
 	 */
-	public String connectClass(String host, int port) {
+	@Override
+	public String connectToDevice(String host, int port) {
 	
 		String login = System.getProperty("laila");
 		SshClient client = SshClient.setUpDefaultClient();
@@ -56,8 +58,7 @@ public class SSHConnection implements Connection {
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				System.out.println(":P :P");
-				e.getMessage();
+				System.out.println(":P :P" + e.getMessage());
 			}
 			
 		} finally { // The finally block is executed always after the try-catch

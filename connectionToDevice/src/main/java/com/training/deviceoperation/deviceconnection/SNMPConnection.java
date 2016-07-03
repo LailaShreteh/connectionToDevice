@@ -8,7 +8,7 @@ import org.snmp4j.transport.DefaultUdpTransportMapping;
 
 public class SNMPConnection implements Connection{
 	
-	public String connectClass(String IP, int port) throws IOException  {
+	public String connectToDevice(String IP, int port) throws IOException  {
 	
 		TransportMapping transport = new DefaultUdpTransportMapping();
 		 Snmp snmp = new Snmp(transport);

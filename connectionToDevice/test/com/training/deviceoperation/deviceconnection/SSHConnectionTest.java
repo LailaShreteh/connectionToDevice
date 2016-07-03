@@ -27,7 +27,7 @@ public class SSHConnectionTest {
 	public void testConnectClass_SucessCase() {
 		String result = null;
 		try {
-			result = connection.connectClass("8.8.8.8", 53);
+			result = connection.connectToDevice("192.168.50.200", 22);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//System.out.println(":P :P LLLLLL");

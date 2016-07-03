@@ -7,13 +7,14 @@ import org.apache.commons.net.telnet.TelnetClient;
  * @author Reem Jazi
  * @author Laila Shreteh
  */
-public class TelnetConnection implements Connection {
+public class TelnetConnection extends CLIConnection {
 
 	/**
 	 * @param host-host address to connect
 	 * @param port-port number
 	 */
-	public String connectClass(String host, int port) {
+	@Override
+	public String connectToDevice(String host, int port) {
 		if (host == null || host.length() == 0)
 		{
 			throw new IllegalArgumentException();

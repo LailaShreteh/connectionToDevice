@@ -26,7 +26,7 @@ public class SNMPConnectionTest {
 	public void testConnectClass_SucessCase() {
 		String result = null;
 		try {
-			result = SnmpClient.connectClass("127.0.0.1", 161);
+			result = SnmpClient.connectToDevice("192.168.50.200", 161);
 			assertNotNull(result);
 			assertEquals("Sucess" , result);
 			//System.out.println(":3 :3");

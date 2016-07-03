@@ -18,7 +18,7 @@ public class TelnetConnectionTest {
 	
 	@Test
 	public void testConnectClass_SucessCase() {
-		String result = connection.connectClass("8.8.8.8", 53);
+		String result = connection.connectToDevice("192.168.50.200", 23);
 		assertNotNull(result);
 		assertEquals("Sucess" , result);
 		//System.out.println(":3 :3");
@@ -26,12 +26,12 @@ public class TelnetConnectionTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testConnectClass_failureCase_hostIsNULL() {
-		connection.connectClass(null, 53);		
+		connection.connectToDevice(null, 53);		
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testConnectClass_failureCase_hostIsBlank() {
-		connection.connectClass("", 53);		
+		connection.connectToDevice("", 53);		
 	}
 	
 	@After
