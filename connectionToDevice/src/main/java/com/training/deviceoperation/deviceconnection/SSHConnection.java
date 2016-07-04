@@ -58,7 +58,7 @@ public class SSHConnection extends CLIConnection {
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				System.out.println(":P :P" + e.getMessage());
+				System.out.println(":P :P" + e.getMessage());//here
 			}
 			
 		} finally { // The finally block is executed always after the try-catch
