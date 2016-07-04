@@ -11,5 +11,7 @@ import java.io.IOException;
 public interface Connection {
 
 	public String connectToDevice(String host, int port) throws IOException;
+	
+//	public String getVersion();
 
 }

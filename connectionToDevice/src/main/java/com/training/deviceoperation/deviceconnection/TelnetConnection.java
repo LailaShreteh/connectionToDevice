@@ -8,7 +8,8 @@ import org.apache.commons.net.telnet.TelnetClient;
  * @author Laila Shreteh
  */
 public class TelnetConnection extends CLIConnection {
-
+	public TelnetClient telnet;
+	
 	/**
 	 * @param host-host address to connect
 	 * @param port-port number
@@ -19,16 +20,22 @@ public class TelnetConnection extends CLIConnection {
 		{
 			throw new IllegalArgumentException();
 		}
-		TelnetClient telnet = new TelnetClient();
+		 TelnetClient telnet = new TelnetClient();
 		try {
-			
 			telnet.connect(host, port);
-			//InputStream in = telnet.getInputStream();
-			//PrintStream out = new PrintStream(telnet.getOutputStream());
+			telnet.setSoTimeout(150000);
+
+			//System.out.println(":) 563 :)");
+		
+			
+			// here you must close the connection !! and send exit comnmand to router !!
 			return "Sucess";
 
 		} catch (Exception e) {
 			return e.getMessage() + "  X_X sorry fails to connect x_x" ;
 		}
 	}
+	
 }
+
+

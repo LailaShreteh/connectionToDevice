@@ -19,18 +19,21 @@ public class TelnetConnectionTest {
 	}
 	
 	@Test
-	public void testConnectClass_SucessCase() {
+	public void testConnectClass_SucessCase() throws IOException {
+
 		String result = connection.connectToDevice("192.168.50.200", 23);
+
 		assertNotNull(result);
 		assertEquals("Sucess" , result);
-try {
-	connection.getInterfaces();
-} catch (IOException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-}
 		//System.out.println(":3 :3");
 	}
+	
+//	@Test
+//	public void testGetVersion() {
+//		String version = connection.getVersion();
+//		
+//		
+//	}
 	
 /*	@Test(expected = IllegalArgumentException.class)
 	public void testConnectClass_failureCase_hostIsNULL() {
