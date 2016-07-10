@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class SSHConnectionTest {
 
-	private SSHConnection connection;
+	private CLIConnection connection;
 
 	@Before
 	public void setup() {
@@ -28,12 +28,13 @@ public class SSHConnectionTest {
 		String result = null;
 		try {
 			result = connection.connectToDevice("192.168.50.200", 22);
+			connection.getInterfaces(connection);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//System.out.println(":P :P LLLLLL");
 			e.getMessage();
 		}
-			assertEquals("Sucess" , result);
+		assertEquals("Sucess" , result);
 		}
 	
 	@After

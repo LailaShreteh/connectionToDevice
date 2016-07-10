@@ -20,13 +20,12 @@ public class TelnetConnection extends CLIConnection {
 		{
 			throw new IllegalArgumentException();
 		}
-		 TelnetClient telnet = new TelnetClient();
+	
+		 telnet = new TelnetClient();
 		try {
 			telnet.connect(host, port);
 			telnet.setSoTimeout(150000);
-
 			//System.out.println(":) 563 :)");
-		
 			
 			// here you must close the connection !! and send exit comnmand to router !!
 			return "Sucess";
@@ -35,6 +34,8 @@ public class TelnetConnection extends CLIConnection {
 			return e.getMessage() + "  X_X sorry fails to connect x_x" ;
 		}
 	}
+
+
 	
 }
 

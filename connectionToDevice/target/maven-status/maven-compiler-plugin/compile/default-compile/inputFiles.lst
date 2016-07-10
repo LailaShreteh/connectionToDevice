@@ -1,6 +1,6 @@
-C:\Users\user\git\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\model\Interface.java
-C:\Users\user\git\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\CLIConnection.java
-C:\Users\user\git\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\Connection.java
-C:\Users\user\git\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\TelnetConnection.java
-C:\Users\user\git\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\SNMPConnection.java
-C:\Users\user\git\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\SSHConnection.java
+C:\Users\user\Desktop\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\Connection.java
+C:\Users\user\Desktop\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\TelnetConnection.java
+C:\Users\user\Desktop\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\CLIConnection.java
+C:\Users\user\Desktop\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\SNMPConnection.java
+C:\Users\user\Desktop\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\model\Interface.java
+C:\Users\user\Desktop\connectionToDevice\connectionToDevice\src\main\java\com\training\deviceoperation\deviceconnection\SSHConnection.java

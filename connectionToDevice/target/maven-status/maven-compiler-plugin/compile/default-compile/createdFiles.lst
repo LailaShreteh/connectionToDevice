@@ -1,6 +1,9 @@
+com\training\deviceoperation\deviceconnection\SSHConnectionTest.class
 com\training\deviceoperation\deviceconnection\CLIConnection.class
-com\training\deviceoperation\deviceconnection\TelnetConnection.class
 com\training\deviceoperation\deviceconnection\model\Interface.class
+com\training\deviceoperation\deviceconnection\TelnetConnectionTest.class
 com\training\deviceoperation\deviceconnection\SNMPConnection.class
-com\training\deviceoperation\deviceconnection\Connection.class
 com\training\deviceoperation\deviceconnection\SSHConnection.class
+com\training\deviceoperation\deviceconnection\TelnetConnection.class
+com\training\deviceoperation\deviceconnection\SNMPConnectionTest.class
+com\training\deviceoperation\deviceconnection\Connection.class
