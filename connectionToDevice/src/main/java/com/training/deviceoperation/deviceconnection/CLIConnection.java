@@ -1,12 +1,7 @@
 package com.training.deviceoperation.deviceconnection;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.PrintStream;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -28,10 +23,10 @@ public abstract class CLIConnection implements Connection {
 	private String host = "";
 	private int port;
 	private java.io.InputStream in;
-	private Writer writer;
 	private PrintStream out;
 	private String prompt="#";
 	private TelnetConnection connection;
+	private StringBuffer cmdBack;
 	abstract public String connectToDevice(String host, int port);
 
 	public List<String> getInterfaces(Object o) throws IOException {
@@ -73,13 +68,15 @@ public abstract class CLIConnection implements Connection {
 		cmd = scan.nextLine();
 		write(cmd);
 		readUntil("ASR1002_Omar#");
-		connection.sendCommand("sh ip int brief");
-		System.out.println("reem ... ");
-		connection.sendCommand("conf t");
-		connection.disconnect();
+		write("sh ip int brief");
+		readUntil("# ");
+//		connection.sendCommand("sh ip int brief");
+//		System.out.println("reem ... ");
+//		connection.sendCommand("conf t");
 
 		// here the list of interfaces !!
 		// TODO get output and convert it to list
+		
 
 		/*
 		 * String s = null; List<String> interfaces = new ArrayList<String>();
@@ -101,10 +98,10 @@ public abstract class CLIConnection implements Connection {
 			boolean found = false;
 			char ch = (char) in.read();
 			while (true) {
-				System.out.print(ch);
 				sb.append(ch);
 				if (ch == lastChar) {
 					if (sb.toString().endsWith(sample)) {
+						cmdBack = sb;
 						return sb.toString();
 					}
 				}
