@@ -18,7 +18,7 @@ import com.jcraft.jsch.Session;
 
 public abstract class CLIConnection implements Connection {
 
-	private String host = "192.168.50.200";
+	private String host = "";
 	private int port;
 	private java.io.InputStream in;
 	private PrintStream out;
@@ -26,36 +26,38 @@ public abstract class CLIConnection implements Connection {
 	private TelnetConnection connection;
 	private String cmdBack;
 	private SSHConnection ssh_connection;
+	private String password = "lab";
 
 	abstract public String connectToDevice(String host, int port);
 
 	public List<String> getInterfaces(Object o) throws IOException {
 		// TODO push command show interfaces to device
 		if (o instanceof TelnetConnection) {
+
 			connection = (TelnetConnection) o;
 			in = connection.telnet.getInputStream();
 			out = new PrintStream(connection.telnet.getOutputStream());
 
-		} else if (o instanceof SSHConnection) { // session & channel implementation
-												// to ssh
+		} else if (o instanceof SSHConnection) { // session & channel
+													// implementation
+													// to ssh
 			ssh_connection = (SSHConnection) o;
-			Session session=null;
+			Session session = null;
 			try {
-			
-				    session = ssh_connection.jsch.getSession("lab",host,22);
-					
-				    Properties config = new Properties();
-				   
-				    config.put("StrictHostKeyChecking", "yes");
-				   
-				    session.setConfig(config);
 
-				    session.connect(1000);
-				//com.jcraft.jsch.Channel channel = session.openChannel("shell");
-				//channel.setInputStream(System.in);
-				//channel.setOutputStream(System.out);
-//				readUntil(" ");
+				session = ssh_connection.jsch.getSession("lab", host, 22);
+				Properties config = new Properties();
 
+				config.put("StrictHostKeyChecking", "NO");
+				session.setPassword(password);
+				session.setConfig(config);
+
+				session.connect(1000);
+				// com.jcraft.jsch.Channel channel =
+				// session.openChannel("shell");
+				// channel.setInputStream(System.in);
+				// channel.setOutputStream(System.out);
+				// readUntil(" ");
 
 			} catch (JSchException e) {
 				// TODO Auto-generated catch block
@@ -70,7 +72,7 @@ public abstract class CLIConnection implements Connection {
 			write(cmd);
 
 			readUntil("Password: ");
-			 cmd = scan.nextLine();
+			cmd = scan.nextLine();
 			write(cmd);
 
 			readUntil("ASR1002_Omar>");
@@ -116,7 +118,7 @@ public abstract class CLIConnection implements Connection {
 			// System.out.println(splited[0]+":P \n");
 			interfaces.add(splited[0]);
 		}
-		System.out.println("\n"+interfaces);
+		System.out.println("\n" + interfaces);
 		// TODO return list<interface>
 		// we don't know how the interfaces class it's look like !! :\
 		// so we return a list of interfaces as string

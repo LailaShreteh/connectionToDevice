@@ -6,12 +6,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-	/**
-	 * 
-	 * @author Reem Jazi
-	 * @author Laila Shreteh
-	 *
-	 */
+/**
+ * 
+ * @author Reem Jazi
+ * @author Laila Shreteh
+ *
+ */
 
 public class SSHConnectionTest {
 
@@ -19,27 +19,26 @@ public class SSHConnectionTest {
 
 	@Before
 	public void setup() {
-	 connection = new SSHConnection();
+		connection = new SSHConnection();
 
 	}
-	
+
 	@Test
 	public void testConnectClass_SucessCase() {
 		String result = null;
 		try {
-			result = connection.connectToDevice("192.168.50.200",22);
+			result = connection.connectToDevice("192.168.50.200", 22);
 			connection.getInterfaces(connection);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println(":P :P LLLLLL");
+			// System.out.println(":P :P LLLLLL");
 			e.getMessage();
 		}
-		assertEquals("Sucess" , result);
-		}
-	
+		assertEquals("Sucess", result);
+	}
+
 	@After
-	public void teardown ()
-	{
+	public void teardown() {
 		connection = null;
 	}
 
