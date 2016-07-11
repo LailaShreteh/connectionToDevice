@@ -27,11 +27,11 @@ public class SSHConnectionTest {
 	public void testConnectClass_SucessCase() {
 		String result = null;
 		try {
-			result = connection.connectToDevice("192.168.50.200", 22);
+			result = connection.connectToDevice("192.168.50.200",22);
 			connection.getInterfaces(connection);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//System.out.println(":P :P LLLLLL");
+			System.out.println(":P :P LLLLLL");
 			e.getMessage();
 		}
 		assertEquals("Sucess" , result);

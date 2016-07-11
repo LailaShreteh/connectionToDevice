@@ -22,7 +22,6 @@ public class TelnetConnectionTest {
 	public void testConnectClass_SucessCase() throws IOException {
 
 		String result = connection.connectToDevice("192.168.50.200", 23);
-
 		connection.getInterfaces(connection);
 		assertNotNull(result);
 		assertEquals("Sucess", result);
