@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated from com.cisco.xmp.model.foundation.connectivity.ethernet.EthernetProtocolEndpoint -->
+<xs:element name="EthernetProtocolEndpoint" minOccurs="0" maxOccurs="unbounded">
+	<xs:annotation>
+		<xs:documentation>Represents a layer 2 Ethernet ProtocolEndpoint.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:choice minOccurs="1" maxOccurs="2">
+				<xs:element name="name" type="longStringType">
+					<xs:annotation>
+						<xs:documentation>the name of the entity</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="adminStatus" type="enumType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Represents the desired state of the interface.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="comments" type="shortStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Contains comments added to a subclass of ProtocolEndpoint.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="description" type="longStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>an optional description of the entity</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="duplexMode" type="enumType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates the duplex mode for the interface.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="entAliasMappingIdentifier" type="longStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>## Internal use only ##</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ethernetLoopback" type="enumType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="flowControlMode" type="enumType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The flow control mode affects the sending and action on receipt of flow-control pause frames</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ifSpeed" type="LongQuantity" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies an estimate of the interface&apos;s current bandwidth in bits per second. For interfaces that do not vary in bandwidth or for those where no accurate estimation can be made, this should contain the nominal bandwidth. For a sublayer that has no concept of bandwidth, this object should be zero.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="isConnectorPresent" type="enumType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the interface sublayer has a physical connector.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="isPromiscuous" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates whether this interface only accepts packets/frames that are addressed to its hosting network element. This object has a value of true when the station accepts all packets/frames transmitted on the media. The value true is only legal on certain types of media; otherwise the attribute is set to false. This value does not affect the reception of broadcast and multicast packets/frames by the interface.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="isSwitchablePort" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>indicates if this PEP can be configured as s switchport or not</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="isTrapEnabled" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>False if the interface is confured to not send the traps.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="lagEndName" type="longStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>## Internal use only ##</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="layerRate" type="enumType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>TMF MTNM/MTOSI SD1-17 layer rate</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="locationIndex" type="xs:unsignedInt" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>## Internal use only ##</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="lowerIfIndex" type="longStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>## Internal use only ##
+The ifIndex of the lower layer interface</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="macAddress" type="longStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Represents media- or physical-level addresses. This is the interface&apos;s address at its protocol sublayer. For example, for an 802.x interface, this object normally contains a MAC address. The interface&apos;s media-specific MIB must define the bit and byte ordering and the format of the value of this object.
+
+For interfaces that do not have such an address (such as a serial line), this object should be null.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mtu" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Represents the size in octets of the largest packet that can be sent/received on the interface. For interfaces that are used for transmitting network datagrams, this is the size of the largest network datagram that can be sent on the interface.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="operStatus" type="enumType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Represent the current operational state of the interface.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="physicalLocation" type="longStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A string to represent the physical location of this object. Used to implement the PhysicalPepContainsPEP association</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="portProfileInfraName" type="longStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>## Internal Use Only ##</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="enumType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The type of endpoint, as defined by IANA. Reference: IF-MIB : ifType</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="virInfraName" type="longStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>## Internal use only ##</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="virInfraParent" type="longStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>## Internal use only ##</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="virOwningEntityId" type="longStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>## Internal use only ##</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>

@@ -10,7 +10,8 @@ import com.jcraft.jsch.JSch;
  */
 public class SSHConnection extends CLIConnection {
 	public JSch jsch;
-
+	private String host;
+	private int port;
 	/**
 	 * @param host-host address to connect
 	 * @param port-port number
@@ -18,9 +19,15 @@ public class SSHConnection extends CLIConnection {
 	 */
 	@Override
 	public String connectToDevice(String host, int port) {
-	
-		
-		 jsch = new JSch();
+		jsch = new JSch();
+		 this.host = host;
+		 this.port=port;
 		return"";
 	}
+	public String getHost() {
+		return host;
+	}
+	public int getPort() {
+		return port;
+	}	
 }

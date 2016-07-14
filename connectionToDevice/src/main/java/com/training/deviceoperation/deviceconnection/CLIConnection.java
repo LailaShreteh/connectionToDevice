@@ -1,6 +1,9 @@
 package com.training.deviceoperation.deviceconnection;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,46 +21,47 @@ import com.jcraft.jsch.Session;
 
 public abstract class CLIConnection implements Connection {
 
-	private String host = "";
-	private int port;
-	private java.io.InputStream in;
+	private InputStream in;
 	private PrintStream out;
-	private String prompt = "#";
 	private TelnetConnection connection;
 	private String cmdBack;
 	private SSHConnection ssh_connection;
 	private String password = "lab";
+	private DataOutputStream dataOut;
+	private Session session = null;
+	private com.jcraft.jsch.Channel channel;
 
 	abstract public String connectToDevice(String host, int port);
 
 	public List<String> getInterfaces(Object o) throws IOException {
+
 		// TODO push command show interfaces to device
 		if (o instanceof TelnetConnection) {
 
 			connection = (TelnetConnection) o;
 			in = connection.telnet.getInputStream();
 			out = new PrintStream(connection.telnet.getOutputStream());
+			// addition to cmd if the connection is telnet
+			readUntil("Username: ");
+			write("lab");
+			readUntil("Password: ");
+			write("lab");
 
 		} else if (o instanceof SSHConnection) { // session & channel
-													// implementation
-													// to ssh
+													// implementation to ssh
 			ssh_connection = (SSHConnection) o;
-			Session session = null;
+
 			try {
-
-				session = ssh_connection.jsch.getSession("lab", host, 22);
+				session = ssh_connection.jsch.getSession("lab", ssh_connection.getHost(), ssh_connection.getPort());
 				Properties config = new Properties();
-
 				config.put("StrictHostKeyChecking", "NO");
 				session.setPassword(password);
 				session.setConfig(config);
-
-				session.connect(1000);
-				// com.jcraft.jsch.Channel channel =
-				// session.openChannel("shell");
-				// channel.setInputStream(System.in);
-				// channel.setOutputStream(System.out);
-				// readUntil(" ");
+				session.connect();
+				channel = session.openChannel("shell");
+				channel.connect();
+				in = new DataInputStream(channel.getInputStream());
+				out = new PrintStream(channel.getOutputStream(),true);
 
 			} catch (JSchException e) {
 				// TODO Auto-generated catch block
@@ -67,21 +71,27 @@ public abstract class CLIConnection implements Connection {
 		Scanner scan = null;
 		try {
 			scan = new Scanner(System.in);
-			readUntil("Username: ");
-			String cmd = scan.nextLine();
-			write(cmd);
-
-			readUntil("Password: ");
-			cmd = scan.nextLine();
-			write(cmd);
-
+		
+			 while(true) {
 			readUntil("ASR1002_Omar>");
-			cmd = scan.nextLine();
-			write(cmd);
-			readUntil("Password: ");// you must test if the password is true of
-									// false !!!
-			cmd = scan.nextLine();
-			write(cmd);
+			 write("en");
+
+			 readUntil("Password:");
+			  // String cmd = scan.nextLine(); 
+		
+				out.println("lab");
+				out.flush();
+			   if (false) 
+				   break; 
+			  }
+			 
+//			readUntil("ASR1002_Omar>");
+//			write("en");
+//			readUntil("Password: ");// you must test if the password is true of
+//			// false !!!
+//			//String cmd = scan.nextLine();
+//		
+//			write("lab");
 			readUntil("ASR1002_Omar#");
 			write("sh ip int brief");
 			cmdBack = readUntil("#");
@@ -94,9 +104,14 @@ public abstract class CLIConnection implements Connection {
 
 		try {
 			if (o instanceof TelnetConnection) {
+				in.close();
+				out.close();
 				connection.telnet.disconnect();
 			} else if (o instanceof SshClient) {
-				connection.telnet.disconnect();
+				in.close();
+				dataOut.close();
+				channel.disconnect();
+				session.disconnect();
 			}
 
 		} catch (Exception e) {
@@ -104,18 +119,10 @@ public abstract class CLIConnection implements Connection {
 		}
 		// TODO get output and convert it to list
 		String[] lines = cmdBack.split(System.getProperty("line.separator"));
-		// for(int i=0;i<lines.length;i++)
-		// {
-		// System.out.println(lines[i]+":P \n");
-		// }
 
-		// Pattern pat = Pattern.compile("(.*?) ");
-
-		// String s = null;
 		List<String> interfaces = new ArrayList<String>();
 		for (int i = 2; i < lines.length - 1; i++) {
 			String[] splited = lines[i].split("\\s+");
-			// System.out.println(splited[0]+":P \n");
 			interfaces.add(splited[0]);
 		}
 		System.out.println("\n" + interfaces);
@@ -131,6 +138,7 @@ public abstract class CLIConnection implements Connection {
 			char lastChar = sample.charAt(sample.length() - 1);
 			StringBuffer sb = new StringBuffer();
 			char ch = (char) in.read();
+
 			while (true) {
 				System.out.print(ch);
 				sb.append(ch);
@@ -151,19 +159,8 @@ public abstract class CLIConnection implements Connection {
 		try {
 			out.println(value);
 			out.flush();// to be sure that our command is send to the server !!
-			// System.out.println(value);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public String sendCommand(String command) {
-		try {
-			write(command);
-			return readUntil(prompt + " ");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 }
