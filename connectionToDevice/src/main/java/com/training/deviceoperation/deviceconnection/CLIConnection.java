@@ -61,7 +61,7 @@ public abstract class CLIConnection implements Connection {
 				channel = session.openChannel("shell");
 				channel.connect();
 				in = new DataInputStream(channel.getInputStream());
-				out = new PrintStream(channel.getOutputStream(),true);
+				out = new PrintStream(channel.getOutputStream(), true);
 
 			} catch (JSchException e) {
 				// TODO Auto-generated catch block
@@ -71,27 +71,10 @@ public abstract class CLIConnection implements Connection {
 		Scanner scan = null;
 		try {
 			scan = new Scanner(System.in);
-		
-			 while(true) {
 			readUntil("ASR1002_Omar>");
-			 write("en");
-
-			 readUntil("Password:");
-			  // String cmd = scan.nextLine(); 
-		
-				out.println("lab");
-				out.flush();
-			   if (false) 
-				   break; 
-			  }
-			 
-//			readUntil("ASR1002_Omar>");
-//			write("en");
-//			readUntil("Password: ");// you must test if the password is true of
-//			// false !!!
-//			//String cmd = scan.nextLine();
-//		
-//			write("lab");
+			write("en");
+			readUntil("Password: ");
+			write("lab");
 			readUntil("ASR1002_Omar#");
 			write("sh ip int brief");
 			cmdBack = readUntil("#");
@@ -157,7 +140,7 @@ public abstract class CLIConnection implements Connection {
 
 	public void write(String value) {
 		try {
-			out.println(value);
+			out.print(value+"\n");
 			out.flush();// to be sure that our command is send to the server !!
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,24 +1,24 @@
 package com.training.deviceoperation.parser;
 
-public class entAliasMappingIdentifier extends EthernetProtocolEndpoint {
-
-	public entAliasMappingIdentifier() {
-		super.minOccurs=0;
-		super.OID="1.3.6.1.2.1.47.1.3.2.1.2";
-		super.type=type.longStringType;// INTEGER !!
-		super.description="## Internal use only ##";
+public class ifName extends EthernetProtocolEndpoint {
+	
+	public ifName() {
+		super.OID="	1.3.6.1.2.1.31.1.1.1.1";
+		super.type=type.longStringType;
+		super.description="the name of the entity.";
 		super.permission=permission.read_only;
 		super.status=status.current;
 		
 		// TODO Auto-generated constructor stub
 	}
-	public int getmaxOccurs() {
-		return this.minOccurs;
-	}
+
 	public TypeEnum getType() {
 		return this.type;
 	}
-	public int getminOccurs() {
+	public int getminOccurs() {// here we don't know the default value to max and min occurrence 
+		return this.minOccurs;
+	}
+	public int getmaxOccurs() {
 		return this.minOccurs;
 	}
 	public String getDescription() {

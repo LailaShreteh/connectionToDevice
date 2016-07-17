@@ -1,12 +1,15 @@
 package com.training.deviceoperation.parser;
 
-public class ifSpeed extends EthernetProtocolEndpoint {
-
-	public ifSpeed() {
+public class dot3StatsDuplexStatus extends EthernetProtocolEndpoint {
+	public int value; // we get confused about if it's integer or enum because it take just three values !!
+//	1 : unknown
+//	2 : halfDuplex
+//	3 : fullDuplex
+	public dot3StatsDuplexStatus() {
 		super.minOccurs=0;
-		super.OID="	1.3.6.1.2.1.2.2.1.5";
-		super.type=type.LongQuantity;
-		super.description="Specifies an estimate of the interface&apos;s current bandwidth in bits per second. For interfaces that do not vary in bandwidth or for those where no accurate estimation can be made, this should contain the nominal bandwidth. For a sublayer that has no concept of bandwidth, this object should be zero.";
+		super.OID="1.3.6.1.2.1.10.7.2.1.19";
+		super.type=type.enumType;// INTEGER !!
+		super.description="Indicates the duplex mode for the interface.";
 		super.permission=permission.read_only;
 		super.status=status.current;
 		
@@ -14,6 +17,12 @@ public class ifSpeed extends EthernetProtocolEndpoint {
 	}
 	public int getmaxOccurs() {
 		return this.minOccurs;
+	}
+	public int getValue() {
+		return value;
+	}
+	public void setValue(int value) {
+		this.value = value;
 	}
 	public TypeEnum getType() {
 		return this.type;

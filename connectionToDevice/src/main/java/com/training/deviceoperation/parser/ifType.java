@@ -1,12 +1,11 @@
 package com.training.deviceoperation.parser;
 
-public class ifSpeed extends EthernetProtocolEndpoint {
-
-	public ifSpeed() {
+public class ifType extends EthernetProtocolEndpoint {
+	public ifType () {
 		super.minOccurs=0;
-		super.OID="	1.3.6.1.2.1.2.2.1.5";
-		super.type=type.LongQuantity;
-		super.description="Specifies an estimate of the interface&apos;s current bandwidth in bits per second. For interfaces that do not vary in bandwidth or for those where no accurate estimation can be made, this should contain the nominal bandwidth. For a sublayer that has no concept of bandwidth, this object should be zero.";
+		super.OID="1.3.6.1.2.1.2.2.1.3";
+		super.type=type.enumType;
+		super.description="The type of endpoint, as defined by IANA. Reference: IF-MIB : ifType";
 		super.permission=permission.read_only;
 		super.status=status.current;
 		
