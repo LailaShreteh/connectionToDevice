@@ -1,5 +1,6 @@
 package com.training.deviceoperation.deviceconnection;
 
+import java.io.IOException;
 import java.io.PrintStream;
 
 import org.apache.commons.net.telnet.TelnetClient;
@@ -45,8 +46,17 @@ public class TelnetConnection extends CLIConnection {
 			return e.getMessage() + "  X_X sorry fails to connect x_x" ;
 		}
 	}
+	public void disconnectConnection(){
+    try {
+    	getIn().close();
+    	getOut().close();
+		telnet.disconnect();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
-	
+	}
 }
 
 

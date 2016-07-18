@@ -38,6 +38,7 @@ public class SSHConnectionTest {
 	@After
 	public void teardown() {
 		connection = null;
+		connection.disconnectConnection();
 	}
 
 }

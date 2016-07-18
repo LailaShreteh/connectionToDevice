@@ -10,7 +10,7 @@ import java.util.List;
  *
  */
 public interface Connection {
-
+	public void disconnectConnection();
 	public List<String> getInterfaces() throws IOException ;
 	//public String getVersion();
 

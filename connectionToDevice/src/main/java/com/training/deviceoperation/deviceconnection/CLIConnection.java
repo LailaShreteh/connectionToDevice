@@ -5,12 +5,11 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
 
 /**
  * 
- * @author user
+ * @author Reem Jazi
+ * @author Laila Shreteh
  *
  */
 
@@ -23,50 +22,26 @@ public abstract class CLIConnection implements Connection {
 	private int port;
 
 	public CLIConnection(String host, int port) {
-		this.port=port;
+		this.port = port;
 		this.host = host;
 	}
-	
+
 	public String getHost() {
 		return this.host;
 	}
-	//abstract public String connectToDevice(String host, int port);
+	// abstract public String connectToDevice(String host, int port);
 
 	public List<String> getInterfaces() throws IOException {
-		
-	
-		Scanner scan = null;
-		try {
-			scan = new Scanner(System.in);
-			readUntil("ASR1002_Omar>");
-			write("en");
-			readUntil("Password: ");
-			write("lab");
-			readUntil("ASR1002_Omar#");
-			write("sh ip int brief");
-			cmdBack = readUntil("#");
-			write("ex");
 
-		} finally {
-			if (scan != null)
-				scan.close();
-		}
+		readUntil("ASR1002_Omar>");
+		write("en");
+		readUntil("Password: ");
+		write("lab");
+		readUntil("ASR1002_Omar#");
+		write("sh ip int brief");
+		cmdBack = readUntil("#");
+		write("ex");
 
-	/*	try {
-			if (o instanceof TelnetConnection) {
-				in.close();
-				out.close();
-				connection.telnet.disconnect();
-			} else if (o instanceof SshClient) {
-				in.close();
-				dataOut.close();
-				channel.disconnect();
-				session.disconnect();
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
 		// TODO get output and convert it to list
 		String[] lines = cmdBack.split(System.getProperty("line.separator"));
 
@@ -74,7 +49,9 @@ public abstract class CLIConnection implements Connection {
 		for (int i = 2; i < lines.length - 1; i++) {
 			String[] splited = lines[i].split("\\s+");
 			interfaces.add(splited[0]);
+
 		}
+
 		System.out.println("\n" + interfaces);
 		// TODO return list<interface>
 		// we don't know how the interfaces class it's look like !! :\
@@ -90,7 +67,7 @@ public abstract class CLIConnection implements Connection {
 			char ch = (char) in.read();
 
 			while (true) {
-				System.out.print(ch);
+				// System.out.print(ch);
 				sb.append(ch);
 				if (ch == lastChar) {
 					if (sb.toString().endsWith(sample)) {
@@ -107,7 +84,7 @@ public abstract class CLIConnection implements Connection {
 
 	protected void write(String value) {
 		try {
-			out.print(value+"\n");
+			out.print(value + "\n");
 			out.flush();// to be sure that our command is send to the server !!
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -122,18 +99,21 @@ public abstract class CLIConnection implements Connection {
 	}
 
 	/**
-	 * @param port the port to set
+	 * @param port
+	 *            the port to set
 	 */
 	public void setPort(int port) {
 		this.port = port;
 	}
 
 	/**
-	 * @param host the host to set
+	 * @param host
+	 *            the host to set
 	 */
 	public void setHost(String host) {
 		this.host = host;
 	}
+
 	/**
 	 * @return the in
 	 */
@@ -142,7 +122,8 @@ public abstract class CLIConnection implements Connection {
 	}
 
 	/**
-	 * @param in the in to set
+	 * @param in
+	 *            the in to set
 	 */
 	public void setIn(InputStream in) {
 		this.in = in;
@@ -156,7 +137,8 @@ public abstract class CLIConnection implements Connection {
 	}
 
 	/**
-	 * @param out the out to set
+	 * @param out
+	 *            the out to set
 	 */
 	public void setOut(PrintStream out) {
 		this.out = out;

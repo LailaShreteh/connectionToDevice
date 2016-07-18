@@ -10,22 +10,17 @@ import org.junit.Test;
 
 public class TelnetConnectionTest {
 
-	private CLIConnection connection;
+	private Connection connection;
 
 	@Before
 	public void setup() {
-		connection = new TelnetConnection();
-
+	
+		connection = new TelnetConnection("192.168.50.200", 23);
 	}
 
 	@Test
 	public void testConnectClass_SucessCase() throws IOException {
-
-		String result = connection.connectToDevice("192.168.50.200", 23);
-		connection.getInterfaces(connection);
-		assertNotNull(result);
-		assertEquals("Sucess", result);
-		// System.out.println(":3 :3");
+		connection.getInterfaces();
 	}
 
 	// @Test
@@ -48,6 +43,8 @@ public class TelnetConnectionTest {
 	@After
 	public void teardown() {
 		connection = null;
+		connection.disconnectConnection();
+		
 	}
 
 }

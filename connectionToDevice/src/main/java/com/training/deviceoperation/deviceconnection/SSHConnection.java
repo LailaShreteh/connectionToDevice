@@ -47,4 +47,17 @@ public class SSHConnection extends CLIConnection {
 		jsch = new JSch();
 		return"";
 	}	
+	public void disconnectConnection(){
+		try {
+			getIn().close();
+			getOut().close();
+			channel.disconnect();
+			session.disconnect();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 }
