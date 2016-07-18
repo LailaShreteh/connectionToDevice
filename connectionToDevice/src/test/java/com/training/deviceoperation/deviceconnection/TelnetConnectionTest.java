@@ -1,6 +1,6 @@
 package com.training.deviceoperation.deviceconnection;
 
-import static org.junit.Assert.*;
+
 
 import java.io.IOException;
 
