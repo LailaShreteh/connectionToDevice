@@ -14,11 +14,11 @@ import org.junit.Test;
  * @author Laila Shreteh
  */
 public class SNMPConnectionTest {
-	private SNMPConnection SnmpClient;
+	private SNMPConnection snmpClient;
 
 	@Before
 	public void setup() {
-		SnmpClient = new SNMPConnection();
+		snmpClient = new SNMPConnection();
 
 	}
 
@@ -26,7 +26,7 @@ public class SNMPConnectionTest {
 	public void testConnectClass_SucessCase() {
 		String result = null;
 		try {
-			result = SnmpClient.connectToDevice("192.168.50.200", 161);
+			result = snmpClient.connectToDevice("192.168.50.200", 161);
 			assertNotNull(result);
 			assertEquals("Sucess" , result);
 			//System.out.println(":3 :3");
@@ -43,6 +43,6 @@ public class SNMPConnectionTest {
 	@After
 	public void teardown ()
 	{
-		SnmpClient = null;
+		snmpClient = null;
 	}
 }

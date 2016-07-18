@@ -1,5 +1,7 @@
 package com.training.deviceoperation.deviceconnection;
 
+import java.io.PrintStream;
+
 import org.apache.commons.net.telnet.TelnetClient;
 
 /**
@@ -8,22 +10,31 @@ import org.apache.commons.net.telnet.TelnetClient;
  * @author Laila Shreteh
  */
 public class TelnetConnection extends CLIConnection {
-	public TelnetClient telnet;
-	
+	private TelnetClient telnet;
+
+	public TelnetConnection(String host, int port) {
+		super(host,port);
+		connectToDevice();
+		setIn(telnet.getInputStream());
+		setOut( new PrintStream(telnet.getOutputStream()));
+		readUntil("Username: ");
+		write("lab");
+		readUntil("Password: ");
+		write("lab");
+	}
 	/**
 	 * @param host-host address to connect
 	 * @param port-port number
 	 */
-	@Override
-	public String connectToDevice(String host, int port) {
-		if (host == null || host.length() == 0)
+	private String connectToDevice() {
+		if (getHost() == null || getHost().length() == 0)
 		{
 			throw new IllegalArgumentException();
 		}
 	
 		 telnet = new TelnetClient();
 		try {
-			telnet.connect(host, port);
+			telnet.connect(getHost(), getPort());
 			telnet.setSoTimeout(150000);
 			//System.out.println(":) 563 :)");
 			
@@ -34,7 +45,6 @@ public class TelnetConnection extends CLIConnection {
 			return e.getMessage() + "  X_X sorry fails to connect x_x" ;
 		}
 	}
-
 
 	
 }

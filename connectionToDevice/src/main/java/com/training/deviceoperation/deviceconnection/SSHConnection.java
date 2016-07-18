@@ -1,6 +1,12 @@
 package com.training.deviceoperation.deviceconnection;
 
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Properties;
 import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.Session;
+import com.jcraft.jsch.JSchException;
 
 /**
  * 
@@ -8,26 +14,37 @@ import com.jcraft.jsch.JSch;
  * @author Laila Shreteh
  *
  */
+
 public class SSHConnection extends CLIConnection {
-	public JSch jsch;
-	private String host;
-	private int port;
-	/**
-	 * @param host-host address to connect
-	 * @param port-port number
-	 * @throws Exception
-	 */
-	@Override
-	public String connectToDevice(String host, int port) {
+	private JSch jsch;
+	private Session session = null;
+	private com.jcraft.jsch.Channel channel;
+	private String password = "lab";
+	
+	public SSHConnection(String host, int port) {
+		super(host, port);
+		connectToDevice();
+		try {
+			session = jsch.getSession("lab", host, port);
+			Properties config = new Properties();
+			config.put("StrictHostKeyChecking", "NO");
+			session.setPassword(password);
+			session.setConfig(config);
+			session.connect();
+			channel = session.openChannel("shell");
+			channel.connect();
+			setIn(new DataInputStream(channel.getInputStream()));
+			setOut(new PrintStream(channel.getOutputStream(), true));
+		} catch (JSchException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+	public String connectToDevice() {
 		jsch = new JSch();
-		 this.host = host;
-		 this.port=port;
 		return"";
-	}
-	public String getHost() {
-		return host;
-	}
-	public int getPort() {
-		return port;
 	}	
 }

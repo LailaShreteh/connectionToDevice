@@ -1,6 +1,7 @@
 package com.training.deviceoperation.deviceconnection;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 
@@ -10,8 +11,7 @@ import java.io.IOException;
  */
 public interface Connection {
 
-	public String connectToDevice(String host, int port) throws IOException;
-	
-//	public String getVersion();
+	public List<String> getInterfaces() throws IOException ;
+	//public String getVersion();
 
 }

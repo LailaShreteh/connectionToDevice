@@ -1,17 +1,12 @@
 package com.training.deviceoperation.deviceconnection;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 import java.util.Scanner;
-import org.apache.sshd.SshClient;
-import com.jcraft.jsch.JSchException;
-import com.jcraft.jsch.Session;
+
 
 /**
  * 
@@ -23,51 +18,23 @@ public abstract class CLIConnection implements Connection {
 
 	private InputStream in;
 	private PrintStream out;
-	private TelnetConnection connection;
 	private String cmdBack;
-	private SSHConnection ssh_connection;
-	private String password = "lab";
-	private DataOutputStream dataOut;
-	private Session session = null;
-	private com.jcraft.jsch.Channel channel;
+	private String host;
+	private int port;
 
-	abstract public String connectToDevice(String host, int port);
+	public CLIConnection(String host, int port) {
+		this.port=port;
+		this.host = host;
+	}
+	
+	public String getHost() {
+		return this.host;
+	}
+	//abstract public String connectToDevice(String host, int port);
 
-	public List<String> getInterfaces(Object o) throws IOException {
-
-		// TODO push command show interfaces to device
-		if (o instanceof TelnetConnection) {
-
-			connection = (TelnetConnection) o;
-			in = connection.telnet.getInputStream();
-			out = new PrintStream(connection.telnet.getOutputStream());
-			// addition to cmd if the connection is telnet
-			readUntil("Username: ");
-			write("lab");
-			readUntil("Password: ");
-			write("lab");
-
-		} else if (o instanceof SSHConnection) { // session & channel
-													// implementation to ssh
-			ssh_connection = (SSHConnection) o;
-
-			try {
-				session = ssh_connection.jsch.getSession("lab", ssh_connection.getHost(), ssh_connection.getPort());
-				Properties config = new Properties();
-				config.put("StrictHostKeyChecking", "NO");
-				session.setPassword(password);
-				session.setConfig(config);
-				session.connect();
-				channel = session.openChannel("shell");
-				channel.connect();
-				in = new DataInputStream(channel.getInputStream());
-				out = new PrintStream(channel.getOutputStream(), true);
-
-			} catch (JSchException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+	public List<String> getInterfaces() throws IOException {
+		
+	
 		Scanner scan = null;
 		try {
 			scan = new Scanner(System.in);
@@ -85,7 +52,7 @@ public abstract class CLIConnection implements Connection {
 				scan.close();
 		}
 
-		try {
+	/*	try {
 			if (o instanceof TelnetConnection) {
 				in.close();
 				out.close();
@@ -99,7 +66,7 @@ public abstract class CLIConnection implements Connection {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		// TODO get output and convert it to list
 		String[] lines = cmdBack.split(System.getProperty("line.separator"));
 
@@ -115,7 +82,7 @@ public abstract class CLIConnection implements Connection {
 		return interfaces;
 	}
 
-	private String readUntil(String sample) {
+	protected String readUntil(String sample) {
 		// TODO Auto-generated method stub
 		try {
 			char lastChar = sample.charAt(sample.length() - 1);
@@ -138,7 +105,7 @@ public abstract class CLIConnection implements Connection {
 		return null;
 	}
 
-	public void write(String value) {
+	protected void write(String value) {
 		try {
 			out.print(value+"\n");
 			out.flush();// to be sure that our command is send to the server !!
@@ -146,4 +113,53 @@ public abstract class CLIConnection implements Connection {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * @return the port
+	 */
+	public int getPort() {
+		return port;
+	}
+
+	/**
+	 * @param port the port to set
+	 */
+	public void setPort(int port) {
+		this.port = port;
+	}
+
+	/**
+	 * @param host the host to set
+	 */
+	public void setHost(String host) {
+		this.host = host;
+	}
+	/**
+	 * @return the in
+	 */
+	public InputStream getIn() {
+		return in;
+	}
+
+	/**
+	 * @param in the in to set
+	 */
+	public void setIn(InputStream in) {
+		this.in = in;
+	}
+
+	/**
+	 * @return the out
+	 */
+	public PrintStream getOut() {
+		return out;
+	}
+
+	/**
+	 * @param out the out to set
+	 */
+	public void setOut(PrintStream out) {
+		this.out = out;
+	}
+
 }

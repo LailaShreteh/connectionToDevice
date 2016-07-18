@@ -15,11 +15,11 @@ import org.junit.Test;
 
 public class SSHConnectionTest {
 
-	private CLIConnection connection;
+	private Connection connection;
 
 	@Before
 	public void setup() {
-		connection = new SSHConnection();
+		connection = new SSHConnection("192.168.50.200", 22);
 
 	}
 
@@ -27,11 +27,9 @@ public class SSHConnectionTest {
 	public void testConnectClass_SucessCase() {
 		String result = null;
 		try {
-			result = connection.connectToDevice("192.168.50.200", 22);
-			connection.getInterfaces(connection);
+			connection.getInterfaces();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			// System.out.println(":P :P LLLLLL");
 			e.getMessage();
 		}
 		assertEquals("Sucess", result);
