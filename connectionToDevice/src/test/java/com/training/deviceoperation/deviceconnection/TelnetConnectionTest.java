@@ -1,23 +1,22 @@
 package com.training.deviceoperation.deviceconnection;
 
-
-
 import java.io.IOException;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.training.deviceoperation.parser.enumType1;
+
 public class TelnetConnectionTest {
 
 	private Connection connection;
-	CLIConnectionFactory connectionFactory=new CLIConnectionFactory ();
-	
+	CLIConnectionFactory connectionFactory = new CLIConnectionFactory();
 
 	@Before
 	public void setup() {
 		connection = connectionFactory.getConnection("TelnetConnection");
-		//connection = new TelnetConnection("192.168.50.200", 23);
+		// connection = new TelnetConnection("192.168.50.200", 23);
 	}
 
 	@Test
@@ -46,7 +45,7 @@ public class TelnetConnectionTest {
 	public void teardown() {
 		connection = null;
 		connection.disconnectConnection();
-		
+
 	}
 
 }
