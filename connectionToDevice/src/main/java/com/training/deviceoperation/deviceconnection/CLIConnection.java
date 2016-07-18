@@ -29,7 +29,6 @@ public abstract class CLIConnection implements Connection {
 	public String getHost() {
 		return this.host;
 	}
-	// abstract public String connectToDevice(String host, int port);
 
 	public List<String> getInterfaces() throws IOException {
 

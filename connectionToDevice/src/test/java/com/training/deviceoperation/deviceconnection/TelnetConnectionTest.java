@@ -11,11 +11,13 @@ import org.junit.Test;
 public class TelnetConnectionTest {
 
 	private Connection connection;
+	CLIConnectionFactory connectionFactory=new CLIConnectionFactory ();
+	
 
 	@Before
 	public void setup() {
-	
-		connection = new TelnetConnection("192.168.50.200", 23);
+		connection = connectionFactory.getConnection("TelnetConnection");
+		//connection = new TelnetConnection("192.168.50.200", 23);
 	}
 
 	@Test

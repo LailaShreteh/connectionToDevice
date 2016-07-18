@@ -16,10 +16,12 @@ import org.junit.Test;
 public class SSHConnectionTest {
 
 	private Connection connection;
+	CLIConnectionFactory connectionFactory = new CLIConnectionFactory();
 
 	@Before
 	public void setup() {
-		connection = new SSHConnection("192.168.50.200", 22);
+		connection = connectionFactory.getConnection("SSHConnection");
+		// connection = new SSHConnection("192.168.50.200", 22);
 
 	}
 
