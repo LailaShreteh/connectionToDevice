@@ -16,5 +16,6 @@ public class EthernetProtocolEndpoint { // we think this class maybe abstract !!
 	protected String  macAddress;//longStringType
 	protected int mtu;
 	protected enumType1 operStatus;
-	protected enumType1 type;
+	protected enumType3 type;
+	protected String name;
 }
