@@ -13,50 +13,57 @@ import org.apache.commons.net.telnet.TelnetClient;
 public class TelnetConnection extends CLIConnection {
 	private TelnetClient telnet;
 
-	public TelnetConnection(String host, int port) {
-		super(host,port);
-		connectToDevice();
+	public TelnetConnection(){
+		
+	}
+
+	/**
+	 * @param host-host
+	 *            address to connect
+	 * @param port-port
+	 *            number
+	 */
+	public String connectToDevice() {
+		if (getHost() == null || getHost().length() == 0) {
+			throw new IllegalArgumentException();
+		}
+
+		telnet = new TelnetClient();
+		try {
+			telnet.connect(getHost(), getPort());
+			telnet.setSoTimeout(150000);
+			// System.out.println(":) 563 :)");
+
+			// here you must close the connection !! and send exit comnmand to
+			// router !!
+			createInOutStream();
+			return "Sucess";
+
+		} catch (Exception e) {
+			return e.getMessage() + "  X_X sorry fails to connect x_x";
+		}
+		
+	}
+
+	private void createInOutStream () {
+		// TODO Auto-generated method stub
 		setIn(telnet.getInputStream());
-		setOut( new PrintStream(telnet.getOutputStream()));
+		setOut(new PrintStream(telnet.getOutputStream()));
 		readUntil("Username: ");
 		write("lab");
 		readUntil("Password: ");
 		write("lab");
 	}
-	/**
-	 * @param host-host address to connect
-	 * @param port-port number
-	 */
-	private String connectToDevice() {
-		if (getHost() == null || getHost().length() == 0)
-		{
-			throw new IllegalArgumentException();
-		}
-	
-		 telnet = new TelnetClient();
-		try {
-			telnet.connect(getHost(), getPort());
-			telnet.setSoTimeout(150000);
-			//System.out.println(":) 563 :)");
-			
-			// here you must close the connection !! and send exit comnmand to router !!
-			return "Sucess";
 
-		} catch (Exception e) {
-			return e.getMessage() + "  X_X sorry fails to connect x_x" ;
+	public void disconnectConnection() {
+		try {
+			getIn().close();
+			getOut().close();
+			telnet.disconnect();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	}
-	public void disconnectConnection(){
-    try {
-    	getIn().close();
-    	getOut().close();
-		telnet.disconnect();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
 
 	}
 }
-
-

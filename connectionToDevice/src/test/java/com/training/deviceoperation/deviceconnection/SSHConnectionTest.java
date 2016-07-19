@@ -15,12 +15,15 @@ import org.junit.Test;
 
 public class SSHConnectionTest {
 
+	ConnectionFactory connectionFactory = new ConnectionFactory();
 	private Connection connection;
-	CLIConnectionFactory connectionFactory = new CLIConnectionFactory();
-
+	
 	@Before
 	public void setup() {
-		connection = connectionFactory.getConnection("SSHConnection");
+		connection = ConnectionFactory.createConnection("SSH");
+		connection.setHost("192.168.50.200");
+		connection.setPort(22);
+		connection.connectToDevice();
 		// connection = new SSHConnection("192.168.50.200", 22);
 
 	}
@@ -34,13 +37,12 @@ public class SSHConnectionTest {
 			// TODO Auto-generated catch block
 			e.getMessage();
 		}
-		assertEquals("Sucess", result);
 	}
 
 	@After
 	public void teardown() {
-		connection = null;
 		connection.disconnectConnection();
+		connection = null;
 	}
 
 }

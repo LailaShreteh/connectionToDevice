@@ -6,22 +6,26 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.training.deviceoperation.parser.enumType1;
-
 public class TelnetConnectionTest {
 
+	ConnectionFactory connectionFactory = new ConnectionFactory();
 	private Connection connection;
-	CLIConnectionFactory connectionFactory = new CLIConnectionFactory();
 
 	@Before
 	public void setup() {
-		connection = connectionFactory.getConnection("TelnetConnection");
+		connection = ConnectionFactory.createConnection("TELNET");
+		connection.setHost("192.168.50.200");
+		connection.setPort(23);
+		connection.connectToDevice();
+
 		// connection = new TelnetConnection("192.168.50.200", 23);
 	}
 
 	@Test
 	public void testConnectClass_SucessCase() throws IOException {
 		connection.getInterfaces();
+		connection.createEthernetPE();
+		
 	}
 
 	// @Test
@@ -43,8 +47,9 @@ public class TelnetConnectionTest {
 
 	@After
 	public void teardown() {
-		connection = null;
 		connection.disconnectConnection();
+		connection = null;
+
 
 	}
 

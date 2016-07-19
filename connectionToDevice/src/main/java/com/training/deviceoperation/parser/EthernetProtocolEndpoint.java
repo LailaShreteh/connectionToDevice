@@ -1,5 +1,8 @@
 package com.training.deviceoperation.parser;
 
+import com.training.deviceoperation.deviceconnection.ConnectionFactory;
+import com.training.deviceoperation.deviceconnection.Connection;
+
 //@Root
 public class EthernetProtocolEndpoint { // we think this class maybe abstract !!
 
@@ -37,6 +40,7 @@ public class EthernetProtocolEndpoint { // we think this class maybe abstract !!
 	public String getDescription() {
 		return description;
 	}
+	
 	/**
 	 * @return the duplexMode
 	 */
@@ -89,6 +93,7 @@ public class EthernetProtocolEndpoint { // we think this class maybe abstract !!
 	 * @return the mtu
 	 */
 	public int getMtu() {
+		
 		return mtu;
 	}
 	/**
@@ -107,6 +112,52 @@ public class EthernetProtocolEndpoint { // we think this class maybe abstract !!
 	 * @return the name
 	 */
 	public String getName() {
+		
 		return name;
+	}
+	public void setMinOccurs(int minOccurs) {
+		this.minOccurs = minOccurs;
+	}
+	public void setMaxOccurs(int maxOccurs) {
+		this.maxOccurs = maxOccurs;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public void setDuplexMode(enumType2 duplexMode) {
+		this.duplexMode = duplexMode;
+	}
+	public void setAdminStatus(enumType1 adminStatus) {
+		this.adminStatus = adminStatus;
+	}
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+	public void setEntAliasMappingIdentifier(String entAliasMappingIdentifier) {
+		this.entAliasMappingIdentifier = entAliasMappingIdentifier;
+	}
+	public void setEthernetLoopback(enumType1 ethernetLoopback) {
+		this.ethernetLoopback = ethernetLoopback;
+	}
+	public void setIfSpeed(String ifSpeed) {
+		this.ifSpeed = ifSpeed;
+	}
+	public void setLagEndName(String lagEndName) {
+		this.lagEndName = lagEndName;
+	}
+	public void setMacAddress(String macAddress) {
+		this.macAddress = macAddress;
+	}
+	public void setMtu(int mtu) {
+		this.mtu = mtu;
+	}
+	public void setOperStatus(enumType1 operStatus) {
+		this.operStatus = operStatus;
+	}
+	public void setType(enumType3 type) {
+		this.type = type;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

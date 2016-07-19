@@ -8,10 +8,21 @@ import org.snmp4j.TransportMapping;
 import org.snmp4j.transport.DefaultUdpTransportMapping;
 
 public class SNMPConnection implements Connection{
+	private String host;
+	private int port;
+	public SNMPConnection ()
+	{
+
+	}
+	public String connectToDevice()  {
 	
-	public String connectToDevice(String IP, int port) throws IOException  {
-	
-		TransportMapping transport = new DefaultUdpTransportMapping();
+		TransportMapping transport = null;
+		try {
+			transport = new DefaultUdpTransportMapping();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		 Snmp snmp = new Snmp(transport);
 		 try{
 			 	transport.listen();
@@ -31,5 +42,14 @@ public class SNMPConnection implements Connection{
 		// TODO Auto-generated method stub
 		
 	}
+	public void setHost(String host) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setPort(int port) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
 

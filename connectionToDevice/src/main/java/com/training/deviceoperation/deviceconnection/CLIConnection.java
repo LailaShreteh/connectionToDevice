@@ -2,6 +2,9 @@ package com.training.deviceoperation.deviceconnection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
+import com.training.deviceoperation.parser.*;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -23,6 +26,9 @@ public abstract class CLIConnection implements Connection {
 	private String host;
 	private int port;
 
+	public CLIConnection() {
+		
+	}
 	public CLIConnection(String host, int port) {
 		this.port = port;
 		this.host = host;
@@ -39,31 +45,23 @@ public abstract class CLIConnection implements Connection {
 		readUntil("Password: ");
 		write("lab");
 		readUntil("ASR1002_Omar#");
-		write("sh ip int brief");
+		write("sh ip int br");
 		cmdBack = readUntil("#");
-		write("ex");
-
-		// TODO get output and convert it to list
-		String[] lines = cmdBack.split(System.getProperty("line.separator"));
-		String pattern = "(^)([a-zA-Z])(.*)";
+		
+		
+		String pattern = "[^\\s]+";
 	    Pattern r = Pattern.compile(pattern);
-	    Matcher m = r.matcher(lines[0]);
-	      if (m.find( )) {
-	         System.out.println("Found value: " + m.group(0) );
-	         System.out.println("Found value: " + m.group(1) );
-	         System.out.println("Found value: " + m.group(2) );
-	      } else {
-	         System.out.println("NO MATCH");
-	      }
-	
+		// TODO get output and convert it to list
 		List<String> interfaces = new ArrayList<String>();
-//		for (int i = 2; i < lines.length - 1; i++) {
-//			String[] splited = lines[i].split("\\s+");
-//			interfaces.add(splited[0]);
-//
-//		}
-//
-//		System.out.println("\n" + interfaces);
+		String[] lines = cmdBack.split(System.getProperty("line.separator"));
+	   for (int i = 2; i <lines.length - 1 ; i++) {
+		    Matcher m = r.matcher(lines[i]);
+	      if (m.find( ))
+	      {
+	         interfaces.add(m.group(0));
+	      }
+	    }
+		System.out.println("\n" + interfaces);
 		// TODO return list<interface>
 		// we don't know how the interfaces class it's look like !! :\
 		// so we return a list of interfaces as string
@@ -78,7 +76,7 @@ public abstract class CLIConnection implements Connection {
 			char ch = (char) in.read();
 
 			while (true) {
-				// System.out.print(ch);
+				System.out.print(ch);
 				sb.append(ch);
 				if (ch == lastChar) {
 					if (sb.toString().endsWith(sample)) {
@@ -100,6 +98,21 @@ public abstract class CLIConnection implements Connection {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public EthernetProtocolEndpoint createEthernetPE()
+	{
+		readUntil("ASR1002_Omar>");
+		write("en");
+		readUntil("Password: ");
+		write("lab");
+		readUntil("ASR1002_Omar#");
+		write("sh int");
+		cmdBack = readUntil("#");
+		
+		Parser pars = new CLIParser(cmdBack);
+		System.out.println(cmdBack);
+		return null;
+		
 	}
 
 	/**
@@ -154,5 +167,6 @@ public abstract class CLIConnection implements Connection {
 	public void setOut(PrintStream out) {
 		this.out = out;
 	}
+	
 
 }

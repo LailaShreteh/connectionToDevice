@@ -20,12 +20,14 @@ public class SSHConnection extends CLIConnection {
 	private Session session = null;
 	private com.jcraft.jsch.Channel channel;
 	private String password = "lab";
-	
-	public SSHConnection(String host, int port) {
-		super(host, port);
-		connectToDevice();
+	public SSHConnection()
+	{
+		
+	}
+	public void createInOutStream() {
+		
 		try {
-			session = jsch.getSession("lab", host, port);
+			session = jsch.getSession("lab", super.getHost(), super.getPort());
 			Properties config = new Properties();
 			config.put("StrictHostKeyChecking", "NO");
 			session.setPassword(password);
@@ -45,7 +47,8 @@ public class SSHConnection extends CLIConnection {
 	}
 	public String connectToDevice() {
 		jsch = new JSch();
-		return"";
+		createInOutStream();
+		return"Sucess";
 	}	
 	public void disconnectConnection(){
 		try {
