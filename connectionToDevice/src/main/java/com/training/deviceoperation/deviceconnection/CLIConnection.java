@@ -1,4 +1,6 @@
 package com.training.deviceoperation.deviceconnection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,15 +45,25 @@ public abstract class CLIConnection implements Connection {
 
 		// TODO get output and convert it to list
 		String[] lines = cmdBack.split(System.getProperty("line.separator"));
-
+		String pattern = "(^)([a-zA-Z])(.*)";
+	    Pattern r = Pattern.compile(pattern);
+	    Matcher m = r.matcher(lines[0]);
+	      if (m.find( )) {
+	         System.out.println("Found value: " + m.group(0) );
+	         System.out.println("Found value: " + m.group(1) );
+	         System.out.println("Found value: " + m.group(2) );
+	      } else {
+	         System.out.println("NO MATCH");
+	      }
+	
 		List<String> interfaces = new ArrayList<String>();
-		for (int i = 2; i < lines.length - 1; i++) {
-			String[] splited = lines[i].split("\\s+");
-			interfaces.add(splited[0]);
-
-		}
-
-		System.out.println("\n" + interfaces);
+//		for (int i = 2; i < lines.length - 1; i++) {
+//			String[] splited = lines[i].split("\\s+");
+//			interfaces.add(splited[0]);
+//
+//		}
+//
+//		System.out.println("\n" + interfaces);
 		// TODO return list<interface>
 		// we don't know how the interfaces class it's look like !! :\
 		// so we return a list of interfaces as string
