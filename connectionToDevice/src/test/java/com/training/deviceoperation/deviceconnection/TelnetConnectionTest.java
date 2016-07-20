@@ -23,7 +23,7 @@ public class TelnetConnectionTest {
 
 	@Test
 	public void testConnectClass_SucessCase() throws IOException {
-		connection.getInterfaces();
+		//connection.getInterfaces();
 		connection.createEthernetPE();
 		
 	}

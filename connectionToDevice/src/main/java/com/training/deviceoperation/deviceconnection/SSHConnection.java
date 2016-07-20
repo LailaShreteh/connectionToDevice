@@ -37,6 +37,14 @@ public class SSHConnection extends CLIConnection {
 			channel.connect();
 			setIn(new DataInputStream(channel.getInputStream()));
 			setOut(new PrintStream(channel.getOutputStream(), true));
+			readUntil("ASR1002_Omar>");
+			write("en");
+			readUntil("Password: ");
+			write("lab");
+			readUntil("ASR1002_Omar#");
+			write("terminal length 0");
+			readUntil("ASR1002_Omar#");
+
 		} catch (JSchException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

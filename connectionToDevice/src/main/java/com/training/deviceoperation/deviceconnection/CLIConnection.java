@@ -1,4 +1,5 @@
 package com.training.deviceoperation.deviceconnection;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,8 +28,9 @@ public abstract class CLIConnection implements Connection {
 	private int port;
 
 	public CLIConnection() {
-		
+
 	}
+
 	public CLIConnection(String host, int port) {
 		this.port = port;
 		this.host = host;
@@ -38,29 +40,22 @@ public abstract class CLIConnection implements Connection {
 		return this.host;
 	}
 
-	public List<String> getInterfaces() throws IOException {
 
-		readUntil("ASR1002_Omar>");
-		write("en");
-		readUntil("Password: ");
-		write("lab");
-		readUntil("ASR1002_Omar#");
+	public List<String> getInterfaces() throws IOException {
+		
 		write("sh ip int br");
 		cmdBack = readUntil("#");
-		
-		
 		String pattern = "[^\\s]+";
-	    Pattern r = Pattern.compile(pattern);
+		Pattern r = Pattern.compile(pattern);
 		// TODO get output and convert it to list
 		List<String> interfaces = new ArrayList<String>();
 		String[] lines = cmdBack.split(System.getProperty("line.separator"));
-	   for (int i = 2; i <lines.length - 1 ; i++) {
-		    Matcher m = r.matcher(lines[i]);
-	      if (m.find( ))
-	      {
-	         interfaces.add(m.group(0));
-	      }
-	    }
+		for (int i = 2; i < lines.length - 1; i++) {
+			Matcher m = r.matcher(lines[i]);
+			if (m.find()) {
+				interfaces.add(m.group(0));
+			}
+		}
 		System.out.println("\n" + interfaces);
 		// TODO return list<interface>
 		// we don't know how the interfaces class it's look like !! :\
@@ -76,7 +71,7 @@ public abstract class CLIConnection implements Connection {
 			char ch = (char) in.read();
 
 			while (true) {
-				System.out.print(ch);
+				//System.out.print(ch);
 				sb.append(ch);
 				if (ch == lastChar) {
 					if (sb.toString().endsWith(sample)) {
@@ -99,20 +94,16 @@ public abstract class CLIConnection implements Connection {
 			e.printStackTrace();
 		}
 	}
-	public EthernetProtocolEndpoint createEthernetPE()
-	{
-		readUntil("ASR1002_Omar>");
-		write("en");
-		readUntil("Password: ");
-		write("lab");
-		readUntil("ASR1002_Omar#");
+
+	public EthernetProtocolEndpoint createEthernetPE() {
 		write("sh int");
 		cmdBack = readUntil("#");
+		//System.out.println(cmdBack);
+		Parser pars = new CLIParser();
+		EthernetProtocolEndpoint ep=pars.parsEthernetPE(cmdBack);
 		
-		Parser pars = new CLIParser(cmdBack);
-		System.out.println(cmdBack);
-		return null;
-		
+		return ep;
+
 	}
 
 	/**
@@ -167,6 +158,5 @@ public abstract class CLIConnection implements Connection {
 	public void setOut(PrintStream out) {
 		this.out = out;
 	}
-	
 
 }

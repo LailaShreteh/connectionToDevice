@@ -33,6 +33,7 @@ public class SSHConnectionTest {
 		String result = null;
 		try {
 			connection.getInterfaces();
+			connection.createEthernetPE();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.getMessage();

@@ -20,6 +20,17 @@ public class EthernetProtocolEndpoint { // we think this class maybe abstract !!
 	protected int mtu;
 	protected enumType1 operStatus;
 	protected enumType3 type;
+	/*public EthernetProtocolEndpoint(int minOccurs, int maxOccurs, String description, enumType2 duplexMode,
+			 String comments, String entAliasMappingIdentifier, enumType1 ethernetLoopback,
+			String ifSpeed, String lagEndName, String macAddress, enumType1 operStatus, enumType3 type,
+			String name) {*/
+	public EthernetProtocolEndpoint(String name,int mtu,enumType1 adminStatus) {
+	
+		this.name = name;
+		this.mtu = mtu;
+		this.adminStatus = adminStatus;
+		System.out.println(adminStatus);
+	}
 	protected String name;
 	/**
 	 * @return the minOccurs

@@ -53,6 +53,15 @@ public class TelnetConnection extends CLIConnection {
 		write("lab");
 		readUntil("Password: ");
 		write("lab");
+		readUntil("ASR1002_Omar>");
+		write("en");
+		readUntil("Password: ");
+		write("lab");
+		readUntil("ASR1002_Omar#");
+		write("terminal length 0");
+		readUntil("ASR1002_Omar#");
+
+		
 	}
 
 	public void disconnectConnection() {
