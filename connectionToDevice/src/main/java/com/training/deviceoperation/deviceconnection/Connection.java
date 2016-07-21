@@ -17,7 +17,7 @@ public interface Connection {
 	public void setHost(String host);
 	public void setPort(int port);
 	public String connectToDevice();
-	public EthernetProtocolEndpoint createEthernetPE();
+	public List<EthernetProtocolEndpoint> createEthernetPE();
 	//public String getVersion();
 
 }

@@ -13,10 +13,6 @@ import org.apache.commons.net.telnet.TelnetClient;
 public class TelnetConnection extends CLIConnection {
 	private TelnetClient telnet;
 
-	public TelnetConnection(){
-		
-	}
-
 	/**
 	 * @param host-host
 	 *            address to connect

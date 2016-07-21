@@ -1,8 +1,5 @@
 package com.training.deviceoperation.parser;
 
-import com.training.deviceoperation.deviceconnection.ConnectionFactory;
-import com.training.deviceoperation.deviceconnection.Connection;
-
 //@Root
 public class EthernetProtocolEndpoint { // we think this class maybe abstract !!
 
@@ -20,16 +17,17 @@ public class EthernetProtocolEndpoint { // we think this class maybe abstract !!
 	protected int mtu;
 	protected enumType1 operStatus;
 	protected enumType3 type;
-	/*public EthernetProtocolEndpoint(int minOccurs, int maxOccurs, String description, enumType2 duplexMode,
-			 String comments, String entAliasMappingIdentifier, enumType1 ethernetLoopback,
-			String ifSpeed, String lagEndName, String macAddress, enumType1 operStatus, enumType3 type,
-			String name) {*/
-	public EthernetProtocolEndpoint(String name,int mtu,enumType1 adminStatus) {
+	/*public EthernetProtocolEndpoint(int minOccurs, int maxOccurs, String description,String comments, String entAliasMappingIdentifier, String lagEndName, enumType1 ethernetLoopback,enumType3 type){*/
+	public EthernetProtocolEndpoint(String name, int mtu, enumType1 adminStatus, enumType1 operStatus, enumType2 duplexMode, String ifSpeed, String macAddress) {
 	
 		this.name = name;
 		this.mtu = mtu;
 		this.adminStatus = adminStatus;
-		System.out.println(adminStatus);
+		this.operStatus = operStatus;
+		this.duplexMode = duplexMode;
+		this.ifSpeed = ifSpeed;
+		this.macAddress = macAddress;
+		//System.out.println(macAddress);
 	}
 	protected String name;
 	/**
@@ -170,5 +168,10 @@ public class EthernetProtocolEndpoint { // we think this class maybe abstract !!
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	@Override
+	public String toString()
+	{
+		return("**" + name + " || \t" + mtu + " || \t" +adminStatus + " || \t" + operStatus +" || \t" + duplexMode + " || \t" + ifSpeed +" || \t" + macAddress);
 	}
 }

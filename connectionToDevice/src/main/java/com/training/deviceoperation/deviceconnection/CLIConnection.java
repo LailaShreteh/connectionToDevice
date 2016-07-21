@@ -26,7 +26,12 @@ public abstract class CLIConnection implements Connection {
 	private String cmdBack;
 	private String host;
 	private int port;
+	private int intNum = 0;
+	private List<String> interfaces;
 
+	/**
+	 * Constructor to initialize default construct for children
+	 */
 	public CLIConnection() {
 
 	}
@@ -40,23 +45,23 @@ public abstract class CLIConnection implements Connection {
 		return this.host;
 	}
 
-
 	public List<String> getInterfaces() throws IOException {
-		
+
 		write("sh ip int br");
 		cmdBack = readUntil("#");
 		String pattern = "[^\\s]+";
 		Pattern r = Pattern.compile(pattern);
 		// TODO get output and convert it to list
-		List<String> interfaces = new ArrayList<String>();
+		interfaces = new ArrayList<String>();
 		String[] lines = cmdBack.split(System.getProperty("line.separator"));
 		for (int i = 2; i < lines.length - 1; i++) {
 			Matcher m = r.matcher(lines[i]);
 			if (m.find()) {
+				intNum++;
 				interfaces.add(m.group(0));
 			}
 		}
-		System.out.println("\n" + interfaces);
+		// System.out.println("\n" + interfaces);
 		// TODO return list<interface>
 		// we don't know how the interfaces class it's look like !! :\
 		// so we return a list of interfaces as string
@@ -71,7 +76,7 @@ public abstract class CLIConnection implements Connection {
 			char ch = (char) in.read();
 
 			while (true) {
-				//System.out.print(ch);
+				// System.out.print(ch);
 				sb.append(ch);
 				if (ch == lastChar) {
 					if (sb.toString().endsWith(sample)) {
@@ -95,13 +100,39 @@ public abstract class CLIConnection implements Connection {
 		}
 	}
 
-	public EthernetProtocolEndpoint createEthernetPE() {
+	public List<EthernetProtocolEndpoint> createEthernetPE() {
+		try {
+			this.getInterfaces();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		write("sh int");
 		cmdBack = readUntil("#");
-		//System.out.println(cmdBack);
+
 		Parser pars = new CLIParser();
-		EthernetProtocolEndpoint ep=pars.parsEthernetPE(cmdBack);
-		
+		cmdBack = cmdBack.replaceAll("\n", "%%");
+		// System.out.println(cmdBack);
+		List<String> cmd = new ArrayList<String>();
+		Matcher m;
+		for (int i = 0; i < intNum; i++) {
+			// hoon wasalna !!
+			String pattern = "[a-z]"+interfaces.get(i) +"(.*?)"+ interfaces.get(i + 1);
+			System.out.println(pattern);
+			Pattern r = Pattern.compile(pattern);
+			m = r.matcher(cmdBack);
+			System.out.println(m.find());
+			if (m.find()) {
+				System.out.println("group:" + m.group(1));
+				cmd.add(m.group(0));
+			}
+		}
+
+		System.out.println(cmd);
+		// System.out.println(cmdBack);
+
+		List<EthernetProtocolEndpoint> ep = pars.parsEthernetPE(cmdBack);
+
 		return ep;
 
 	}
