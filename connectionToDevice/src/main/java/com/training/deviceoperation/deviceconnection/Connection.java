@@ -7,10 +7,10 @@ import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
 
 /**
  * 
- * @author Reem Jazi
- * @author Laila Shreteh
+ * @author user
  *
  */
+
 public interface Connection {
 	public void disconnectConnection();
 	public List<String> getInterfaces() throws IOException ;
@@ -18,6 +18,5 @@ public interface Connection {
 	public void setPort(int port);
 	public String connectToDevice();
 	public List<EthernetProtocolEndpoint> createEthernetPE();
-	//public String getVersion();
 
 }

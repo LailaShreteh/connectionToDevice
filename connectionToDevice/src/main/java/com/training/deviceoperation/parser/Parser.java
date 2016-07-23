@@ -2,17 +2,21 @@ package com.training.deviceoperation.parser;
 
 import java.util.List;
 
+/**
+ * 
+ * @author user
+ *
+ */
+
 public interface Parser {
 
 	/**
-	 * Parse Intefaces data
+	 * parsEthernetPE method to parse Interfaces data.
+	 * 
 	 * @param cmdBack
-	 * @return
+	 *            - the string value from "sh int" command.
+	 * @return - list of all interfaces and their parsed data as an objects.
 	 */
-	List<EthernetProtocolEndpoint> parsEthernetPE(String cmdBack); //List of objects !!
-	// SNMP OBJECTS
-	// CLI STRING BACK !! LIST 
+	List<EthernetProtocolEndpoint> parsEthernetPE(String cmdBack);
 
-	
-	
 }

@@ -10,27 +10,37 @@ import com.jcraft.jsch.JSchException;
 
 /**
  * 
- * @author Reem Jazi
- * @author Laila Shreteh
+ * @author user
  *
  */
 
 public class SSHConnection extends CLIConnection {
+
+	/**
+	 * A string to define the password to use for authentication.
+	 */
+	private String password = "lab";
 	private JSch jsch;
 	private Session session = null;
 	private com.jcraft.jsch.Channel channel;
-	private String password = "lab";
-	public SSHConnection()
-	{
-		
+
+	public SSHConnection() {
+
 	}
+
+	/**
+	 * createInOutStream method to create an InputStream and OutputStream for
+	 * sending and receiving data over the SSH connection.
+	 * 
+	 */
 	public void createInOutStream() {
-		
+
 		try {
 			session = jsch.getSession("lab", super.getHost(), super.getPort());
 			Properties config = new Properties();
 			config.put("StrictHostKeyChecking", "NO");
-			session.setPassword(password);
+			session.setPassword(password); // sets the password to use for
+											// authentication.
 			session.setConfig(config);
 			session.connect();
 			channel = session.openChannel("shell");
@@ -42,7 +52,8 @@ public class SSHConnection extends CLIConnection {
 			readUntil("Password: ");
 			write("lab");
 			readUntil("ASR1002_Omar#");
-			write("terminal length 0");
+			write("terminal length 0"); // to avoid More enter to get all output
+										// in one time.
 			readUntil("ASR1002_Omar#");
 
 		} catch (JSchException e) {
@@ -51,14 +62,26 @@ public class SSHConnection extends CLIConnection {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}
 	}
+	
+	/**
+	 * connectToDevice method to open SSH connection to a server.
+	 * 
+	 */
+
+	@Override
 	public String connectToDevice() {
 		jsch = new JSch();
 		createInOutStream();
-		return"Sucess";
-	}	
-	public void disconnectConnection(){
+		return "Sucess";
+	}
+
+	/**
+	 * disconnectConnection method to close the input and the output stream, to
+	 * close the channel and the opened session connection.
+	 */
+	public void disconnectConnection() {
 		try {
 			getIn().close();
 			getOut().close();
@@ -68,7 +91,6 @@ public class SSHConnection extends CLIConnection {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 }

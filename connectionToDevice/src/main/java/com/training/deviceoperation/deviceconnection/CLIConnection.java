@@ -14,12 +14,15 @@ import java.util.List;
 
 /**
  * 
- * @author Reem Jazi
- * @author Laila Shreteh
+ * @author user
  *
  */
 
 public abstract class CLIConnection implements Connection {
+	
+	/**
+	 * see @com.training.deviceoperation.deviceconnection.Connection
+	 */
 
 	private InputStream in;
 	private PrintStream out;
@@ -36,6 +39,12 @@ public abstract class CLIConnection implements Connection {
 
 	}
 
+	/**
+	 * @param host
+	 *            - host address to connect
+	 * @param port
+	 *            - port number
+	 */
 	public CLIConnection(String host, int port) {
 		this.port = port;
 		this.host = host;
@@ -44,7 +53,13 @@ public abstract class CLIConnection implements Connection {
 	public String getHost() {
 		return this.host;
 	}
-
+	
+	/***
+	 * getInterfaces method to get all the interfaces from a device.
+	 *
+	 * @return - a list of all interfaces.
+	 ***/
+	@Override
 	public List<String> getInterfaces() throws IOException {
 
 		write("sh ip int br");
@@ -63,11 +78,16 @@ public abstract class CLIConnection implements Connection {
 		}
 		// System.out.println("\n" + interfaces);
 		// TODO return list<interface>
-		// we don't know how the interfaces class it's look like !! :\
-		// so we return a list of interfaces as string
 		return interfaces;
 	}
 
+	/***
+	 * readUntil method to read the output from Telnet or SSH commands.
+	 *
+	 * @param sample
+	 *            - an output from Telnet or SSH commands.
+	 * @return - the output which was read.
+	 ***/
 	protected String readUntil(String sample) {
 		// TODO Auto-generated method stub
 		try {
@@ -91,15 +111,22 @@ public abstract class CLIConnection implements Connection {
 		return null;
 	}
 
+
+	/***
+	 * write method to print the response from the device.
+	 *
+	 * @param value - commands which send by the user .
+	 ***/
 	protected void write(String value) {
 		try {
 			out.print(value + "\n");
-			out.flush();// to be sure that our command is send to the server !!
+			out.flush(); //to flush any data in the buffer which is not written to the underlying stream.
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
+	
+	@Override
 	public List<EthernetProtocolEndpoint> createEthernetPE() {
 		try {
 			this.getInterfaces();

@@ -5,8 +5,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 
+ * @author user
+ *
+ */
+
 public class CLIParser implements Parser {
-	
+
 	/**
 	 * see @com.training.deviceoperation.parser.Parser
 	 */
@@ -64,7 +70,8 @@ public class CLIParser implements Parser {
 			if (matcher.find()) {
 				// System.out.println(m.group(0).substring(m.group(0).indexOf("protocol
 				// is"), m.group(0).length()-1));
-				switch (matcher.group(0).substring(matcher.group(0).indexOf("is ") + 3, matcher.group(0).indexOf(","))) {
+				switch (matcher.group(0).substring(matcher.group(0).indexOf("is ") + 3,
+						matcher.group(0).indexOf(","))) {
 				case "up":
 					ifOperStatus.add(enumType1.up);
 					break;
@@ -131,7 +138,8 @@ public class CLIParser implements Parser {
 			if (matcher.find()) {
 				// System.out.println(m.group(0).substring(m.group(0).indexOf("Duplex,
 				// ")+8, m.group(0).indexOf("ps,")+2));
-				ifSpeed.add(matcher.group(0).substring(matcher.group(0).indexOf("Duplex, ") + 8, matcher.group(0).indexOf("ps,") + 2));
+				ifSpeed.add(matcher.group(0).substring(matcher.group(0).indexOf("Duplex, ") + 8,
+						matcher.group(0).indexOf("ps,") + 2));
 			}
 		}
 		// macAddress
@@ -145,21 +153,20 @@ public class CLIParser implements Parser {
 			if (matcher.find()) {
 				// System.out.println(m.group(0).substring(m.group(0).indexOf("
 				// address is ")+12, m.group(0).indexOf("(bia")));
-				macAddress
-						.add(matcher.group(0).substring(matcher.group(0).indexOf("address is ") + 11, matcher.group(0).indexOf("(bia")));
+				macAddress.add(matcher.group(0).substring(matcher.group(0).indexOf("address is ") + 11,
+						matcher.group(0).indexOf("(bia")));
 			}
 		}
 
 		EthernetProtocolEndpoint ep;
-		//System.out.println(duplexMode.size());
+		// System.out.println(duplexMode.size());
 		for (int i = 0; i < ifName.size(); i++) {
 			ep = new EthernetProtocolEndpoint(ifName.get(i), ifMTU.get(i), ifStatus.get(i), ifOperStatus.get(i),
 					duplexMode.get(i), ifSpeed.get(i), macAddress.get(i));
 			epeList.add(ep);
 		}
-		for (int i = 0; i < ifName.size(); i++) 
-		System.out.println(epeList.get(i).toString());
-		
+		for (int i = 0; i < ifName.size(); i++)
+			System.out.println(epeList.get(i).toString());
 
 		return epeList;
 
