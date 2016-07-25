@@ -1,6 +1,7 @@
 package com.training.deviceoperation.deviceconnection;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import static org.junit.Assert.*;
 
@@ -10,6 +11,7 @@ import org.junit.Test;
 
 import com.training.deviceoperation.deviceconnection.ConnectionFactory;
 import com.training.deviceoperation.deviceconnection.ConnectionRouter;
+import com.training.deviceoperation.deviceconnection.JDBC.connectionToMySQL;
 import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
 
 public class TelnetConnectionTest {
@@ -46,8 +48,19 @@ public class TelnetConnectionTest {
 		result = connection.connectToDevice();
 		ArrayList<EthernetProtocolEndpoint> epeList = (ArrayList<EthernetProtocolEndpoint>) connection
 				.createEthernetPE();
+		//send data to dataBase
+		connectionToMySQL con = new connectionToMySQL();
 		for (int j = 0; j < epeList.size(); j++)
+		{
+			
+			try {
+				con.insert(epeList.get(j));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			System.out.println(epeList.get(j));
+		}
 	}
 
 	@Test(expected = IllegalArgumentException.class)
