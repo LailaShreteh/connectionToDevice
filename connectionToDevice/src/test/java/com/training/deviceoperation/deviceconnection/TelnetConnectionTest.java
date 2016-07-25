@@ -8,12 +8,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.training.deviceoperation.deviceconnection.ConnectionFactory;
+import com.training.deviceoperation.deviceconnection.ConnectionRouter;
 import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
 
 public class TelnetConnectionTest {
 
 	ConnectionFactory connectionFactory = new ConnectionFactory();
-	private Connection connection;
+	private ConnectionRouter connection;
 	String result = null;
 	
 	@Before
@@ -31,7 +33,6 @@ public class TelnetConnectionTest {
 		try {
 			
 			connection.getInterfaces();
-			connection.createEthernetPE();
 			assertNotNull(result);
 			assertEquals("Sucess", result);
 		} catch (Exception e) {
@@ -52,21 +53,12 @@ public class TelnetConnectionTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testHost() {
-	    connection.setHost("null");
+	    connection.setHost(null);
 		String re = connection.connectToDevice();
 		String expResult = "Fail";
 		assertEquals(expResult, re);
 		}
 		
-
-		/*try {
-			connection.setHost("null");
-	        fail("Should throw an exception if host set as NULL");
-	    } catch (Exception e) {
-	        assertThat(e) .isInstanceOf(IllegalArgumentException.class)
-	                .hasMessage("Null host are not allowed");
-	    }
-	}*/
 	 
 	 /* @Test(expected = IllegalArgumentException.class) public void
 	 * testConnectClass_failureCase_hostIsBlank() {

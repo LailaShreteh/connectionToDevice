@@ -1,6 +1,6 @@
 package com.training.deviceoperation.parser;
 
-public enum enumType3 {
+public enum enumType_type {
 	other(1), // none of the following
 	regular1822(2), hdh1822(3), ddnX25(4), rfc877x25(5), 
 	ethernetCsmacd(6), iso88023Csmacd(7), iso88024TokenBus(8),
@@ -195,7 +195,7 @@ public enum enumType3 {
 	
 	private final int value;
 
-	enumType3(int value) {
+	enumType_type(int value) {
 		this.value = value;
 
 	}

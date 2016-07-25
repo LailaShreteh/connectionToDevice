@@ -18,7 +18,7 @@ public class ConnectionFactory {
 	 * 
 	 *
 	 */
-	public static Connection createConnection(String connectionType) {
+	public static ConnectionRouter createConnection(String connectionType) {
 		if (connectionType == null)
 			return null;
 		if (connectionType.equalsIgnoreCase("TELNET")) {

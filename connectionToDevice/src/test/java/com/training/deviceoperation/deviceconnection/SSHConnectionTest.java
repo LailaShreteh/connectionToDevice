@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.training.deviceoperation.deviceconnection.ConnectionFactory;
+import com.training.deviceoperation.deviceconnection.ConnectionRouter;
 import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
 
 /**
@@ -21,7 +23,7 @@ import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
 public class SSHConnectionTest {
 
 	ConnectionFactory connectionFactory = new ConnectionFactory();
-	private Connection connection;
+	private ConnectionRouter connection;
 	String result=null;
 	
 	@Before

@@ -3,10 +3,10 @@ package com.training.deviceoperation.deviceconnection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.training.deviceoperation.parser.CLIParser;
 import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
-import com.training.deviceoperation.parser.*;
+import com.training.deviceoperation.parser.Parser;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.List;
  * @author user
  *
  */
-public abstract class CLIConnection implements Connection {
+public abstract class CLIConnection implements ConnectionRouter {
 
 	/**
 	 * see @com.training.deviceoperation.deviceconnection.Connection
@@ -135,13 +135,15 @@ public abstract class CLIConnection implements Connection {
 		cmdBack = readUntil("#");
 
 		for (int i = 0; i < interfaces.size(); i++) {
-			if (i == interfaces.size() - 1)
-				// System.out.println(cmdBack.indexOf(interfaces.get(i)));
-				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i)), cmdBack.length() - 1);
-			else
+			if (i == interfaces.size() - 1){
+				 
+				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i)), cmdBack.length());
+			}
+			else{
 				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i)),
 						cmdBack.indexOf(interfaces.get(i + 1)));
-			// System.out.println(interfaceInform);
+			}
+				// System.out.println(interfaceInform);
 			EthernetProtocolEndpoint ep = pars.parsEthernetPE(interfaceInform);
 			epList.add(ep);
 		}

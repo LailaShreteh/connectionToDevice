@@ -7,7 +7,9 @@ import org.snmp4j.Snmp;
 import org.snmp4j.TransportMapping;
 import org.snmp4j.transport.DefaultUdpTransportMapping;
 
-public class SNMPConnection implements Connection{
+import com.training.deviceoperation.parser.*;
+
+public class SNMPConnection implements ConnectionRouter{
 	private String host;
 	private int port;
 	public SNMPConnection ()
@@ -33,7 +35,7 @@ public class SNMPConnection implements Connection{
 			}
 	}
 
-	public List<String> getInterfaces() throws IOException {
+	public List<String> getInterfaces()  {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -49,6 +51,11 @@ public class SNMPConnection implements Connection{
 	public void setPort(int port) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public List<EthernetProtocolEndpoint> createEthernetPE() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

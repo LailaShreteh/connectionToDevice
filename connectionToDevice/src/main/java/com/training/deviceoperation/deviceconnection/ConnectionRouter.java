@@ -3,7 +3,7 @@ package com.training.deviceoperation.deviceconnection;
 
 import java.util.List;
 
-import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
+import com.training.deviceoperation.parser.*;
 
 /**
  * 
@@ -11,7 +11,7 @@ import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
  *
  */
 
-public interface Connection {
+public interface ConnectionRouter {
 	public void disconnectConnection();
 	public List<String> getInterfaces() ;
 	public void setHost(String host);

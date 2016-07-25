@@ -1,6 +1,6 @@
 package com.training.deviceoperation.parser;
 
-public enum enumType1 {
+public enum enumType {
 	up, down, testing,
 
 }

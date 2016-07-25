@@ -19,25 +19,25 @@ public class EthernetProtocolEndpoint {
 	protected int minOccurs;
 	protected int maxOccurs;
 	protected String description; // longStringType
-	protected enumType2 duplexMode;
-	protected enumType1 adminStatus;
+	protected enumType_duplex duplexMode;
+	protected enumType adminStatus;
 	protected String comments; // shortStringType
 	protected String entAliasMappingIdentifier;// longStringType
-	protected enumType1 ethernetLoopback;
+	protected enumType ethernetLoopback;
 	protected String ifSpeed;// LongQuantity "for bandwidth"
 	protected String lagEndName;// longStringType
 	protected String macAddress;// longStringType
 	protected int mtu;
-	protected enumType1 operStatus;
-	protected enumType3 type;
+	protected enumType operStatus;
+	protected enumType_type type;
 
 	/*
 	 * public EthernetProtocolEndpoint(int minOccurs, int maxOccurs, String
 	 * description,String comments, String entAliasMappingIdentifier, String
 	 * lagEndName, enumType1 ethernetLoopback,enumType3 type){
 	 */
-	public EthernetProtocolEndpoint(String name, int mtu, enumType1 adminStatus, enumType1 operStatus,
-			enumType2 duplexMode, String ifSpeed, String macAddress) {
+	public EthernetProtocolEndpoint(String name, int mtu, enumType adminStatus, enumType operStatus,
+			enumType_duplex duplexMode, String ifSpeed, String macAddress) {
 
 		this.name = name;
 		this.mtu = mtu;
@@ -76,14 +76,14 @@ public class EthernetProtocolEndpoint {
 	/**
 	 * @return the duplexMode
 	 */
-	public enumType2 getDuplexMode() {
+	public enumType_duplex getDuplexMode() {
 		return duplexMode;
 	}
 
 	/**
 	 * @return the adminStatus
 	 */
-	public enumType1 getAdminStatus() {
+	public enumType getAdminStatus() {
 		return adminStatus;
 	}
 
@@ -104,7 +104,7 @@ public class EthernetProtocolEndpoint {
 	/**
 	 * @return the ethernetLoopback
 	 */
-	public enumType1 getEthernetLoopback() {
+	public enumType getEthernetLoopback() {
 		return ethernetLoopback;
 	}
 
@@ -140,14 +140,14 @@ public class EthernetProtocolEndpoint {
 	/**
 	 * @return the operStatus
 	 */
-	public enumType1 getOperStatus() {
+	public enumType getOperStatus() {
 		return operStatus;
 	}
 
 	/**
 	 * @return the type
 	 */
-	public enumType3 getType() {
+	public enumType_type getType() {
 		return type;
 	}
 
@@ -171,11 +171,11 @@ public class EthernetProtocolEndpoint {
 		this.description = description;
 	}
 
-	public void setDuplexMode(enumType2 duplexMode) {
+	public void setDuplexMode(enumType_duplex duplexMode) {
 		this.duplexMode = duplexMode;
 	}
 
-	public void setAdminStatus(enumType1 adminStatus) {
+	public void setAdminStatus(enumType adminStatus) {
 		this.adminStatus = adminStatus;
 	}
 
@@ -187,7 +187,7 @@ public class EthernetProtocolEndpoint {
 		this.entAliasMappingIdentifier = entAliasMappingIdentifier;
 	}
 
-	public void setEthernetLoopback(enumType1 ethernetLoopback) {
+	public void setEthernetLoopback(enumType ethernetLoopback) {
 		this.ethernetLoopback = ethernetLoopback;
 	}
 
@@ -207,11 +207,11 @@ public class EthernetProtocolEndpoint {
 		this.mtu = mtu;
 	}
 
-	public void setOperStatus(enumType1 operStatus) {
+	public void setOperStatus(enumType operStatus) {
 		this.operStatus = operStatus;
 	}
 
-	public void setType(enumType3 type) {
+	public void setType(enumType_type type) {
 		this.type = type;
 	}
 
