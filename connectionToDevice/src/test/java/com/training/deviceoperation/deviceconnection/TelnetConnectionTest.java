@@ -17,59 +17,59 @@ public class TelnetConnectionTest {
 	ConnectionFactory connectionFactory = new ConnectionFactory();
 	private ConnectionRouter connection;
 	String result = null;
-	
+
 	@Before
-	public void setup() throws IOException {
+	public void setup() {
 
 		connection = ConnectionFactory.createConnection("TELNET");
 		connection.setHost("192.168.50.200");
 		connection.setPort(23);
-		result = connection.connectToDevice();
 
 	}
 
 	@Test
-	public void testConnectClass_SucessCase()  {
+	public void testConnectClass() {
 		try {
-			
+			result = connection.connectToDevice();
 			connection.getInterfaces();
 			assertNotNull(result);
 			assertEquals("Sucess", result);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.getMessage();
-			assertEquals("Fail", result);
+			assertEquals("Fail to connect x_x", result);
 		}
 	}
 
 	@Test
 	public void testCLIParser() throws IOException {
+		result = connection.connectToDevice();
 		ArrayList<EthernetProtocolEndpoint> epeList = (ArrayList<EthernetProtocolEndpoint>) connection
 				.createEthernetPE();
 		for (int j = 0; j < epeList.size(); j++)
 			System.out.println(epeList.get(j));
 	}
 
-	
 	@Test(expected = IllegalArgumentException.class)
 	public void testHost() {
-	    connection.setHost(null);
+		connection.setHost(null);
 		String re = connection.connectToDevice();
 		String expResult = "Fail";
 		assertEquals(expResult, re);
-		}
-		
-	 
-	 /* @Test(expected = IllegalArgumentException.class) public void
+	}
+
+	/*
+	 * @Test(expected = IllegalArgumentException.class) public void
 	 * testConnectClass_failureCase_hostIsBlank() {
 	 * connection.connectToDevice("", 53); }
 	 */
 
 	@After
-	public void teardown() throws IOException{
-		if(connection!=null){
-		connection.disconnectConnection();
-		connection = null;}
+	public void teardown() throws IOException {
+		if (connection != null) {
+			connection.disconnectConnection();
+			connection = null;
+		}
 
 	}
 

@@ -29,7 +29,8 @@ public class TelnetConnection extends CLIConnection {
 			return "Sucess";
 
 		} catch (Exception e) {
-			return e.getMessage() + "  X_X sorry fails to connect x_x";
+			System.out.println(e.getMessage() + "  X_X sorry fails to connect x_x");
+			return "Fail to connect x_x";
 		}
 
 	}

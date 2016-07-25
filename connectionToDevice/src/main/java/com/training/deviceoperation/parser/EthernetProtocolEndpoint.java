@@ -5,6 +5,9 @@ package com.training.deviceoperation.parser;
  *
  */
 
+import com.training.deviceoperation.parser.CLIParser.enumType;
+import com.training.deviceoperation.parser.CLIParser.enumType_duplex;
+
 /**
  * The EthernetProtocolEndpoint class to get each interface and it's data as an
  * object.
@@ -29,7 +32,7 @@ public class EthernetProtocolEndpoint {
 	protected String macAddress;// longStringType
 	protected int mtu;
 	protected enumType operStatus;
-	protected enumType_type type;
+	//protected enumType_type type;
 
 	/*
 	 * public EthernetProtocolEndpoint(int minOccurs, int maxOccurs, String
@@ -147,9 +150,9 @@ public class EthernetProtocolEndpoint {
 	/**
 	 * @return the type
 	 */
-	public enumType_type getType() {
+	/*public enumType_type getType() {
 		return type;
-	}
+	}*/
 
 	/**
 	 * @return the name
@@ -211,9 +214,9 @@ public class EthernetProtocolEndpoint {
 		this.operStatus = operStatus;
 	}
 
-	public void setType(enumType_type type) {
-		this.type = type;
-	}
+//	public void setType(enumType_type type) {
+//		this.type = type;
+//	}
 
 	public void setName(String name) {
 		this.name = name;
@@ -226,7 +229,7 @@ public class EthernetProtocolEndpoint {
 	 */
 	@Override
 	public String toString() {
-		return ("**" + name + " || \t" + adminStatus + " || \t" + operStatus+ " || \t" + mtu + " || \t" + duplexMode
+		return ("**" + name + " || \t" + adminStatus + " || \t" + operStatus + " || \t" + mtu + " || \t" + duplexMode
 				+ " || \t" + ifSpeed + " || \t" + macAddress);
 	}
 }

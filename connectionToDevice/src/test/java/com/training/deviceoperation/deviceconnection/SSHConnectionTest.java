@@ -24,22 +24,22 @@ public class SSHConnectionTest {
 
 	ConnectionFactory connectionFactory = new ConnectionFactory();
 	private ConnectionRouter connection;
-	String result=null;
-	
+	String result = null;
+
 	@Before
 	public void setup() {
-		
+
 		connection = ConnectionFactory.createConnection("SSH");
 		connection.setHost("192.168.50.200");
 		connection.setPort(22);
-		result =connection.connectToDevice();
-		
+		result = connection.connectToDevice();
+
 	}
 
 	@Test
 	public void testConnectClass_SucessCase() {
 		try {
-		
+
 			connection.getInterfaces();
 			connection.createEthernetPE();
 			assertNotNull(result);
@@ -50,17 +50,21 @@ public class SSHConnectionTest {
 			assertEquals("Fail", result);
 		}
 	}
+
 	@Test
 	public void testCLIParser() throws IOException {
-		ArrayList<EthernetProtocolEndpoint> epeList = (ArrayList<EthernetProtocolEndpoint>) connection.createEthernetPE();
-		for (int j=0; j< epeList.size();j++)
-		System.out.println(epeList.get(j));	}
+		ArrayList<EthernetProtocolEndpoint> epeList = (ArrayList<EthernetProtocolEndpoint>) connection
+				.createEthernetPE();
+		for (int j = 0; j < epeList.size(); j++)
+			System.out.println(epeList.get(j));
+	}
 
 	@After
-	public void teardown()throws IOException {
-		if(connection!=null){
-		connection.disconnectConnection();
-		connection = null;
-	}}
+	public void teardown() throws IOException {
+		if (connection != null) {
+			connection.disconnectConnection();
+			connection = null;
+		}
+	}
 
 }

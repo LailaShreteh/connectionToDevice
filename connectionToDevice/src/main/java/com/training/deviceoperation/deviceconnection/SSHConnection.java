@@ -64,7 +64,7 @@ public class SSHConnection extends CLIConnection {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * connectToDevice method to open SSH connection to a server.
 	 * 
@@ -73,14 +73,15 @@ public class SSHConnection extends CLIConnection {
 	@Override
 	public String connectToDevice() {
 		jsch = new JSch();
-		try{
-		createInOutStream();
-		return "Sucess";}
-		catch(Exception e){
-			return e.getMessage()+"Fails to connect....";
+		try {
+			createInOutStream();
+			return "Sucess";
+		} catch (Exception e) {
+			return e.getMessage() + "Fails to connect....";
+		}
+
 	}
-		
-	}
+
 	/**
 	 * disconnectConnection method to close the input and the output stream, to
 	 * close the channel and the opened session connection.

@@ -57,7 +57,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 	 *
 	 * @return - a list of all interfaces.
 	 ***/
-	@Override
+
 	public List<String> getInterfaces() {
 
 		write("sh ip int br");
@@ -125,7 +125,6 @@ public abstract class CLIConnection implements ConnectionRouter {
 		}
 	}
 
-	@Override
 	public List<EthernetProtocolEndpoint> createEthernetPE() {
 		List<EthernetProtocolEndpoint> epList = new ArrayList<EthernetProtocolEndpoint>();
 		String interfaceInform;
@@ -135,15 +134,14 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = readUntil("#");
 
 		for (int i = 0; i < interfaces.size(); i++) {
-			if (i == interfaces.size() - 1){
-				 
+			if (i == interfaces.size() - 1) {
+
 				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i)), cmdBack.length());
-			}
-			else{
+			} else {
 				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i)),
 						cmdBack.indexOf(interfaces.get(i + 1)));
 			}
-				// System.out.println(interfaceInform);
+			// System.out.println(interfaceInform);
 			EthernetProtocolEndpoint ep = pars.parsEthernetPE(interfaceInform);
 			epList.add(ep);
 		}
