@@ -73,10 +73,14 @@ public class SSHConnection extends CLIConnection {
 	@Override
 	public String connectToDevice() {
 		jsch = new JSch();
+		try{
 		createInOutStream();
-		return "Sucess";
+		return "Sucess";}
+		catch(Exception e){
+			return e.getMessage()+"Fails to connect....";
 	}
-
+		
+	}
 	/**
 	 * disconnectConnection method to close the input and the output stream, to
 	 * close the channel and the opened session connection.
@@ -89,7 +93,7 @@ public class SSHConnection extends CLIConnection {
 			session.disconnect();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println("Exception while closing ssh connection:" + e.getMessage());
 		}
 
 	}

@@ -17,6 +17,6 @@ public interface Parser {
 	 *            - the string value from "sh int" command.
 	 * @return - list of all interfaces and their parsed data as an objects.
 	 */
-	List<EthernetProtocolEndpoint> parsEthernetPE(String cmdBack);
+	EthernetProtocolEndpoint parsEthernetPE(String cmdBack);
 
 }

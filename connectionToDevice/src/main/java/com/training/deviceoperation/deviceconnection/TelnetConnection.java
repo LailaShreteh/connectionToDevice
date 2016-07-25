@@ -18,7 +18,7 @@ public class TelnetConnection extends CLIConnection {
 	 */
 	public String connectToDevice() {
 		if (getHost() == null || getHost().length() == 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Host: " + getHost());
 		}
 
 		telnet = new TelnetClient();
@@ -68,7 +68,7 @@ public class TelnetConnection extends CLIConnection {
 			telnet.disconnect();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println("Exception while closing telnet:" + e.getMessage());
 		}
 
 	}

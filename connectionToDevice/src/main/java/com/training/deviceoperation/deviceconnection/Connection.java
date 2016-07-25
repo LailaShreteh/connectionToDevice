@@ -1,6 +1,6 @@
 package com.training.deviceoperation.deviceconnection;
 
-import java.io.IOException;
+
 import java.util.List;
 
 import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
@@ -13,7 +13,7 @@ import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
 
 public interface Connection {
 	public void disconnectConnection();
-	public List<String> getInterfaces() throws IOException ;
+	public List<String> getInterfaces() ;
 	public void setHost(String host);
 	public void setPort(int port);
 	public String connectToDevice();

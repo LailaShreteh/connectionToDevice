@@ -226,7 +226,7 @@ public class EthernetProtocolEndpoint {
 	 */
 	@Override
 	public String toString() {
-		return ("**" + name + " || \t" + mtu + " || \t" + adminStatus + " || \t" + operStatus + " || \t" + duplexMode
+		return ("**" + name + " || \t" + adminStatus + " || \t" + operStatus+ " || \t" + mtu + " || \t" + duplexMode
 				+ " || \t" + ifSpeed + " || \t" + macAddress);
 	}
 }

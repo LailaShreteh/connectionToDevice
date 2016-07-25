@@ -17,9 +17,8 @@ import java.util.List;
  * @author user
  *
  */
-
 public abstract class CLIConnection implements Connection {
-	
+
 	/**
 	 * see @com.training.deviceoperation.deviceconnection.Connection
 	 */
@@ -29,7 +28,6 @@ public abstract class CLIConnection implements Connection {
 	private String cmdBack;
 	private String host;
 	private int port;
-	private int intNum = 0;
 	private List<String> interfaces;
 
 	/**
@@ -53,14 +51,14 @@ public abstract class CLIConnection implements Connection {
 	public String getHost() {
 		return this.host;
 	}
-	
+
 	/***
 	 * getInterfaces method to get all the interfaces from a device.
 	 *
 	 * @return - a list of all interfaces.
 	 ***/
 	@Override
-	public List<String> getInterfaces() throws IOException {
+	public List<String> getInterfaces() {
 
 		write("sh ip int br");
 		cmdBack = readUntil("#");
@@ -72,11 +70,12 @@ public abstract class CLIConnection implements Connection {
 		for (int i = 2; i < lines.length - 1; i++) {
 			Matcher m = r.matcher(lines[i]);
 			if (m.find()) {
-				intNum++;
-				interfaces.add(m.group(0));
+				String s = m.group(0);
+				s = s + " "; // to avoid conflict in interfaces names :3
+				interfaces.add(s);
 			}
 		}
-		// System.out.println("\n" + interfaces);
+
 		// TODO return list<interface>
 		return interfaces;
 	}
@@ -96,7 +95,6 @@ public abstract class CLIConnection implements Connection {
 			char ch = (char) in.read();
 
 			while (true) {
-				// System.out.print(ch);
 				sb.append(ch);
 				if (ch == lastChar) {
 					if (sb.toString().endsWith(sample)) {
@@ -111,56 +109,44 @@ public abstract class CLIConnection implements Connection {
 		return null;
 	}
 
-
 	/***
 	 * write method to print the response from the device.
 	 *
-	 * @param value - commands which send by the user .
+	 * @param value
+	 *            - commands which send by the user .
 	 ***/
 	protected void write(String value) {
 		try {
 			out.print(value + "\n");
-			out.flush(); //to flush any data in the buffer which is not written to the underlying stream.
+			out.flush(); // to flush any data in the buffer which is not written
+							// to the underlying stream.
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public List<EthernetProtocolEndpoint> createEthernetPE() {
-		try {
-			this.getInterfaces();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		List<EthernetProtocolEndpoint> epList = new ArrayList<EthernetProtocolEndpoint>();
+		String interfaceInform;
+		Parser pars = new CLIParser();
+		this.getInterfaces();
 		write("sh int");
 		cmdBack = readUntil("#");
 
-		Parser pars = new CLIParser();
-		cmdBack = cmdBack.replaceAll("\n", "%%");
-		// System.out.println(cmdBack);
-		List<String> cmd = new ArrayList<String>();
-		Matcher m;
-		for (int i = 0; i < intNum; i++) {
-			// hoon wasalna !!
-			String pattern = "[a-z]"+interfaces.get(i) +"(.*?)"+ interfaces.get(i + 1);
-			System.out.println(pattern);
-			Pattern r = Pattern.compile(pattern);
-			m = r.matcher(cmdBack);
-			System.out.println(m.find());
-			if (m.find()) {
-				System.out.println("group:" + m.group(1));
-				cmd.add(m.group(0));
-			}
+		for (int i = 0; i < interfaces.size(); i++) {
+			if (i == interfaces.size() - 1)
+				// System.out.println(cmdBack.indexOf(interfaces.get(i)));
+				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i)), cmdBack.length() - 1);
+			else
+				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i)),
+						cmdBack.indexOf(interfaces.get(i + 1)));
+			// System.out.println(interfaceInform);
+			EthernetProtocolEndpoint ep = pars.parsEthernetPE(interfaceInform);
+			epList.add(ep);
 		}
 
-		System.out.println(cmd);
-		// System.out.println(cmdBack);
-
-		List<EthernetProtocolEndpoint> ep = pars.parsEthernetPE(cmdBack);
-
-		return ep;
+		return epList;
 
 	}
 
