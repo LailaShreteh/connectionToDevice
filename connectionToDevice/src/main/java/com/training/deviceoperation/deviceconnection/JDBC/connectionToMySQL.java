@@ -2,12 +2,10 @@ package com.training.deviceoperation.deviceconnection.JDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.apache.log4j.chainsaw.Main;
 
 import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
 
@@ -20,6 +18,7 @@ public class connectionToMySQL {
 	static final String USER = "root";
 	static final String PASS = "laila";
 	static Connection conn = null;
+	
 
 
 	public connectionToMySQL() {
@@ -48,7 +47,32 @@ public class connectionToMySQL {
 		   conn.close();
 	}
 
-	static void select(String sqlSen) {
+	public static void select() {
+		Statement stmt = null;
+		   try {
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM interface ");
+			 while ( rs.next() ) {
+	             String name = rs.getString("name");
+	             String adminStatus = rs.getString("adminStatus");
+	             String operationalStatus = rs.getString("operationalStatus");
+	             int MTU = rs.getInt("MTU");
+	             String duplexMode = rs.getString("duplex");
+	             String ifSpeed = rs.getString("speed");
+	             String macAddress = rs.getString("macAddress");
 
+	             System.out.println("**" + name + " || \t" + adminStatus + " || \t" + operationalStatus + " || \t" + MTU + " || \t" + duplexMode
+					+ " || \t" + ifSpeed + " || \t" + macAddress);
+	         }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+		   try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

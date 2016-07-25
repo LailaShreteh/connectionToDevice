@@ -55,6 +55,7 @@ public class TelnetConnectionTest {
 			
 			try {
 				con.insert(epeList.get(j));
+				con.select();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
