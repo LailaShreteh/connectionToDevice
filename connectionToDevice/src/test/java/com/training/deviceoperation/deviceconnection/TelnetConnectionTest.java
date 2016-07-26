@@ -50,33 +50,40 @@ public class TelnetConnectionTest {
 				.createEthernetPE();
 		//send data to dataBase
 		connectionToMySQL con = new connectionToMySQL();
+		/*for (int j = 0; j < epeList.size(); j++)
+		{
+			
+			System.out.println(epeList.get(j));
+		}*/
 		for (int j = 0; j < epeList.size(); j++)
 		{
 			
 			try {
 				con.insert(epeList.get(j));
-				con.select();
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println(epeList.get(j));
-		}
+			//System.out.println(epeList.get(j));
+		}	//con.select();
+		con.delete("GigabitEthernet0");
+		con.update("GigabitEthernet0/0/3", "reemEthernet123");
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void testHost() {
-		connection.setHost(null);
-		String re = connection.connectToDevice();
-		String expResult = "Fail";
-		assertEquals(expResult, re);
-	}
-
-	/*
-	 * @Test(expected = IllegalArgumentException.class) public void
-	 * testConnectClass_failureCase_hostIsBlank() {
-	 * connection.connectToDevice("", 53); }
-	 */
+//	@Test(expected = IllegalArgumentException.class)
+//	public void testHost() {
+//		connection.setHost(null);
+//		String re = connection.connectToDevice();
+//		//String expResult = "Fail";
+//		//assertEquals(expResult, re);
+//	}
+//
+//	/*
+//	 * @Test(expected = IllegalArgumentException.class) public void
+//	 * testConnectClass_failureCase_hostIsBlank() {
+//	 * connection.connectToDevice("", 53); }
+//	 */
 
 	@After
 	public void teardown() throws IOException {

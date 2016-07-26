@@ -6,7 +6,7 @@ package com.training.deviceoperation.parser;
  */
 
 import com.training.deviceoperation.parser.CLIParser.enumType;
-import com.training.deviceoperation.parser.CLIParser.enumType_duplex;
+import com.training.deviceoperation.parser.CLIParser.enumType_Duplex;
 
 /**
  * The EthernetProtocolEndpoint class to get each interface and it's data as an
@@ -22,7 +22,7 @@ public class EthernetProtocolEndpoint {
 	protected int minOccurs;
 	protected int maxOccurs;
 	protected String description; // longStringType
-	protected enumType_duplex duplexMode;
+	protected enumType_Duplex duplexMode;
 	protected enumType adminStatus;
 	protected String comments; // shortStringType
 	protected String entAliasMappingIdentifier;// longStringType
@@ -40,7 +40,7 @@ public class EthernetProtocolEndpoint {
 	 * lagEndName, enumType1 ethernetLoopback,enumType3 type){
 	 */
 	public EthernetProtocolEndpoint(String name, int mtu, enumType adminStatus, enumType operStatus,
-			enumType_duplex duplexMode, String ifSpeed, String macAddress) {
+			enumType_Duplex duplexMode, String ifSpeed, String macAddress) {
 
 		this.name = name;
 		this.mtu = mtu;
@@ -79,7 +79,7 @@ public class EthernetProtocolEndpoint {
 	/**
 	 * @return the duplexMode
 	 */
-	public enumType_duplex getDuplexMode() {
+	public enumType_Duplex getDuplexMode() {
 		return duplexMode;
 	}
 
@@ -174,7 +174,7 @@ public class EthernetProtocolEndpoint {
 		this.description = description;
 	}
 
-	public void setDuplexMode(enumType_duplex duplexMode) {
+	public void setDuplexMode(enumType_Duplex duplexMode) {
 		this.duplexMode = duplexMode;
 	}
 

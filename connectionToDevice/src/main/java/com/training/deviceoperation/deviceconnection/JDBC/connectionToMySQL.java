@@ -21,23 +21,16 @@ public class connectionToMySQL {
 	
 
 
-	public connectionToMySQL() {
-		 try {
-			Class.forName(JDBC_DRIVER);
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-		} catch (SQLException e) {
+	
+	public static void insert(EthernetProtocolEndpoint ePE) throws SQLException {
+		try {
+			Class.forName(JDBC_DRIVER);
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-	}
-	public static void insert(EthernetProtocolEndpoint ePE) throws SQLException {
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
 		   Statement stmt = null;
 		   stmt = conn.createStatement();
 		   String sql = "INSERT INTO interface " +
@@ -48,6 +41,18 @@ public class connectionToMySQL {
 	}
 
 	public static void select() {
+		try {
+			Class.forName(JDBC_DRIVER);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		Statement stmt = null;
 		   try {
 			stmt = conn.createStatement();
@@ -77,10 +82,23 @@ public class connectionToMySQL {
 	}
 	public static void delete(String name) {
 		Statement stmt = null;
+		try {
+			Class.forName(JDBC_DRIVER);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		   try {
 			stmt = conn.createStatement();
 			 stmt.executeUpdate("DELETE FROM interface "+ "where name = '"+ name+"'" );
 			select();
+			System.out.println("\n");
 		   }catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -93,11 +111,24 @@ public class connectionToMySQL {
 			}
 	}
 	public static void update(String name,String newName) {
+		try {
+			Class.forName(JDBC_DRIVER);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		Statement stmt = null;
 		   try {
 			stmt = conn.createStatement();
 			 stmt.executeUpdate("Update interface set name = '"+newName+"'"+ "where name = '"+ name+"'" );
 			select();
+			System.out.println("\n");
 		   }catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

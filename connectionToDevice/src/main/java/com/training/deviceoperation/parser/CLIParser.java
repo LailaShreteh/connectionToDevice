@@ -14,8 +14,8 @@ public class CLIParser implements Parser {
 		up, down, testing,
 
 	}
-	public enum enumType_duplex {
-		unknown, halfDuplex, fullDuplex, NULL,
+	public enum enumType_Duplex {
+		unknown, Half, Full,
 	}
 
 	final static String INTERFACE = "[A-Z][A-Za-z]+[0-9/]*";
@@ -29,7 +29,7 @@ public class CLIParser implements Parser {
 	enumType ifStatus;
 	enumType ifOperStatus;
 	int ifMTU;
-	enumType_duplex duplexMode;
+	enumType_Duplex duplexMode;
 	String ifSpeed;
 	String macAddress;
 
@@ -80,18 +80,19 @@ public class CLIParser implements Parser {
 			;
 
 			ifMTU = Integer.parseInt(matcher.group(5));
-			enumType_duplex duplex = enumType_duplex.valueOf(matcher.group(6)); 
+			//System.out.println(matcher.group(6));
+			enumType_Duplex duplex = enumType_Duplex.valueOf(matcher.group(6)); 
 
 			switch (duplex) {
 			// case "unknown":duplexMode.add(enumType2.unknown); break;
-			case halfDuplex:
-				duplexMode = enumType_duplex.halfDuplex;
+			case Half:
+				duplexMode = enumType_Duplex.Half;
 				break;
-			case fullDuplex:
-				duplexMode = enumType_duplex.fullDuplex;
+			case Full:
+				duplexMode = enumType_Duplex.Full;
 				break;
 			default:
-				duplexMode = enumType_duplex.unknown;
+				duplexMode = enumType_Duplex.unknown;
 				break;
 			}
 			;
