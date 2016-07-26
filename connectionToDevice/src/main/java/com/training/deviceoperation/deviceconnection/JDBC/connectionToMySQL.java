@@ -75,4 +75,39 @@ public class connectionToMySQL {
 			e.printStackTrace();
 		}
 	}
+	public static void delete(String name) {
+		Statement stmt = null;
+		   try {
+			stmt = conn.createStatement();
+			 stmt.executeUpdate("DELETE FROM interface "+ "where name = '"+ name+"'" );
+			select();
+		   }catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		   try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	public static void update(String name,String newName) {
+		Statement stmt = null;
+		   try {
+			stmt = conn.createStatement();
+			 stmt.executeUpdate("Update interface set name = '"+newName+"'"+ "where name = '"+ name+"'" );
+			select();
+		   }catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		   try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+
 }
