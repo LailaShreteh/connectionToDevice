@@ -44,8 +44,6 @@ public class TelnetConnection extends CLIConnection {
 	private void createInOutStream() {
 		setIn(telnet.getInputStream());
 		setOut(new PrintStream(telnet.getOutputStream()));
-		readUntil("Username: ");
-		write("lab");
 		readUntil("Password: ");
 		write("lab");
 		readUntil("ASR1002_Omar>");

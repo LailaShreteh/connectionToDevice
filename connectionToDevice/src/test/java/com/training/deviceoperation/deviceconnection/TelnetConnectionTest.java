@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.training.deviceoperation.deviceconnection.ConnectionFactory;
@@ -16,9 +18,12 @@ import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
 
 public class TelnetConnectionTest {
 
+	private String TableName = "interface";
 	ConnectionFactory connectionFactory = new ConnectionFactory();
-	private ConnectionRouter connection;
+	private static ConnectionRouter connection;
 	String result = null;
+	static connectionToMySQL con;
+	ArrayList<EthernetProtocolEndpoint> epeList;
 
 	@Before
 	public void setup() {
@@ -26,6 +31,11 @@ public class TelnetConnectionTest {
 		connection = ConnectionFactory.createConnection("TELNET");
 		connection.setHost("192.168.50.200");
 		connection.setPort(23);
+	
+	}
+	@BeforeClass
+	public static void createConnectionToSQL() {
+		 con = new connectionToMySQL();
 
 	}
 
@@ -45,16 +55,20 @@ public class TelnetConnectionTest {
 
 	@Test
 	public void testCLIParser() throws IOException {
-		result = connection.connectToDevice();
-		ArrayList<EthernetProtocolEndpoint> epeList = (ArrayList<EthernetProtocolEndpoint>) connection
+		//result = connection.connectToDevice();
+		 epeList = (ArrayList<EthernetProtocolEndpoint>) connection
 				.createEthernetPE();
 		//send data to dataBase
-		connectionToMySQL con = new connectionToMySQL();
-		/*for (int j = 0; j < epeList.size(); j++)
+		
+		for (int j = 0; j < epeList.size(); j++)
 		{
 			
 			System.out.println(epeList.get(j));
-		}*/
+		}
+		
+	}
+	@Test
+	public void testInsert() {
 		for (int j = 0; j < epeList.size(); j++)
 		{
 			
@@ -65,11 +79,18 @@ public class TelnetConnectionTest {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//System.out.println(epeList.get(j));
-		}	//con.select();
-		con.delete("GigabitEthernet0");
+			
+		}	
+	}
+	@Test
+	public void testUpdate() {
 		con.update("GigabitEthernet0/0/3", "reemEthernet123");
 	}
+	@Test
+	public void testDelete() {
+		con.delete("GigabitEthernet0",TableName);
+	}
+
 
 //	@Test(expected = IllegalArgumentException.class)
 //	public void testHost() {
@@ -85,8 +106,8 @@ public class TelnetConnectionTest {
 //	 * connection.connectToDevice("", 53); }
 //	 */
 
-	@After
-	public void teardown() throws IOException {
+	@AfterClass
+	public static void teardown() throws IOException {
 		if (connection != null) {
 			connection.disconnectConnection();
 			connection = null;
