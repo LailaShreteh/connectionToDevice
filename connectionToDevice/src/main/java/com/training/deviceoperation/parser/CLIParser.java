@@ -10,13 +10,11 @@ import java.util.regex.Pattern;
  */
 
 public class CLIParser implements Parser {
-	public enum enumType {
-		up, down, testing,
-
-	}
-	public enum enumType_Duplex {
-		unknown, Half, Full,
-	}
+	/*
+	 * public enum enumType { up, down, testing,
+	 * 
+	 * }
+	 */
 
 	final static String INTERFACE = "[A-Z][A-Za-z]+[0-9/]*";
 	final static String ADMIN_STATUS = "\\w+";
@@ -26,10 +24,10 @@ public class CLIParser implements Parser {
 	final static String DUPLEX = "\\w+";
 	final static String DUPLEX_SPEED = "\\d+";
 	String ifName;
-	enumType ifStatus;
-	enumType ifOperStatus;
+	Status ifStatus;
+	Status ifOperStatus;
 	int ifMTU;
-	enumType_Duplex duplexMode;
+	DuplexMode duplexMode;
 	String ifSpeed;
 	String macAddress;
 
@@ -47,52 +45,53 @@ public class CLIParser implements Parser {
 		Matcher matcher = pattern.matcher(cmd);
 		if (matcher.find()) {
 			ifName = matcher.group(1);
-			
-			enumType adminState = enumType.valueOf(matcher.group(2)); 
+
+			Status adminState = Status.valueOf(matcher.group(2));
 			switch (adminState) {
 			case up:
-				ifStatus = enumType.up;
+				ifStatus = Status.up;
 				break;
 			case down:
-				ifStatus = enumType.down;
+				ifStatus = Status.down;
 				break;
 			case testing:
-				ifStatus = enumType.testing;
-				break;
-			default:
-				break;
-			};
-			enumType operationalStatus = enumType.valueOf(matcher.group(3)); 
-
-			switch (operationalStatus) {
-			case up:
-				ifOperStatus = enumType.up;
-				break;
-			case down:
-				ifOperStatus = enumType.down;
-				break;
-			case testing:
-				ifOperStatus = enumType.testing;
+				ifStatus = Status.testing;
 				break;
 			default:
 				break;
 			}
-			;
+
+			// enumType operationalStatus = enumType.valueOf(matcher.group(3));
+
+			Status status = Status.valueOf(matcher.group(3));
+			switch (status) {
+			case up:
+				ifOperStatus = Status.up;
+				break;
+			case down:
+				ifOperStatus = Status.down;
+				break;
+			case testing:
+				ifOperStatus = Status.testing;
+				break;
+			default:
+				break;
+			}
 
 			ifMTU = Integer.parseInt(matcher.group(5));
-			//System.out.println(matcher.group(6));
-			enumType_Duplex duplex = enumType_Duplex.valueOf(matcher.group(6)); 
+			// System.out.println(matcher.group(6));
+			DuplexMode duplex = DuplexMode.valueOf(matcher.group(6));
 
 			switch (duplex) {
 			// case "unknown":duplexMode.add(enumType2.unknown); break;
 			case Half:
-				duplexMode = enumType_Duplex.Half;
+				duplexMode = DuplexMode.Half;
 				break;
 			case Full:
-				duplexMode = enumType_Duplex.Full;
+				duplexMode = DuplexMode.Full;
 				break;
 			default:
-				duplexMode = enumType_Duplex.unknown;
+				duplexMode = DuplexMode.unknown;
 				break;
 			}
 			;
