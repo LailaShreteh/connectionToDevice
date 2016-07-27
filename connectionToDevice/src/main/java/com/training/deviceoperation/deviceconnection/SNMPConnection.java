@@ -7,6 +7,8 @@ import org.snmp4j.Snmp;
 import org.snmp4j.TransportMapping;
 import org.snmp4j.transport.DefaultUdpTransportMapping;
 
+import com.training.deviceoperation.deviceconnection.model.ACL;
+import com.training.deviceoperation.deviceconnection.model.Interface;
 import com.training.deviceoperation.parser.*;
 
 public class SNMPConnection implements ConnectionRouter {
@@ -36,10 +38,6 @@ public class SNMPConnection implements ConnectionRouter {
 		}
 	}
 
-	public List<String> getInterfaces() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void disconnectConnection() {
 		// TODO Auto-generated method stub
@@ -58,6 +56,18 @@ public class SNMPConnection implements ConnectionRouter {
 
 	@Override
 	public List<EthernetProtocolEndpoint> createEthernetPE() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ACL> getACL() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Interface> getInterfaces() {
 		// TODO Auto-generated method stub
 		return null;
 	}

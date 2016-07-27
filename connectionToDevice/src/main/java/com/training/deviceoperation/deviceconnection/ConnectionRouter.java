@@ -2,6 +2,8 @@ package com.training.deviceoperation.deviceconnection;
 
 import java.util.List;
 
+import com.training.deviceoperation.deviceconnection.model.ACL;
+import com.training.deviceoperation.deviceconnection.model.Interface;
 import com.training.deviceoperation.parser.*;
 
 /**
@@ -13,7 +15,9 @@ import com.training.deviceoperation.parser.*;
 public interface ConnectionRouter {
 	public void disconnectConnection();
 
-	public List<String> getInterfaces();
+	public List<ACL> getACL();
+
+	public List<Interface> getInterfaces();
 
 	public void setHost(String host);
 

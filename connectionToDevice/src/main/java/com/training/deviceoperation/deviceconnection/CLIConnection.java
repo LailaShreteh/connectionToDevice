@@ -3,9 +3,12 @@ package com.training.deviceoperation.deviceconnection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.training.deviceoperation.deviceconnection.model.ACL;
+import com.training.deviceoperation.deviceconnection.model.Interface;
 import com.training.deviceoperation.parser.CLIParser;
 import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
 import com.training.deviceoperation.parser.Parser;
+
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -28,8 +31,8 @@ public abstract class CLIConnection implements ConnectionRouter {
 	private String cmdBack;
 	private String host;
 	private int port;
-	private List<String> interfaces;
-
+	private List<Interface> interfaces;
+	private List<ACL> ACL;
 	/**
 	 * Constructor to initialize default construct for children
 	 */
@@ -58,27 +61,39 @@ public abstract class CLIConnection implements ConnectionRouter {
 	 * @return - a list of all interfaces.
 	 ***/
 
-	public List<String> getInterfaces() {
+	public List<Interface> getInterfaces() {
 
 		write("sh ip int br");
 		cmdBack = readUntil("#");
 		String pattern = "[^\\s]+";
 		Pattern r = Pattern.compile(pattern);
 		// TODO get output and convert it to list
-		interfaces = new ArrayList<String>();
+		interfaces = new ArrayList<Interface>();
+		Interface inter;
 		String[] lines = cmdBack.split(System.getProperty("line.separator"));
 		for (int i = 2; i < lines.length - 1; i++) {
 			Matcher m = r.matcher(lines[i]);
 			if (m.find()) {
 				String s = m.group(0);
 				s = s + " "; // to avoid conflict in interfaces names :3
-				interfaces.add(s);
+				inter = new Interface();
+				inter.setInterfaceName(s);
+				interfaces.add(inter);
 			}
 		}
 
 		// TODO return list<interface>
 		return interfaces;
 	}
+	public List<ACL> getACL() {
+
+		write("show access-list");
+		cmdBack = readUntil("#");
+		System.out.println(cmdBack);
+		return null;
+		
+	}
+
 
 	/***
 	 * readUntil method to read the output from Telnet or SSH commands.
@@ -136,10 +151,10 @@ public abstract class CLIConnection implements ConnectionRouter {
 		for (int i = 0; i < interfaces.size(); i++) {
 			if (i == interfaces.size() - 1) {
 
-				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i)), cmdBack.length());
+				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i).getInterfaceName()), cmdBack.length());
 			} else {
-				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i)),
-						cmdBack.indexOf(interfaces.get(i + 1)));
+				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i).getInterfaceName()),
+						cmdBack.indexOf(interfaces.get(i + 1).getInterfaceName()));
 			}
 			// System.out.println(interfaceInform);
 			EthernetProtocolEndpoint ep = pars.parsEthernetPE(interfaceInform);
