@@ -5,8 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.AfterClass;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -31,101 +30,112 @@ public class TelnetConnectionTest {
 		connection = ConnectionFactory.createConnection("TELNET");
 		connection.setHost("192.168.50.200");
 		connection.setPort(23);
-	
+
 	}
+
 	@BeforeClass
 	public static void createConnectionToSQL() {
-		 con = new connectionToMySQL();
+		con = new connectionToMySQL();
 
 	}
 
 	@Test
 	public void testConnectClass() {
-		try {
-			result = connection.connectToDevice();
-		
-			assertNotNull(result);
-			assertEquals("Sucess", result);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.getMessage();
-			assertEquals("Fail to connect x_x", result);
-		}
+
+		result = connection.connectToDevice();
+		assertNotNull(result);
+		assertEquals("Sucess", result);
+		connection.disconnectConnection();
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testFailureConnection() {
+		connection.setHost("8.8.8.8"); // not our device !!
+		result = connection.connectToDevice();
+		assertEquals("Fail to connect x_x", result);
+		connection.disconnectConnection();
 	}
 
 	@Test
 	public void testCLIParser() throws IOException {
 		result = connection.connectToDevice();
-		 epeList = (ArrayList<EthernetProtocolEndpoint>) connection
-				.createEthernetPE();
-		//send data to dataBase
-		
-		for (int j = 0; j < epeList.size(); j++)
-		{
-			
+		epeList = (ArrayList<EthernetProtocolEndpoint>) connection.createEthernetPE();
+		// send data to dataBase
+
+		for (int j = 0; j < epeList.size(); j++) {
+
 			System.out.println(epeList.get(j));
 		}
-		for (int j = 0; j < epeList.size(); j++)
-		{
-			
+		for (int j = 0; j < epeList.size(); j++) {
+
 			try {
 				con.insert(epeList.get(j));
-				
+
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-		}	
-		
+
+		}
+		connection.disconnectConnection();
+
 	}
+
 	@Test
 	public void testInsert() {
-		 con = new connectionToMySQL();
+		con = new connectionToMySQL();
 
-	
 	}
+
 	@Test
 	public void testUpdate() {
 		con.update("GigabitEthernet0/0/3", "reemEthernet123");
 	}
+
 	@Test
 	public void testDelete() {
-		con.delete("GigabitEthernet0",TableName);
-		
+		con.delete("GigabitEthernet0", TableName);
+
 	}
+
 	@Test
 	public void testGetInterfaces() {
 		result = connection.connectToDevice();
 		connection.getInterfaces();
+		connection.disconnectConnection();
+
 	}
+
 	@Test
 	public void testGetACL() {
 		result = connection.connectToDevice();
 		connection.getACL();
-	}
-	
-//	@Test(expected = IllegalArgumentException.class)
-//	public void testHost() {
-//		connection.setHost(null);
-//		String re = connection.connectToDevice();
-//		//String expResult = "Fail";
-//		//assertEquals(expResult, re);
-//	}
-//
-//	/*
-//	 * @Test(expected = IllegalArgumentException.class) public void
-//	 * testConnectClass_failureCase_hostIsBlank() {
-//	 * connection.connectToDevice("", 53); }
-//	 */
-
-	@AfterClass
-	public static void teardown() throws IOException {
-		if (connection != null) {
-			connection.disconnectConnection();
-			connection = null;
-		}
+		connection.disconnectConnection();
 
 	}
+
+	// @Test(expected = IllegalArgumentException.class)
+	// public void testHost() {
+	// connection.setHost(null);
+	// String re = connection.connectToDevice();
+	// //String expResult = "Fail";
+	// //assertEquals(expResult, re);
+	// }
+	//
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testConnectClass_failureCase_hostIsBlank() {
+		connection.setHost("");
+		connection.connectToDevice();
+		connection.disconnectConnection();
+	}
+
+	/*
+	 * @AfterClass public static void teardown() throws IOException { if
+	 * (connection != null) { connection.disconnectConnection(); connection =
+	 * null; }
+	 * 
+	 * }
+	 */
 
 }
