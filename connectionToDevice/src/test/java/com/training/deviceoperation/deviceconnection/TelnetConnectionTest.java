@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import static org.junit.Assert.*;
 
-
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -49,8 +48,16 @@ public class TelnetConnectionTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testFailureConnection() {
-		connection.setPort(98); // not our device !!
+	public void testFailureConnectionPort() {
+		connection.setPort(98); // not the right port !!
+		result = connection.connectToDevice();
+		assertEquals("Fail to connect x_x", result);
+		connection.disconnectConnection();
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testFailureConnectionHost() {
+		connection.setHost("9.9.9.9"); // not our device !!
 		result = connection.connectToDevice();
 		assertEquals("Fail to connect x_x", result);
 		connection.disconnectConnection();
