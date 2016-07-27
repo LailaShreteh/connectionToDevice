@@ -46,7 +46,7 @@ public class TelnetConnectionTest {
 		assertEquals("Sucess", result);
 		connection.disconnectConnection();
 	}
-
+/*
 	@Test(expected = IllegalArgumentException.class)
 	public void testFailureConnectionPort() {
 		connection.setPort(98); // not the right port !!
@@ -66,7 +66,7 @@ public class TelnetConnectionTest {
 	@Test
 	public void testCLIParser() throws IOException {
 		result = connection.connectToDevice();
-		epeList = (ArrayList<EthernetProtocolEndpoint>) connection.createEthernetPE();
+		epeList = (ArrayList<EthernetProtocolEndpoint>) connection.getEthernetPE();
 		// send data to dataBase
 
 		for (int j = 0; j < epeList.size(); j++) {
@@ -112,7 +112,7 @@ public class TelnetConnectionTest {
 		connection.disconnectConnection();
 
 	}
-
+*/
 	@Test
 	public void testGetACL() {
 		result = connection.connectToDevice();

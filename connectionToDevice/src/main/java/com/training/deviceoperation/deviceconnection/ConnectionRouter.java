@@ -26,6 +26,6 @@ public interface ConnectionRouter {
 
 	public String connectToDevice();
 
-	public List<EthernetProtocolEndpoint> createEthernetPE();
+	public List<EthernetProtocolEndpoint> getEthernetPE();
 
 }

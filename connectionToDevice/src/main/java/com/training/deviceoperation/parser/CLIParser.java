@@ -26,6 +26,15 @@ public class CLIParser implements Parser {
 	final static String MTU = "\\d+";
 	final static String DUPLEX = "\\w+";
 	final static String DUPLEX_SPEED = "\\d+";
+
+	final static String ACESS_LIST_TYPE = "^[?:Standard|Extended].*";
+	final static String IP_ACCESS_LIST_NUM = "\\w+";
+	final static String ACCESS_LIST_MODE_NUMBER = "\\w+";
+	final static String SOURCE_IP = "[0-9.any]*";
+	final static String WILDCARD_SOURCE_IP = "[0-9.]*";
+	final static String DES_IP = "[0-9.any]*";
+	final static String WILDCARD_DES_IP = "[0-9.]*";
+
 	String ifName;
 	Status ifStatus;
 	Status ifOperStatus;
@@ -33,6 +42,12 @@ public class CLIParser implements Parser {
 	DuplexMode duplexMode;
 	String ifSpeed;
 	String macAddress;
+
+	String IPAccessListType;
+	int IPAccessListNum;
+	int modeNum;
+	String sourceIP;
+	String desIP;
 
 	/**
 	 * see @com.training.deviceoperation.parser.Parser
@@ -107,13 +122,39 @@ public class CLIParser implements Parser {
 
 		return ep;
 	}
+
 	public ACL parsACL(String cmd) {
-		cmd = cmd.replace("\n", "");
-		cmd = cmd.replace("\r", " ");
-		System.out.println(cmd);
-		
-		
-		
-		return null;
+		//System.out.println("LLL" + cmd);
+		cmd = cmd.trim();
+		String[] splited = cmd.split("     ");
+		String regex = "(" + ACESS_LIST_TYPE + ") IP access list (" + IP_ACCESS_LIST_NUM + ")";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(splited[0]);
+		if (matcher.find()) {
+			IPAccessListType = matcher.group(1);
+			IPAccessListNum = Integer.parseInt(matcher.group(2));
+
+			regex = "(" + ACCESS_LIST_MODE_NUMBER + ") [?:permit|deny|permit ip|deny ip]* " + "(" + SOURCE_IP + ")" ;//("	+ WILDCARD_SOURCE_IP + ")";
+			pattern = Pattern.compile(regex);
+			for (int i = 1; i < splited.length; i++) {
+				//System.out.println(splited[i]);
+				matcher = pattern.matcher(splited[i]);
+				if (matcher.find()) {
+					System.out.println(matcher.group(1));
+					modeNum = Integer.parseInt(matcher.group(1));
+					// sourceIP = matcher.group(2);
+
+					/*
+					 * switch (IPAccessListType) { case "Standard": desIP = "";
+					 * //!! break; case "Extended": sourceIP = matcher.group(5);
+					 * break; default: break; }
+					 */
+				}
+			}
+
+		}
+
+		ACL acl = new ACL(IPAccessListType, IPAccessListNum, modeNum, sourceIP, desIP);
+		return acl;
 	}
 }

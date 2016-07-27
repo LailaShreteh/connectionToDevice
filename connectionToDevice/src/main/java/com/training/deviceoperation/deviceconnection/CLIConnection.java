@@ -9,7 +9,6 @@ import com.training.deviceoperation.deviceconnection.model.Interface;
 import com.training.deviceoperation.parser.CLIParser;
 import com.training.deviceoperation.parser.Parser;
 
-
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -32,7 +31,9 @@ public abstract class CLIConnection implements ConnectionRouter {
 	private String host;
 	private int port;
 	private List<Interface> interfaces;
+	private List<ACL> accessLists;
 	private List<ACL> ACL;
+
 	/**
 	 * Constructor to initialize default construct for children
 	 */
@@ -85,15 +86,6 @@ public abstract class CLIConnection implements ConnectionRouter {
 		// TODO return list<interface>
 		return interfaces;
 	}
-	public List<ACL> getACL() {
-
-		write("show access-list");
-		cmdBack = readUntil("#");
-		//System.out.println(cmdBack);
-		return null;
-		
-	}
-
 
 	/***
 	 * readUntil method to read the output from Telnet or SSH commands.
@@ -140,7 +132,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 		}
 	}
 
-	public List<EthernetProtocolEndpoint> createEthernetPE() {
+	public List<EthernetProtocolEndpoint> getEthernetPE() {
 		List<EthernetProtocolEndpoint> epList = new ArrayList<EthernetProtocolEndpoint>();
 		String interfaceInform;
 		Parser pars = new CLIParser();
@@ -151,7 +143,8 @@ public abstract class CLIConnection implements ConnectionRouter {
 		for (int i = 0; i < interfaces.size(); i++) {
 			if (i == interfaces.size() - 1) {
 
-				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i).getInterfaceName()), cmdBack.length());
+				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i).getInterfaceName()),
+						cmdBack.length());
 			} else {
 				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i).getInterfaceName()),
 						cmdBack.indexOf(interfaces.get(i + 1).getInterfaceName()));
@@ -164,29 +157,38 @@ public abstract class CLIConnection implements ConnectionRouter {
 		return epList;
 
 	}
-	public List<ACL> createACL() {
-		List<EthernetProtocolEndpoint> epList = new ArrayList<EthernetProtocolEndpoint>();
-		String interfaceInform;
-		Parser pars = new CLIParser();
-		this.getInterfaces();
-		write("sh int");
+
+	public List<ACL> getACL() {
+
+		write("show access-list");
 		cmdBack = readUntil("#");
+		cmdBack = cmdBack.replace("show access-list", "");
+		cmdBack = cmdBack.replace("ASR1002_Omar#", "");
+		cmdBack = cmdBack.replace("Standard", " % Standard");
+		cmdBack = cmdBack.replace("Extended", " % Extended");
+		cmdBack = cmdBack.replace("     ", "$$");
 
-		for (int i = 0; i < interfaces.size(); i++) {
-			if (i == interfaces.size() - 1) {
-
-				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i).getInterfaceName()), cmdBack.length());
-			} else {
-				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i).getInterfaceName()),
-						cmdBack.indexOf(interfaces.get(i + 1).getInterfaceName()));
-			}
-			// System.out.println(interfaceInform);
-			EthernetProtocolEndpoint ep = pars.parsEthernetPE(interfaceInform);
-			epList.add(ep);
+		cmdBack = cmdBack.replace("\n", "");
+		cmdBack = cmdBack.replace("\r", " ");
+		cmdBack = cmdBack.trim();
+		String[] splited = cmdBack.split("%");
+		/*
+		 * for (int i = 0; i < splited.length; i++) {
+		 * System.out.println(splited[i]);
+		 * 
+		 * }
+		 */
+		List<ACL> ACLList = new ArrayList<ACL>();
+		String ACLInform;
+		Parser pars = new CLIParser();
+		for (int i = 1; i < splited.length; i++) {
+			ACL ep = pars.parsACL(splited[i]);
+			ACLList.add(ep);
 		}
 
-		return epList;
+		//System.out.println(ACL);
 
+		return ACL;
 	}
 
 	/**
