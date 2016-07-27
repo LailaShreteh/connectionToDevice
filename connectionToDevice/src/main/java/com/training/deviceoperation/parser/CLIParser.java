@@ -3,6 +3,8 @@ package com.training.deviceoperation.parser;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.training.deviceoperation.deviceconnection.model.ACL;
+
 /**
  * 
  * @author user
@@ -103,5 +105,11 @@ public class CLIParser implements Parser {
 				ifSpeed, macAddress);
 
 		return ep;
+	}
+	public ACL parsACL(String cmd) {
+		
+		
+		
+		return null;
 	}
 }

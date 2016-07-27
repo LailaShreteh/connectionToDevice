@@ -43,7 +43,7 @@ public class TelnetConnectionTest {
 	public void testConnectClass() {
 		try {
 			result = connection.connectToDevice();
-			connection.getInterfaces();
+		
 			assertNotNull(result);
 			assertEquals("Sucess", result);
 		} catch (Exception e) {
@@ -55,7 +55,7 @@ public class TelnetConnectionTest {
 
 	@Test
 	public void testCLIParser() throws IOException {
-		//result = connection.connectToDevice();
+		result = connection.connectToDevice();
 		 epeList = (ArrayList<EthernetProtocolEndpoint>) connection
 				.createEthernetPE();
 		//send data to dataBase
@@ -65,10 +65,6 @@ public class TelnetConnectionTest {
 			
 			System.out.println(epeList.get(j));
 		}
-		
-	}
-	@Test
-	public void testInsert() {
 		for (int j = 0; j < epeList.size(); j++)
 		{
 			
@@ -81,6 +77,13 @@ public class TelnetConnectionTest {
 			}
 			
 		}	
+		
+	}
+	@Test
+	public void testInsert() {
+		 con = new connectionToMySQL();
+
+	
 	}
 	@Test
 	public void testUpdate() {
@@ -89,9 +92,19 @@ public class TelnetConnectionTest {
 	@Test
 	public void testDelete() {
 		con.delete("GigabitEthernet0",TableName);
+		
 	}
-
-
+	@Test
+	public void testGetInterfaces() {
+		result = connection.connectToDevice();
+		connection.getInterfaces();
+	}
+	@Test
+	public void testGetACL() {
+		result = connection.connectToDevice();
+		connection.getACL();
+	}
+	
 //	@Test(expected = IllegalArgumentException.class)
 //	public void testHost() {
 //		connection.setHost(null);
