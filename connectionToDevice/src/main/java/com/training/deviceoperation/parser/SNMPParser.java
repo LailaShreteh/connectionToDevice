@@ -1,5 +1,7 @@
 package com.training.deviceoperation.parser;
 
+import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
+
 public class SNMPParser implements Parser {
 
 	@Override

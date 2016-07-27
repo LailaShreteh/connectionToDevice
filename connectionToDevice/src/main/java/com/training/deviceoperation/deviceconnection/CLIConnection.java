@@ -4,9 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.training.deviceoperation.deviceconnection.model.ACL;
+import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 import com.training.deviceoperation.deviceconnection.model.Interface;
 import com.training.deviceoperation.parser.CLIParser;
-import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
 import com.training.deviceoperation.parser.Parser;
 
 
@@ -89,7 +89,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 
 		write("show access-list");
 		cmdBack = readUntil("#");
-		System.out.println(cmdBack);
+		//System.out.println(cmdBack);
 		return null;
 		
 	}
@@ -141,6 +141,30 @@ public abstract class CLIConnection implements ConnectionRouter {
 	}
 
 	public List<EthernetProtocolEndpoint> createEthernetPE() {
+		List<EthernetProtocolEndpoint> epList = new ArrayList<EthernetProtocolEndpoint>();
+		String interfaceInform;
+		Parser pars = new CLIParser();
+		this.getInterfaces();
+		write("sh int");
+		cmdBack = readUntil("#");
+
+		for (int i = 0; i < interfaces.size(); i++) {
+			if (i == interfaces.size() - 1) {
+
+				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i).getInterfaceName()), cmdBack.length());
+			} else {
+				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i).getInterfaceName()),
+						cmdBack.indexOf(interfaces.get(i + 1).getInterfaceName()));
+			}
+			// System.out.println(interfaceInform);
+			EthernetProtocolEndpoint ep = pars.parsEthernetPE(interfaceInform);
+			epList.add(ep);
+		}
+
+		return epList;
+
+	}
+	public List<ACL> createACL() {
 		List<EthernetProtocolEndpoint> epList = new ArrayList<EthernetProtocolEndpoint>();
 		String interfaceInform;
 		Parser pars = new CLIParser();

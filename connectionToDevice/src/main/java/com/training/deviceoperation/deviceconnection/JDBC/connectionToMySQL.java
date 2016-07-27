@@ -6,8 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
+import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 
 public class connectionToMySQL {
 	// JDBC driver name and database URL

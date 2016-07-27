@@ -3,6 +3,7 @@ package com.training.deviceoperation.deviceconnection;
 import java.util.List;
 
 import com.training.deviceoperation.deviceconnection.model.ACL;
+import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 import com.training.deviceoperation.deviceconnection.model.Interface;
 import com.training.deviceoperation.parser.*;
 

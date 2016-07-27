@@ -1,10 +1,12 @@
-package com.training.deviceoperation.parser;
+package com.training.deviceoperation.deviceconnection.model;
 /**
  * 
  * @author user
  *
  */
 
+import com.training.deviceoperation.parser.DuplexMode;
+import com.training.deviceoperation.parser.Status;
 
 /**
  * The EthernetProtocolEndpoint class to get each interface and it's data as an

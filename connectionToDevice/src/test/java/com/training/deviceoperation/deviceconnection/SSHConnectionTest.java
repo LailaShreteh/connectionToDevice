@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import com.training.deviceoperation.deviceconnection.ConnectionFactory;
 import com.training.deviceoperation.deviceconnection.ConnectionRouter;
-import com.training.deviceoperation.parser.EthernetProtocolEndpoint;
+import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 
 /**
  * 
