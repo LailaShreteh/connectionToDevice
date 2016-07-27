@@ -50,7 +50,7 @@ public class TelnetConnectionTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testFailureConnection() {
-		connection.setHost("8.8.8.8"); // not our device !!
+		connection.setPort(98); // not our device !!
 		result = connection.connectToDevice();
 		assertEquals("Fail to connect x_x", result);
 		connection.disconnectConnection();
