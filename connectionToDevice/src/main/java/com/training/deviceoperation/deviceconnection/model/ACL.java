@@ -6,6 +6,8 @@ public class ACL {
 	protected int IPAccessListNum;
 	protected int AccessListModeNumber; // for permit or deny
 	protected String IPAccessListType; //standard or extended.....
+	protected String WildCardDesIP;
+	protected String WildCardSourceIP;
 
 	public int getIPAccessListNum() {
 		return IPAccessListNum;
@@ -19,12 +21,31 @@ public class ACL {
 		return AccessListModeNumber;
 	}
 
-	public ACL(String iPAccessListType, int iPAccessListNum,  int accessListModeNumber, String sourceIP, String desIP) {
+	public ACL(String iPAccessListType, int iPAccessListNum,  int accessListModeNumber, String sourceIP,String WildCardSourceIP, String desIP,String WildCardDesIP) {
 		this.desIP = desIP;
 		this.sourceIP = sourceIP;
-		IPAccessListNum = iPAccessListNum;
-		AccessListModeNumber = accessListModeNumber;
-		IPAccessListType = iPAccessListType;
+		this.IPAccessListNum = iPAccessListNum;
+		this.AccessListModeNumber = accessListModeNumber;
+		this.IPAccessListType = iPAccessListType;
+		this.WildCardDesIP=WildCardDesIP;
+		this.WildCardSourceIP=WildCardSourceIP;
+		
+	}
+
+	public String getWildCardDesIP() {
+		return WildCardDesIP;
+	}
+
+	public void setWildCardDesIP(String wildCardDesIP) {
+		WildCardDesIP = wildCardDesIP;
+	}
+
+	public String getWildCardSourceIP() {
+		return WildCardSourceIP;
+	}
+
+	public void setWildCardSourceIP(String wildCardSourceIP) {
+		WildCardSourceIP = wildCardSourceIP;
 	}
 
 	public void setAccessListModeNumber(int accessListModeNumber) {
@@ -64,6 +85,6 @@ public class ACL {
 	}
 	@Override
 	public String toString() {
-		return ("**" + IPAccessListType + " || \t" + IPAccessListNum+ " || \t" + AccessListModeNumber + " || \t" + desIP );
+		return ("**" + IPAccessListType + " || \t" + IPAccessListNum+ " || \t" + AccessListModeNumber + " || \t" + sourceIP+ " || \t" + WildCardSourceIP + " || \t" +desIP+" || \t"+WildCardDesIP );
 	}
 }

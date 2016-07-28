@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 import com.training.deviceoperation.deviceconnection.model.ACL;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 import com.training.deviceoperation.deviceconnection.model.Interface;
+import com.training.deviceoperation.deviceconnection.model.Policy_map;
 import com.training.deviceoperation.parser.CLIParser;
 import com.training.deviceoperation.parser.Parser;
 
@@ -31,8 +32,6 @@ public abstract class CLIConnection implements ConnectionRouter {
 	private String host;
 	private int port;
 	private List<Interface> interfaces;
-	private List<ACL> accessLists;
-	private List<ACL> ACL;
 
 	/**
 	 * Constructor to initialize default construct for children
@@ -131,6 +130,10 @@ public abstract class CLIConnection implements ConnectionRouter {
 			e.printStackTrace();
 		}
 	}
+	public List<Policy_map> getPolicy_map()
+	{
+		
+	}
 
 	public List<EthernetProtocolEndpoint> getEthernetPE() {
 		List<EthernetProtocolEndpoint> epList = new ArrayList<EthernetProtocolEndpoint>();
@@ -182,13 +185,13 @@ public abstract class CLIConnection implements ConnectionRouter {
 		String ACLInform;
 		Parser pars = new CLIParser();
 		for (int i = 1; i < splited.length; i++) {
-			ACL ep = pars.parsACL(splited[i]);
-			ACLList.add(ep);
+			List<ACL> acl = pars.parsACL(splited[i]);
+			ACLList.addAll(acl);
 		}
 
-		//System.out.println(ACL);
+		//System.out.println(ACLList);
 
-		return ACL;
+		return ACLList;
 	}
 
 	/**

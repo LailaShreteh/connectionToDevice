@@ -1,7 +1,7 @@
 package com.training.deviceoperation.deviceconnection.model;
 
 
-public enum direction {
+public enum Direction {
 	input,output
 
 }

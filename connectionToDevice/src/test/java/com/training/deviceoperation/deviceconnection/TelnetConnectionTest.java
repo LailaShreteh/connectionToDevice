@@ -1,7 +1,5 @@
 package com.training.deviceoperation.deviceconnection;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import static org.junit.Assert.*;
 
@@ -117,6 +115,7 @@ public class TelnetConnectionTest {
 	public void testGetACL() {
 		result = connection.connectToDevice();
 		connection.getACL();
+		
 		connection.disconnectConnection();
 
 	}

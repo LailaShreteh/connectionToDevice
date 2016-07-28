@@ -22,6 +22,5 @@ public interface Parser {
 	 */
 	EthernetProtocolEndpoint parsEthernetPE(String cmdBack);
 
-	public ACL parsACL(String cmd);
-
+	public List<ACL> parsACL(String cmd);
 }
