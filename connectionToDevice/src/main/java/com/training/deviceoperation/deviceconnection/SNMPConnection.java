@@ -8,6 +8,7 @@ import org.snmp4j.TransportMapping;
 import org.snmp4j.transport.DefaultUdpTransportMapping;
 
 import com.training.deviceoperation.deviceconnection.model.ACL;
+import com.training.deviceoperation.deviceconnection.model.Class_map;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 import com.training.deviceoperation.deviceconnection.model.Interface;
 import com.training.deviceoperation.deviceconnection.model.Policy_map;
@@ -76,6 +77,12 @@ public class SNMPConnection implements ConnectionRouter {
 
 	@Override
 	public List<Policy_map> getPolicy_map() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Class_map> getClass_map() {
 		// TODO Auto-generated method stub
 		return null;
 	}

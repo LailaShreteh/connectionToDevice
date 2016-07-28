@@ -44,7 +44,7 @@ public class TelnetConnectionTest {
 		assertEquals("Sucess", result);
 		connection.disconnectConnection();
 	}
-/*
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testFailureConnectionPort() {
 		connection.setPort(98); // not the right port !!
@@ -61,8 +61,8 @@ public class TelnetConnectionTest {
 		connection.disconnectConnection();
 	}
 
-	@Test
-	public void testCLIParser() throws IOException {
+/*	@Test
+	public void testCLIParser() {
 		result = connection.connectToDevice();
 		epeList = (ArrayList<EthernetProtocolEndpoint>) connection.getEthernetPE();
 		// send data to dataBase
@@ -84,7 +84,7 @@ public class TelnetConnectionTest {
 		}
 		connection.disconnectConnection();
 
-	}
+	}*/
 
 	@Test
 	public void testInsert() {
@@ -92,7 +92,7 @@ public class TelnetConnectionTest {
 
 	}
 
-	@Test
+/*	@Test
 	public void testUpdate() {
 		con.update("GigabitEthernet0/0/3", "reemEthernet123");
 	}
@@ -101,7 +101,7 @@ public class TelnetConnectionTest {
 	public void testDelete() {
 		con.delete("GigabitEthernet0", TableName);
 
-	}
+	}*/
 
 	@Test
 	public void testGetInterfaces() {
@@ -110,7 +110,7 @@ public class TelnetConnectionTest {
 		connection.disconnectConnection();
 
 	}
-*/
+
 /*	@Test
 	public void testGetACL() {
 		result = connection.connectToDevice();
@@ -126,13 +126,13 @@ public class TelnetConnectionTest {
 
 	}
 
-/*	@Test
+	@Test
 	public void testGetPolicy_map() {
 		result = connection.connectToDevice();
 		connection.getPolicy_map();
 		connection.disconnectConnection();
 
-	}*/
+	}
 	// @Test(expected = IllegalArgumentException.class)
 	// public void testHost() {
 	// connection.setHost(null);
