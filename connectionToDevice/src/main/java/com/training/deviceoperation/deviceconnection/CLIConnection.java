@@ -132,6 +132,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 	}
 	public List<Policy_map> getPolicy_map()
 	{
+		return null;
 		
 	}
 
