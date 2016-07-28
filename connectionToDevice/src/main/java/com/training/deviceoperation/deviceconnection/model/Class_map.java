@@ -1,23 +1,22 @@
 package com.training.deviceoperation.deviceconnection.model;
 
-public class class_map {
+public class Class_map {
 	private String className;
 	private String classMapConfigurationMode;// match-all or match-any
 	private String description;
-	private String MatchType;// match access-group .......
+	private String MatchType;// match access-group(ACL)/class-map(NAME)/protocol(NAME) .......
 
-	public String getClassName() {
-		return className;
-	}
 
-	public class_map(String className, String classMapConfigurationMode, String description, String matchType) {
-		super();
+
+	public Class_map(String className, String classMapConfigurationMode, String description, String matchType) {
 		this.className = className;
 		this.classMapConfigurationMode = classMapConfigurationMode;
 		this.description = description;
-		MatchType = matchType;
+		this.MatchType = matchType;
 	}
-
+	public String getClassName() {
+		return className;
+	}
 	public void setClassName(String className) {
 		this.className = className;
 	}

@@ -10,6 +10,18 @@ public class Policy_map {
 	private String police;
 	private String service_policy;
 
+	public Policy_map(String policy_name, String traffic_class, String bandwidth, String priority, String queue_limit,
+			String shape, String police, String service_policy) {
+		this.policy_name = policy_name;
+		this.traffic_class = traffic_class;
+		this.bandwidth = bandwidth;
+		this.priority = priority;
+		this.queue_limit = queue_limit;
+		this.shape = shape;
+		this.police = police;
+		this.service_policy = service_policy;
+	}
+
 	public String getTraffic_class() {
 		return traffic_class;
 	}

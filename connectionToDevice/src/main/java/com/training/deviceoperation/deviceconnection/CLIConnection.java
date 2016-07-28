@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.training.deviceoperation.deviceconnection.model.ACL;
+import com.training.deviceoperation.deviceconnection.model.Class_map;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 import com.training.deviceoperation.deviceconnection.model.Interface;
 import com.training.deviceoperation.deviceconnection.model.Policy_map;
@@ -132,8 +133,35 @@ public abstract class CLIConnection implements ConnectionRouter {
 	}
 	public List<Policy_map> getPolicy_map()
 	{
-		return null;
+		List<Policy_map> policy_mapList = new ArrayList<Policy_map>();
+		Parser pars = new CLIParser();
+		write("sh policy-map");
+		cmdBack = readUntil("#");
+		cmdBack = cmdBack.replace("sh policy-map", "");
+		cmdBack = cmdBack.replace("ASR1002_Omar#", "");
+		cmdBack = cmdBack.replace("\n", "");
+		cmdBack = cmdBack.replace("\r", " ");
+		cmdBack = cmdBack.trim();
+		System.out.println(cmdBack);
+
+		return policy_mapList;
 		
+	}
+
+	public List<Class_map> getClass_map(){
+		List<Class_map> class_mapList = new ArrayList<Class_map>();
+		Parser pars = new CLIParser();
+		write("sh class-map");
+		cmdBack = readUntil("#");
+		cmdBack = cmdBack.replace("sh class-map", "");
+		cmdBack = cmdBack.replace("ASR1002_Omar#", "");
+		cmdBack = cmdBack.replace("\n", "");
+		cmdBack = cmdBack.replace("\r", " ");
+		cmdBack = cmdBack.trim();
+		System.out.println(cmdBack);
+		
+		return class_mapList;
+
 	}
 
 	public List<EthernetProtocolEndpoint> getEthernetPE() {

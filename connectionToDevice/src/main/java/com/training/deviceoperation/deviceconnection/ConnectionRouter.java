@@ -3,9 +3,11 @@ package com.training.deviceoperation.deviceconnection;
 import java.util.List;
 
 import com.training.deviceoperation.deviceconnection.model.ACL;
+import com.training.deviceoperation.deviceconnection.model.Class_map;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 import com.training.deviceoperation.deviceconnection.model.Interface;
 import com.training.deviceoperation.deviceconnection.model.Policy_map;
+
 /**
  * 
  * @author user
@@ -20,6 +22,8 @@ public interface ConnectionRouter {
 	public List<Interface> getInterfaces();
 
 	public List<Policy_map> getPolicy_map();
+
+	public List<Class_map> getClass_map();
 
 	public void setHost(String host);
 
