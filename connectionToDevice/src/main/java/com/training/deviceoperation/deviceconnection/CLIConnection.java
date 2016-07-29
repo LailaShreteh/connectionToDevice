@@ -142,7 +142,29 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\n", "");
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
-		System.out.println(cmdBack);
+	/*	cmdBack = "policy-map policy1
+
+class class1
+ bandwidth 2000
+ queue-limit 40
+
+class class-default
+ fair-queue 16
+ queue-limit 20
+policy-map policy9
+ 
+class acl136
+  bandwidth 2000
+  queue-limit 40
+  
+ class ethernet101
+  bandwidth 3000
+  random-detect exponential-weighting-constant 10
+
+ class class-default 
+  fair-queue 10
+  queue-limit 20Related Commands"
+*/		System.out.println(cmdBack);
 
 		return policy_mapList;
 		
@@ -208,7 +230,6 @@ public abstract class CLIConnection implements ConnectionRouter {
 		/*
 		 * for (int i = 0; i < splited.length; i++) {
 		 * System.out.println(splited[i]);
-		 * 
 		 * }
 		 */
 		List<ACL> ACLList = new ArrayList<ACL>();

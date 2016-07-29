@@ -1,13 +1,11 @@
 package com.training.deviceoperation.deviceconnection.JDBC;
 
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 
 public class connectionToMySQL {
 	// JDBC driver name and database URL
@@ -19,7 +17,7 @@ public class connectionToMySQL {
 	static final String PASS = "laila";
 	static Connection conn = null;
 
-	public static void insert(String table,String id ,List list) {
+	public static void insert(String table,String coloums ,String values) throws SQLException {
 		try {
 			Class.forName(JDBC_DRIVER);
 		} catch (ClassNotFoundException e) {
@@ -29,9 +27,7 @@ public class connectionToMySQL {
 		conn = DriverManager.getConnection(DB_URL, USER, PASS);
 		Statement stmt = null;
 		stmt = conn.createStatement();
-		String sql = "INSERT INTO " + table + "where "VALUES ('" + ePE.getName() + "' , '" + ePE.getAdminStatus() + "', '"
-				+ ePE.getOperStatus() + "', " + ePE.getMtu() + ", '" + ePE.getDuplexMode() + "', '" + ePE.getIfSpeed()
-				+ "', '" + ePE.getMacAddress() + "')";
+		String sql = "INSERT INTO " + table +"("+ coloums +") VALUES (" + values+")";
 		
 		stmt.executeUpdate(sql);
 		conn.close();
