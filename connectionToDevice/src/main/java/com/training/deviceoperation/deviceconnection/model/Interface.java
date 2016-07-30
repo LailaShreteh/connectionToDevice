@@ -1,7 +1,11 @@
 package com.training.deviceoperation.deviceconnection.model;
 
+/**
+ * The Interface class represents each interface from a device.
+ * 
+ */
 public class Interface {
-	  private String interfaceName;
+	private String interfaceName;
 
 	public String getInterfaceName() {
 		return interfaceName;

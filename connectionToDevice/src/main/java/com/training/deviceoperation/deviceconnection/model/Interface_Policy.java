@@ -2,10 +2,10 @@ package com.training.deviceoperation.deviceconnection.model;
 
 public class Interface_Policy {
 	private Direction dir;
-	private Policy_map policy;
+	private PolicyMap policy;
 	private Interface Interface;
 
-	public Interface_Policy(Direction dir, Policy_map policy, Interface interface1) {
+	public Interface_Policy(Direction dir, PolicyMap policy, Interface interface1) {
 		super();
 		this.dir = dir;
 		this.policy = policy;
@@ -20,11 +20,11 @@ public class Interface_Policy {
 		this.dir = dir;
 	}
 
-	public Policy_map getPolicy() {
+	public PolicyMap getPolicy() {
 		return policy;
 	}
 
-	public void setPolicy(Policy_map policy) {
+	public void setPolicy(PolicyMap policy) {
 		this.policy = policy;
 	}
 

@@ -9,38 +9,31 @@ import com.training.deviceoperation.parser.DuplexMode;
 import com.training.deviceoperation.parser.Status;
 
 /**
- * The EthernetProtocolEndpoint class to get each interface and it's data as an
- * object.
+ * The EthernetProtocolEndpoint class represents each interface and its data.
  */
 
 public class EthernetProtocolEndpoint {
+
 	/**
 	 * List of attributes which represent each interface.
 	 * 
 	 */
-
 	protected int minOccurs;
 	protected int maxOccurs;
-	protected String description; // longStringType
+	protected String description;
 	protected DuplexMode duplexMode;
 	protected Status adminStatus;
-	protected String comments; // shortStringType
-	protected String entAliasMappingIdentifier;// longStringType
+	protected String comments;
+	protected String entAliasMappingIdentifier;
 	protected Status ethernetLoopback;
-	protected String ifSpeed;// LongQuantity "for bandwidth"
-	protected String lagEndName;// longStringType
-	protected String macAddress;// longStringType
+	protected String ifSpeed;
+	protected String lagEndName;
+	protected String macAddress;
 	protected int mtu;
 	protected Status operStatus;
-	//protected enumType_type type;
 
-	/*
-	 * public EthernetProtocolEndpoint(int minOccurs, int maxOccurs, String
-	 * description,String comments, String entAliasMappingIdentifier, String
-	 * lagEndName, enumType1 ethernetLoopback,enumType3 type){
-	 */
-	public EthernetProtocolEndpoint(String name, int mtu, Status adminStatus, Status operStatus,
-			DuplexMode duplexMode, String ifSpeed, String macAddress) {
+	public EthernetProtocolEndpoint(String name, int mtu, Status adminStatus, Status operStatus, DuplexMode duplexMode,
+			String ifSpeed, String macAddress) {
 
 		this.name = name;
 		this.mtu = mtu;
@@ -49,7 +42,6 @@ public class EthernetProtocolEndpoint {
 		this.duplexMode = duplexMode;
 		this.ifSpeed = ifSpeed;
 		this.macAddress = macAddress;
-		// System.out.println(macAddress);
 	}
 
 	protected String name;
@@ -150,9 +142,9 @@ public class EthernetProtocolEndpoint {
 	/**
 	 * @return the type
 	 */
-	/*public enumType_type getType() {
-		return type;
-	}*/
+	/*
+	 * public enumType_type getType() { return type; }
+	 */
 
 	/**
 	 * @return the name
@@ -214,18 +206,14 @@ public class EthernetProtocolEndpoint {
 		this.operStatus = operStatus;
 	}
 
-//	public void setType(enumType_type type) {
-//		this.type = type;
-//	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * toString method to print each interface and it's data as object.
+	 * toString method to print each interface and its data as object.
 	 * 
-	 * @return - each interface and it's data.
+	 * @return - each interface and its data.
 	 */
 	@Override
 	public String toString() {

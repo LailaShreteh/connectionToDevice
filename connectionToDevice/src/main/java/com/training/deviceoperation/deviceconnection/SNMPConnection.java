@@ -8,10 +8,10 @@ import org.snmp4j.TransportMapping;
 import org.snmp4j.transport.DefaultUdpTransportMapping;
 
 import com.training.deviceoperation.deviceconnection.model.ACL;
-import com.training.deviceoperation.deviceconnection.model.Class_map;
+import com.training.deviceoperation.deviceconnection.model.ClassMap;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 import com.training.deviceoperation.deviceconnection.model.Interface;
-import com.training.deviceoperation.deviceconnection.model.Policy_map;
+import com.training.deviceoperation.deviceconnection.model.PolicyMap;
 import com.training.deviceoperation.parser.*;
 
 public class SNMPConnection implements ConnectionRouter {
@@ -76,13 +76,13 @@ public class SNMPConnection implements ConnectionRouter {
 	}
 
 	@Override
-	public List<Policy_map> getPolicy_map() {
+	public List<PolicyMap> getPolicyMap() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Class_map> getClass_map() {
+	public List<ClassMap> getClassMap() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -22,5 +22,12 @@ public interface Parser {
 	 */
 	EthernetProtocolEndpoint parsEthernetPE(String cmdBack);
 
-	public List<ACL> parsACL(String cmd);
+	/**
+	 * parsACL method to parse AccessList data.
+	 * 
+	 * @param cmd
+	 *            - the string value from "show access-list" command.
+	 * @return - list of all access lists and their parsed data as an objects.
+	 */
+	List<ACL> parsACL(String cmd);
 }

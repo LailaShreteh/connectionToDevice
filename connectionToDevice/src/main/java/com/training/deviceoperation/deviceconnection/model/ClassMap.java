@@ -1,22 +1,27 @@
 package com.training.deviceoperation.deviceconnection.model;
 
-public class Class_map {
+/**
+ * The ClassMap class represents each Class Map and its criteria to define a
+ * traffic classification.
+ * 
+ */
+public class ClassMap {
 	private String className;
-	private String classMapConfigurationMode;// match-all or match-any
+	private String classMapConfigurationMode;
 	private String description;
-	private String MatchType;// match access-group(ACL)/class-map(NAME)/protocol(NAME) .......
+	private String MatchType;
 
-
-
-	public Class_map(String className, String classMapConfigurationMode, String description, String matchType) {
+	public ClassMap(String className, String classMapConfigurationMode, String description, String matchType) {
 		this.className = className;
 		this.classMapConfigurationMode = classMapConfigurationMode;
 		this.description = description;
 		this.MatchType = matchType;
 	}
+
 	public String getClassName() {
 		return className;
 	}
+
 	public void setClassName(String className) {
 		this.className = className;
 	}

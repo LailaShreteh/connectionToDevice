@@ -1,11 +1,16 @@
 package com.training.deviceoperation.deviceconnection.model;
 
+/**
+ * The ACL class represents each Access Control List and its criteria which
+ * can specified to control which packets move through a network and to where.
+ * 
+ */
 public class ACL {
 	protected String desIP;
 	protected String sourceIP;
 	protected int IPAccessListNum;
-	protected int AccessListModeNumber; // for permit or deny
-	protected String IPAccessListType; //standard or extended.....
+	protected int AccessListModeNumber;
+	protected String IPAccessListType;
 	protected String WildCardDesIP;
 	protected String WildCardSourceIP;
 
@@ -21,15 +26,16 @@ public class ACL {
 		return AccessListModeNumber;
 	}
 
-	public ACL(String iPAccessListType, int iPAccessListNum,  int accessListModeNumber, String sourceIP,String WildCardSourceIP, String desIP,String WildCardDesIP) {
+	public ACL(String iPAccessListType, int iPAccessListNum, int accessListModeNumber, String sourceIP,
+			String WildCardSourceIP, String desIP, String WildCardDesIP) {
 		this.desIP = desIP;
 		this.sourceIP = sourceIP;
 		this.IPAccessListNum = iPAccessListNum;
 		this.AccessListModeNumber = accessListModeNumber;
 		this.IPAccessListType = iPAccessListType;
-		this.WildCardDesIP=WildCardDesIP;
-		this.WildCardSourceIP=WildCardSourceIP;
-		
+		this.WildCardDesIP = WildCardDesIP;
+		this.WildCardSourceIP = WildCardSourceIP;
+
 	}
 
 	public String getWildCardDesIP() {
@@ -83,8 +89,10 @@ public class ACL {
 	public void setAccessNum(int IPAccessListNum) {
 		this.IPAccessListNum = IPAccessListNum;
 	}
+
 	@Override
 	public String toString() {
-		return ("**" + IPAccessListType + " || \t" + IPAccessListNum+ " || \t" + AccessListModeNumber + " || \t" + sourceIP+ " || \t" + WildCardSourceIP + " || \t" +desIP+" || \t"+WildCardDesIP );
+		return ("**" + IPAccessListType + " || \t" + IPAccessListNum + " || \t" + AccessListModeNumber + " || \t"
+				+ sourceIP + " || \t" + WildCardSourceIP + " || \t" + desIP + " || \t" + WildCardDesIP);
 	}
 }

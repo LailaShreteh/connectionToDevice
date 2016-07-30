@@ -121,7 +121,7 @@ public class TelnetConnectionTest {
 	@Test
 	public void testGetClass_map() {
 		result = connection.connectToDevice();
-		connection.getClass_map();
+		connection.getClassMap();
 		connection.disconnectConnection();
 
 	}
@@ -129,7 +129,7 @@ public class TelnetConnectionTest {
 	@Test
 	public void testGetPolicy_map() {
 		result = connection.connectToDevice();
-		connection.getPolicy_map();
+		connection.getPolicyMap();
 		connection.disconnectConnection();
 
 	}

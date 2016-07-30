@@ -14,8 +14,14 @@ import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpo
  *
  */
 
+/**
+ * see @com.training.deviceoperation.parser.Parser
+ */
 public class CLIParser implements Parser {
 
+	/**
+	 * regex constants to parse EthernetProtocolEndpoint.
+	 */
 	final static String INTERFACE = "[A-Z][A-Za-z]+[0-9/]*";
 	final static String ADMIN_STATUS = "\\w+";
 	final static String OPERATIONAL_STATUS = "\\w+";
@@ -24,6 +30,9 @@ public class CLIParser implements Parser {
 	final static String DUPLEX = "\\w+";
 	final static String DUPLEX_SPEED = "\\d+";
 
+	/**
+	 * regex constants to parse ACL.
+	 */
 	final static String ACESS_LIST_TYPE = "^[?:Standard|Extended].*";
 	final static String IP_ACCESS_LIST_NUM = "\\w+";
 	final static String ACCESS_LIST_MODE_NUMBER = "\\d+";
@@ -33,6 +42,10 @@ public class CLIParser implements Parser {
 	final static String WILDCARD_DES_IP = "[0-9.]*";
 	final static String ACCESS_LIST_MODE = "[?:permit|deny|permit ip|deny ip]*";
 
+	/**
+	 * variables to define the matcher group for EthernetProtocolEndpoint parsed
+	 * data .
+	 */
 	private String ifName;
 	private Status ifStatus;
 	private Status ifOperStatus;
@@ -40,6 +53,10 @@ public class CLIParser implements Parser {
 	private DuplexMode duplexMode;
 	private String ifSpeed;
 	private String macAddress;
+
+	/**
+	 * variables to define the matcher group for ACL parsed data .
+	 */
 	private String IPAccessListType;
 	private int IPAccessListNum;
 	private int modeNum;
@@ -49,9 +66,13 @@ public class CLIParser implements Parser {
 	private String wildCardDesIP;
 
 	/**
-	 * see @com.training.deviceoperation.parser.Parser
+	 * parsEthernetPE method to parse Interfaces data.
+	 * 
+	 * @param cmd
+	 *            - the string value from "sh int" command.
+	 * @return - an EthernetProtocolEndpoint object which represent each
+	 *         Interface and its parsed data.
 	 */
-
 	public EthernetProtocolEndpoint parsEthernetPE(String cmd) {
 		cmd = cmd.replace("\n", "");
 		cmd = cmd.replace("\r", " ");
@@ -119,11 +140,17 @@ public class CLIParser implements Parser {
 		return ep;
 	}
 
+	/**
+	 * parsACL method to parse AccessList data.
+	 * 
+	 * @param cmd
+	 *            - the string value from "show access-list" command.
+	 * @return - list of all access lists and their parsed data as an objects.
+	 */
 	public List<ACL> parsACL(String cmd) {
-		ACL acl;
 		List<ACL> accessList = new ArrayList<ACL>();
+		ACL acl;
 		cmd = cmd.trim();
-		//System.out.println(cmd);
 		String regex = "(" + ACESS_LIST_TYPE + ") IP access list (" + IP_ACCESS_LIST_NUM + ").*?(\\d.*)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
@@ -137,14 +164,15 @@ public class CLIParser implements Parser {
 
 			matcher = pattern.matcher(matcher.group(3));
 			while (matcher.find()) {
-				
+
 				modeNum = Integer.parseInt(matcher.group(1));
 				sourceIP = matcher.group(2);
 				wildCardSourceIP = matcher.group(3);
-				desIP=matcher.group(4);
+				desIP = matcher.group(4);
 				wildCardDesIP = matcher.group(5);
-				 acl = new ACL(IPAccessListType, IPAccessListNum, modeNum, sourceIP, wildCardSourceIP, desIP, wildCardDesIP);
-				 accessList.add(acl);
+				acl = new ACL(IPAccessListType, IPAccessListNum, modeNum, sourceIP, wildCardSourceIP, desIP,
+						wildCardDesIP);
+				accessList.add(acl);
 
 			}
 		}
