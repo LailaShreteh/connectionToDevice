@@ -13,6 +13,11 @@ import com.training.deviceoperation.deviceconnection.ConnectionFactory;
 import com.training.deviceoperation.deviceconnection.ConnectionRouter;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 
+/**
+ * 
+ * @author user
+ *
+ */
 public class TelnetConnectionTest {
 
 	ConnectionFactory connectionFactory = new ConnectionFactory();

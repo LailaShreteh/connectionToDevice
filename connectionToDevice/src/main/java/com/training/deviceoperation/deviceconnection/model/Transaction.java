@@ -1,5 +1,9 @@
 package com.training.deviceoperation.deviceconnection.model;
-
+/**
+ * 
+ * @author user
+ *
+ */
 public class Transaction {
 	private Action command; // i think it's not private :/
 	private String policy_map;

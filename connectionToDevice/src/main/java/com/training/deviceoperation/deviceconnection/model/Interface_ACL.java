@@ -1,22 +1,27 @@
 package com.training.deviceoperation.deviceconnection.model;
 
+/**
+ * 
+ * @author user
+ *
+ */
 public class Interface_ACL {
-	private Direction dir;
+	private Direction direction;
 	private ACL acl;
-	private Interface Interface;
+	private Interface interfaceObj;
 
-	public Interface_ACL(Direction dir, ACL acl, Interface interface1) {
-		this.dir = dir;
+	public Interface_ACL(Direction direction, ACL acl, Interface interfaceObj) {
+		this.direction = direction;
 		this.acl = acl;
-		Interface = interface1;
+		this.interfaceObj = interfaceObj;
 	}
 
 	public Direction getDir() {
-		return dir;
+		return direction;
 	}
 
-	public void setDir(Direction dir) {
-		this.dir = dir;
+	public void setDir(Direction direction) {
+		this.direction = direction;
 	}
 
 	public ACL getAcl() {
@@ -28,11 +33,11 @@ public class Interface_ACL {
 	}
 
 	public Interface getInterface() {
-		return Interface;
+		return interfaceObj;
 	}
 
-	public void setInterface(Interface interface1) {
-		Interface = interface1;
+	public void setInterface(Interface interfaceObj) {
+		this.interfaceObj = interfaceObj;
 	}
 
 }

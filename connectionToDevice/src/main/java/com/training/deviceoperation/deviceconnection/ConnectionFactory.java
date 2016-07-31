@@ -1,12 +1,14 @@
 package com.training.deviceoperation.deviceconnection;
 
 /**
+ * ConnectionFactory class to create a connection object from Telent, SSH or
+ * SNMP.
  * 
  * @author user
  *
  */
-
 public class ConnectionFactory {
+
 	/**
 	 * createConnection method to create a Telent, SSH or SNMP connection
 	 * object.

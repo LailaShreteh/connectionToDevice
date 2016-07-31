@@ -8,6 +8,7 @@ import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpo
 import com.training.deviceoperation.deviceconnection.model.PolicyMap;
 
 /**
+ * Parser interface to parse CLI and SNMP data from a device.
  * 
  * @author user
  *

@@ -9,12 +9,18 @@ import com.training.deviceoperation.deviceconnection.ConnectionFactory;
 import com.training.deviceoperation.deviceconnection.ConnectionRouter;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 
+/**
+ * 
+ * @author user
+ *
+ */
 public class ParserTest {
+
 	ConnectionFactory connectionFactory = new ConnectionFactory();
 	private static ConnectionRouter connection;
 	String result = null;
 	ArrayList<EthernetProtocolEndpoint> epeList;
-	
+
 	@Before
 	public void setup() {
 
@@ -23,9 +29,8 @@ public class ParserTest {
 		connection.setPort(23);
 
 	}
-	
-	
-		@Test
+
+	@Test
 	public void testCLIParser() {
 		result = connection.connectToDevice();
 		epeList = (ArrayList<EthernetProtocolEndpoint>) connection.getEthernetPE();
@@ -38,12 +43,13 @@ public class ParserTest {
 		connection.disconnectConnection();
 
 	}
-			@Test
-		public void testGetACL() {
-			result = connection.connectToDevice();
-			connection.getACL();
-			connection.disconnectConnection();
 
-		}
+	@Test
+	public void testGetACL() {
+		result = connection.connectToDevice();
+		connection.getACL();
+		connection.disconnectConnection();
+
+	}
 
 }

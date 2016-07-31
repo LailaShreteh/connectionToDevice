@@ -1,7 +1,12 @@
 package com.training.deviceoperation.deviceconnection.model;
 
+/**
+ * Action enumeration 
+ * 
+ * @author user
+ *
+ */
 public enum Action {
-	
 	BANDWIDTH("bandwidth"),
 	FAIR_QUEUE("fair-queue"),
 	DROP("drop"),

@@ -2,14 +2,19 @@ package com.training.databasemanager;
 
 import org.junit.BeforeClass;
 
-import com.training.databacemanager.JDBCConnection;
+import com.training.databacemanager.JDBC;
 
+/**
+ * 
+ * @author user
+ *
+ */
 public class JDBCConnectionTest {
-	static JDBCConnection con;
+	static JDBC con;
 
 	@BeforeClass
 	public static void createConnectionToSQL() {
-		con = new JDBCConnection();
+		con = new JDBC();
 	}
 
 	/*

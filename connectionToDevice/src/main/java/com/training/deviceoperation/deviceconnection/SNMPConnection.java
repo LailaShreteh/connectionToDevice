@@ -14,6 +14,11 @@ import com.training.deviceoperation.deviceconnection.model.Interface;
 import com.training.deviceoperation.deviceconnection.model.PolicyMap;
 import com.training.deviceoperation.parser.*;
 
+/**
+ * 
+ * @author user
+ *
+ */
 public class SNMPConnection implements ConnectionRouter {
 	private String host;
 	private int port;

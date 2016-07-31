@@ -16,10 +16,9 @@ import com.jcraft.jsch.JSchException;
 
 public class SSHConnection extends CLIConnection {
 
-	/**
-	 * A string to define the password to use for authentication.
-	 */
+	/** A string to define the password to use for authentication. */
 	private String password = "lab";
+
 	private JSch jsch;
 	private Session session = null;
 	private com.jcraft.jsch.Channel channel;
@@ -68,6 +67,7 @@ public class SSHConnection extends CLIConnection {
 	/**
 	 * connectToDevice method to open SSH connection to a server.
 	 * 
+	 * @return - Sucess or Fail to connect .
 	 */
 
 	@Override
@@ -85,6 +85,7 @@ public class SSHConnection extends CLIConnection {
 	/**
 	 * disconnectConnection method to close the input and the output stream, to
 	 * close the channel and the opened session connection.
+	 * 
 	 */
 	public void disconnectConnection() {
 		try {

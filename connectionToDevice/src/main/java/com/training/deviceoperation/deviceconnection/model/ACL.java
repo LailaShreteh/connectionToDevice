@@ -1,69 +1,70 @@
 package com.training.deviceoperation.deviceconnection.model;
 
 /**
- * The ACL class represents each Access Control List and its criteria which
- * can specified to control which packets move through a network and to where.
+ * The ACL class represents each Access Control List and its criteria which can
+ * specified to control which packets move through a network and to where.
  * 
+ * @author user
  */
 public class ACL {
 	protected String desIP;
 	protected String sourceIP;
-	protected int IPAccessListNum;
-	protected int AccessListModeNumber;
-	protected String IPAccessListType;
-	protected String WildCardDesIP;
-	protected String WildCardSourceIP;
+	protected int ipAccessListNum;
+	protected int accessListModeNumber;
+	protected String ipAccessListType;
+	protected String wildCardDesIP;
+	protected String wildCardSourceIP;
 
 	public int getIPAccessListNum() {
-		return IPAccessListNum;
+		return ipAccessListNum;
 	}
 
-	public void setIPAccessListNum(int iPAccessListNum) {
-		IPAccessListNum = iPAccessListNum;
+	public void setIPAccessListNum(int ipAccessListNum) {
+		this.ipAccessListNum = ipAccessListNum;
 	}
 
 	public int getAccessListModeNumber() {
-		return AccessListModeNumber;
+		return accessListModeNumber;
 	}
 
-	public ACL(String iPAccessListType, int iPAccessListNum, int accessListModeNumber, String sourceIP,
-			String WildCardSourceIP, String desIP, String WildCardDesIP) {
+	public ACL(String ipAccessListType, int ipAccessListNum, int accessListModeNumber, String sourceIP,
+			String wildCardSourceIP, String desIP, String wildCardDesIP) {
 		this.desIP = desIP;
 		this.sourceIP = sourceIP;
-		this.IPAccessListNum = iPAccessListNum;
-		this.AccessListModeNumber = accessListModeNumber;
-		this.IPAccessListType = iPAccessListType;
-		this.WildCardDesIP = WildCardDesIP;
-		this.WildCardSourceIP = WildCardSourceIP;
+		this.ipAccessListNum = ipAccessListNum;
+		this.accessListModeNumber = accessListModeNumber;
+		this.ipAccessListType = ipAccessListType;
+		this.wildCardDesIP = wildCardDesIP;
+		this.wildCardSourceIP = wildCardSourceIP;
 
 	}
 
 	public String getWildCardDesIP() {
-		return WildCardDesIP;
+		return wildCardDesIP;
 	}
 
 	public void setWildCardDesIP(String wildCardDesIP) {
-		WildCardDesIP = wildCardDesIP;
+		this.wildCardDesIP = wildCardDesIP;
 	}
 
 	public String getWildCardSourceIP() {
-		return WildCardSourceIP;
+		return wildCardSourceIP;
 	}
 
 	public void setWildCardSourceIP(String wildCardSourceIP) {
-		WildCardSourceIP = wildCardSourceIP;
+		this.wildCardSourceIP = wildCardSourceIP;
 	}
 
 	public void setAccessListModeNumber(int accessListModeNumber) {
-		AccessListModeNumber = accessListModeNumber;
+		this.accessListModeNumber = accessListModeNumber;
 	}
 
 	public String getIPAccessListType() {
-		return IPAccessListType;
+		return ipAccessListType;
 	}
 
-	public void setIPAccessListType(String iPAccessListType) {
-		IPAccessListType = iPAccessListType;
+	public void setIPAccessListType(String ipAccessListType) {
+		this.ipAccessListType = ipAccessListType;
 	}
 
 	public String getDesIP() {
@@ -83,16 +84,16 @@ public class ACL {
 	}
 
 	public int getAccessNum() {
-		return IPAccessListNum;
+		return ipAccessListNum;
 	}
 
-	public void setAccessNum(int IPAccessListNum) {
-		this.IPAccessListNum = IPAccessListNum;
+	public void setAccessNum(int ipAccessListNum) {
+		this.ipAccessListNum = ipAccessListNum;
 	}
 
 	@Override
 	public String toString() {
-		return ("**" + IPAccessListType + " || \t" + IPAccessListNum + " || \t" + AccessListModeNumber + " || \t"
-				+ sourceIP + " || \t" + WildCardSourceIP + " || \t" + desIP + " || \t" + WildCardDesIP);
+		return ("**" + ipAccessListType + " || \t" + ipAccessListNum + " || \t" + accessListModeNumber + " || \t"
+				+ sourceIP + " || \t" + wildCardSourceIP + " || \t" + desIP + " || \t" + wildCardDesIP);
 	}
 }

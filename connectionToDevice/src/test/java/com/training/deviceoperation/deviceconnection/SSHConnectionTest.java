@@ -15,11 +15,9 @@ import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpo
 
 /**
  * 
- * @author Reem Jazi
- * @author Laila Shreteh
+ * @author user
  *
  */
-
 public class SSHConnectionTest {
 
 	ConnectionFactory connectionFactory = new ConnectionFactory();
