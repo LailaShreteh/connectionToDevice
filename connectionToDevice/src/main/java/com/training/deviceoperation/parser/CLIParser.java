@@ -5,10 +5,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.log4j.chainsaw.Main;
+
 import com.training.deviceoperation.deviceconnection.model.ACL;
+import com.training.deviceoperation.deviceconnection.model.Action;
 import com.training.deviceoperation.deviceconnection.model.ClassMap;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 import com.training.deviceoperation.deviceconnection.model.PolicyMap;
+import com.training.deviceoperation.deviceconnection.model.Transaction;
 
 /**
  * 
@@ -85,6 +89,7 @@ public class CLIParser implements Parser {
 
 	private String policyName;
 	private String trafficClass;
+	private Action classAction;
 
 	/**
 	 * parsEthernetPE method to parse Interfaces data.
@@ -232,33 +237,132 @@ public class CLIParser implements Parser {
 		List<PolicyMap> policyMapList = new ArrayList<PolicyMap>();
 		PolicyMap policyMap = null;
 		cmd = cmd.trim();
-		// System.out.println(">>>>>>"+cmd);
 		cmd = "Policy Map Child     Class reem       priority 10 (%)    Policy Map policy1     Class class1    Policy Map policy2     Class laila       Average Rate Traffic Shaping       cir 384000 (bps)       bandwidth 256 (kbps)     Class class1       bandwidth 384 (kbps)       service-policy policy1";
-		String regex = "Policy Map (" + POLICY_NAME + ")     (.*)";
+		System.out.println(cmd);
+		String regex = "(?<=Policy Map)(.*?)(?=Policy Map|$)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
 		while (matcher.find()) {
-			policyName = matcher.group(1);
-			System.out.println(">>group (0):" + matcher.group(0));
-			System.out.println(">>group (1):" + matcher.group(1));
-			System.out.println(">>group (2):" + matcher.group(2));
+			String regex1 = "(\\w+)     (Class.*)";
+			Pattern pattern1 = Pattern.compile(regex1);
+			Matcher matcher1 = pattern1.matcher(matcher.group(1));
+			while (matcher1.find()) {
+				policyName = matcher1.group(1);
+				String regex2 = "(?<=Class)(.*?)(?=Class|$)";
+				Pattern pattern2 = Pattern.compile(regex2);
+				Matcher matcher2 = pattern2.matcher(matcher1.group(2));
+				while (matcher2.find()) {
+					String regex3 = "(\\w+)(.*)";
+					Pattern pattern3 = Pattern.compile(regex3);
+					Matcher matcher3 = pattern3.matcher(matcher2.group(1));
+					while (matcher3.find()) {
+						trafficClass = matcher3.group(1);
+						// System.out.println(trafficClass);
+						String regex4 = "(?<=\\s\\s\\s\\s\\s)(.*?)(?=\\s\\s\\s\\s\\s|$)";
+						Pattern pattern4 = Pattern.compile(regex4);
+						Matcher matcher4 = pattern4.matcher(matcher3.group(2));
+						while (matcher4.find()) {
+							 System.out.println(">>>>>>>group (1):" +matcher4.group(1));
+							policyMap = new PolicyMap(policyName, trafficClass);
+							policyMapList.add(policyMap);
+							String regex5 = "(\\w+) (.*)";
+							Pattern pattern5 = Pattern.compile(regex5);
+							Matcher matcher5 = pattern5.matcher(matcher4.group(1).trim());
+							while (matcher5.find()) {
+								System.out.println("loool");
+								System.out.println("group laila (1):" + matcher5.group(1));
+								System.out.println("group laila (2):" + matcher5.group(2));
 
-			String regex1 = "Class (" + "\\w+" + ") (.*)";
-			pattern = Pattern.compile(regex1);
-			matcher = pattern.matcher(matcher.group(2));
-			while (matcher.find()) {
-				System.out.println("$$group (0):" + matcher.group(0));
-				System.out.println("$$group (1):" + matcher.group(1));
-				System.out.println("$$group (2):" + matcher.group(2));
+								Action action = Action.valueOf(matcher5.group(1));
+								switch (action) {
+								case BANDWIDTH:
+									classAction = Action.BANDWIDTH;
+									break;
+								case FAIR_QUEUE:
+									classAction = Action.FAIR_QUEUE;
+									break;
+								case DROP:
+									classAction = Action.DROP;
+									break;
+								case POLICY:
+									classAction = Action.POLICY;
+									break;
+								case POLICE:
+									classAction = Action.POLICE;
+									break;
+								case police_rate_pdp:
+									classAction = Action.police_rate_pdp;
+									break;
+								case priority:
+									classAction = Action.priority;
+									break;
+								case queue_limit:
+									classAction = Action.queue_limit;
+									break;
+								case random_detect:
+									classAction = Action.random_detect;
+									break;
+								case random_detect_discard_class:
+									classAction = Action.random_detect_discard_class;
+									break;
+								case random_detect_discard_class_based:
+									classAction = Action.random_detect_discard_class_based;
+									break;
+								case random_detect_ecn:
+									classAction = Action.random_detect_ecn;
+									break;
+								case random_detect_precedence:
+									classAction = Action.random_detect_precedence;
+									break;
+								case service_policy:
+									classAction = Action.service_policy;
+									break;
+								case set_atm_clp:
+									classAction = Action.set_atm_clp;
+									break;
+								case set_cos:
+									classAction = Action.set_cos;
+									break;
+								case set_discard_class:
+									classAction = Action.set_discard_class;
+									break;
+								case set_ip_dscp:
+									classAction = Action.set_ip_dscp;
+									break;
+								case set_fr_de:
+									classAction = Action.set_fr_de;
+									break;
+								case set_mpls_experimental:
+									classAction = Action.set_mpls_experimental;
+									break;
+								case set_precedence:
+									classAction = Action.set_precedence;
+									break;
+								case set_qos_group:
+									classAction = Action.set_qos_group;
+									break;
+								case shape:
+									classAction = Action.shape;
+									break;
+								case shape_adaptive:
+									classAction = Action.shape_adaptive;
+									break;
+								case shape_fecn_adapt:
+									classAction = Action.shape_fecn_adapt;
+									break;
+								default:
+									break;
+								}
+								Transaction transaction = new Transaction(classAction, policyName, trafficClass); // what
+																													// about
+																													// transaction
+																													// object
+																													// :/
+																													// !!
+							}
+						}
+					}
 
-				String regex2 = "      (.*)    (Policy Map.*)";
-				pattern = Pattern.compile(regex2);
-				matcher = pattern.matcher(matcher.group(2));
-				while (matcher.find()) {
-					System.out.println("%%group (0):" + matcher.group(0));
-					System.out.println("%%group (1):" + matcher.group(1));
-					policyMap = new PolicyMap(policyName, trafficClass);
-					policyMapList.add(policyMap);
 				}
 
 			}
@@ -266,5 +370,10 @@ public class CLIParser implements Parser {
 		}
 		return policyMapList;
 
+	}
+
+	public static void main(String[] args) {
+		CLIParser pr = new CLIParser();
+		pr.parsPolicyMap("sn");
 	}
 }
