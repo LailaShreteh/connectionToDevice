@@ -1,4 +1,4 @@
-package com.training.deviceoperation.deviceconnection.jdbc;
+package com.training.dataBaseManager.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-public class connectionToMySQL {
+public class ConnectionToMySQL {
 	// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://localhost/interfaces";

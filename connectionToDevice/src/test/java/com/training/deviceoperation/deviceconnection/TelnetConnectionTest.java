@@ -7,9 +7,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.training.dataBaseManager.ConnectionToMySQL;
 import com.training.deviceoperation.deviceconnection.ConnectionFactory;
 import com.training.deviceoperation.deviceconnection.ConnectionRouter;
-import com.training.deviceoperation.deviceconnection.jdbc.connectionToMySQL;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 
 public class TelnetConnectionTest {
@@ -18,7 +18,7 @@ public class TelnetConnectionTest {
 	ConnectionFactory connectionFactory = new ConnectionFactory();
 	private static ConnectionRouter connection;
 	String result = null;
-	static connectionToMySQL con;
+	static ConnectionToMySQL con;
 	ArrayList<EthernetProtocolEndpoint> epeList;
 
 	@Before
@@ -32,7 +32,7 @@ public class TelnetConnectionTest {
 
 	@BeforeClass
 	public static void createConnectionToSQL() {
-		con = new connectionToMySQL();
+		con = new ConnectionToMySQL();
 
 	}
 
