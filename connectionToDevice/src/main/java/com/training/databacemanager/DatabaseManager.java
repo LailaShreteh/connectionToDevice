@@ -1,5 +1,5 @@
 package com.training.databacemanager;
 
-public interface DataBaseConnection {
+public interface DatabaseManager {
 
 }

@@ -15,6 +15,7 @@ public class TelnetConnection extends CLIConnection {
 	/**
 	 * connectToDevice method to open Telnet connection to a server.
 	 * 
+	 * @return - Sucess or Fail to connect .
 	 */
 	public String connectToDevice() {
 		if (getHost() == null || getHost().length() == 0) {
@@ -24,12 +25,12 @@ public class TelnetConnection extends CLIConnection {
 		telnet = new TelnetClient();
 		try {
 			telnet.connect(getHost(), getPort());
-			//telnet.setSoTimeout(15000);
+			telnet.setSoTimeout(15000);
 			createInOutStream();
 			return "Sucess";
 
 		} catch (Exception e) {
-			throw new IllegalArgumentException( "  X_X sorry fails to connect x_x");
+			throw new IllegalArgumentException("  X_X sorry fails to connect x_x");
 		}
 
 	}

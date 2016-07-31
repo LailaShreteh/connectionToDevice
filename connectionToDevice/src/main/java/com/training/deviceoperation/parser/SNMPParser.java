@@ -7,6 +7,11 @@ import com.training.deviceoperation.deviceconnection.model.ClassMap;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 import com.training.deviceoperation.deviceconnection.model.PolicyMap;
 
+/**
+ * 
+ * @author user
+ *
+ */
 public class SNMPParser implements Parser {
 
 	@Override

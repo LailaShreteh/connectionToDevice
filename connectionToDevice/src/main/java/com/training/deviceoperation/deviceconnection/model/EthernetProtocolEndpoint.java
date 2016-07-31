@@ -1,23 +1,17 @@
 package com.training.deviceoperation.deviceconnection.model;
-/**
- * 
- * @author user
- *
- */
 
 import com.training.deviceoperation.parser.DuplexMode;
 import com.training.deviceoperation.parser.Status;
 
 /**
  * The EthernetProtocolEndpoint class represents each interface and its data.
+ * 
+ * @author user
  */
 
 public class EthernetProtocolEndpoint {
 
-	/**
-	 * List of attributes which represent each interface.
-	 * 
-	 */
+	/** List of attributes which represent each interface. */
 	protected int minOccurs;
 	protected int maxOccurs;
 	protected String description;
@@ -31,6 +25,7 @@ public class EthernetProtocolEndpoint {
 	protected String macAddress;
 	protected int mtu;
 	protected Status operStatus;
+	protected String name;
 
 	public EthernetProtocolEndpoint(String name, int mtu, Status adminStatus, Status operStatus, DuplexMode duplexMode,
 			String ifSpeed, String macAddress) {
@@ -44,13 +39,10 @@ public class EthernetProtocolEndpoint {
 		this.macAddress = macAddress;
 	}
 
-	protected String name;
-
 	/**
 	 * @return the minOccurs
 	 */
 	public int getMinOccurs() {
-
 		return minOccurs;
 	}
 
@@ -128,7 +120,6 @@ public class EthernetProtocolEndpoint {
 	 * @return the mtu
 	 */
 	public int getMtu() {
-
 		return mtu;
 	}
 
@@ -140,17 +131,9 @@ public class EthernetProtocolEndpoint {
 	}
 
 	/**
-	 * @return the type
-	 */
-	/*
-	 * public enumType_type getType() { return type; }
-	 */
-
-	/**
 	 * @return the name
 	 */
 	public String getName() {
-
 		return name;
 	}
 

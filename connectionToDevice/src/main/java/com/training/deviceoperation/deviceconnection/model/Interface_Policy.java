@@ -1,23 +1,27 @@
 package com.training.deviceoperation.deviceconnection.model;
 
+/**
+ * 
+ * @author user
+ *
+ */
 public class Interface_Policy {
-	private Direction dir;
+	private Direction direction;
 	private PolicyMap policy;
-	private Interface Interface;
+	private Interface interfaceObj;
 
-	public Interface_Policy(Direction dir, PolicyMap policy, Interface interface1) {
-		super();
-		this.dir = dir;
+	public Interface_Policy(Direction direction, PolicyMap policy, Interface interfaceObj) {
+		this.direction = direction;
 		this.policy = policy;
-		Interface = interface1;
+		this.interfaceObj = interfaceObj;
 	}
 
-	public Direction getDir() {
-		return dir;
+	public Direction getDirection() {
+		return direction;
 	}
 
-	public void setDir(Direction dir) {
-		this.dir = dir;
+	public void setDirection(Direction direction) {
+		this.direction = direction;
 	}
 
 	public PolicyMap getPolicy() {
@@ -28,12 +32,12 @@ public class Interface_Policy {
 		this.policy = policy;
 	}
 
-	public Interface getInterface() {
-		return Interface;
+	public Interface getInterfaceObj() {
+		return interfaceObj;
 	}
 
-	public void setInterface(Interface interface1) {
-		Interface = interface1;
+	public void setInterfaceObj(Interface interfaceObj) {
+		this.interfaceObj = interfaceObj;
 	}
 
 }

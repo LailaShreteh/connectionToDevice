@@ -12,8 +12,7 @@ import com.training.deviceoperation.deviceconnection.SNMPConnection;
 
 /**
  * 
- * @author Reem Jazi
- * @author Laila Shreteh
+ * @author user
  */
 public class SNMPConnectionTest {
 	private SNMPConnection snmpClient;

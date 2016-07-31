@@ -4,6 +4,7 @@ package com.training.deviceoperation.deviceconnection.model;
  * The ClassMap class represents each Class Map and its criteria to define a
  * traffic classification.
  * 
+ * @author user
  */
 public class ClassMap {
 	private String className;
@@ -58,11 +59,12 @@ public class ClassMap {
 	}
 
 	public void setMatchType(String matchType) {
-		matchType = matchType;
+		this.matchType = matchType;
 	}
+
 	@Override
 	public String toString() {
-		return ("**" + className + " || \t" + classMapConfigurationMode+ " || \t" + description + " || \t"
-				+ matchType + " || \t" + matchTypeValue);
+		return ("**" + className + " || \t" + classMapConfigurationMode + " || \t" + description + " || \t" + matchType
+				+ " || \t" + matchTypeValue);
 	}
 }

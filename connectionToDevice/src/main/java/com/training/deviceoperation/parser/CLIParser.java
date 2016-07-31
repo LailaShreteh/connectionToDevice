@@ -11,6 +11,7 @@ import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpo
 import com.training.deviceoperation.deviceconnection.model.PolicyMap;
 
 /**
+ * CLIParser class to parse the data from Telnet and SSH CLI.
  * 
  * @author user
  *
@@ -21,9 +22,7 @@ import com.training.deviceoperation.deviceconnection.model.PolicyMap;
  */
 public class CLIParser implements Parser {
 
-	/**
-	 * regex constants to parse EthernetProtocolEndpoint.
-	 */
+	/* regex constants to parse EthernetProtocolEndpoint. */
 	final static String INTERFACE = "[A-Z][A-Za-z]+[0-9/]*";
 	final static String ADMIN_STATUS = "\\w+";
 	final static String OPERATIONAL_STATUS = "\\w+";
@@ -32,9 +31,7 @@ public class CLIParser implements Parser {
 	final static String DUPLEX = "\\w+";
 	final static String DUPLEX_SPEED = "\\d+";
 
-	/**
-	 * regex constants to parse ACL.
-	 */
+	/* regex constants to parse ACL. */
 	final static String ACESS_LIST_TYPE = "^[?:Standard|Extended].*";
 	final static String IP_ACCESS_LIST_NUM = "\\w+";
 	final static String ACCESS_LIST_MODE_NUMBER = "\\d+";
@@ -44,6 +41,7 @@ public class CLIParser implements Parser {
 	final static String WILDCARD_DES_IP = "[0-9.]*";
 	final static String ACCESS_LIST_MODE = "[?:permit|deny|permit ip|deny ip]*";
 
+	/* regex constants to parse Class Map. */
 	final static String CLASS_MAP_CONFIGERATION_MODE = "match-any|match-all";
 	final static String CLASS_NAME = "[a-zA-Z](-|\\w+)*";
 	final static String MATCH_TYPE = "Match.*";
@@ -51,12 +49,13 @@ public class CLIParser implements Parser {
 	final static String MATCH_ONE_GROUP = "[^\\s]*";
 	final static String MATCH_TYPE_VALUE = "[^\\s]*";
 
+	/* regex constants to parse Policy Map. */
 	final static String POLICY_NAME = "\\w+";
 	final static String TRAFFIC_CLASS = ".*";
 
-	/**
+	/*
 	 * variables to define the matcher group for EthernetProtocolEndpoint parsed
-	 * data .
+	 * data.
 	 */
 	private String ifName;
 	private Status ifStatus;
@@ -66,23 +65,23 @@ public class CLIParser implements Parser {
 	private String ifSpeed;
 	private String macAddress;
 
-	/**
-	 * variables to define the matcher group for ACL parsed data .
-	 */
-	private String IPAccessListType;
-	private int IPAccessListNum;
+	/* variables to define the matcher group for ACL parsed data. */
+	private String ipAccessListType;
+	private int ipAccessListNum;
 	private int modeNum;
 	private String sourceIP;
 	private String wildCardSourceIP;
 	private String desIP;
 	private String wildCardDesIP;
 
+	/* variables to define the matcher group for Class Map parsed data. */
 	private String className;
 	private String classMapConfigurationMode;
 	private String description;
 	private String matchType;
 	private String matchTypeValue;
 
+	/* variables to define the matcher group for Policy Map parsed data. */
 	private String policyName;
 	private String trafficClass;
 
@@ -102,10 +101,11 @@ public class CLIParser implements Parser {
 				+ ")";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
+
 		if (matcher.find()) {
 			ifName = matcher.group(1);
-
 			Status adminState = Status.valueOf(matcher.group(2));
+
 			switch (adminState) {
 			case up:
 				ifStatus = Status.up;
@@ -121,6 +121,7 @@ public class CLIParser implements Parser {
 			}
 
 			Status status = Status.valueOf(matcher.group(3));
+
 			switch (status) {
 			case up:
 				ifOperStatus = Status.up;
@@ -136,7 +137,6 @@ public class CLIParser implements Parser {
 			}
 
 			ifMTU = Integer.parseInt(matcher.group(5));
-
 			DuplexMode duplex = DuplexMode.valueOf(matcher.group(6));
 
 			switch (duplex) {
@@ -150,15 +150,15 @@ public class CLIParser implements Parser {
 				duplexMode = DuplexMode.unknown;
 				break;
 			}
-			;
+
 			ifSpeed = matcher.group(7);
 			macAddress = matcher.group(5);
 		}
 
-		EthernetProtocolEndpoint ep = new EthernetProtocolEndpoint(ifName, ifMTU, ifStatus, ifOperStatus, duplexMode,
+		EthernetProtocolEndpoint epObj = new EthernetProtocolEndpoint(ifName, ifMTU, ifStatus, ifOperStatus, duplexMode,
 				ifSpeed, macAddress);
 
-		return ep;
+		return epObj;
 	}
 
 	/**
@@ -170,32 +170,29 @@ public class CLIParser implements Parser {
 	 */
 	public List<ACL> parsACL(String cmd) {
 		List<ACL> accessList = new ArrayList<ACL>();
-		ACL acl;
+		ACL aclObj;
 		cmd = cmd.trim();
-		// System.out.println(cmd);
 		String regex = "(" + ACESS_LIST_TYPE + ") IP access list (" + IP_ACCESS_LIST_NUM + ").*?(\\d.*)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
-		if (matcher.find()) {
-			IPAccessListType = matcher.group(1);
-			IPAccessListNum = Integer.parseInt(matcher.group(2));
 
+		if (matcher.find()) {
+			ipAccessListType = matcher.group(1);
+			ipAccessListNum = Integer.parseInt(matcher.group(2));
 			regex = "(" + ACCESS_LIST_MODE_NUMBER + ") " + ACCESS_LIST_MODE + "(" + SOURCE_IP + ") {0,1}("
 					+ WILDCARD_SOURCE_IP + ") {0,1}(" + DES_IP + ") {0,1}(" + WILDCARD_DES_IP + ")";
 			pattern = Pattern.compile(regex);
-
 			matcher = pattern.matcher(matcher.group(3));
-			while (matcher.find()) {
 
+			while (matcher.find()) {
 				modeNum = Integer.parseInt(matcher.group(1));
 				sourceIP = matcher.group(2);
 				wildCardSourceIP = matcher.group(3);
 				desIP = matcher.group(4);
 				wildCardDesIP = matcher.group(5);
-				acl = new ACL(IPAccessListType, IPAccessListNum, modeNum, sourceIP, wildCardSourceIP, desIP,
+				aclObj = new ACL(ipAccessListType, ipAccessListNum, modeNum, sourceIP, wildCardSourceIP, desIP,
 						wildCardDesIP);
-				accessList.add(acl);
-
+				accessList.add(aclObj);
 			}
 		}
 		return accessList;
@@ -209,6 +206,7 @@ public class CLIParser implements Parser {
 				+ ") \\(id [0-9*]\\)    {0,1}(Description: ){0,1}(" + DESCRIPTION + "){0,1}(" + MATCH_TYPE + ")";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
+
 		if (matcher.find()) {
 			classMapConfigurationMode = matcher.group(1);
 			className = matcher.group(2);
@@ -216,8 +214,8 @@ public class CLIParser implements Parser {
 			regex = "Match (" + MATCH_ONE_GROUP + ") {0,2}(" + MATCH_TYPE_VALUE + "){0,1}";
 			pattern = Pattern.compile(regex);
 			matcher = pattern.matcher(matcher.group(6));
-			while (matcher.find()) {
 
+			while (matcher.find()) {
 				matchType = matcher.group(1);
 				matchTypeValue = matcher.group(2);
 				classMap = new ClassMap(className, classMapConfigurationMode, description, matchType, matchTypeValue);
@@ -225,7 +223,6 @@ public class CLIParser implements Parser {
 			}
 		}
 		return classMapList;
-
 	}
 
 	public List<PolicyMap> parsPolicyMap(String cmd) {
@@ -260,11 +257,8 @@ public class CLIParser implements Parser {
 					policyMap = new PolicyMap(policyName, trafficClass);
 					policyMapList.add(policyMap);
 				}
-
 			}
-
 		}
 		return policyMapList;
-
 	}
 }

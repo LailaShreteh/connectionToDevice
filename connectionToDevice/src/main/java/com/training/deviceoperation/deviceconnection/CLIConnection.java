@@ -19,14 +19,12 @@ import java.util.List;
 /**
  * 
  * @author user
- *
+ */
+
+/**
+ * see @com.training.deviceoperation.deviceconnection.Connection
  */
 public abstract class CLIConnection implements ConnectionRouter {
-
-	/**
-	 * see @com.training.deviceoperation.deviceconnection.Connection
-	 */
-
 	private InputStream in;
 	private PrintStream out;
 	private String cmdBack;
@@ -35,7 +33,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 	private List<Interface> interfaces;
 
 	/**
-	 * Constructor to initialize default construct for children
+	 * Constructor to initialize default construct for children.
 	 */
 	public CLIConnection() {
 
@@ -56,45 +54,46 @@ public abstract class CLIConnection implements ConnectionRouter {
 		return this.host;
 	}
 
-	/***
+	/**
 	 * getInterfaces method to get all the interfaces from a device.
 	 *
 	 * @return - a list of all interfaces.
-	 ***/
+	 **/
 	public List<Interface> getInterfaces() {
-
 		write("sh ip int br");
 		cmdBack = readUntil("#");
-		String pattern = "[^\\s]+";
-		Pattern r = Pattern.compile(pattern);
-		// TODO get output and convert it to list
+		String regex = "[^\\s]+";
+		Pattern pattern = Pattern.compile(regex);
 		interfaces = new ArrayList<Interface>();
-		Interface inter;
+		Interface interfaceObj;
 		String[] lines = cmdBack.split(System.getProperty("line.separator"));
+
 		for (int i = 2; i < lines.length - 1; i++) {
-			Matcher m = r.matcher(lines[i]);
-			if (m.find()) {
-				String s = m.group(0);
-				s = s + " "; // to avoid conflict in interfaces names
-				inter = new Interface();
-				inter.setInterfaceName(s);
-				interfaces.add(inter);
+			Matcher matcher = pattern.matcher(lines[i]);
+
+			if (matcher.find()) {
+				String interfaceName = matcher.group(0);
+
+				interfaceName = interfaceName + " "; // to avoid conflict in
+														// interfaces names
+				interfaceObj = new Interface();
+				interfaceObj.setInterfaceName(interfaceName);
+				interfaces.add(interfaceObj);
 			}
 		}
 
-		// TODO return list<interface>
+		/* return list<interface> */
 		return interfaces;
 	}
 
-	/***
+	/**
 	 * readUntil method to read the output from Telnet or SSH commands.
 	 *
 	 * @param sample
 	 *            - an output from Telnet or SSH commands.
 	 * @return - the output which was read.
-	 ***/
+	 **/
 	protected String readUntil(String sample) {
-		// TODO Auto-generated method stub
 		try {
 			char lastChar = sample.charAt(sample.length() - 1);
 			StringBuffer sb = new StringBuffer();
@@ -115,12 +114,12 @@ public abstract class CLIConnection implements ConnectionRouter {
 		return null;
 	}
 
-	/***
+	/**
 	 * write method to print the response from the device.
 	 *
 	 * @param value
 	 *            - commands which send by the user .
-	 ***/
+	 **/
 	protected void write(String value) {
 		try {
 			out.print(value + "\n");
@@ -131,16 +130,15 @@ public abstract class CLIConnection implements ConnectionRouter {
 		}
 	}
 
-	/***
+	/**
 	 * getPolicyMap method to get all policies from a device where each policy
 	 * map defines a series of actions (functions) that you want applied to a
 	 * set of classified in bound traffic.
 	 *
 	 * @return - a list of all policy maps.
-	 ***/
+	 **/
 	public List<PolicyMap> getPolicyMap() {
-
-		List<PolicyMap> policy_mapList = new ArrayList<PolicyMap>();
+		List<PolicyMap> policyMapList = new ArrayList<PolicyMap>();
 		Parser pars = new CLIParser();
 		write("sh policy-map");
 		cmdBack = readUntil("#");
@@ -149,14 +147,12 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\n", "");
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
-	
-		System.out.println(cmdBack); 
-		
-			List<PolicyMap> policyMap = pars.parsPolicyMap(cmdBack);
-			policy_mapList.addAll(policyMap);
-		
 
- 
+		System.out.println(cmdBack);
+
+		List<PolicyMap> policyMap = pars.parsPolicyMap(cmdBack);
+		policyMapList.addAll(policyMap);
+
 		/*
 		 * cmdBack = "policy-map policy1
 		 * 
@@ -170,18 +166,18 @@ public abstract class CLIConnection implements ConnectionRouter {
 		 * exponential-weighting-constant 10
 		 * 
 		 * class class-default fair-queue 10 queue-limit 20Related Commands"
-		 */ 
+		 */
 
-		return policy_mapList;
+		return policyMapList;
 
 	}
 
-	/***
+	/**
 	 * getClassMap method to get all Class Maps from a device, where each class
 	 * map define a traffic classification.
 	 *
 	 * @return - a list of all Class Maps.
-	 ***/
+	 **/
 	public List<ClassMap> getClassMap() {
 		write("sh class-map");
 		cmdBack = readUntil("ASR1002_Omar#");
@@ -191,32 +187,25 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\n", "");
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
-		//System.out.println(cmdBack); 
 		String[] splited = cmdBack.split("%");
-		
-		//System.out.println(cmdBack); 
-		List<ClassMap> class_mapList = new ArrayList<ClassMap>();
+		List<ClassMap> classMapList = new ArrayList<ClassMap>();
 		Parser pars = new CLIParser();
+
 		for (int i = 1; i < splited.length; i++) {
 			List<ClassMap> classMap = pars.parsClassMap(splited[i]);
-			// System.out.println(splited[i]);
-			class_mapList.addAll(classMap);
-		
+			classMapList.addAll(classMap);
 		}
-
- 
-		return class_mapList;
-
+		return classMapList;
 	}
 
-	/***
+	/**
 	 * getEthernetPE method to get all interfaces from a device.
 	 *
 	 * @return - a list of all interfaces.
-	 ***/
+	 **/
 	public List<EthernetProtocolEndpoint> getEthernetPE() {
 		List<EthernetProtocolEndpoint> epList = new ArrayList<EthernetProtocolEndpoint>();
-		String interfaceInform;
+		String interfaceData;
 		Parser pars = new CLIParser();
 		this.getInterfaces();
 		write("sh int");
@@ -224,29 +213,26 @@ public abstract class CLIConnection implements ConnectionRouter {
 
 		for (int i = 0; i < interfaces.size(); i++) {
 			if (i == interfaces.size() - 1) {
-
-				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i).getInterfaceName()),
+				interfaceData = cmdBack.substring(cmdBack.indexOf(interfaces.get(i).getInterfaceName()),
 						cmdBack.length());
 			} else {
-				interfaceInform = cmdBack.substring(cmdBack.indexOf(interfaces.get(i).getInterfaceName()),
+				interfaceData = cmdBack.substring(cmdBack.indexOf(interfaces.get(i).getInterfaceName()),
 						cmdBack.indexOf(interfaces.get(i + 1).getInterfaceName()));
 			}
-			EthernetProtocolEndpoint ep = pars.parsEthernetPE(interfaceInform);
-			epList.add(ep);
+
+			EthernetProtocolEndpoint epObj = pars.parsEthernetPE(interfaceData);
+			epList.add(epObj);
 		}
-
 		return epList;
-
 	}
 
-	/***
+	/**
 	 * getACL method to get all the access control lists from a device to
 	 * control which packets move through a network and to where.
 	 *
 	 * @return - a list of all Access Control Lists.
-	 ***/
+	 **/
 	public List<ACL> getACL() {
-
 		write("show access-list");
 		cmdBack = readUntil("#");
 		cmdBack = cmdBack.replace("show access-list", "");
@@ -257,7 +243,6 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\n", "");
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
-
 		String[] splited = cmdBack.split("%");
 		List<ACL> ACLList = new ArrayList<ACL>();
 		Parser pars = new CLIParser();
@@ -266,7 +251,6 @@ public abstract class CLIConnection implements ConnectionRouter {
 			List<ACL> acl = pars.parsACL(splited[i]);
 			ACLList.addAll(acl);
 		}
-
 		return ACLList;
 	}
 
@@ -322,5 +306,4 @@ public abstract class CLIConnection implements ConnectionRouter {
 	public void setOut(PrintStream out) {
 		this.out = out;
 	}
-
 }
