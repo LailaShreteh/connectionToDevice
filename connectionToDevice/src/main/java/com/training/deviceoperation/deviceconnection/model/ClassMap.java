@@ -9,13 +9,24 @@ public class ClassMap {
 	private String className;
 	private String classMapConfigurationMode;
 	private String description;
-	private String MatchType;
+	private String matchType;
+	private String matchTypeValue;
 
-	public ClassMap(String className, String classMapConfigurationMode, String description, String matchType) {
+	public ClassMap(String className, String classMapConfigurationMode, String description, String matchType,
+			String matchTypeValue) {
 		this.className = className;
 		this.classMapConfigurationMode = classMapConfigurationMode;
 		this.description = description;
-		this.MatchType = matchType;
+		this.matchType = matchType;
+		this.matchTypeValue = matchTypeValue;
+	}
+
+	public String getMatchTypeValue() {
+		return matchTypeValue;
+	}
+
+	public void setMatchTypeValue(String matchTypeValue) {
+		this.matchTypeValue = matchTypeValue;
 	}
 
 	public String getClassName() {
@@ -43,10 +54,15 @@ public class ClassMap {
 	}
 
 	public String getMatchType() {
-		return MatchType;
+		return matchType;
 	}
 
 	public void setMatchType(String matchType) {
-		MatchType = matchType;
+		matchType = matchType;
+	}
+	@Override
+	public String toString() {
+		return ("**" + className + " || \t" + classMapConfigurationMode+ " || \t" + description + " || \t"
+				+ matchType + " || \t" + matchTypeValue);
 	}
 }

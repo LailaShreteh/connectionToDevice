@@ -24,7 +24,7 @@ public class TelnetConnection extends CLIConnection {
 		telnet = new TelnetClient();
 		try {
 			telnet.connect(getHost(), getPort());
-			telnet.setSoTimeout(150000);
+			//telnet.setSoTimeout(15000);
 			createInOutStream();
 			return "Sucess";
 

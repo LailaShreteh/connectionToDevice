@@ -149,6 +149,14 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\n", "");
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
+	
+		System.out.println(cmdBack); 
+		
+			List<PolicyMap> policyMap = pars.parsPolicyMap(cmdBack);
+			policy_mapList.addAll(policyMap);
+		
+
+ 
 		/*
 		 * cmdBack = "policy-map policy1
 		 * 
@@ -162,7 +170,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 		 * exponential-weighting-constant 10
 		 * 
 		 * class class-default fair-queue 10 queue-limit 20Related Commands"
-		 */ System.out.println(cmdBack);
+		 */ 
 
 		return policy_mapList;
 
@@ -177,16 +185,26 @@ public abstract class CLIConnection implements ConnectionRouter {
 	public List<ClassMap> getClassMap() {
 		write("sh class-map");
 		cmdBack = readUntil("ASR1002_Omar#");
-		System.out.println(cmdBack);
-
-		List<ClassMap> class_mapList = new ArrayList<ClassMap>();
-		Parser pars = new CLIParser();
 		cmdBack = cmdBack.replace("sh class-map", "");
 		cmdBack = cmdBack.replace("ASR1002_Omar#", "");
+		cmdBack = cmdBack.replace("Class Map", " % Class Map");
 		cmdBack = cmdBack.replace("\n", "");
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
+		//System.out.println(cmdBack); 
+		String[] splited = cmdBack.split("%");
+		
+		//System.out.println(cmdBack); 
+		List<ClassMap> class_mapList = new ArrayList<ClassMap>();
+		Parser pars = new CLIParser();
+		for (int i = 1; i < splited.length; i++) {
+			List<ClassMap> classMap = pars.parsClassMap(splited[i]);
+			// System.out.println(splited[i]);
+			class_mapList.addAll(classMap);
+		
+		}
 
+ 
 		return class_mapList;
 
 	}

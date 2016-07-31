@@ -2,7 +2,7 @@ package com.training.deviceoperation.deviceconnection.model;
 
 /**
  * The PolicyMap class to get each policy map which defines a series of actions
- * (functions) that you want applied to a set of classified inbound traffic.
+ * (functions) that you want applied to a set of classified in bound traffic.
  * 
  */
 public class PolicyMap {
