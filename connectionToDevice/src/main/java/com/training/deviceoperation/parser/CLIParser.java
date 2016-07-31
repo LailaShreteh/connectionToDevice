@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import com.training.deviceoperation.deviceconnection.model.ACL;
 import com.training.deviceoperation.deviceconnection.model.ClassMap;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
+import com.training.deviceoperation.deviceconnection.model.PolicyMap;
 
 /**
  * 
@@ -42,10 +43,16 @@ public class CLIParser implements Parser {
 	final static String DES_IP = "any|[0-9.]*";
 	final static String WILDCARD_DES_IP = "[0-9.]*";
 	final static String ACCESS_LIST_MODE = "[?:permit|deny|permit ip|deny ip]*";
-	
+
 	final static String CLASS_MAP_CONFIGERATION_MODE = "match-any|match-all";
-	final static String CLASS_NAME = "\\w +";
-	final static String MATCH_TYPE = "\\w+";
+	final static String CLASS_NAME = "[a-zA-Z](-|\\w+)*";
+	final static String MATCH_TYPE = "Match.*";
+	final static String DESCRIPTION = "[^Match].*";
+	final static String MATCH_ONE_GROUP = "[^\\s]*";
+	final static String MATCH_TYPE_VALUE = "[^\\s]*";
+
+	final static String POLICY_NAME = "\\w+";
+	final static String TRAFFIC_CLASS = ".*";
 
 	/**
 	 * variables to define the matcher group for EthernetProtocolEndpoint parsed
@@ -69,11 +76,15 @@ public class CLIParser implements Parser {
 	private String wildCardSourceIP;
 	private String desIP;
 	private String wildCardDesIP;
-	
+
 	private String className;
 	private String classMapConfigurationMode;
 	private String description;
-	private String MatchType;
+	private String matchType;
+	private String matchTypeValue;
+
+	private String policyName;
+	private String trafficClass;
 
 	/**
 	 * parsEthernetPE method to parse Interfaces data.
@@ -161,7 +172,7 @@ public class CLIParser implements Parser {
 		List<ACL> accessList = new ArrayList<ACL>();
 		ACL acl;
 		cmd = cmd.trim();
-		//System.out.println(cmd);
+		// System.out.println(cmd);
 		String regex = "(" + ACESS_LIST_TYPE + ") IP access list (" + IP_ACCESS_LIST_NUM + ").*?(\\d.*)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
@@ -192,28 +203,68 @@ public class CLIParser implements Parser {
 
 	public List<ClassMap> parsClassMap(String cmd) {
 		List<ClassMap> classMapList = new ArrayList<ClassMap>();
-		//ClassMap classMap = null;
+		ClassMap classMap;
 		cmd = cmd.trim();
-		System.out.println(cmd);
-		String regex="Class Map (" + CLASS_MAP_CONFIGERATION_MODE + ") (" + CLASS_NAME + ")";//    (\\w+)";
+		String regex = "Class Map (" + CLASS_MAP_CONFIGERATION_MODE + ") (" + CLASS_NAME
+				+ ") \\(id [0-9*]\\)    {0,1}(Description: ){0,1}(" + DESCRIPTION + "){0,1}(" + MATCH_TYPE + ")";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
 		if (matcher.find()) {
 			classMapConfigurationMode = matcher.group(1);
 			className = matcher.group(2);
-			System.out.println(matcher.group(2));
-			/*regex = 
+			description = matcher.group(5);
+			regex = "Match (" + MATCH_ONE_GROUP + ") {0,2}(" + MATCH_TYPE_VALUE + "){0,1}";
 			pattern = Pattern.compile(regex);
-*/
-			/*matcher = pattern.matcher(matcher.group(3));
+			matcher = pattern.matcher(matcher.group(6));
 			while (matcher.find()) {
-				
-			}*/
 
-			//System.out.println(matcher.group(3));
-		//classMapList.add(classMap);
+				matchType = matcher.group(1);
+				matchTypeValue = matcher.group(2);
+				classMap = new ClassMap(className, classMapConfigurationMode, description, matchType, matchTypeValue);
+				classMapList.add(classMap);
+			}
 		}
 		return classMapList;
+
+	}
+
+	public List<PolicyMap> parsPolicyMap(String cmd) {
+		List<PolicyMap> policyMapList = new ArrayList<PolicyMap>();
+		PolicyMap policyMap = null;
+		cmd = cmd.trim();
+		// System.out.println(">>>>>>"+cmd);
+		cmd = "Policy Map Child     Class reem       priority 10 (%)    Policy Map policy1     Class class1    Policy Map policy2     Class laila       Average Rate Traffic Shaping       cir 384000 (bps)       bandwidth 256 (kbps)     Class class1       bandwidth 384 (kbps)       service-policy policy1";
+		String regex = "Policy Map (" + POLICY_NAME + ")     (.*)";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(cmd);
+		while (matcher.find()) {
+			policyName = matcher.group(1);
+			System.out.println(">>group (0):" + matcher.group(0));
+			System.out.println(">>group (1):" + matcher.group(1));
+			System.out.println(">>group (2):" + matcher.group(2));
+
+			String regex1 = "Class (" + "\\w+" + ") (.*)";
+			pattern = Pattern.compile(regex1);
+			matcher = pattern.matcher(matcher.group(2));
+			while (matcher.find()) {
+				System.out.println("$$group (0):" + matcher.group(0));
+				System.out.println("$$group (1):" + matcher.group(1));
+				System.out.println("$$group (2):" + matcher.group(2));
+
+				String regex2 = "      (.*)    (Policy Map.*)";
+				pattern = Pattern.compile(regex2);
+				matcher = pattern.matcher(matcher.group(2));
+				while (matcher.find()) {
+					System.out.println("%%group (0):" + matcher.group(0));
+					System.out.println("%%group (1):" + matcher.group(1));
+					policyMap = new PolicyMap(policyName, trafficClass);
+					policyMapList.add(policyMap);
+				}
+
+			}
+
+		}
+		return policyMapList;
 
 	}
 }

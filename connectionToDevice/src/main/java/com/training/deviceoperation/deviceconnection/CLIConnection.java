@@ -149,6 +149,14 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\n", "");
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
+	
+		System.out.println(cmdBack); 
+		
+			List<PolicyMap> policyMap = pars.parsPolicyMap(cmdBack);
+			policy_mapList.addAll(policyMap);
+		
+
+ 
 		/*
 		 * cmdBack = "policy-map policy1
 		 * 
@@ -162,7 +170,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 		 * exponential-weighting-constant 10
 		 * 
 		 * class class-default fair-queue 10 queue-limit 20Related Commands"
-		 */ System.out.println(cmdBack);
+		 */ 
 
 		return policy_mapList;
 

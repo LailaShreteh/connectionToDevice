@@ -111,28 +111,29 @@ public class TelnetConnectionTest {
 
 	}
 
-	@Test
+/*	@Test
 	public void testGetACL() {
 		result = connection.connectToDevice();
 		connection.getACL();
 		connection.disconnectConnection();
 
-	}
-	@Test
+	}*/
+/*	@Test
 	public void testGetClass_map() {
 		result = connection.connectToDevice();
 		connection.getClassMap();
 		connection.disconnectConnection();
 
-	}
+	}*/
 
-/*	@Test
+
+	@Test
 	public void testGetPolicy_map() {
 		result = connection.connectToDevice();
 		connection.getPolicyMap();
 		connection.disconnectConnection();
 
-	}*/
+	}
 	// @Test(expected = IllegalArgumentException.class)
 	// public void testHost() {
 	// connection.setHost(null);
