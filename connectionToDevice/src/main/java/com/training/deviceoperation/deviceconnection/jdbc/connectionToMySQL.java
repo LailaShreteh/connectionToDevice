@@ -1,4 +1,4 @@
-package com.training.deviceoperation.deviceconnection.JDBC;
+package com.training.deviceoperation.deviceconnection.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
