@@ -176,7 +176,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 	 ***/
 	public List<ClassMap> getClassMap() {
 		write("sh class-map");
-		cmdBack = readUntil("#");
+		cmdBack = readUntil("ASR1002_Omar#");
 		System.out.println(cmdBack);
 
 		List<ClassMap> class_mapList = new ArrayList<ClassMap>();
