@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import com.training.deviceoperation.deviceconnection.ConnectionFactory;
 import com.training.deviceoperation.deviceconnection.ConnectionRouter;
-import com.training.deviceoperation.deviceconnection.JDBC.connectionToMySQL;
+import com.training.deviceoperation.deviceconnection.jdbc.connectionToMySQL;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 
 public class TelnetConnectionTest {
