@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.training.deviceoperation.deviceconnection.model.ACL;
+import com.training.deviceoperation.deviceconnection.model.ClassMap;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 
 /**
@@ -41,6 +42,10 @@ public class CLIParser implements Parser {
 	final static String DES_IP = "any|[0-9.]*";
 	final static String WILDCARD_DES_IP = "[0-9.]*";
 	final static String ACCESS_LIST_MODE = "[?:permit|deny|permit ip|deny ip]*";
+	
+	final static String CLASS_MAP_CONFIGERATION_MODE = "match-any|match-all";
+	final static String CLASS_NAME = "\\w +";
+	final static String MATCH_TYPE = "\\w+";
 
 	/**
 	 * variables to define the matcher group for EthernetProtocolEndpoint parsed
@@ -64,6 +69,11 @@ public class CLIParser implements Parser {
 	private String wildCardSourceIP;
 	private String desIP;
 	private String wildCardDesIP;
+	
+	private String className;
+	private String classMapConfigurationMode;
+	private String description;
+	private String MatchType;
 
 	/**
 	 * parsEthernetPE method to parse Interfaces data.
@@ -151,6 +161,7 @@ public class CLIParser implements Parser {
 		List<ACL> accessList = new ArrayList<ACL>();
 		ACL acl;
 		cmd = cmd.trim();
+		//System.out.println(cmd);
 		String regex = "(" + ACESS_LIST_TYPE + ") IP access list (" + IP_ACCESS_LIST_NUM + ").*?(\\d.*)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
@@ -177,5 +188,32 @@ public class CLIParser implements Parser {
 			}
 		}
 		return accessList;
+	}
+
+	public List<ClassMap> parsClassMap(String cmd) {
+		List<ClassMap> classMapList = new ArrayList<ClassMap>();
+		//ClassMap classMap = null;
+		cmd = cmd.trim();
+		System.out.println(cmd);
+		String regex="Class Map (" + CLASS_MAP_CONFIGERATION_MODE + ") (" + CLASS_NAME + ")";//    (\\w+)";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(cmd);
+		if (matcher.find()) {
+			classMapConfigurationMode = matcher.group(1);
+			className = matcher.group(2);
+			System.out.println(matcher.group(2));
+			/*regex = 
+			pattern = Pattern.compile(regex);
+*/
+			/*matcher = pattern.matcher(matcher.group(3));
+			while (matcher.find()) {
+				
+			}*/
+
+			//System.out.println(matcher.group(3));
+		//classMapList.add(classMap);
+		}
+		return classMapList;
+
 	}
 }

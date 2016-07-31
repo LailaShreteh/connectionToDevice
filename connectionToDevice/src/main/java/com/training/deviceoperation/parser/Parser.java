@@ -3,6 +3,7 @@ package com.training.deviceoperation.parser;
 import java.util.List;
 
 import com.training.deviceoperation.deviceconnection.model.ACL;
+import com.training.deviceoperation.deviceconnection.model.ClassMap;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 
 /**
@@ -30,4 +31,6 @@ public interface Parser {
 	 * @return - list of all access lists and their parsed data as an objects.
 	 */
 	List<ACL> parsACL(String cmd);
+	
+	List<ClassMap> parsClassMap(String cmd);
 }

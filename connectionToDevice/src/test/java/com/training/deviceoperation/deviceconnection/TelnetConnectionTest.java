@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.training.dataBaseManager.ConnectionToMySQL;
+import com.training.dataBaseManager.jdbc.ConnectionToMySQL;
 import com.training.deviceoperation.deviceconnection.ConnectionFactory;
 import com.training.deviceoperation.deviceconnection.ConnectionRouter;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
@@ -111,13 +111,13 @@ public class TelnetConnectionTest {
 
 	}
 
-/*	@Test
+	@Test
 	public void testGetACL() {
 		result = connection.connectToDevice();
 		connection.getACL();
 		connection.disconnectConnection();
 
-	}*/
+	}
 	@Test
 	public void testGetClass_map() {
 		result = connection.connectToDevice();
