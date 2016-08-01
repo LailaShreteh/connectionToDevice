@@ -1,7 +1,9 @@
 package com.training.deviceoperation.parser;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,26 +32,55 @@ public class ParserTest {
 
 	}
 
-	@Test
-	public void testCLIParser() {
+//	@Test
+//	public void testCLIParser() {
+//		result = connection.connectToDevice();
+//		epeList = (ArrayList<EthernetProtocolEndpoint>) connection.getEthernetPE();
+//		// send data to dataBase
+//
+//		for (int j = 0; j < epeList.size(); j++) {
+//
+//			System.out.println(epeList.get(j));
+//		}
+//
+//	}
+//
+//	@Test
+//	public void testGetACL() {
+//		result = connection.connectToDevice();
+//		connection.getACL();
+//
+//	}
+//	@Test
+//	public void testParsPolicyMap() {
+//		result = connection.connectToDevice();
+//		connection.getPolicyMap();
+//
+//	}
+//	@Test
+//	public void testParsTransaction() {
+//		result = connection.connectToDevice();
+//		connection.getTransaction();
+//
+//	}
+/*	@Test
+	public void testParsInterface_ACL() {
 		result = connection.connectToDevice();
-		epeList = (ArrayList<EthernetProtocolEndpoint>) connection.getEthernetPE();
-		// send data to dataBase
+		connection.getInterface_ACL();
 
-		for (int j = 0; j < epeList.size(); j++) {
-
-			System.out.println(epeList.get(j));
-		}
-		connection.disconnectConnection();
+	}*/
+	@Test
+	public void testParsInterface_Policy() {
+		result = connection.connectToDevice();
+		connection.getInterface_Policy();
 
 	}
-
-	@Test
-	public void testGetACL() {
-		result = connection.connectToDevice();
-		connection.getACL();
-		connection.disconnectConnection();
-
+	@AfterClass
+	public static void teardown() throws IOException {
+		if (connection != null) {
+			connection.disconnectConnection();
+			connection = null;
+		}
 	}
 
 }

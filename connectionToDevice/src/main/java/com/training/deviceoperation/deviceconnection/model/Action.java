@@ -10,7 +10,7 @@ public enum Action {
 	BANDWIDTH("bandwidth"),
 	FAIR_QUEUE("fair-queue"),
 	DROP("drop"),
-	POLICY("policy"),
+	POLICY("service-policy"),
 	POLICE("police"),
 	police_rate_pdp("police rate pdp"),
 	priority("priority"),

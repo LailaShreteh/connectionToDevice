@@ -7,13 +7,13 @@ package com.training.deviceoperation.deviceconnection.model;
  */
 public class Interface_Policy {
 	private Direction direction;
-	private PolicyMap policy;
-	private Interface interfaceObj;
+	private int policyID;
+	private int interfaceID;
 
-	public Interface_Policy(Direction direction, PolicyMap policy, Interface interfaceObj) {
+	public Interface_Policy(Direction direction, int policyID, int interfaceID) {
 		this.direction = direction;
-		this.policy = policy;
-		this.interfaceObj = interfaceObj;
+		this.policyID = policyID;
+		this.interfaceID = interfaceID;
 	}
 
 	public Direction getDirection() {
@@ -24,20 +24,20 @@ public class Interface_Policy {
 		this.direction = direction;
 	}
 
-	public PolicyMap getPolicy() {
-		return policy;
+	public int getPolicy() {
+		return policyID;
 	}
 
-	public void setPolicy(PolicyMap policy) {
-		this.policy = policy;
+	public void setPolicy(int policy) {
+		this.policyID = policy;
 	}
 
-	public Interface getInterfaceObj() {
-		return interfaceObj;
+	public int getInterfaceID() {
+		return interfaceID;
 	}
 
-	public void setInterfaceObj(Interface interfaceObj) {
-		this.interfaceObj = interfaceObj;
+	public void setInterfaceID(int interfaceID) {
+		this.interfaceID = interfaceID;
 	}
 
 }

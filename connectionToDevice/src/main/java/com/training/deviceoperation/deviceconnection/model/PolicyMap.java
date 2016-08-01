@@ -39,4 +39,8 @@ public class PolicyMap {
 		this.trafficClass = trafficClass;
 	}
 
+	@Override
+	public String toString() {
+		return ("**" + policyName + " || \t" + trafficClass );
+	}
 }

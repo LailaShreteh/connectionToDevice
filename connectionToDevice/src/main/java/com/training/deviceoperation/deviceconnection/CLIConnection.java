@@ -7,7 +7,10 @@ import com.training.deviceoperation.deviceconnection.model.ACL;
 import com.training.deviceoperation.deviceconnection.model.ClassMap;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 import com.training.deviceoperation.deviceconnection.model.Interface;
+import com.training.deviceoperation.deviceconnection.model.Interface_ACL;
+import com.training.deviceoperation.deviceconnection.model.Interface_Policy;
 import com.training.deviceoperation.deviceconnection.model.PolicyMap;
+import com.training.deviceoperation.deviceconnection.model.Transaction;
 import com.training.deviceoperation.parser.CLIParser;
 import com.training.deviceoperation.parser.Parser;
 
@@ -148,28 +151,35 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
 
-		System.out.println(cmdBack);
+		// System.out.println(cmdBack);
 
 		List<PolicyMap> policyMap = pars.parsPolicyMap(cmdBack);
 		policyMapList.addAll(policyMap);
 
-		/*
-		 * cmdBack = "policy-map policy1
-		 * 
-		 * class class1 bandwidth 2000 queue-limit 40
-		 * 
-		 * class class-default fair-queue 16 queue-limit 20 policy-map policy9
-		 * 
-		 * class acl136 bandwidth 2000 queue-limit 40
-		 * 
-		 * class ethernet101 bandwidth 3000 random-detect
-		 * exponential-weighting-constant 10
-		 * 
-		 * class class-default fair-queue 10 queue-limit 20Related Commands"
-		 */
+		for (int i = 0; i < policyMap.size(); i++)
+			System.out.println(policyMap.get(i));
 
 		return policyMapList;
 
+	}
+
+	@Override
+	public List<Transaction> getTransaction() {
+		List<Transaction> transactionsList = new ArrayList<Transaction>();
+		Parser pars = new CLIParser();
+		write("sh policy-map");
+		cmdBack = readUntil("#");
+		cmdBack = cmdBack.replace("sh policy-map", "");
+		cmdBack = cmdBack.replace("ASR1002_Omar#", "");
+		cmdBack = cmdBack.replace("\n", "");
+		cmdBack = cmdBack.replace("\r", " ");
+		cmdBack = cmdBack.trim();
+		transactionsList = pars.parsTransaction(cmdBack);
+
+		for (int i = 0; i < transactionsList.size(); i++)
+			System.out.println(transactionsList.get(i));
+
+		return transactionsList;
 	}
 
 	/**
@@ -252,6 +262,41 @@ public abstract class CLIConnection implements ConnectionRouter {
 			ACLList.addAll(acl);
 		}
 		return ACLList;
+	}
+	
+
+	@Override
+	public List<Interface_ACL> getInterface_ACL() {
+		write("sh run | in ^inter|access-gr");
+		cmdBack = readUntil("#");
+		cmdBack = cmdBack.replace("sh run | in ^inter|access-gr", "");
+		cmdBack = cmdBack.replace("ASR1002_Omar#", "");
+		cmdBack = cmdBack.replace("\n", "");
+		cmdBack = cmdBack.replace("\r", " ");
+		cmdBack = cmdBack.trim();
+		System.out.println(cmdBack);
+		List<Interface_ACL> interface_ACL_List = new ArrayList<Interface_ACL>();
+		Parser pars = new CLIParser();
+		interface_ACL_List = pars.parsInterface_ACL(cmdBack);
+		
+		return interface_ACL_List;
+	}
+
+	@Override
+	public List<Interface_Policy> getInterface_Policy() {
+		write("sh run | in ^inter|policy");
+		cmdBack = readUntil("#");
+		cmdBack = cmdBack.replace("sh run | in ^inter|policy", "");
+		cmdBack = cmdBack.replace("ASR1002_Omar#", "");
+		cmdBack = cmdBack.replace("\n", "");
+		cmdBack = cmdBack.replace("\r", " ");
+		cmdBack = cmdBack.trim();
+		//System.out.println(cmdBack);
+		List<Interface_Policy> interface_Policy_List = new ArrayList<Interface_Policy>();
+		Parser pars = new CLIParser();
+		interface_Policy_List = pars.parsInterface_Policy(cmdBack);
+		
+		return interface_Policy_List;
 	}
 
 	/**

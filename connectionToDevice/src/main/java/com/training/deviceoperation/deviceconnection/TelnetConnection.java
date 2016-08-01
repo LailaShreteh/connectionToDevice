@@ -2,8 +2,13 @@ package com.training.deviceoperation.deviceconnection;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.List;
 
 import org.apache.commons.net.telnet.TelnetClient;
+
+import com.training.deviceoperation.deviceconnection.model.Interface_ACL;
+import com.training.deviceoperation.deviceconnection.model.Interface_Policy;
+import com.training.deviceoperation.deviceconnection.model.Transaction;
 
 /**
  * 
@@ -71,4 +76,7 @@ public class TelnetConnection extends CLIConnection {
 		}
 
 	}
+
+
+
 }

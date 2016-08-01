@@ -5,7 +5,10 @@ import java.util.List;
 import com.training.deviceoperation.deviceconnection.model.ACL;
 import com.training.deviceoperation.deviceconnection.model.ClassMap;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
+import com.training.deviceoperation.deviceconnection.model.Interface_ACL;
+import com.training.deviceoperation.deviceconnection.model.Interface_Policy;
 import com.training.deviceoperation.deviceconnection.model.PolicyMap;
+import com.training.deviceoperation.deviceconnection.model.Transaction;
 
 /**
  * Parser interface to parse CLI and SNMP data from a device.
@@ -37,4 +40,11 @@ public interface Parser {
 	List<ClassMap> parsClassMap(String cmd);
 
 	List<PolicyMap> parsPolicyMap(String cmd);
+
+	List<Transaction> parsTransaction(String cmd);
+
+	List<Interface_ACL> parsInterface_ACL(String cmd);
+
+	List<Interface_Policy> parsInterface_Policy(String cmd);
+
 }

@@ -10,7 +10,10 @@ import org.apache.log4j.chainsaw.Main;
 import com.training.deviceoperation.deviceconnection.model.ACL;
 import com.training.deviceoperation.deviceconnection.model.Action;
 import com.training.deviceoperation.deviceconnection.model.ClassMap;
+import com.training.deviceoperation.deviceconnection.model.Direction;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
+import com.training.deviceoperation.deviceconnection.model.Interface_ACL;
+import com.training.deviceoperation.deviceconnection.model.Interface_Policy;
 import com.training.deviceoperation.deviceconnection.model.PolicyMap;
 import com.training.deviceoperation.deviceconnection.model.Transaction;
 
@@ -232,142 +235,212 @@ public class CLIParser implements Parser {
 
 	public List<PolicyMap> parsPolicyMap(String cmd) {
 		List<PolicyMap> policyMapList = new ArrayList<PolicyMap>();
+		List<Transaction> transactions = new ArrayList<Transaction>();
 		PolicyMap policyMap = null;
 		cmd = cmd.trim();
-		cmd = "Policy Map Child     Class reem       priority 10 (%)    Policy Map policy1     Class class1    Policy Map policy2     Class laila       Average Rate Traffic Shaping       cir 384000 (bps)       bandwidth 256 (kbps)     Class class1       bandwidth 384 (kbps)       service-policy policy1";
-		System.out.println(cmd);
-		String regex = "(?<=Policy Map)(.*?)(?=Policy Map|$)";
+		String regex = "(?<=Policy Map) (\\w+)(.*?)(?=Policy Map|$)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
 		while (matcher.find()) {
-			String regex1 = "(\\w+)     (Class.*)";
+			policyName = matcher.group(1);
+			String regex1 = "(?<=Class) (\\w+)(.*?)(?=Class|$)";
 			Pattern pattern1 = Pattern.compile(regex1);
-			Matcher matcher1 = pattern1.matcher(matcher.group(1));
+			Matcher matcher1 = pattern1.matcher(matcher.group(2));
 			while (matcher1.find()) {
-				policyName = matcher1.group(1);
-				String regex2 = "(?<=Class)(.*?)(?=Class|$)";
-				Pattern pattern2 = Pattern.compile(regex2);
-				Matcher matcher2 = pattern2.matcher(matcher1.group(2));
-				while (matcher2.find()) {
-					String regex3 = "(\\w+)(.*)";
-					Pattern pattern3 = Pattern.compile(regex3);
-					Matcher matcher3 = pattern3.matcher(matcher2.group(1));
-					while (matcher3.find()) {
-						trafficClass = matcher3.group(1);
-						// System.out.println(trafficClass);
-						String regex4 = "(?<=\\s\\s\\s\\s\\s)(.*?)(?=\\s\\s\\s\\s\\s|$)";
-						Pattern pattern4 = Pattern.compile(regex4);
-						Matcher matcher4 = pattern4.matcher(matcher3.group(2));
-						while (matcher4.find()) {
-							 System.out.println(">>>>>>>group (1):" +matcher4.group(1));
-							policyMap = new PolicyMap(policyName, trafficClass);
-							policyMapList.add(policyMap);
-							String regex5 = "(\\w+) (.*)";
-							Pattern pattern5 = Pattern.compile(regex5);
-							Matcher matcher5 = pattern5.matcher(matcher4.group(1).trim());
-							while (matcher5.find()) {
-								System.out.println("loool");
-								System.out.println("group laila (1):" + matcher5.group(1));
-								System.out.println("group laila (2):" + matcher5.group(2));
-
-								Action action = Action.valueOf(matcher5.group(1));
-								switch (action) {
-								case BANDWIDTH:
-									classAction = Action.BANDWIDTH;
-									break;
-								case FAIR_QUEUE:
-									classAction = Action.FAIR_QUEUE;
-									break;
-								case DROP:
-									classAction = Action.DROP;
-									break;
-								case POLICY:
-									classAction = Action.POLICY;
-									break;
-								case POLICE:
-									classAction = Action.POLICE;
-									break;
-								case police_rate_pdp:
-									classAction = Action.police_rate_pdp;
-									break;
-								case priority:
-									classAction = Action.priority;
-									break;
-								case queue_limit:
-									classAction = Action.queue_limit;
-									break;
-								case random_detect:
-									classAction = Action.random_detect;
-									break;
-								case random_detect_discard_class:
-									classAction = Action.random_detect_discard_class;
-									break;
-								case random_detect_discard_class_based:
-									classAction = Action.random_detect_discard_class_based;
-									break;
-								case random_detect_ecn:
-									classAction = Action.random_detect_ecn;
-									break;
-								case random_detect_precedence:
-									classAction = Action.random_detect_precedence;
-									break;
-								case service_policy:
-									classAction = Action.service_policy;
-									break;
-								case set_atm_clp:
-									classAction = Action.set_atm_clp;
-									break;
-								case set_cos:
-									classAction = Action.set_cos;
-									break;
-								case set_discard_class:
-									classAction = Action.set_discard_class;
-									break;
-								case set_ip_dscp:
-									classAction = Action.set_ip_dscp;
-									break;
-								case set_fr_de:
-									classAction = Action.set_fr_de;
-									break;
-								case set_mpls_experimental:
-									classAction = Action.set_mpls_experimental;
-									break;
-								case set_precedence:
-									classAction = Action.set_precedence;
-									break;
-								case set_qos_group:
-									classAction = Action.set_qos_group;
-									break;
-								case shape:
-									classAction = Action.shape;
-									break;
-								case shape_adaptive:
-									classAction = Action.shape_adaptive;
-									break;
-								case shape_fecn_adapt:
-									classAction = Action.shape_fecn_adapt;
-									break;
-								default:
-									break;
-								}
-								Transaction transaction = new Transaction(classAction, policyName, trafficClass); // what
-																													// about
-																													// transaction
-																													// object
-																													// :/
-																													// !!
-							}
-						}
-					}
-
-				}
+				trafficClass = matcher1.group(1);
+				policyMap = new PolicyMap(policyName, trafficClass);
+				policyMapList.add(policyMap);
 			}
+
 		}
 		return policyMapList;
 	}
 
-	public static void main(String[] args) {
-		CLIParser pr = new CLIParser();
-		pr.parsPolicyMap("sn");
+	@Override
+	public List<Transaction> parsTransaction(String cmd) {
+		List<Transaction> transactions = new ArrayList<Transaction>();
+		cmd = cmd.trim();
+		String regex = "(?<=Policy Map) (\\w+)(.*?)(?=Policy Map|$)";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(cmd);
+		while (matcher.find()) {
+			policyName = matcher.group(1);
+			String regex1 = "(?<=Class) (\\w+)(.*?)(?=Class|$)";
+			Pattern pattern1 = Pattern.compile(regex1);
+			Matcher matcher1 = pattern1.matcher(matcher.group(2));
+			while (matcher1.find()) {
+				trafficClass = matcher1.group(1);
+				String regex2 = "(?<=\\s\\s\\s\\s\\s)([a-zA-Z](-|\\w+)*)(.*?)(?=\\s\\s\\s\\s\\s|$)";
+				Pattern pattern2 = Pattern.compile(regex2);
+				Matcher matcher2 = pattern2.matcher(matcher1.group(2));
+				while (matcher2.find()) {
+					switch (matcher2.group(1)) {
+					case "bandwidth":
+						classAction = Action.BANDWIDTH;
+						break;
+					case "fair-queue":
+						classAction = Action.FAIR_QUEUE;
+						break;
+					case "drop":
+						classAction = Action.DROP;
+						break;
+					case "policy":
+						classAction = Action.POLICY;
+						break;
+					case "police":
+						classAction = Action.POLICE;
+						break;
+					case "police rate pdp":
+						classAction = Action.police_rate_pdp;
+						break;
+					case "priority":
+						classAction = Action.priority;
+						break;
+					case "queue-limit":
+						classAction = Action.queue_limit;
+						break;
+					case "random-detect":
+						classAction = Action.random_detect;
+						break;
+					case "random-detect discard-class":
+						classAction = Action.random_detect_discard_class;
+						break;
+					case "random-detect discard-class-based":
+						classAction = Action.random_detect_discard_class_based;
+						break;
+					case "random-detect ecn":
+						classAction = Action.random_detect_ecn;
+						break;
+					case "random-detect precedence":
+						classAction = Action.random_detect_precedence;
+						break;
+					case "service-policy":
+						classAction = Action.service_policy;
+						break;
+					case "set atm-clp":
+						classAction = Action.set_atm_clp;
+						break;
+					case "set cos":
+						classAction = Action.set_cos;
+						break;
+					case "set discard-class":
+						classAction = Action.set_discard_class;
+						break;
+					case "set [ip] dscp":
+						classAction = Action.set_ip_dscp;
+						break;
+					case "set fr-de":
+						classAction = Action.set_fr_de;
+						break;
+					case "set mpls experimental":
+						classAction = Action.set_mpls_experimental;
+						break;
+					case "set precedence":
+						classAction = Action.set_precedence;
+						break;
+					case "set qos-group":
+						classAction = Action.set_qos_group;
+						break;
+					case "shape":
+						classAction = Action.shape;
+						break;
+					case "shape adaptive":
+						classAction = Action.shape_adaptive;
+						break;
+					case "shape fecn-adapt":
+						classAction = Action.shape_fecn_adapt;
+						break;
+					default:
+						break;
+					}
+					Transaction transaction = new Transaction(classAction, policyName, trafficClass); // what
+																										// about
+																										// !!
+					transactions.add(transaction);
+
+				}
+
+			}
+		}
+		return transactions;
+	}
+
+	@Override
+	public List<Interface_ACL> parsInterface_ACL(String cmd) {
+		List<Interface_ACL> interface_ACLList = new ArrayList<Interface_ACL>();
+		cmd = cmd.trim();
+		String regex = "(?<=interface) ([A-Z][A-Za-z]+[0-9/]*)(.*?)(?=interface|$)";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(cmd);
+		while (matcher.find()) {
+			// System.out.println(matcher.group(1));
+			// search in data base group 1 interface name !!
+			System.out.println(">>>>" + matcher.group(2));
+			String regex1 = "(?<=ip access-group) (\\w+)(.*?)(?=ip access-group|$)";
+			Pattern pattern1 = Pattern.compile(regex1);
+			Matcher matcher1 = pattern1.matcher(matcher.group(2).trim());
+			Direction direction = null;
+			while (matcher1.find()) {
+				System.out.println("___" + matcher1.group(1));// search in data
+																// base !!to the
+																// access
+																// group!!
+				int id_interface = 0;
+				int id_acl = 0;
+				// System.out.println("-----"+matcher1.group(2));
+				switch (matcher1.group(2).trim()) {
+				case "in":
+					direction = Direction.in;
+					break;
+				case "out":
+					direction = Direction.out;
+					break;
+				default:
+					break;
+				}
+				Interface_ACL interface_acl = new Interface_ACL(direction,id_acl, id_interface);
+				interface_ACLList.add(interface_acl);
+
+			}
+		}
+		return interface_ACLList;
+	}
+
+	@Override
+	public List<Interface_Policy> parsInterface_Policy(String cmd) {
+		List<Interface_Policy> interface_PolicyList = new ArrayList<Interface_Policy>();
+		cmd = cmd.trim();
+		String regex = "(?<=interface) ([A-Z][A-Za-z]+[0-9/]*)(.*?)(?=interface|$)";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(cmd);
+		while (matcher.find()) {
+			// System.out.println(matcher.group(1));
+			// search in data base group 1 interface name !!
+			//System.out.println(">>>>" + matcher.group(2));
+			String regex1 = "(?<=service-policy) (\\w+) (\\w+).*?(?=service-policy|$)";
+			Pattern pattern1 = Pattern.compile(regex1);
+			Matcher matcher1 = pattern1.matcher(matcher.group(2).trim());
+			Direction direction = null;
+			while (matcher1.find()) {
+				//System.out.println("___" + matcher1.group(2)); //policy name
+				int id_interface = 0;
+				int id_policy = 0;
+				// System.out.println("-----"+matcher1.group(1));
+				switch (matcher1.group(1).trim()) {
+				case "input":
+					direction = Direction.in;
+					break;
+				case "output":
+					direction = Direction.out;
+					break;
+				default:
+					break;
+				}
+				Interface_Policy interface_policy = new Interface_Policy(direction,id_policy, id_interface);
+				interface_PolicyList.add(interface_policy);
+
+			}
+		}
+		return interface_PolicyList;
 	}
 }

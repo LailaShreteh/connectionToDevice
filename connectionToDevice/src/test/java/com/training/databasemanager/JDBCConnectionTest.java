@@ -17,11 +17,11 @@ public class JDBCConnectionTest {
 		con = new JDBC();
 	}
 
-	/*
-	 * @Test public void testInsert() { con = new connectionToMySQL();
-	 * 
-	 * }
-	 */
+	/*@Test
+	public void testInsert() {
+		con = new connectionToMySQL();
+
+	}*/
 
 	/*
 	 * @Test public void testUpdate() { con.update("GigabitEthernet0/0/3",

@@ -11,7 +11,10 @@ import com.training.deviceoperation.deviceconnection.model.ACL;
 import com.training.deviceoperation.deviceconnection.model.ClassMap;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 import com.training.deviceoperation.deviceconnection.model.Interface;
+import com.training.deviceoperation.deviceconnection.model.Interface_ACL;
+import com.training.deviceoperation.deviceconnection.model.Interface_Policy;
 import com.training.deviceoperation.deviceconnection.model.PolicyMap;
+import com.training.deviceoperation.deviceconnection.model.Transaction;
 import com.training.deviceoperation.parser.*;
 
 /**
@@ -88,6 +91,24 @@ public class SNMPConnection implements ConnectionRouter {
 
 	@Override
 	public List<ClassMap> getClassMap() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Transaction> getTransaction() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Interface_ACL> getInterface_ACL() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Interface_Policy> getInterface_Policy() {
 		// TODO Auto-generated method stub
 		return null;
 	}

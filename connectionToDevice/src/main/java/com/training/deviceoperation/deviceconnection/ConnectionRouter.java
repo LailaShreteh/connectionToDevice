@@ -6,7 +6,10 @@ import com.training.deviceoperation.deviceconnection.model.ACL;
 import com.training.deviceoperation.deviceconnection.model.ClassMap;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 import com.training.deviceoperation.deviceconnection.model.Interface;
+import com.training.deviceoperation.deviceconnection.model.Interface_ACL;
+import com.training.deviceoperation.deviceconnection.model.Interface_Policy;
 import com.training.deviceoperation.deviceconnection.model.PolicyMap;
+import com.training.deviceoperation.deviceconnection.model.Transaction;
 
 /**
  * 
@@ -67,8 +70,15 @@ public interface ConnectionRouter {
 	 ***/
 	public List<EthernetProtocolEndpoint> getEthernetPE();
 
+	public List<Interface_ACL> getInterface_ACL();
+	
+	public List<Interface_Policy> getInterface_Policy();
+
+	public List<Transaction> getTransaction();
+
 	public void setHost(String host);
 
 	public void setPort(int port);
+
 
 }

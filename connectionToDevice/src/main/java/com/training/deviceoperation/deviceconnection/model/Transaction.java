@@ -38,5 +38,8 @@ public class Transaction {
 	public void setClass_map(String class_map) {
 		this.class_map = class_map;
 	}
+	public String toString() {
+		return ("**" + policy_map + " || \t" + class_map + " || \t" + command );
+	}
 
 }
