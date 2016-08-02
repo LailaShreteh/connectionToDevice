@@ -18,7 +18,7 @@ public class JDBC implements DatabaseManager {
 	static final String PASS = "laila";
 	static Connection conn = null;
 
-	public static void insert(String table,String coloums ,String values) throws SQLException {
+	public static void insert(String table) throws SQLException{
 		try {
 			Class.forName(JDBC_DRIVER);
 		} catch (ClassNotFoundException e) {
@@ -28,9 +28,9 @@ public class JDBC implements DatabaseManager {
 		conn = DriverManager.getConnection(DB_URL, USER, PASS);
 		Statement stmt = null;
 		stmt = conn.createStatement();
-		String sql = "INSERT INTO " + table +"("+ coloums +") VALUES (" + values+")";
+		//String sql = "INSERT INTO " + table +"("+ coloums +") VALUES (" + values+")";
 		
-		stmt.executeUpdate(sql);
+		//stmt.executeUpdate(sql);
 		conn.close();
 	}
 
@@ -135,6 +135,12 @@ public class JDBC implements DatabaseManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public String connectToDataBase() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
