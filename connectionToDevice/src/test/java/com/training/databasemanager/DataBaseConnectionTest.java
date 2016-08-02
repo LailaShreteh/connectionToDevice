@@ -39,6 +39,7 @@ public class DataBaseConnectionTest {
 		ArrayList<EthernetProtocolEndpoint> epeList = (ArrayList<EthernetProtocolEndpoint>) connection
 				.getEthernetPE();
 		//send data to dataBase
+		//reem
 		
 		for (int j = 0; j < epeList.size(); j++)
 		{
