@@ -3,15 +3,6 @@ package com.training.databacemanager;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
-
-import com.training.deviceoperation.deviceconnection.model.ACL;
-import com.training.deviceoperation.deviceconnection.model.ClassMap;
-import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
-import com.training.deviceoperation.deviceconnection.model.Interface_ACL;
-import com.training.deviceoperation.deviceconnection.model.Interface_Policy;
-import com.training.deviceoperation.deviceconnection.model.PolicyMap;
-import com.training.deviceoperation.deviceconnection.model.Transaction;
 
 public class JDBC implements DatabaseManager {
 	Connection conn = null;
@@ -44,10 +35,18 @@ public class JDBC implements DatabaseManager {
 	}
 
 	@Override
-	public boolean insert(Object obj) {
-		boolean flag;
-		if (DataTypes.valueOf("interfaces").action()){
-			flag = true;}
+	public boolean insert(Object obj,String tableName) {
+		boolean flag=false;
+		if (DataTypes.valueOf(tableName).insert(obj)){
+			flag = true;
+			}
+		return flag;
 	
-		}}
+		}
+
+	@Override
+	public void delete(Object obj, String tableName) {
+		
+		
+	}}
 		
