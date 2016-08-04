@@ -115,6 +115,8 @@ public class CLIParser implements Parser {
 	 *         Interface and its parsed data.
 	 */
 	public List<EthernetProtocolEndpoint> parsEthernetPE(String cmd) {
+	//	%% GigabitEthernet0/0/0 is up, line protocol is up     Hardware is 4XGE-BUILT-IN, address is 503d.e596.7400 (bia 503d.e596.7400)    Internet address is 192.168.50.200/16    MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec,        reliability 255/255, txload 1/255, rxload 1/255    Encapsulation ARPA, loopback not set    Keepalive not supported     Full Duplex, 1000Mbps, link type is auto, media type is T    output flow-control is on, input flow-control is on    ARP type: ARPA, ARP Timeout 04:00:00    Last input 00:00:00, output 00:01:10, output hang never    Last clearing of "show interface" counters never    Input queue: 0/375/0/0 (size/max/drops/flushes); Total output drops: 0    Queueing strategy: fifo    Output queue: 0/40 (size/max)    5 minute input rate 60000 bits/sec, 49 packets/sec    5 minute output rate 0 bits/sec, 0 packets/sec       3841824 packets input, 567118332 bytes, 0 no buffer       Received 1105481 broadcasts (0 IP multicasts)       0 runts, 0 giants, 0 throttles        0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored       0 watchdog, 2712211 multicast, 0 pause input       65231 packets output, 5471165 bytes, 0 underruns       0 output errors, 0 collisions, 2 interface resets       0 unknown protocol drops       0 babbles, 0 late collision, 0 deferred       0 lost carrier, 0 no carrier, 0 pause output       0 output buffer failures, 0 output buffers swapped out  %% GigabitEthernet0/0/1 is down, line protocol is down     Hardware is 4XGE-BUILT-IN, address is 0000.0000.0002 (bia 503d.e596.7401)    MTU 4000 bytes, BW 1000000 Kbit/sec, DLY 10 usec,        reliability 255/255, txload 1/255, rxload 1/255    Encapsulation ARPA, loopback not set    Keepalive not supported     Full Duplex, 1000Mbps, link type is auto, media type is SX    output flow-control is on, input flow-control is on    ARP type: ARPA, ARP Timeout 04:00:00    Last input never, output never, output hang never    Last clearing of "show interface" counters never    Input queue: 0/375/0/0 (size/max/drops/flushes); Total output drops: 0    Queueing strategy: fifo    Output queue: 0/40 (size/max)    5 minute input rate 0 bits/sec, 0 packets/sec    5 minute output rate 0 bits/sec, 0 packets/sec       0 packets input, 0 bytes, 0 no buffer       Received 0 broadcasts (0 IP multicasts)       0 runts, 0 giants, 0 throttles        0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored       0 watchdog, 0 multicast, 0 pause input       0 packets output, 0 bytes, 0 underruns       0 output errors, 0 collisions, 2 interface resets       0 unknown protocol drops       0 babbles, 0 late collision, 0 deferred       0 lost carrier, 0 no carrier, 0 pause output       0 output buffer failures, 0 output buffers swapped out  %% GigabitEthernet0/0/2 is down, line protocol is down     Hardware is 4XGE-BUILT-IN, address is 0000.0000.0003 (bia 503d.e596.7402)    Internet address is 20.0.0.1/24    MTU 4000 bytes, BW 1000000 Kbit/sec, DLY 10 usec,        reliability 255/255, txload 1/255, rxload 1/255    Encapsulation ARPA, loopback not set    Keepalive not supported     Full Duplex, 1000Mbps, link type is auto, media type is SX    output flow-control is on, input flow-control is on    ARP type: ARPA, ARP Timeout 04:00:00    Last input never, output never, output hang never    Last clearing of "show interface" counters never    Input queue: 0/375/0/0 (size/max/drops/flushes); Total output drops: 0    Queueing strategy: fifo    Output queue: 0/40 (size/max)    30 second input rate 0 bits/sec, 0 packets/sec    30 second output rate 0 bits/sec, 0 packets/sec       0 packets input, 0 bytes, 0 no buffer       Received 0 broadcasts (0 IP multicasts)       0 runts, 0 giants, 0 throttles        0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored       0 watchdog, 0 multicast, 0 pause input       0 packets output, 0 bytes, 0 underruns       0 output errors, 0 collisions, 2 interface resets       0 unknown protocol drops       0 babbles, 0 late collision, 0 deferred       0 lost carrier, 0 no carrier, 0 pause output       0 output buffer failures, 0 output buffers swapped out  %% GigabitEthernet0/0/3 is down, line protocol is down     Hardware is 4XGE-BUILT-IN, address is 0000.0000.0004 (bia 503d.e596.7403)    Internet address is 30.0.0.1/24    MTU 4000 bytes, BW 1000000 Kbit/sec, DLY 10 usec,        reliability 255/255, txload 1/255, rxload 1/255    Encapsulation ARPA, loopback not set    Keepalive not supported     Full Duplex, 1000Mbps, link type is auto, media type is SX    output flow-control is on, input flow-control is on    ARP type: ARPA, ARP Timeout 04:00:00    Last input never, output never, output hang never    Last clearing of "show interface" counters never    Input queue: 0/375/0/0 (size/max/drops/flushes); Total output drops: 0    Queueing strategy: fifo    Output queue: 0/40 (size/max)    30 second input rate 0 bits/sec, 0 packets/sec    30 second output rate 0 bits/sec, 0 packets/sec       0 packets input, 0 bytes, 0 no buffer       Received 0 broadcasts (0 IP multicasts)       0 runts, 0 giants, 0 throttles        0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored       0 watchdog, 0 multicast, 0 pause input       0 packets output, 0 bytes, 0 underruns       0 output errors, 0 collisions, 2 interface resets       0 unknown protocol drops       0 babbles, 0 late collision, 0 deferred       0 lost carrier, 0 no carrier, 0 pause output       0 output buffer failures, 0 output buffers swapped out  %% GigabitEthernet0 is down, line protocol is down     Hardware is RP management port, address is 503d.e596.7440 (bia 503d.e596.7440)    MTU 1500 bytes, BW 10000 Kbit/sec, DLY 1000 usec,        reliability 255/255, txload 1/255, rxload 1/255    Encapsulation ARPA, loopback not set    Keepalive set (10 sec)    Half Duplex, 10Mbps, link type is auto, media type is RJ45    output flow-control is unsupported, input flow-control is unsupported    ARP type: ARPA, ARP Timeout 04:00:00    Last input never, output never, output hang never    Last clearing of "show interface" counters never    Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0    Queueing strategy: fifo    Output queue: 0/40 (size/max)    5 minute input rate 0 bits/sec, 0 packets/sec    5 minute output rate 0 bits/sec, 0 packets/sec       0 packets input, 0 bytes, 0 no buffer       Received 0 broadcasts (0 IP multicasts)       0 runts, 0 giants, 0 throttles        0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored       0 watchdog, 0 multicast, 0 pause input       0 packets output, 0 bytes, 0 underruns       0 output errors, 0 collisions, 0 interface resets       0 unknown protocol drops       0 babbles, 0 late collision, 0 deferred       0 lost carrier, 0 no carrier, 0 pause output       0 output buffer failures, 0 output buffers swapped out
+
 		ePEList = new ArrayList<EthernetProtocolEndpoint>();
 
 		String regex = "(?<=%%) (" + INTERFACE + ") is (" + ADMIN_STATUS + ").*?line protocol is (" + OPERATIONAL_STATUS
@@ -190,7 +192,7 @@ public class CLIParser implements Parser {
 	 * @return - list of all access lists and their parsed data as an objects.
 	 */
 	public List<ACL> parsACL(String cmd) {
-		// System.out.println(cmd);
+		//%% Standard IP access list 1     10 permit any  %% Standard IP access list 2     10 permit 127.0.0.1
 		accessList = new ArrayList<ACL>();
 		ACL aclObj;
 		cmd = cmd.trim();
@@ -223,6 +225,7 @@ public class CLIParser implements Parser {
 	}
 
 	public List<ClassMap> parsClassMap(String cmd) {
+		//%% Class Map match-any class-default (id 0)    Match any     %% Class Map match-all class1 (id 1)   Description: first class    Match none
 		classMapList = new ArrayList<ClassMap>();
 		ClassMap classMap;
 		cmd = cmd.trim();
@@ -250,6 +253,7 @@ public class CLIParser implements Parser {
 	}
 
 	public List<PolicyMap> parsPolicyMap(String cmd) {
+		//Policy Map policy1     Class class1    Policy Map policy2
 		policyMapList = new ArrayList<PolicyMap>();
 		PolicyMap policyMap = null;
 		cmd = cmd.trim();
@@ -273,6 +277,8 @@ public class CLIParser implements Parser {
 
 	@Override
 	public List<Transaction> parsTransaction(String cmd) {
+		//Policy Map policy1     Class class1    Policy Map policy2
+
 		transactionList = new ArrayList<Transaction>();
 		cmd = cmd.trim();
 		String regex = "(?<=Policy Map) (\\w+)(.*?)(?=Policy Map|$)";
@@ -381,6 +387,8 @@ public class CLIParser implements Parser {
 
 	@Override
 	public List<Interface_ACL> parsInterface_ACL(String cmd) {
+		//interface GigabitEthernet0/0/0  ip access-group 2 out interface GigabitEthernet0/0/1 interface GigabitEthernet0/0/2 interface GigabitEthernet0/0/3 interface GigabitEthernet0
+
 		interface_ACLList = new ArrayList<Interface_ACL>();
 		cmd = cmd.trim();
 		Interface_ACL interface_acl;
@@ -418,6 +426,8 @@ public class CLIParser implements Parser {
 
 	@Override
 	public List<Interface_Policy> parsInterface_Policy(String cmd) {
+//policy-map policy1 policy-map policy2 interface GigabitEthernet0/0/0  service-policy input policy1  service-policy output policy1 interface GigabitEthernet0/0/1  service-policy output policy1 interface GigabitEthernet0/0/2 interface GigabitEthernet0/0/3 interface GigabitEthernet0
+
 		interface_PolicyList = new ArrayList<Interface_Policy>();
 		cmd = cmd.trim();
 		String regex = "(?<=interface) ([A-Z][A-Za-z]+[0-9/]*)(.*?)(?=interface|$)";
