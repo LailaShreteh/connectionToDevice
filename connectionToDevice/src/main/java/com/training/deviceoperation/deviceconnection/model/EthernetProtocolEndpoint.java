@@ -1,5 +1,7 @@
 package com.training.deviceoperation.deviceconnection.model;
 
+import java.util.List;
+
 import com.training.deviceoperation.parser.DuplexMode;
 import com.training.deviceoperation.parser.Status;
 
@@ -26,6 +28,8 @@ public class EthernetProtocolEndpoint {
 	protected int mtu;
 	protected Status operStatus;
 	protected String name;
+	protected List<ACL> aclList;
+	protected List <PolicyMap> policyList;
 
 	public EthernetProtocolEndpoint(String name, int mtu, Status adminStatus, Status operStatus, DuplexMode duplexMode,
 			String ifSpeed, String macAddress) {
@@ -37,6 +41,22 @@ public class EthernetProtocolEndpoint {
 		this.duplexMode = duplexMode;
 		this.ifSpeed = ifSpeed;
 		this.macAddress = macAddress;
+	}
+
+	public List<ACL> getAclList() {
+		return aclList;
+	}
+
+	public void setAclList(List<ACL> aclList) {
+		this.aclList = aclList;
+	}
+
+	public List<PolicyMap> getPolicyList() {
+		return policyList;
+	}
+
+	public void setPolicyList(List<PolicyMap> policyList) {
+		this.policyList = policyList;
 	}
 
 	/**
@@ -203,4 +223,66 @@ public class EthernetProtocolEndpoint {
 		return ("**" + name + " || \t" + adminStatus + " || \t" + operStatus + " || \t" + mtu + " || \t" + duplexMode
 				+ " || \t" + ifSpeed + " || \t" + macAddress);
 	}
+
+
+	/*@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EthernetProtocolEndpoint other = (EthernetProtocolEndpoint) obj;
+		if (adminStatus != other.adminStatus)
+			return false;
+		if (comments == null) {
+			if (other.comments != null)
+				return false;
+		} else if (!comments.equals(other.comments))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (duplexMode != other.duplexMode)
+			return false;
+		if (entAliasMappingIdentifier == null) {
+			if (other.entAliasMappingIdentifier != null)
+				return false;
+		} else if (!entAliasMappingIdentifier.equals(other.entAliasMappingIdentifier))
+			return false;
+		if (ethernetLoopback != other.ethernetLoopback)
+			return false;
+		if (ifSpeed == null) {
+			if (other.ifSpeed != null)
+				return false;
+		} else if (!ifSpeed.equals(other.ifSpeed))
+			return false;
+		if (lagEndName == null) {
+			if (other.lagEndName != null)
+				return false;
+		} else if (!lagEndName.equals(other.lagEndName))
+			return false;
+		if (macAddress == null) {
+			if (other.macAddress != null)
+				return false;
+		} else if (!macAddress.equals(other.macAddress))
+			return false;
+		if (maxOccurs != other.maxOccurs)
+			return false;
+		if (minOccurs != other.minOccurs)
+			return false;
+		if (mtu != other.mtu)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (operStatus != other.operStatus)
+			return false;
+		return true;
+	}*/
 }

@@ -7,13 +7,13 @@ package com.training.deviceoperation.deviceconnection.model;
  */
 public class Interface_ACL {
 	private Direction direction;
-	private int id_acl;
-	private int id_interface;
+	private String aclName;
+	private String interfaceName;
 
-	public Interface_ACL(Direction direction, int id_acl, int id_interface) {
+	public Interface_ACL(Direction direction, String aclName, String interfaceName) {
 		this.direction = direction;
-		this.id_acl = id_acl;
-		this.id_interface = id_interface;
+		this.aclName = aclName;
+		this.interfaceName = interfaceName;
 	}
 
 	public Direction getDir() {
@@ -24,20 +24,24 @@ public class Interface_ACL {
 		this.direction = direction;
 	}
 
-	public int getAcl() {
-		return id_acl;
+	public String getAclName() {
+		return aclName;
 	}
 
-	public void setAcl(int id_acl) {
-		this.id_acl = id_acl;
+	public void setAcl(String aclName) {
+		this.aclName = aclName;
 	}
 
-	public int getInterface() {
-		return id_interface;
+	public String getInterface() {
+		return interfaceName;
 	}
 
-	public void setInterface(int id_interface) {
-		this.id_interface = id_interface;
+	public void setInterface(String interfaceName) {
+		this.interfaceName = interfaceName;
+	}
+	@Override
+	public String toString() {
+		return ("**" + direction + " || \t" + aclName + " || \t" + interfaceName);
 	}
 
 }

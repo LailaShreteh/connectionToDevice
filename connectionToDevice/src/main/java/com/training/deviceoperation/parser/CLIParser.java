@@ -1,12 +1,14 @@
 package com.training.deviceoperation.parser;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.chainsaw.Main;
-
+import com.training.databacemanager.DataTypes;
+import com.training.databacemanager.JDBC;
 import com.training.deviceoperation.deviceconnection.model.ACL;
 import com.training.deviceoperation.deviceconnection.model.Action;
 import com.training.deviceoperation.deviceconnection.model.ClassMap;
@@ -39,7 +41,7 @@ public class CLIParser implements Parser {
 	final static String DUPLEX_SPEED = "\\d+";
 
 	/* regex constants to parse ACL. */
-	final static String ACESS_LIST_TYPE = "^[?:Standard|Extended].*";
+	final static String ACESS_LIST_TYPE = "[?:Standard|Extended].*?";
 	final static String IP_ACCESS_LIST_NUM = "\\w+";
 	final static String ACCESS_LIST_MODE_NUMBER = "\\d+";
 	final static String SOURCE_IP = "[0-9.any]*";
@@ -51,7 +53,7 @@ public class CLIParser implements Parser {
 	/* regex constants to parse Class Map. */
 	final static String CLASS_MAP_CONFIGERATION_MODE = "match-any|match-all";
 	final static String CLASS_NAME = "[a-zA-Z](-|\\w+)*";
-	final static String MATCH_TYPE = "Match.*";
+	final static String MATCH_TYPE = "Match.*?";
 	final static String DESCRIPTION = "[^Match].*";
 	final static String MATCH_ONE_GROUP = "[^\\s]*";
 	final static String MATCH_TYPE_VALUE = "[^\\s]*";
@@ -64,34 +66,45 @@ public class CLIParser implements Parser {
 	 * variables to define the matcher group for EthernetProtocolEndpoint parsed
 	 * data.
 	 */
-	private String ifName;
-	private Status ifStatus;
-	private Status ifOperStatus;
+	private String ifName = " ";
+	private Status ifStatus = null;
+	private Status ifOperStatus = null;
 	private int ifMTU;
-	private DuplexMode duplexMode;
-	private String ifSpeed;
-	private String macAddress;
+	private DuplexMode duplexMode = null;
+	private String ifSpeed = " ";
+	private String macAddress = " ";
 
 	/* variables to define the matcher group for ACL parsed data. */
-	private String ipAccessListType;
+	private String ipAccessListType = " ";
 	private int ipAccessListNum;
 	private int modeNum;
-	private String sourceIP;
-	private String wildCardSourceIP;
-	private String desIP;
-	private String wildCardDesIP;
+	private String sourceIP = " ";
+	private String wildCardSourceIP = " ";
+	private String desIP = " ";
+	private String wildCardDesIP = " ";
 
 	/* variables to define the matcher group for Class Map parsed data. */
-	private String className;
-	private String classMapConfigurationMode;
-	private String description;
-	private String matchType;
-	private String matchTypeValue;
+	private String className = " ";
+	private String classMapConfigurationMode = " ";
+	private String description = " ";
+	private String matchType = " ";
+	private String matchTypeValue = " ";
 
 	/* variables to define the matcher group for Policy Map parsed data. */
-	private String policyName;
-	private String trafficClass;
-	private Action classAction;
+	private String policyName = " ";
+	private String trafficClass = " ";
+	private Action classAction = null;
+
+	/* variables parsing data */
+	private List<EthernetProtocolEndpoint> ePEList;
+	private List<ACL> accessList;
+	private List<ClassMap> classMapList;
+	private List<PolicyMap> policyMapList;
+	private List<Transaction> transactionList;
+	private List<Interface_ACL> interface_ACLList;
+	private List<Interface_Policy> interface_PolicyList;
+
+	EthernetProtocolEndpoint epObj;
 
 	/**
 	 * parsEthernetPE method to parse Interfaces data.
@@ -101,16 +114,16 @@ public class CLIParser implements Parser {
 	 * @return - an EthernetProtocolEndpoint object which represent each
 	 *         Interface and its parsed data.
 	 */
-	public EthernetProtocolEndpoint parsEthernetPE(String cmd) {
-		cmd = cmd.replace("\n", "");
-		cmd = cmd.replace("\r", " ");
-		String regex = "^(" + INTERFACE + ") is (" + ADMIN_STATUS + ").*line protocol is (" + OPERATIONAL_STATUS
-				+ ").*address is (" + ADDRESS + ").*MTU (" + MTU + ").*?(" + DUPLEX + ") Duplex, (" + DUPLEX_SPEED
-				+ ")";
+	public List<EthernetProtocolEndpoint> parsEthernetPE(String cmd) {
+		ePEList = new ArrayList<EthernetProtocolEndpoint>();
+
+		String regex = "(?<=%%) (" + INTERFACE + ") is (" + ADMIN_STATUS + ").*?line protocol is (" + OPERATIONAL_STATUS
+				+ ").*?address is (" + ADDRESS + ").*?MTU (" + MTU + ").*?(" + DUPLEX + ") Duplex, (" + DUPLEX_SPEED
+				+ ")(.*?)(?=%%|$)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
 
-		if (matcher.find()) {
+		while (matcher.find()) {
 			ifName = matcher.group(1);
 			Status adminState = Status.valueOf(matcher.group(2));
 
@@ -161,12 +174,12 @@ public class CLIParser implements Parser {
 
 			ifSpeed = matcher.group(7);
 			macAddress = matcher.group(5);
+			epObj = new EthernetProtocolEndpoint(ifName, ifMTU, ifStatus, ifOperStatus, duplexMode, ifSpeed,
+					macAddress);
+//			Map<EthernetProtocolEndpoint , List<PolicyMap>> map = new HashMap<epObj,>;
+			ePEList.add(epObj);
 		}
-
-		EthernetProtocolEndpoint epObj = new EthernetProtocolEndpoint(ifName, ifMTU, ifStatus, ifOperStatus, duplexMode,
-				ifSpeed, macAddress);
-
-		return epObj;
+		return ePEList;
 	}
 
 	/**
@@ -177,27 +190,30 @@ public class CLIParser implements Parser {
 	 * @return - list of all access lists and their parsed data as an objects.
 	 */
 	public List<ACL> parsACL(String cmd) {
-		List<ACL> accessList = new ArrayList<ACL>();
+		// System.out.println(cmd);
+		accessList = new ArrayList<ACL>();
 		ACL aclObj;
 		cmd = cmd.trim();
-		String regex = "(" + ACESS_LIST_TYPE + ") IP access list (" + IP_ACCESS_LIST_NUM + ").*?(\\d.*)";
+		String regex = "(?<=%%) (" + ACESS_LIST_TYPE + ") IP access list (" + IP_ACCESS_LIST_NUM
+				+ ").*?(\\d.*?)(?=%%|$)";
+
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
 
-		if (matcher.find()) {
+		while (matcher.find()) {
 			ipAccessListType = matcher.group(1);
 			ipAccessListNum = Integer.parseInt(matcher.group(2));
-			regex = "(" + ACCESS_LIST_MODE_NUMBER + ") " + ACCESS_LIST_MODE + "(" + SOURCE_IP + ") {0,1}("
+			String regex1 = "(" + ACCESS_LIST_MODE_NUMBER + ") " + ACCESS_LIST_MODE + "(" + SOURCE_IP + ") {0,1}("
 					+ WILDCARD_SOURCE_IP + ") {0,1}(" + DES_IP + ") {0,1}(" + WILDCARD_DES_IP + ")";
-			pattern = Pattern.compile(regex);
-			matcher = pattern.matcher(matcher.group(3));
+			Pattern pattern1 = Pattern.compile(regex1);
+			Matcher matcher1 = pattern1.matcher(matcher.group(3));
 
-			while (matcher.find()) {
-				modeNum = Integer.parseInt(matcher.group(1));
-				sourceIP = matcher.group(2);
-				wildCardSourceIP = matcher.group(3);
-				desIP = matcher.group(4);
-				wildCardDesIP = matcher.group(5);
+			while (matcher1.find()) {
+				modeNum = Integer.parseInt(matcher1.group(1));
+				sourceIP = matcher1.group(2);
+				wildCardSourceIP = matcher1.group(3);
+				desIP = matcher1.group(4);
+				wildCardDesIP = matcher1.group(5);
 				aclObj = new ACL(ipAccessListType, ipAccessListNum, modeNum, sourceIP, wildCardSourceIP, desIP,
 						wildCardDesIP);
 				accessList.add(aclObj);
@@ -207,25 +223,25 @@ public class CLIParser implements Parser {
 	}
 
 	public List<ClassMap> parsClassMap(String cmd) {
-		List<ClassMap> classMapList = new ArrayList<ClassMap>();
+		classMapList = new ArrayList<ClassMap>();
 		ClassMap classMap;
 		cmd = cmd.trim();
-		String regex = "Class Map (" + CLASS_MAP_CONFIGERATION_MODE + ") (" + CLASS_NAME
-				+ ") \\(id [0-9*]\\)    {0,1}(Description: ){0,1}(" + DESCRIPTION + "){0,1}(" + MATCH_TYPE + ")";
+		String regex = "(?<=%%) Class Map (" + CLASS_MAP_CONFIGERATION_MODE + ") (" + CLASS_NAME
+				+ ") \\(id [0-9*]\\)    {0,1}(Description: ){0,1}(" + DESCRIPTION + "){0,1}(" + MATCH_TYPE
+				+ ")(?=%%|$)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
 
-		if (matcher.find()) {
+		while (matcher.find()) {
 			classMapConfigurationMode = matcher.group(1);
 			className = matcher.group(2);
 			description = matcher.group(5);
-			regex = "Match (" + MATCH_ONE_GROUP + ") {0,2}(" + MATCH_TYPE_VALUE + "){0,1}";
-			pattern = Pattern.compile(regex);
-			matcher = pattern.matcher(matcher.group(6));
-
-			while (matcher.find()) {
-				matchType = matcher.group(1);
-				matchTypeValue = matcher.group(2);
+			String regex2 = "Match (" + MATCH_ONE_GROUP + ") {0,2}(" + MATCH_TYPE_VALUE + "){0,1}";
+			Pattern pattern1 = Pattern.compile(regex2);
+			Matcher matcher1 = pattern1.matcher(matcher.group(6));
+			while (matcher1.find()) {
+				matchType = matcher1.group(1);
+				matchTypeValue = matcher1.group(2);
 				classMap = new ClassMap(className, classMapConfigurationMode, description, matchType, matchTypeValue);
 				classMapList.add(classMap);
 			}
@@ -234,8 +250,7 @@ public class CLIParser implements Parser {
 	}
 
 	public List<PolicyMap> parsPolicyMap(String cmd) {
-		List<PolicyMap> policyMapList = new ArrayList<PolicyMap>();
-		List<Transaction> transactions = new ArrayList<Transaction>();
+		policyMapList = new ArrayList<PolicyMap>();
 		PolicyMap policyMap = null;
 		cmd = cmd.trim();
 		String regex = "(?<=Policy Map) (\\w+)(.*?)(?=Policy Map|$)";
@@ -258,18 +273,18 @@ public class CLIParser implements Parser {
 
 	@Override
 	public List<Transaction> parsTransaction(String cmd) {
-		List<Transaction> transactions = new ArrayList<Transaction>();
+		transactionList = new ArrayList<Transaction>();
 		cmd = cmd.trim();
 		String regex = "(?<=Policy Map) (\\w+)(.*?)(?=Policy Map|$)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
 		while (matcher.find()) {
-			policyName = matcher.group(1);
+			String policyName = matcher.group(1);
 			String regex1 = "(?<=Class) (\\w+)(.*?)(?=Class|$)";
 			Pattern pattern1 = Pattern.compile(regex1);
 			Matcher matcher1 = pattern1.matcher(matcher.group(2));
 			while (matcher1.find()) {
-				trafficClass = matcher1.group(1);
+				String className = matcher1.group(1);
 				String regex2 = "(?<=\\s\\s\\s\\s\\s)([a-zA-Z](-|\\w+)*)(.*?)(?=\\s\\s\\s\\s\\s|$)";
 				Pattern pattern2 = Pattern.compile(regex2);
 				Matcher matcher2 = pattern2.matcher(matcher1.group(2));
@@ -353,41 +368,35 @@ public class CLIParser implements Parser {
 					default:
 						break;
 					}
-					Transaction transaction = new Transaction(classAction, policyName, trafficClass); // what
-																										// about
-																										// !!
-					transactions.add(transaction);
 
+					Transaction transaction = new Transaction(classAction, policyName, className);
+					System.out.println(transaction);
+					transactionList.add(transaction);
 				}
 
 			}
 		}
-		return transactions;
+		return transactionList;
 	}
 
 	@Override
 	public List<Interface_ACL> parsInterface_ACL(String cmd) {
-		List<Interface_ACL> interface_ACLList = new ArrayList<Interface_ACL>();
+		interface_ACLList = new ArrayList<Interface_ACL>();
 		cmd = cmd.trim();
+		Interface_ACL interface_acl;
 		String regex = "(?<=interface) ([A-Z][A-Za-z]+[0-9/]*)(.*?)(?=interface|$)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
 		while (matcher.find()) {
-			// System.out.println(matcher.group(1));
-			// search in data base group 1 interface name !!
-			System.out.println(">>>>" + matcher.group(2));
+			String interfaceName = matcher.group(1);
 			String regex1 = "(?<=ip access-group) (\\w+)(.*?)(?=ip access-group|$)";
 			Pattern pattern1 = Pattern.compile(regex1);
 			Matcher matcher1 = pattern1.matcher(matcher.group(2).trim());
 			Direction direction = null;
 			while (matcher1.find()) {
-				System.out.println("___" + matcher1.group(1));// search in data
-																// base !!to the
-																// access
-																// group!!
-				int id_interface = 0;
-				int id_acl = 0;
-				// System.out.println("-----"+matcher1.group(2));
+
+				String aclName = matcher1.group(1);
+
 				switch (matcher1.group(2).trim()) {
 				case "in":
 					direction = Direction.in;
@@ -398,7 +407,8 @@ public class CLIParser implements Parser {
 				default:
 					break;
 				}
-				Interface_ACL interface_acl = new Interface_ACL(direction,id_acl, id_interface);
+				interface_acl = new Interface_ACL(direction, aclName, interfaceName);
+				;
 				interface_ACLList.add(interface_acl);
 
 			}
@@ -408,24 +418,20 @@ public class CLIParser implements Parser {
 
 	@Override
 	public List<Interface_Policy> parsInterface_Policy(String cmd) {
-		List<Interface_Policy> interface_PolicyList = new ArrayList<Interface_Policy>();
+		interface_PolicyList = new ArrayList<Interface_Policy>();
 		cmd = cmd.trim();
 		String regex = "(?<=interface) ([A-Z][A-Za-z]+[0-9/]*)(.*?)(?=interface|$)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
 		while (matcher.find()) {
-			// System.out.println(matcher.group(1));
-			// search in data base group 1 interface name !!
-			//System.out.println(">>>>" + matcher.group(2));
+			
+			String interfaceName = matcher.group(1);
 			String regex1 = "(?<=service-policy) (\\w+) (\\w+).*?(?=service-policy|$)";
 			Pattern pattern1 = Pattern.compile(regex1);
 			Matcher matcher1 = pattern1.matcher(matcher.group(2).trim());
 			Direction direction = null;
 			while (matcher1.find()) {
-				//System.out.println("___" + matcher1.group(2)); //policy name
-				int id_interface = 0;
-				int id_policy = 0;
-				// System.out.println("-----"+matcher1.group(1));
+				String policyName = matcher1.group(2);
 				switch (matcher1.group(1).trim()) {
 				case "input":
 					direction = Direction.in;
@@ -436,11 +442,69 @@ public class CLIParser implements Parser {
 				default:
 					break;
 				}
-				Interface_Policy interface_policy = new Interface_Policy(direction,id_policy, id_interface);
+
+				Interface_Policy interface_policy = new Interface_Policy(direction, policyName, interfaceName);
 				interface_PolicyList.add(interface_policy);
 
 			}
 		}
 		return interface_PolicyList;
 	}
+
+	public List<EthernetProtocolEndpoint> getePEList() {
+		return ePEList;
+	}
+
+	public void setePEList(List<EthernetProtocolEndpoint> ePEList) {
+		this.ePEList = ePEList;
+	}
+
+	public List<ACL> getAccessList() {
+		return accessList;
+	}
+
+	public void setAccessList(List<ACL> accessList) {
+		this.accessList = accessList;
+	}
+
+	public List<ClassMap> getClassMapList() {
+		return classMapList;
+	}
+
+	public void setClassMapList(List<ClassMap> classMapList) {
+		this.classMapList = classMapList;
+	}
+
+	public List<PolicyMap> getPolicyMapList() {
+		return policyMapList;
+	}
+
+	public void setPolicyMapList(List<PolicyMap> policyMapList) {
+		this.policyMapList = policyMapList;
+	}
+
+	public List<Transaction> getTransactionList() {
+		return transactionList;
+	}
+
+	public void setTransactionList(List<Transaction> transactionList) {
+		this.transactionList = transactionList;
+	}
+
+	public List<Interface_ACL> getInterface_ACLList() {
+		return interface_ACLList;
+	}
+
+	public void setInterface_ACLList(List<Interface_ACL> interface_ACLList) {
+		this.interface_ACLList = interface_ACLList;
+	}
+
+	public List<Interface_Policy> getInterface_PolicyList() {
+		return interface_PolicyList;
+	}
+
+	public void setInterface_PolicyList(List<Interface_Policy> interface_PolicyList) {
+		this.interface_PolicyList = interface_PolicyList;
+	}
+
 }
