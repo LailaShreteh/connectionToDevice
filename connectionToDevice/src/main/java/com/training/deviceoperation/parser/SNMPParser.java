@@ -18,7 +18,7 @@ import com.training.deviceoperation.deviceconnection.model.Transaction;
 public class SNMPParser implements Parser {
 
 	@Override
-	public EthernetProtocolEndpoint parsEthernetPE(String cmdBack) {
+	public List<EthernetProtocolEndpoint> parsEthernetPE(String cmdBack) {
 		// TODO Auto-generated method stub
 		return null;
 	}

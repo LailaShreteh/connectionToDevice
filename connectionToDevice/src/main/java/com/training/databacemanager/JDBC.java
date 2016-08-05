@@ -3,12 +3,15 @@ package com.training.databacemanager;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.training.databacemanager.exception.CRUDException;
 
 public class JDBC implements DatabaseManager {
 	Connection conn = null;
 
 	@Override
-	public boolean connectToDatabase() {
+	public Connection connectToDatabase() {
 		// JDBC driver name and database URL
 		final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 		final String DB_URL = "jdbc:mysql://localhost/interfaces";
@@ -25,28 +28,43 @@ public class JDBC implements DatabaseManager {
 		}
 		try {
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+			String sql = "SET FOREIGN_KEY_CHECKS=0";
+			try {
+				Statement stmt = null;
+				stmt = conn.createStatement();
+				stmt.executeUpdate(sql);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return false;
+		return conn;
 	}
 
 	@Override
-	public boolean insert(Object obj,String tableName) {
-		boolean flag=false;
-		if (DataTypes.valueOf(tableName).insert(obj)){
-			flag = true;
-			}
-		return flag;
-	
-		}
+	public boolean insert(Object obj) throws CRUDException{
+		String t = obj.getClass().getSimpleName();
+		String table=tableName.valueOf(t).getTableName();
+		//System.out.println(tableName);
+		 
+		  try {
+			DataTypes.valueOf(table).insert(obj);
+		 } catch( CRUDException e) {
+			 throw e;
+		 }finally {
+			//Logic 
+		 }
+		 
+		 return true;
+	}
 
 	@Override
 	public void delete(Object obj, String tableName) {
-		
-		
-	}}
-		
+
+	}
+}

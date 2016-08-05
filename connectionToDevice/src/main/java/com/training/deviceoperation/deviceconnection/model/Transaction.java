@@ -9,10 +9,10 @@ public class Transaction {
 	private String policy_map;
 	private String class_map;
 
-	public Transaction(Action command, String policyName, String trafficClass) {
+	public Transaction(Action command, String policy, String class_map) {
 		this.command = command;
-		this.policy_map = policyName;
-		this.class_map = trafficClass;
+		this.policy_map = policy;
+		this.class_map = class_map;
 	}
 
 	public Action getCommand() {
@@ -39,7 +39,7 @@ public class Transaction {
 		this.class_map = class_map;
 	}
 	public String toString() {
-		return ("**" + policy_map + " || \t" + class_map + " || \t" + command );
+		return ("**" + command + " || \t" + policy_map + " || \t" + class_map );
 	}
 
 }

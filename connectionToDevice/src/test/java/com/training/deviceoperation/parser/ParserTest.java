@@ -1,15 +1,24 @@
 package com.training.deviceoperation.parser;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
+import com.training.databacemanager.JDBC;
 import com.training.deviceoperation.deviceconnection.ConnectionFactory;
 import com.training.deviceoperation.deviceconnection.ConnectionRouter;
+import com.training.deviceoperation.deviceconnection.model.ACL;
+import com.training.deviceoperation.deviceconnection.model.ClassMap;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
+import com.training.deviceoperation.deviceconnection.model.Interface_ACL;
+import com.training.deviceoperation.deviceconnection.model.Interface_Policy;
+import com.training.deviceoperation.deviceconnection.model.PolicyMap;
+import com.training.deviceoperation.deviceconnection.model.Transaction;
 
 /**
  * 
@@ -18,10 +27,21 @@ import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpo
  */
 public class ParserTest {
 
-	ConnectionFactory connectionFactory = new ConnectionFactory();
+	private ConnectionFactory connectionFactory = new ConnectionFactory();
+	
 	private static ConnectionRouter connection;
-	String result = null;
-	ArrayList<EthernetProtocolEndpoint> epeList;
+	private JDBC JDBCConnection = new JDBC();
+	private Connection result = null;
+	private String res = null;
+	private Exception exception;
+	/* variables parsing data */
+	private List<EthernetProtocolEndpoint> ePEList;
+	private List<ACL> accessList;
+	private List<ClassMap> classMapList;
+	private List<PolicyMap> policyMapList;
+	private List<Transaction> transactionList;
+	private List<Interface_ACL> interface_ACLList;
+	private List<Interface_Policy> interface_PolicyList;
 
 	@Before
 	public void setup() {
@@ -29,52 +49,62 @@ public class ParserTest {
 		connection = ConnectionFactory.createConnection("TELNET");
 		connection.setHost("192.168.50.200");
 		connection.setPort(23);
+		exception = null;
 
 	}
 
-//	@Test
-//	public void testCLIParser() {
-//		result = connection.connectToDevice();
-//		epeList = (ArrayList<EthernetProtocolEndpoint>) connection.getEthernetPE();
-//		// send data to dataBase
-//
-//		for (int j = 0; j < epeList.size(); j++) {
-//
-//			System.out.println(epeList.get(j));
-//		}
-//
-//	}
-//
-//	@Test
-//	public void testGetACL() {
-//		result = connection.connectToDevice();
-//		connection.getACL();
-//
-//	}
-//	@Test
-//	public void testParsPolicyMap() {
-//		result = connection.connectToDevice();
-//		connection.getPolicyMap();
-//
-//	}
-//	@Test
-//	public void testParsTransaction() {
-//		result = connection.connectToDevice();
-//		connection.getTransaction();
-//
-//	}
-/*	@Test
-	public void testParsInterface_ACL() {
-		result = connection.connectToDevice();
-		connection.getInterface_ACL();
-
-	}*/
 	@Test
-	public void testParsInterface_Policy() {
-		result = connection.connectToDevice();
-		connection.getInterface_Policy();
+	public void testParsingAndSendDatatoDB() {
+		connection.connectToDevice();
+		ePEList = connection.getEthernetPE();
+		accessList = connection.getACL();
+		classMapList = connection.getClassMap();
+		policyMapList = connection.getPolicyMap();
+		transactionList = connection.getTransaction();
+		interface_PolicyList = connection.getInterface_Policy();
+		interface_ACLList = connection.getInterface_ACL();
+		res = connection.connectToDevice();
+		result = JDBCConnection.connectToDatabase();
+		// send data to dataBase
+		try {
+			for (int j = 0; j < ePEList.size(); j++) {
+	
+				JDBCConnection.insert(ePEList.get(j));		
+				}
+			for (int j = 0; j < accessList.size(); j++) {
+				//System.out.println(accessList.get(j));
+	
+				JDBCConnection.insert(accessList.get(j));		
+				}
+			for (int j = 0; j < classMapList.size(); j++) {
+				//System.out.println(classMapList.get(j));
+				JDBCConnection.insert(classMapList.get(j));		
+				}
+			for (int j = 0; j < policyMapList.size(); j++) {
+	
+				JDBCConnection.insert(policyMapList.get(j));		
+				}
+			for (int j = 0; j < transactionList.size(); j++) {
+	
+				JDBCConnection.insert(transactionList.get(j));		
+				}
+			for (int j = 0; j < interface_PolicyList.size(); j++) {
+	
+				JDBCConnection.insert(interface_PolicyList.get(j));		
+				}
+			for (int j = 0; j < interface_ACLList.size(); j++) {
+	
+				JDBCConnection.insert(interface_ACLList.get(j));		
+				}
+		} catch(Exception e) {
+			exception = e;
+		}
+		assertNull("Insert is not successfull",exception);
 
 	}
+
+	
+	 
 	@AfterClass
 	public static void teardown() throws IOException {
 		if (connection != null) {
