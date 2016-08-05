@@ -22,7 +22,6 @@ import com.training.deviceoperation.deviceconnection.model.Interface_ACL;
 import com.training.deviceoperation.deviceconnection.model.Interface_Policy;
 import com.training.deviceoperation.deviceconnection.model.PolicyMap;
 import com.training.deviceoperation.deviceconnection.model.Transaction;
-import com.training.deviceoperation.parser.CLIParser;
 
 /**
  * 

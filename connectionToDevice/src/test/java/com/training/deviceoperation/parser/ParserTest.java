@@ -72,11 +72,13 @@ public class ParserTest {
 			+ "service-policy input policy1 service-policy output policy1 interface"
 			+ "GigabitEthernet0/0/1 service-policy output policy1 interface"
 			+ "GigabitEthernet0/0/2 interface GigabitEthernet0/0/3 interface" + "GigabitEthernet0";
-
-	/*data Base variables*/
-	private static JDBC JDBCConnection;
-	private Connection dataBaseConnection = null;
-	private Exception exception;
+	private List<EthernetProtocolEndpoint> ePEList;
+	private List<ACL> accessList;
+	private List<ClassMap> classMapList;
+	private List<PolicyMap> policyMapList;
+	private List<Transaction> transactionList;
+	private List<Interface_ACL> interface_ACLList;
+	private List<Interface_Policy> interface_PolicyList;
 
 	@Before
 	public void setup() {
