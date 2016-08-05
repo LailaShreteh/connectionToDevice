@@ -49,7 +49,7 @@ public class JDBC implements DatabaseManager {
 	@Override
 	public boolean insert(Object obj) throws CRUDException{
 		String t = obj.getClass().getSimpleName();
-		String table=DataTypes.valueOf(t).toString();
+		String table=tableName.valueOf(t).getTableName();
 		//System.out.println(tableName);
 		 
 		  try {
