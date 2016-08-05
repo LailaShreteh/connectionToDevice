@@ -7,15 +7,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.training.deviceoperation.deviceconnection.model.ACL;
-import com.training.deviceoperation.deviceconnection.model.Action;
-import com.training.deviceoperation.deviceconnection.model.ClassMap;
-import com.training.deviceoperation.deviceconnection.model.Direction;
-import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
-import com.training.deviceoperation.deviceconnection.model.Interface_ACL;
-import com.training.deviceoperation.deviceconnection.model.Interface_Policy;
-import com.training.deviceoperation.deviceconnection.model.PolicyMap;
-import com.training.deviceoperation.deviceconnection.model.Transaction;
+import com.training.deviceoperation.deviceconnection.model.*;
 
 /**
  * CLIParser class to parse the data from Telnet and SSH CLI.
@@ -28,9 +20,9 @@ import com.training.deviceoperation.deviceconnection.model.Transaction;
  * see @com.training.deviceoperation.parser.Parser
  */
 public class CLIParser implements Parser {
-	/**List of maps**/
-	Map<EthernetProtocolEndpoint , PolicyMap> mapIntetrfaceACL = new HashMap<EthernetProtocolEndpoint , PolicyMap>();
-	Map<EthernetProtocolEndpoint , ACL> mapInterfaceACL=new HashMap<EthernetProtocolEndpoint , ACL>();
+	/* List of maps */
+	Map<EthernetProtocolEndpoint, PolicyMap> mapIntetrfaceACL = new HashMap<EthernetProtocolEndpoint, PolicyMap>();
+	Map<EthernetProtocolEndpoint, ACL> mapInterfaceACL = new HashMap<EthernetProtocolEndpoint, ACL>();
 
 	/* regex constants to parse EthernetProtocolEndpoint. */
 	final static String INTERFACE = "[A-Z][A-Za-z]+[0-9/]*";
@@ -175,16 +167,14 @@ public class CLIParser implements Parser {
 			}
 
 			ifSpeed = matcher.group(7);
-			macAddress = matcher.group(5);
+			macAddress = matcher.group(4);
 			epObj = new EthernetProtocolEndpoint(ifName, ifMTU, ifStatus, ifOperStatus, duplexMode, ifSpeed,
 					macAddress);
-		
+
 			ePEList.add(epObj);
-			//System.out.println(ePEList);
 		}
 		return ePEList;
 	}
-	
 
 	/**
 	 * parsACL method to parse AccessList data.
@@ -226,7 +216,6 @@ public class CLIParser implements Parser {
 	}
 
 	public List<ClassMap> parsClassMap(String cmd) {
-		//System.out.println(cmd);
 		classMapList = new ArrayList<ClassMap>();
 		ClassMap classMap;
 		cmd = cmd.trim();
@@ -236,7 +225,6 @@ public class CLIParser implements Parser {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
 		while (matcher.find()) {
-			//System.out.println(matcher.group(0));
 			classMapConfigurationMode = matcher.group(1);
 			className = matcher.group(2);
 			description = matcher.group(5);
@@ -375,10 +363,8 @@ public class CLIParser implements Parser {
 					}
 
 					Transaction transaction = new Transaction(classAction, policyName, className);
-					//System.out.println(transaction);
 					transactionList.add(transaction);
 				}
-
 			}
 		}
 		return transactionList;
@@ -400,9 +386,8 @@ public class CLIParser implements Parser {
 			Matcher matcher1 = pattern1.matcher(matcher.group(2).trim());
 			Direction direction = null;
 			while (matcher1.find()) {
-
+				
 				String aclName = matcher1.group(1);
-				//System.out.println(aclName);
 
 				switch (matcher1.group(2).trim()) {
 				case "in":
@@ -414,17 +399,16 @@ public class CLIParser implements Parser {
 				default:
 					break;
 				}
-				//System.out.println(ePEList);
-				/*for(int i=0;i<ePEList.size();i++)
-				{
-					if (ePEList.get(i).getName()== interfaceName)
-						for(int j=0;j<accessList.size();j++)
-						{
-							if (accessList.get(j).getAccessNum()==Integer.parseInt(aclName))
-						mapInterfaceACL.put(ePEList.get(i),accessList.get(j));
-						}
-
-				}*/
+				// System.out.println(ePEList);
+				/*
+				 * for(int i=0;i<ePEList.size();i++) { if
+				 * (ePEList.get(i).getName()== interfaceName) for(int
+				 * j=0;j<accessList.size();j++) { if
+				 * (accessList.get(j).getAccessNum()==Integer.parseInt(aclName))
+				 * mapInterfaceACL.put(ePEList.get(i),accessList.get(j)); }
+				 * 
+				 * }
+				 */
 				interface_acl = new Interface_ACL(direction, aclName, interfaceName);
 				interface_ACLList.add(interface_acl);
 

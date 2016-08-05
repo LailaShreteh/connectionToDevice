@@ -1,17 +1,14 @@
 package com.training.deviceoperation.deviceconnection;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.training.deviceoperation.deviceconnection.ConnectionFactory;
 import com.training.deviceoperation.deviceconnection.ConnectionRouter;
-import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
 
 /**
  * 
@@ -23,20 +20,16 @@ public class TelnetConnectionTest {
 	ConnectionFactory connectionFactory = new ConnectionFactory();
 	private static ConnectionRouter connection;
 	String result = null;
-	ArrayList<EthernetProtocolEndpoint> epeList;
 
 	@Before
 	public void setup() {
-
 		connection = ConnectionFactory.createConnection("TELNET");
 		connection.setHost("192.168.50.200");
 		connection.setPort(23);
-
 	}
 
 	@Test
 	public void testConnectClass() {
-
 		result = connection.connectToDevice();
 		assertNotNull(result);
 		assertEquals("Sucess", result);

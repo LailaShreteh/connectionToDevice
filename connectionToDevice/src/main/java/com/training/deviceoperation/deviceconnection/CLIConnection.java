@@ -128,8 +128,6 @@ public abstract class CLIConnection implements ConnectionRouter {
 				interfaces.add(interfaceObj);
 			}
 		}
-
-		/* return list<interface> */
 		return interfaces;
 	}
 
@@ -153,11 +151,9 @@ public abstract class CLIConnection implements ConnectionRouter {
 			cmdBack = cmdBack.replace(interfaces.get(i).getInterfaceName(),
 					"%% " + interfaces.get(i).getInterfaceName());
 		}
-		// System.out.println(cmdBack);
 		epList = pars.parsEthernetPE(cmdBack);
-
+		
 		return epList;
-
 	}
 
 	/**
@@ -181,7 +177,6 @@ public abstract class CLIConnection implements ConnectionRouter {
 		policyMapList.addAll(policyMap);
 
 		return policyMapList;
-
 	}
 
 	@Override
@@ -215,7 +210,6 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\n", "");
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
-		//System.out.println(cmdBack);
 		List<ClassMap> classMapList = new ArrayList<ClassMap>();
 		Parser pars = new CLIParser();
 
@@ -256,7 +250,6 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\n", "");
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
-		// System.out.println(cmdBack);
 		List<Interface_ACL> interface_ACL_List = new ArrayList<Interface_ACL>();
 		Parser pars = new CLIParser();
 		interface_ACL_List = pars.parsInterface_ACL(cmdBack);
@@ -273,7 +266,6 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\n", "");
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
-		// System.out.println(cmdBack);
 		List<Interface_Policy> interface_Policy_List = new ArrayList<Interface_Policy>();
 		Parser pars = new CLIParser();
 		interface_Policy_List = pars.parsInterface_Policy(cmdBack);

@@ -7,16 +7,25 @@ import java.sql.Statement;
 
 import com.training.databacemanager.exception.CRUDException;
 
+/**
+ * 
+ * @author user
+ *
+ */
+
+/**
+ * see @com.training.databacemanager
+ */
 public class JDBC implements DatabaseManager {
 	Connection conn = null;
 
 	@Override
 	public Connection connectToDatabase() {
-		// JDBC driver name and database URL
+		/* JDBC driver name and database URL */
 		final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 		final String DB_URL = "jdbc:mysql://localhost/interfaces";
 
-		// Database credentials
+		/* Database credentials */
 		final String USER = "root";
 		final String PASS = "laila";
 
@@ -27,8 +36,11 @@ public class JDBC implements DatabaseManager {
 			e.printStackTrace();
 		}
 		try {
+
+			/* using your username and password to get a Connection object */
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			String sql = "SET FOREIGN_KEY_CHECKS=0";
+
 			try {
 				Statement stmt = null;
 				stmt = conn.createStatement();
@@ -42,26 +54,27 @@ public class JDBC implements DatabaseManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return conn;
 	}
 
 	@Override
-	public boolean insert(Object obj) throws CRUDException{
-		String t = obj.getClass().getSimpleName();
-		String table=tableName.valueOf(t).getTableName();
-		//System.out.println(tableName);
-		 
-		  try {
-			DataTypes.valueOf(table).insert(obj);
-		 } catch( CRUDException e) {
-			 e.printStackTrace();
-			 throw e;
-		 }finally {
-			//Logic 
-		 }
-		 
-		 return true;
+	public boolean insert(Object obj) throws CRUDException {
+
+		// className String variable to get the name of the model class from the
+		// object which want to insert.
+		String className = obj.getClass().getSimpleName();
+
+		String databaseTableName = TableName.valueOf(className).getTableName();
+
+		try {
+			DataTypes.valueOf(databaseTableName).insert(obj);
+		} catch (CRUDException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			// Logic
+		}
+		return true;
 	}
 
 	@Override
@@ -82,7 +95,6 @@ public class JDBC implements DatabaseManager {
 				e1.printStackTrace();
 			}
 		}
-
 		return true;
 	}
 }

@@ -1,8 +1,6 @@
 package com.training.deviceoperation.deviceconnection.model;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.training.deviceoperation.parser.DuplexMode;
 import com.training.deviceoperation.parser.Status;
@@ -16,8 +14,6 @@ import com.training.deviceoperation.parser.Status;
 public class EthernetProtocolEndpoint {
 
 	/** List of attributes which represent each interface. */
-	protected int minOccurs;
-	protected int maxOccurs;
 	protected String description;
 	protected DuplexMode duplexMode;
 	protected Status adminStatus;
@@ -59,20 +55,6 @@ public class EthernetProtocolEndpoint {
 
 	public void setPolicyList(List<PolicyMap> policyList) {
 		this.policyList = policyList;
-	}
-
-	/**
-	 * @return the minOccurs
-	 */
-	public int getMinOccurs() {
-		return minOccurs;
-	}
-
-	/**
-	 * @return the maxOccurs
-	 */
-	public int getMaxOccurs() {
-		return maxOccurs;
 	}
 
 	/**
@@ -157,14 +139,6 @@ public class EthernetProtocolEndpoint {
 	 */
 	public String getName() {
 		return name;
-	}
-
-	public void setMinOccurs(int minOccurs) {
-		this.minOccurs = minOccurs;
-	}
-
-	public void setMaxOccurs(int maxOccurs) {
-		this.maxOccurs = maxOccurs;
 	}
 
 	public void setDescription(String description) {

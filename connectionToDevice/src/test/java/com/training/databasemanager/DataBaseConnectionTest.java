@@ -26,8 +26,8 @@ public class DataBaseConnectionTest {
 	public void setup() {
 		JDBCConnection = new JDBC();
 		exception = null;
-		
 	}
+	
 	@Test
 	public void testConnectToDatabase ()
 	{

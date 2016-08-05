@@ -1,6 +1,12 @@
 package com.training.databacemanager;
-//toPush
-public enum tableName {
+
+/**
+ * TableName is enum class of classes model Name.
+ * 
+ * @author user
+ *
+ */
+public enum TableName {
 	EthernetProtocolEndpoint {
 
 		@Override
@@ -8,7 +14,6 @@ public enum tableName {
 			// TODO Auto-generated method stub
 			return "interfaces";
 		}
-
 	},
 
 	PolicyMap {
@@ -18,8 +23,8 @@ public enum tableName {
 			// TODO Auto-generated method stub
 			return "policymap";
 		}
-
 	},
+
 	ClassMap {
 
 		@Override
@@ -27,8 +32,8 @@ public enum tableName {
 			// TODO Auto-generated method stub
 			return "classmap";
 		}
-
 	},
+
 	ACL {
 
 		@Override
@@ -36,8 +41,8 @@ public enum tableName {
 			// TODO Auto-generated method stub
 			return "acl";
 		}
-
 	},
+
 	Interface_ACL {
 
 		@Override
@@ -45,8 +50,8 @@ public enum tableName {
 			// TODO Auto-generated method stub
 			return "interface_acl";
 		}
-
 	},
+
 	Interface_Policy {
 
 		@Override
@@ -54,17 +59,22 @@ public enum tableName {
 			// TODO Auto-generated method stub
 			return "interface_policy";
 		}
-
 	},
+
 	Transaction {
 
 		@Override
 		public String getTableName() {
 			return "transaction";
-
 		}
 	};
 
+	/**
+	 * getTableName method to get the name of each model class as in the
+	 * database tables.
+	 * 
+	 * @return - the name of the model class as in the database tables.
+	 */
 	public abstract String getTableName();
 
 }
