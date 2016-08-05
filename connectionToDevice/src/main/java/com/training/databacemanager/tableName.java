@@ -1,5 +1,5 @@
 package com.training.databacemanager;
-
+//toPush
 public enum tableName {
 	EthernetProtocolEndpoint {
 

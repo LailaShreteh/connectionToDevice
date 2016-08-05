@@ -23,6 +23,7 @@ import com.training.deviceoperation.deviceconnection.model.Transaction;
  * @author user
  *
  */
+
 public class ParserTest {
 
 	private static Parser pars;
