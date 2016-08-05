@@ -49,7 +49,7 @@ public class JDBC implements DatabaseManager {
 	@Override
 	public boolean insert(Object obj) throws CRUDException{
 		String t = obj.getClass().getSimpleName();
-		String table=DataTypes.valueOf(t).toString();
+		String table=tableName.valueOf(t).getTableName();
 		//System.out.println(tableName);
 		 
 		  try {
@@ -67,5 +67,22 @@ public class JDBC implements DatabaseManager {
 	@Override
 	public void delete(Object obj, String tableName) {
 
+	}
+
+	@Override
+	public boolean disconnectToDataBase() {
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				throw new CRUDException(e.getMessage());
+			} catch (CRUDException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+
+		return true;
 	}
 }

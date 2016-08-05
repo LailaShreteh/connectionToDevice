@@ -1,14 +1,11 @@
 package com.training.deviceoperation.parser;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.training.databacemanager.DataTypes;
-import com.training.databacemanager.JDBC;
 import com.training.deviceoperation.deviceconnection.model.ACL;
 import com.training.deviceoperation.deviceconnection.model.Action;
 import com.training.deviceoperation.deviceconnection.model.ClassMap;
@@ -115,7 +112,7 @@ public class CLIParser implements Parser {
 	 *         Interface and its parsed data.
 	 */
 	public List<EthernetProtocolEndpoint> parsEthernetPE(String cmd) {
-		
+
 		ePEList = new ArrayList<EthernetProtocolEndpoint>();
 
 		String regex = "(?<=%%) (" + INTERFACE + ") is (" + ADMIN_STATUS + ").*?line protocol is (" + OPERATIONAL_STATUS
@@ -177,7 +174,8 @@ public class CLIParser implements Parser {
 			macAddress = matcher.group(5);
 			epObj = new EthernetProtocolEndpoint(ifName, ifMTU, ifStatus, ifOperStatus, duplexMode, ifSpeed,
 					macAddress);
-//			Map<EthernetProtocolEndpoint , List<PolicyMap>> map = new HashMap<epObj,>;
+			// Map<EthernetProtocolEndpoint , List<PolicyMap>> map = new
+			// HashMap<epObj,>;
 			ePEList.add(epObj);
 		}
 		return ePEList;
@@ -223,7 +221,7 @@ public class CLIParser implements Parser {
 	}
 
 	public List<ClassMap> parsClassMap(String cmd) {
-	
+		//System.out.println(cmd);
 		classMapList = new ArrayList<ClassMap>();
 		ClassMap classMap;
 		cmd = cmd.trim();
@@ -232,8 +230,8 @@ public class CLIParser implements Parser {
 				+ ")(?=%%|$)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(cmd);
-
 		while (matcher.find()) {
+			//System.out.println(matcher.group(0));
 			classMapConfigurationMode = matcher.group(1);
 			className = matcher.group(2);
 			description = matcher.group(5);
@@ -372,7 +370,7 @@ public class CLIParser implements Parser {
 					}
 
 					Transaction transaction = new Transaction(classAction, policyName, className);
-					System.out.println(transaction);
+					//System.out.println(transaction);
 					transactionList.add(transaction);
 				}
 

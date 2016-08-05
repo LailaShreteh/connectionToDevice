@@ -24,9 +24,9 @@ public enum DataTypes {
 			String sql = "INSERT INTO interfaces (name,adminStatus,operationalStatus,MTU,speed,duplex,macAddress)" + " VALUES ('" + ePE.getName() + "' , '"
 					+ ePE.getAdminStatus() + "', '" + ePE.getOperStatus() + "', " + ePE.getMtu() + ", '"
 					+ ePE.getDuplexMode() + "', '" + ePE.getIfSpeed() + "', '" + ePE.getMacAddress() + "')";
-			//System.out.println(sql);
+			System.out.println(sql);
 				stmt.executeUpdate(sql);
-				conn.close();
+				JDBCConnection.disconnectToDataBase();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
