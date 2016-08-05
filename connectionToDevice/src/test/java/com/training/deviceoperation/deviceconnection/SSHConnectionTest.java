@@ -39,7 +39,7 @@ public class SSHConnectionTest {
 		try {
 
 			connection.getInterfaces();
-			connection.getEthernetPE();
+			connection.parsEthernetPE();
 			assertNotNull(result);
 			assertEquals("Sucess", result);
 		} catch (Exception e) {
@@ -52,7 +52,7 @@ public class SSHConnectionTest {
 	@Test
 	public void testCLIParser() throws IOException {
 		ArrayList<EthernetProtocolEndpoint> epeList = (ArrayList<EthernetProtocolEndpoint>) connection
-				.getEthernetPE();
+				.parsEthernetPE();
 		for (int j = 0; j < epeList.size(); j++)
 			System.out.println(epeList.get(j));
 	}

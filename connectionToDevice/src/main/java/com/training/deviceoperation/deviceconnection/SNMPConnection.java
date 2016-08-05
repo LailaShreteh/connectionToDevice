@@ -66,7 +66,7 @@ public class SNMPConnection implements ConnectionRouter {
 	}
 
 	@Override
-	public List<EthernetProtocolEndpoint> getEthernetPE() {
+	public List<EthernetProtocolEndpoint> parsEthernetPE() {
 		// TODO Auto-generated method stub
 		return null;
 	}

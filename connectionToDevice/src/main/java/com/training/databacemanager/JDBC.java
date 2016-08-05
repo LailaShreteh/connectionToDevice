@@ -49,12 +49,13 @@ public class JDBC implements DatabaseManager {
 	@Override
 	public boolean insert(Object obj) throws CRUDException{
 		String t = obj.getClass().getSimpleName();
-		String table=tableName.valueOf(t).getTableName();
+		String table=DataTypes.valueOf(t).toString();
 		//System.out.println(tableName);
 		 
 		  try {
 			DataTypes.valueOf(table).insert(obj);
 		 } catch( CRUDException e) {
+			 e.printStackTrace();
 			 throw e;
 		 }finally {
 			//Logic 

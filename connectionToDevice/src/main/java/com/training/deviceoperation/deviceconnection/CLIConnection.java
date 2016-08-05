@@ -138,7 +138,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 	 *
 	 * @return - a list of all interfaces.
 	 **/
-	public List<EthernetProtocolEndpoint> getEthernetPE() {
+	public List<EthernetProtocolEndpoint> parsEthernetPE() {
 		List<EthernetProtocolEndpoint> epList = new ArrayList<EthernetProtocolEndpoint>();
 		Parser pars = new CLIParser();
 		this.getInterfaces();
