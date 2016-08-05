@@ -68,7 +68,7 @@ public interface ConnectionRouter {
 	 *
 	 * @return - a list of all interfaces.
 	 ***/
-	public List<EthernetProtocolEndpoint> getEthernetPE();
+	public List<EthernetProtocolEndpoint> parsEthernetPE();
 
 	public List<Interface_ACL> getInterface_ACL();
 	
