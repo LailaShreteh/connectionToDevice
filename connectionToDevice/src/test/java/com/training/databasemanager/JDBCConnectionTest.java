@@ -56,7 +56,7 @@ public class JDBCConnectionTest {
 	}
 
 	@Test
-	public void testSendingToDatatoDB() {
+	public void testSendingToDatatoDB() { 
 		JDBCConnection = new JDBC();
 
 		dataBaseConnection = JDBCConnection.connectToDatabase();
