@@ -1,6 +1,7 @@
 package com.training.deviceoperation.parser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -27,6 +28,9 @@ import com.training.deviceoperation.deviceconnection.model.Transaction;
  * see @com.training.deviceoperation.parser.Parser
  */
 public class CLIParser implements Parser {
+	/**List of maps**/
+	Map<EthernetProtocolEndpoint , PolicyMap> mapIntetrfaceACL = new HashMap<EthernetProtocolEndpoint , PolicyMap>();
+	Map<EthernetProtocolEndpoint , ACL> mapInterfaceACL=new HashMap<EthernetProtocolEndpoint , ACL>();
 
 	/* regex constants to parse EthernetProtocolEndpoint. */
 	final static String INTERFACE = "[A-Z][A-Za-z]+[0-9/]*";
@@ -174,12 +178,13 @@ public class CLIParser implements Parser {
 			macAddress = matcher.group(5);
 			epObj = new EthernetProtocolEndpoint(ifName, ifMTU, ifStatus, ifOperStatus, duplexMode, ifSpeed,
 					macAddress);
-			// Map<EthernetProtocolEndpoint , List<PolicyMap>> map = new
-			// HashMap<epObj,>;
+		
 			ePEList.add(epObj);
+			//System.out.println(ePEList);
 		}
 		return ePEList;
 	}
+	
 
 	/**
 	 * parsACL method to parse AccessList data.
@@ -397,6 +402,7 @@ public class CLIParser implements Parser {
 			while (matcher1.find()) {
 
 				String aclName = matcher1.group(1);
+				//System.out.println(aclName);
 
 				switch (matcher1.group(2).trim()) {
 				case "in":
@@ -408,8 +414,18 @@ public class CLIParser implements Parser {
 				default:
 					break;
 				}
+				//System.out.println(ePEList);
+				/*for(int i=0;i<ePEList.size();i++)
+				{
+					if (ePEList.get(i).getName()== interfaceName)
+						for(int j=0;j<accessList.size();j++)
+						{
+							if (accessList.get(j).getAccessNum()==Integer.parseInt(aclName))
+						mapInterfaceACL.put(ePEList.get(i),accessList.get(j));
+						}
+
+				}*/
 				interface_acl = new Interface_ACL(direction, aclName, interfaceName);
-				;
 				interface_ACLList.add(interface_acl);
 
 			}

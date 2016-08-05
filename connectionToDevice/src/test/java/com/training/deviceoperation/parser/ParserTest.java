@@ -1,17 +1,14 @@
 package com.training.deviceoperation.parser;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import com.training.databacemanager.JDBC;
 import com.training.deviceoperation.deviceconnection.model.ACL;
 import com.training.deviceoperation.deviceconnection.model.ClassMap;
 import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;

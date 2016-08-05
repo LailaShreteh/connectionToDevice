@@ -1,6 +1,8 @@
 package com.training.deviceoperation.deviceconnection.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.training.deviceoperation.parser.DuplexMode;
 import com.training.deviceoperation.parser.Status;
