@@ -1,5 +1,10 @@
 package com.training.deviceoperation.deviceconnection.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * The ACL class represents each Access Control List and its criteria which can
  * specified to control which packets move through a network and to where.
@@ -7,13 +12,28 @@ package com.training.deviceoperation.deviceconnection.model;
  * @author user
  */
 public class ACL {
-	protected String desIP;
-	protected String sourceIP;
-	protected int ipAccessListNum;
-	protected int accessListModeNumber;
-	protected String ipAccessListType;
-	protected String wildCardDesIP;
-	protected String wildCardSourceIP;
+
+	@Id
+	@Column
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id_ACL;
+	@Column
+	private String ipAccessListType;
+	@Column
+	private int ipAccessListNum;
+	@Column
+	private int accessListModeNumber;
+	@Column
+	private String sourceIP;
+	@Column
+	private String wildCardSourceIP;
+	@Column
+	private String desIP;
+	@Column
+	private String wildCardDesIP;
+
+	public ACL() {
+	}
 
 	public int getIPAccessListNum() {
 		return ipAccessListNum;

@@ -13,7 +13,7 @@ import com.training.deviceoperation.deviceconnection.model.*;
  * @author user
  *
  */
-public enum DataTypes {
+public enum DataTypesJDBC {
 	interfaces {
 
 		@Override
@@ -223,8 +223,8 @@ public enum DataTypes {
 			Connection conn = null;
 			JDBC JDBCConnection = new JDBC();
 			conn = JDBCConnection.connectToDatabase();
-			int id_interface = DataTypes.interfaces.getID(interfaceACL.getInterface());
-			int id_acl = DataTypes.acl.getID(interfaceACL.getAclName());
+			int id_interface = DataTypesJDBC.interfaces.getID(interfaceACL.getInterface());
+			int id_acl = DataTypesJDBC.acl.getID(interfaceACL.getAclName());
 			String sql = "INSERT INTO interface_acl" + " VALUES ('" + interfaceACL.getDir() + "' , '" + id_acl + "', '"
 					+ id_interface + "')";
 
@@ -255,8 +255,8 @@ public enum DataTypes {
 			Connection conn = null;
 			JDBC JDBCConnection = new JDBC();
 			conn = JDBCConnection.connectToDatabase();
-			int id_interface = DataTypes.interfaces.getID(interface_policy.getInterfaceName());
-			int id_policy = DataTypes.policymap.getID(interface_policy.getPolicyName());
+			int id_interface = DataTypesJDBC.interfaces.getID(interface_policy.getInterfaceName());
+			int id_policy = DataTypesJDBC.policymap.getID(interface_policy.getPolicyName());
 			String sql = "INSERT INTO interface_policy" + " VALUES ('" + interface_policy.getDirection() + "' , '"
 					+ id_policy + "' , '" + id_interface + "')";
 
@@ -287,8 +287,8 @@ public enum DataTypes {
 			Connection conn = null;
 			JDBC JDBCConnection = new JDBC();
 			conn = JDBCConnection.connectToDatabase();
-			int id_policy = DataTypes.policymap.getID(transaction.getPolicy_map());
-			int id_class = DataTypes.classmap.getID(transaction.getClass_map());
+			int id_policy = DataTypesJDBC.policymap.getID(transaction.getPolicy_map());
+			int id_class = DataTypesJDBC.classmap.getID(transaction.getClass_map());
 			String sql = "INSERT INTO transaction" + " VALUES ('" + transaction.getCommand() + "' , '" + id_policy
 					+ "' , '" + id_class + "')";
 

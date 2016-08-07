@@ -67,7 +67,7 @@ public class JDBC implements DatabaseManager {
 		String databaseTableName = TableName.valueOf(className).getTableName();
 
 		try {
-			DataTypes.valueOf(databaseTableName).insert(obj);
+			DataTypesJDBC.valueOf(databaseTableName).insert(obj);
 		} catch (CRUDException e) {
 			e.printStackTrace();
 			throw e;

@@ -1,5 +1,10 @@
 package com.training.deviceoperation.deviceconnection.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * The PolicyMap class to get each policy map which defines a series of actions
  * (functions) that you want applied to a set of classified in bound traffic.
@@ -7,8 +12,18 @@ package com.training.deviceoperation.deviceconnection.model;
  * @author user
  */
 public class PolicyMap {
+
+	@Id
+	@Column
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id_policymap;
+	@Column
 	private String policyName;
+	@Column
 	private String trafficClass;
+
+	public PolicyMap() {
+	}
 
 	public PolicyMap(String policyName, String trafficClass) {
 		this.policyName = policyName;
@@ -41,6 +56,6 @@ public class PolicyMap {
 
 	@Override
 	public String toString() {
-		return ("**" + policyName + " || \t" + trafficClass );
+		return ("**" + policyName + " || \t" + trafficClass);
 	}
 }

@@ -10,6 +10,9 @@ public class Interface_Policy {
 	private String policyName;
 	private String interfaceName;
 
+	public Interface_Policy() {
+	}
+
 	public Interface_Policy(Direction direction, String policyName, String interfaceName) {
 		this.direction = direction;
 		this.policyName = policyName;

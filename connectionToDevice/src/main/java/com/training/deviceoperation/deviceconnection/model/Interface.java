@@ -8,6 +8,9 @@ package com.training.deviceoperation.deviceconnection.model;
 public class Interface {
 	private String interfaceName;
 
+	public Interface() {
+	}
+
 	public String getInterfaceName() {
 		return interfaceName;
 	}

@@ -1,4 +1,5 @@
 package com.training.deviceoperation.deviceconnection.model;
+
 /**
  * 
  * @author user
@@ -8,6 +9,9 @@ public class Transaction {
 	private Action command; // i think it's not private :/
 	private String policy_map;
 	private String class_map;
+
+	public Transaction() {
+	}
 
 	public Transaction(Action command, String policy, String class_map) {
 		this.command = command;
@@ -38,8 +42,9 @@ public class Transaction {
 	public void setClass_map(String class_map) {
 		this.class_map = class_map;
 	}
+
 	public String toString() {
-		return ("**" + command + " || \t" + policy_map + " || \t" + class_map );
+		return ("**" + command + " || \t" + policy_map + " || \t" + class_map);
 	}
 
 }

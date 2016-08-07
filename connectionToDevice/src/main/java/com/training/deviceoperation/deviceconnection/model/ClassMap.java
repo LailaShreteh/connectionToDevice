@@ -1,5 +1,10 @@
 package com.training.deviceoperation.deviceconnection.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * The ClassMap class represents each Class Map and its criteria to define a
  * traffic classification.
@@ -7,11 +12,23 @@ package com.training.deviceoperation.deviceconnection.model;
  * @author user
  */
 public class ClassMap {
+	@Id
+	@Column
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id_classmap;
+	@Column
 	private String className;
+	@Column
 	private String classMapConfigurationMode;
+	@Column
 	private String description;
+	@Column
 	private String matchType;
+	@Column
 	private String matchTypeValue;
+
+	public ClassMap() {
+	}
 
 	public ClassMap(String className, String classMapConfigurationMode, String description, String matchType,
 			String matchTypeValue) {

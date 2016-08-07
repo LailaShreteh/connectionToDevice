@@ -17,6 +17,7 @@ public interface DatabaseManager {
 	 * 
 	 * @return - database Connection object.
 	 */
+	// here !! :/
 	Connection connectToDatabase();
 
 	/**

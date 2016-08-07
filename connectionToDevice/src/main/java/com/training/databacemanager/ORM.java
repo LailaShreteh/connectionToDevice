@@ -28,12 +28,16 @@ public class ORM implements DatabaseManager {
 
 	@Override
 	public boolean insert(Object obj) throws CRUDException {
+	/*	String className = obj.getClass().getSimpleName();
+
+		String databaseTableName = TableName.valueOf(className).getTableName();*/
+
 		sf.getCurrentSession().save(obj);
 		return false;
 	}
 
 	@Override
-	public boolean delete(Object obj) {
+	public boolean delete(Object obj) {// here !!
 		sf.getCurrentSession().delete(obj);
 		return false;
 	}

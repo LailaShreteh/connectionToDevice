@@ -20,30 +20,37 @@ import com.training.deviceoperation.parser.Status;
 @Entity
 public class EthernetProtocolEndpoint {
 
+	@Id
+	@Column
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id_interface;
 	/** List of attributes which represent each interface. */
 	@Column
-	protected String name;
+	private String name;
 	@Column
-	protected Status adminStatus;
+	private Status adminStatus;
 	@Column
-	protected Status operStatus;
+	private Status operStatus;
 	@Column
-	protected int mtu;
+	private int mtu;
 	@Column
-	protected DuplexMode duplexMode;
+	private DuplexMode duplexMode;
 	@Column
-	protected String ifSpeed;
+	private String ifSpeed;
 	@Column
-	protected String macAddress;
+	private String macAddress;
 
-	protected String description;
-	protected String comments;
-	protected String entAliasMappingIdentifier;
-	protected Status ethernetLoopback;
-	protected String lagEndName;
+	private String description;
+	private String comments;
+	private String entAliasMappingIdentifier;
+	private Status ethernetLoopback;
+	private String lagEndName;
 
-	protected List<ACL> aclList;
-	protected List<PolicyMap> policyList;
+	private List<ACL> aclList;
+	private List<PolicyMap> policyList;
+
+	public EthernetProtocolEndpoint() {
+	}
 
 	public EthernetProtocolEndpoint(String name, int mtu, Status adminStatus, Status operStatus, DuplexMode duplexMode,
 			String ifSpeed, String macAddress) {
