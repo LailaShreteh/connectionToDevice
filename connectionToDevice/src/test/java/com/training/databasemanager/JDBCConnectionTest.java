@@ -35,8 +35,8 @@ public class JDBCConnectionTest {
 		 * Static data for EthernetProtocolEndpoint object to insert it into its
 		 * table in the database.
 		 */
-		ePEObject = new EthernetProtocolEndpoint("GigabitEthernet0/0/0", 1500, Status.up, Status.up, DuplexMode.Full,
-				"1000", "503d.e596.7400");
+		ePEObject = new EthernetProtocolEndpoint("GigabitEthernet0/0/0", Status.up, Status.up,1500,
+				"1000",DuplexMode.Full, "503d.e596.7400");
 	}
 
 	@Test

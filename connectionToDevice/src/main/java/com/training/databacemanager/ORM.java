@@ -1,7 +1,10 @@
 package com.training.databacemanager;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,18 +25,35 @@ public class ORM implements DatabaseManager {
 
 	@Override
 	public boolean disconnectToDataBase() {
-		// TODO Auto-generated method stub
-		return false;
+		Session session = HibernateUtil.openSession();
+		try {
+			session.close();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			/*
+			 * try { throw new CRUDException(e.getMessage()); } catch
+			 * (CRUDException e1) {
+			 * 
+			 * e1.printStackTrace(); }
+			 */
+		}
+		return true;
 	}
 
 	@Override
 	public boolean insert(Object obj) throws CRUDException {
-	/*	String className = obj.getClass().getSimpleName();
+		String className = obj.getClass().getSimpleName();
+		String databaseTableName = TableName.valueOf(className).getTableName();
+		try {
+			DataTypesORM.valueOf(databaseTableName).insert(obj);
+		} catch (CRUDException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			// Logic
+		}
+		return true;
 
-		String databaseTableName = TableName.valueOf(className).getTableName();*/
-
-		sf.getCurrentSession().save(obj);
-		return false;
 	}
 
 	@Override

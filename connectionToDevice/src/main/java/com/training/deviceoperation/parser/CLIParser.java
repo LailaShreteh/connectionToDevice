@@ -187,8 +187,8 @@ public class CLIParser implements Parser, Serializable {
 
 			ifSpeed = matcher.group(7);
 			macAddress = matcher.group(4);
-			EthernetProtocolEndpoint epObj = new EthernetProtocolEndpoint(ifName, ifMTU, ifStatus, ifOperStatus,
-					duplexMode, ifSpeed, macAddress);
+			EthernetProtocolEndpoint epObj = new EthernetProtocolEndpoint(ifName, ifStatus, ifOperStatus, ifMTU,
+					ifSpeed,duplexMode, macAddress);
 
 			ePEList.add(epObj);
 		}
