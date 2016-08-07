@@ -22,6 +22,10 @@ com\training\databacemanager\DataTypesORM$1.class
 com\training\Singleton\SerializedSingleton$1.class
 com\training\databacemanager\JDBC.class
 com\training\databacemanager\DataTypesJDBC$5.class
+<<<<<<< HEAD
+=======
+com\training\examples\Singletone.class
+>>>>>>> refs/remotes/origin/master
 com\training\databacemanager\TableName$7.class
 com\training\deviceoperation\deviceconnection\model\Action.class
 com\training\deviceoperation\parser\Status.class

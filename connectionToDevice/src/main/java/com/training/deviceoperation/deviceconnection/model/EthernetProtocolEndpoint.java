@@ -21,39 +21,31 @@ import com.training.deviceoperation.parser.Status;
 public class EthernetProtocolEndpoint {
 
 	@Id
-	@Column
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
+	@Column(name = "id_interface")
+	// (strategy = GenerationType.AUTO)
 	private int id_interface;
 	/** List of attributes which represent each interface. */
-	@Column
+	@Column(name = "name")
 	private String name;
-	@Column
+	@Column(name = "adminStatu")
 	private Status adminStatus;
-	@Column
+	@Column(name = "operationalStatu")
 	private Status operStatus;
-	@Column
+	@Column(name = "MTU")
 	private int mtu;
-	@Column
-	private DuplexMode duplexMode;
-	@Column
+	@Column(name = "speed")
 	private String ifSpeed;
-	@Column
+	@Column(name = "duplex")
+	private DuplexMode duplexMode;
+	@Column(name = "macAddress")
 	private String macAddress;
-
-	private String description;
-	private String comments;
-	private String entAliasMappingIdentifier;
-	private Status ethernetLoopback;
-	private String lagEndName;
-
-	private List<ACL> aclList;
-	private List<PolicyMap> policyList;
 
 	public EthernetProtocolEndpoint() {
 	}
 
-	public EthernetProtocolEndpoint(String name, int mtu, Status adminStatus, Status operStatus, DuplexMode duplexMode,
-			String ifSpeed, String macAddress) {
+	public EthernetProtocolEndpoint(String name, Status adminStatus, Status operStatus, int mtu, String ifSpeed,
+			DuplexMode duplexMode, String macAddress) {
 
 		this.name = name;
 		this.mtu = mtu;
@@ -62,29 +54,6 @@ public class EthernetProtocolEndpoint {
 		this.duplexMode = duplexMode;
 		this.ifSpeed = ifSpeed;
 		this.macAddress = macAddress;
-	}
-
-	public List<ACL> getAclList() {
-		return aclList;
-	}
-
-	public void setAclList(List<ACL> aclList) {
-		this.aclList = aclList;
-	}
-
-	public List<PolicyMap> getPolicyList() {
-		return policyList;
-	}
-
-	public void setPolicyList(List<PolicyMap> policyList) {
-		this.policyList = policyList;
-	}
-
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
 	}
 
 	/**
@@ -102,38 +71,10 @@ public class EthernetProtocolEndpoint {
 	}
 
 	/**
-	 * @return the comments
-	 */
-	public String getComments() {
-		return comments;
-	}
-
-	/**
-	 * @return the entAliasMappingIdentifier
-	 */
-	public String getEntAliasMappingIdentifier() {
-		return entAliasMappingIdentifier;
-	}
-
-	/**
-	 * @return the ethernetLoopback
-	 */
-	public Status getEthernetLoopback() {
-		return ethernetLoopback;
-	}
-
-	/**
 	 * @return the ifSpeed
 	 */
 	public String getIfSpeed() {
 		return ifSpeed;
-	}
-
-	/**
-	 * @return the lagEndName
-	 */
-	public String getLagEndName() {
-		return lagEndName;
 	}
 
 	/**
@@ -164,10 +105,6 @@ public class EthernetProtocolEndpoint {
 		return name;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public void setDuplexMode(DuplexMode duplexMode) {
 		this.duplexMode = duplexMode;
 	}
@@ -176,24 +113,8 @@ public class EthernetProtocolEndpoint {
 		this.adminStatus = adminStatus;
 	}
 
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
-
-	public void setEntAliasMappingIdentifier(String entAliasMappingIdentifier) {
-		this.entAliasMappingIdentifier = entAliasMappingIdentifier;
-	}
-
-	public void setEthernetLoopback(Status ethernetLoopback) {
-		this.ethernetLoopback = ethernetLoopback;
-	}
-
 	public void setIfSpeed(String ifSpeed) {
 		this.ifSpeed = ifSpeed;
-	}
-
-	public void setLagEndName(String lagEndName) {
-		this.lagEndName = lagEndName;
 	}
 
 	public void setMacAddress(String macAddress) {
