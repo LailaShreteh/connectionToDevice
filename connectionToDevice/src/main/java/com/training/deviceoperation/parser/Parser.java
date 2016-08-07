@@ -35,7 +35,7 @@ public interface Parser {
 	 *            - the string value from "show access-list" command.
 	 * @return - list of all access lists and their parsed data as an objects.
 	 */
-	List<ACL> parsACL(String cmd);
+	List<ACL> parseACL(String cmd);
 
 	List<ClassMap> parsClassMap(String cmd);
 

@@ -7,10 +7,9 @@ import org.junit.Test;
 
 import com.training.databacemanager.ORM;
 import com.training.databacemanager.exception.CRUDException;
-import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
-import com.training.deviceoperation.deviceconnection.model.PolicyMap;
-import com.training.deviceoperation.parser.DuplexMode;
-import com.training.deviceoperation.parser.Status;
+import com.training.deviceoperation.deviceconnection.model.*;
+import com.training.deviceoperation.parser.*;
+
 
 /**
  * 
@@ -21,14 +20,17 @@ public class ORMConnectionTest {
 	private Exception exception;
 	private EthernetProtocolEndpoint ePEObject;
 	private PolicyMap policymap;
+	private ACL acl;
 	private ORM ORMConnection;
 
 	@Before
 	public void setup() {
 		ORMConnection = new ORM();
-		//ePEObject = new EthernetProtocolEndpoint("GigabitEthernet0/0/0", Status.up, Status.up,1500,
-			//	"1000",DuplexMode.Full, "503d.e596.7400");
+		ePEObject = new EthernetProtocolEndpoint("GigabitEthernet0/0/0", Status.up, Status.up,1500,
+				"1000",DuplexMode.Full, "503d.e596.7400");
 		policymap= new PolicyMap("policy1","calss1");
+	//	**Standard || 	1 || 	10 || 	any || 	 || 	 || 	
+		acl= new ACL("Standard",1,10,"any","","","");
 	}
 
 	@Test
@@ -39,6 +41,8 @@ public class ORMConnectionTest {
 		try {
 			// send the data to the dataBase
 			ORMConnection.insert(policymap);
+			ORMConnection.insert(ePEObject);
+			ORMConnection.insert(acl);
 
 		} catch (Exception e) {
 			exception = e;

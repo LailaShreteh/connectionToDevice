@@ -24,7 +24,7 @@ public class SNMPParser implements Parser {
 	}
 
 	@Override
-	public List<ACL> parsACL(String cmd) {
+	public List<ACL> parseACL(String cmd) {
 		// TODO Auto-generated method stub
 		return null;
 	}

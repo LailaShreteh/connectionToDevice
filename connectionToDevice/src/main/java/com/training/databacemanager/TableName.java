@@ -12,7 +12,7 @@ public enum TableName {
 		@Override
 		public String getTableName() {
 			// TODO Auto-generated method stub
-			return "interfaces";
+			return "interface_ethernetprotocolendpoint";
 		}
 	},
 

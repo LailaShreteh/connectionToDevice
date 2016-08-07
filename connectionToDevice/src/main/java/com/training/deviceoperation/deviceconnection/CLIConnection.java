@@ -236,7 +236,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.trim();
 		List<ACL> ACLList = new ArrayList<ACL>();
 		Parser pars = CLIParser.getInstance();
-		ACLList = pars.parsACL(cmdBack);
+		ACLList = pars.parseACL(cmdBack);
 		return ACLList;
 	}
 

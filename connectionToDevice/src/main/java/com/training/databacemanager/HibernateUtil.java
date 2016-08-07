@@ -8,8 +8,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-import com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint;
-import com.training.deviceoperation.deviceconnection.model.PolicyMap;
+import com.training.deviceoperation.deviceconnection.model.*;
+
 
 public class HibernateUtil {
 	 private static final  SessionFactory sessionFactory;
@@ -52,6 +52,8 @@ public class HibernateUtil {
      private static  Configuration getConfiguration() {
           Configuration cfg = new Configuration();
           cfg.addAnnotatedClass(PolicyMap.class );
+          cfg.addAnnotatedClass(ACL.class );
+          cfg.addAnnotatedClass(EthernetProtocolEndpoint.class );
           cfg.setProperty("hibernate.connection.driver_class","com.mysql.jdbc.Driver");
           cfg.setProperty("hibernate.connection.url","jdbc:mysql://localhost/interfaces");
           cfg.setProperty("hibernate.connection.username", "root");

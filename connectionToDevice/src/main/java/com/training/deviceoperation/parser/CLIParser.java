@@ -22,7 +22,7 @@ import com.training.deviceoperation.deviceconnection.model.*;
  */
 public class CLIParser implements Parser, Serializable {
 	private static final long serialVersionUID = -7604766932017737115L;
-
+	
 	private CLIParser() {
 	}
 
@@ -40,10 +40,10 @@ public class CLIParser implements Parser, Serializable {
 	}
 
 	/* List of maps */
-	private Map<EthernetProtocolEndpoint, PolicyMap> mapIntetrfacePolicy = new HashMap<>();
-	private Map<EthernetProtocolEndpoint, ACL> mapInterfaceACL = new HashMap<>();
-	Map<PolicyMap,ClassMap > mapTranscation = new HashMap<>();
-
+//	private Map<EthernetProtocolEndpoint, PolicyMap> mapIntetrfacePolicy = new HashMap<>();
+//	private Map<EthernetProtocolEndpoint, ACL> mapInterfaceACL = new HashMap<>();
+//	Map<PolicyMap,ClassMap > mapTranscation = new HashMap<>();
+	private Map<String, EthernetProtocolEndpoint> interfacesMap = new HashMap<String, EthernetProtocolEndpoint>();
 
 	/* regex constants to parse EthernetProtocolEndpoint. */
 	final static String INTERFACE = "[A-Z][A-Za-z]+[0-9/]*";
@@ -191,6 +191,7 @@ public class CLIParser implements Parser, Serializable {
 					ifSpeed,duplexMode, macAddress);
 
 			ePEList.add(epObj);
+			interfacesMap.put(epObj.getName(), epObj);
 		}
 		return ePEList;
 	}
@@ -202,8 +203,9 @@ public class CLIParser implements Parser, Serializable {
 	 *            - the string value from "show access-list" command.
 	 * @return - list of all access lists and their parsed data as an objects.
 	 */
-	public List<ACL> parsACL(String cmd) {
+	public List<ACL> parseACL(String cmd) {
 		accessList = new ArrayList<ACL>();
+		
 		ACL aclObj;
 		cmd = cmd.trim();
 		String regex = "(?<=%%) (" + ACESS_LIST_TYPE + ") IP access list (" + IP_ACCESS_LIST_NUM
@@ -229,6 +231,9 @@ public class CLIParser implements Parser, Serializable {
 				aclObj = new ACL(ipAccessListType, ipAccessListNum, modeNum, sourceIP, wildCardSourceIP, desIP,
 						wildCardDesIP);
 				accessList.add(aclObj);
+				//collect interface info
+				//interfacesMap.get(aclObj.getInterfaceName()).addAcl(aclObj);
+				
 			}
 		}
 		return accessList;
@@ -380,9 +385,9 @@ public class CLIParser implements Parser, Serializable {
 					default:
 						break;
 					}
-					for (int i = 0; i < policyMapList.size(); i++) {
-						/*System.out.println(">>>"+ePEList.get(i).getName());
-						System.out.println(interfaceName);*/
+					/*for (int i = 0; i < policyMapList.size(); i++) {
+						System.out.println(">>>"+ePEList.get(i).getName());
+						System.out.println(interfaceName);
 						if (policyMapList.get(i).getPolicyName().equals(policyName))
 							for (int j = 0; j < classMapList.size(); j++) {
 								if (classMapList.get(j).getClassName().equals(className)) {
@@ -391,7 +396,7 @@ public class CLIParser implements Parser, Serializable {
 								}
 							}
 
-					}
+					}*/
 
 					Transaction transaction = new Transaction(classAction, policyName, className);
 					transactionList.add(transaction);
@@ -401,6 +406,9 @@ public class CLIParser implements Parser, Serializable {
 		return transactionList;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public List<Interface_ACL> parsInterface_ACL(String cmd) {
 
@@ -432,7 +440,7 @@ public class CLIParser implements Parser, Serializable {
 				}
 				//System.out.println(accessList);
 				// mapping the objects !!
-				for (int i = 0; i < ePEList.size(); i++) {
+				/*for (int i = 0; i < ePEList.size(); i++) {
 					if (ePEList.get(i).getName().equals(interfaceName)) {
 						for (int j = 0; j < accessList.size(); j++) {
 							if (accessList.get(j).getAccessNum() == Integer.parseInt(aclName)) {
@@ -442,7 +450,7 @@ public class CLIParser implements Parser, Serializable {
 						}
 					}
 
-				}
+				}*/
 
 				interface_acl = new Interface_ACL(direction, aclName, interfaceName);
 				interface_ACLList.add(interface_acl);
@@ -479,9 +487,9 @@ public class CLIParser implements Parser, Serializable {
 				default:
 					break;
 				}
-				for (int i = 0; i < ePEList.size(); i++) {
-					/*System.out.println(">>>"+ePEList.get(i).getName());
-					System.out.println(interfaceName);*/
+				/*for (int i = 0; i < ePEList.size(); i++) {
+					System.out.println(">>>"+ePEList.get(i).getName());
+					System.out.println(interfaceName);
 					if (ePEList.get(i).getName().equals(interfaceName))
 						for (int j = 0; j < policyMapList.size(); j++) {
 							if (policyMapList.get(j).getPolicyName().equals(policyName)) {
@@ -491,7 +499,7 @@ public class CLIParser implements Parser, Serializable {
 						}
 
 				}
-
+*/
 				Interface_Policy interface_policy = new Interface_Policy(direction, policyName, interfaceName);
 				interface_PolicyList.add(interface_policy);
 

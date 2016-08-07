@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.training.deviceoperation.parser.DuplexMode;
 import com.training.deviceoperation.parser.Status;
@@ -18,6 +19,7 @@ import com.training.deviceoperation.parser.Status;
  */
 
 @Entity
+@Table(name="interface_ethernetprotocolendpoint")
 public class EthernetProtocolEndpoint {
 
 	@Id

@@ -14,7 +14,7 @@ import com.training.deviceoperation.deviceconnection.model.*;
  *
  */
 public enum DataTypesJDBC {
-	interfaces {
+	interface_ethernetprotocolendpoint {
 
 		@Override
 		public void insert(Object object) throws CRUDException {
@@ -223,7 +223,7 @@ public enum DataTypesJDBC {
 			Connection conn = null;
 			JDBC JDBCConnection = new JDBC();
 			conn = JDBCConnection.connectToDatabase();
-			int id_interface = DataTypesJDBC.interfaces.getID(interfaceACL.getInterface());
+			int id_interface = DataTypesJDBC.interface_ethernetprotocolendpoint.getID(interfaceACL.getInterface());
 			int id_acl = DataTypesJDBC.acl.getID(interfaceACL.getAclName());
 			String sql = "INSERT INTO interface_acl" + " VALUES ('" + interfaceACL.getDir() + "' , '" + id_acl + "', '"
 					+ id_interface + "')";
@@ -255,7 +255,7 @@ public enum DataTypesJDBC {
 			Connection conn = null;
 			JDBC JDBCConnection = new JDBC();
 			conn = JDBCConnection.connectToDatabase();
-			int id_interface = DataTypesJDBC.interfaces.getID(interface_policy.getInterfaceName());
+			int id_interface = DataTypesJDBC.interface_ethernetprotocolendpoint.getID(interface_policy.getInterfaceName());
 			int id_policy = DataTypesJDBC.policymap.getID(interface_policy.getPolicyName());
 			String sql = "INSERT INTO interface_policy" + " VALUES ('" + interface_policy.getDirection() + "' , '"
 					+ id_policy + "' , '" + id_interface + "')";
