@@ -77,10 +77,6 @@ public class JDBC implements DatabaseManager {
 		return true;
 	}
 
-	@Override
-	public void delete(Object obj, String tableName) {
-
-	}
 
 	@Override
 	public boolean disconnectToDataBase() {
@@ -96,5 +92,17 @@ public class JDBC implements DatabaseManager {
 			}
 		}
 		return true;
+	}
+
+	@Override
+	public boolean delete(Object obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean edit(Object obj) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

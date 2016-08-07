@@ -1,5 +1,6 @@
 package com.training.deviceoperation.parser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,10 +20,30 @@ import com.training.deviceoperation.deviceconnection.model.*;
 /**
  * see @com.training.deviceoperation.parser.Parser
  */
-public class CLIParser implements Parser {
+public class CLIParser implements Parser, Serializable {
+	private static final long serialVersionUID = -7604766932017737115L;
+
+	private CLIParser() {
+	}
+
+	private static class SingletonHelper {
+		private static final CLIParser instance = new CLIParser();
+	}
+
+	public static CLIParser getInstance() {
+		return SingletonHelper.instance;
+	}
+
+	// give us the same object !!
+	protected Object readResolve() {
+		return getInstance();
+	}
+
 	/* List of maps */
-	Map<EthernetProtocolEndpoint, PolicyMap> mapIntetrfaceACL = new HashMap<EthernetProtocolEndpoint, PolicyMap>();
-	Map<EthernetProtocolEndpoint, ACL> mapInterfaceACL = new HashMap<EthernetProtocolEndpoint, ACL>();
+	private Map<EthernetProtocolEndpoint, PolicyMap> mapIntetrfacePolicy = new HashMap<>();
+	private Map<EthernetProtocolEndpoint, ACL> mapInterfaceACL = new HashMap<>();
+	Map<PolicyMap,ClassMap > mapTranscation = new HashMap<>();
+
 
 	/* regex constants to parse EthernetProtocolEndpoint. */
 	final static String INTERFACE = "[A-Z][A-Za-z]+[0-9/]*";
@@ -97,8 +118,6 @@ public class CLIParser implements Parser {
 	private List<Interface_ACL> interface_ACLList;
 	private List<Interface_Policy> interface_PolicyList;
 
-	EthernetProtocolEndpoint epObj;
-
 	/**
 	 * parsEthernetPE method to parse Interfaces data.
 	 * 
@@ -168,8 +187,8 @@ public class CLIParser implements Parser {
 
 			ifSpeed = matcher.group(7);
 			macAddress = matcher.group(4);
-			epObj = new EthernetProtocolEndpoint(ifName, ifMTU, ifStatus, ifOperStatus, duplexMode, ifSpeed,
-					macAddress);
+			EthernetProtocolEndpoint epObj = new EthernetProtocolEndpoint(ifName, ifMTU, ifStatus, ifOperStatus,
+					duplexMode, ifSpeed, macAddress);
 
 			ePEList.add(epObj);
 		}
@@ -361,6 +380,18 @@ public class CLIParser implements Parser {
 					default:
 						break;
 					}
+					for (int i = 0; i < policyMapList.size(); i++) {
+						/*System.out.println(">>>"+ePEList.get(i).getName());
+						System.out.println(interfaceName);*/
+						if (policyMapList.get(i).getPolicyName().equals(policyName))
+							for (int j = 0; j < classMapList.size(); j++) {
+								if (classMapList.get(j).getClassName().equals(className)) {
+									mapTranscation.put(policyMapList.get(i), classMapList.get(j));
+									//System.out.println(ePEList.get(i).getName() + policyMapList.get(j).getPolicyName());
+								}
+							}
+
+					}
 
 					Transaction transaction = new Transaction(classAction, policyName, className);
 					transactionList.add(transaction);
@@ -386,7 +417,7 @@ public class CLIParser implements Parser {
 			Matcher matcher1 = pattern1.matcher(matcher.group(2).trim());
 			Direction direction = null;
 			while (matcher1.find()) {
-				
+
 				String aclName = matcher1.group(1);
 
 				switch (matcher1.group(2).trim()) {
@@ -399,16 +430,20 @@ public class CLIParser implements Parser {
 				default:
 					break;
 				}
-				// System.out.println(ePEList);
-				/*
-				 * for(int i=0;i<ePEList.size();i++) { if
-				 * (ePEList.get(i).getName()== interfaceName) for(int
-				 * j=0;j<accessList.size();j++) { if
-				 * (accessList.get(j).getAccessNum()==Integer.parseInt(aclName))
-				 * mapInterfaceACL.put(ePEList.get(i),accessList.get(j)); }
-				 * 
-				 * }
-				 */
+				//System.out.println(accessList);
+				// mapping the objects !!
+				for (int i = 0; i < ePEList.size(); i++) {
+					if (ePEList.get(i).getName().equals(interfaceName)) {
+						for (int j = 0; j < accessList.size(); j++) {
+							if (accessList.get(j).getAccessNum() == Integer.parseInt(aclName)) {
+								mapInterfaceACL.put(ePEList.get(i), accessList.get(j));
+
+							}
+						}
+					}
+
+				}
+
 				interface_acl = new Interface_ACL(direction, aclName, interfaceName);
 				interface_ACLList.add(interface_acl);
 
@@ -443,6 +478,18 @@ public class CLIParser implements Parser {
 					break;
 				default:
 					break;
+				}
+				for (int i = 0; i < ePEList.size(); i++) {
+					/*System.out.println(">>>"+ePEList.get(i).getName());
+					System.out.println(interfaceName);*/
+					if (ePEList.get(i).getName().equals(interfaceName))
+						for (int j = 0; j < policyMapList.size(); j++) {
+							if (policyMapList.get(j).getPolicyName().equals(policyName)) {
+								mapIntetrfacePolicy.put(ePEList.get(i), policyMapList.get(j));
+								//System.out.println(ePEList.get(i).getName() + policyMapList.get(j).getPolicyName());
+							}
+						}
+
 				}
 
 				Interface_Policy interface_policy = new Interface_Policy(direction, policyName, interfaceName);

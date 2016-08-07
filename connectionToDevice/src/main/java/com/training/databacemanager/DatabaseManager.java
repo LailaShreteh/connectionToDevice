@@ -1,5 +1,6 @@
 package com.training.databacemanager;
 
+import java.awt.List;
 import java.sql.Connection;
 
 import com.training.databacemanager.exception.CRUDException;
@@ -37,6 +38,11 @@ public interface DatabaseManager {
 	 */
 	boolean insert(Object obj) throws CRUDException;
 
-	void delete(Object obj, String tableName);
+	boolean delete(Object obj);
+	boolean edit(Object obj);
+	/*Object getObj (int id);
+	List getAllObj ();*/
+	
+
 
 }

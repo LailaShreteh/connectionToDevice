@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-mapping>
+	<class table="interfaces" lazy="false"
+		name="com.training.deviceoperation.deviceconnection.model.EthernetProtocolEndpoint">
+		<!-- <id column="id_interface" type="int" name="id"> </id> -->
+
+		<property name="name" />
+		<type type="string" />
+		<column name="name" />
+
+		<property name="mtu" />
+		<type type="int" />
+		<column name="mtu" />
+
+		<property name="adminStatus" />
+		<type type="String" />
+		<column name="adminStatus" />
+
+		<property name="operStatus" />
+		<type type="String" />
+		<column name="operStatus" />
+
+		<property name="duplexMode" />
+		<type type="String" />
+		<column name="duplexMode" />
+
+		<property name="ifSpeed" />
+		<type type="String" />
+		<column name="ifSpeed" />
+
+		<property name="macAddress" />
+		<type type="String" />
+		<column name="macAddress" />
+
+
+
+	</class>
+</hibernate-mapping>

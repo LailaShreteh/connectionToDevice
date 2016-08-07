@@ -138,7 +138,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 	 **/
 	public List<EthernetProtocolEndpoint> parsEthernetPE() {
 		List<EthernetProtocolEndpoint> epList = new ArrayList<EthernetProtocolEndpoint>();
-		Parser pars = new CLIParser();
+		Parser pars = CLIParser.getInstance();
 		this.getInterfaces();
 		write("sh int");
 		cmdBack = readUntil("#");
@@ -165,7 +165,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 	 **/
 	public List<PolicyMap> getPolicyMap() {
 		List<PolicyMap> policyMapList = new ArrayList<PolicyMap>();
-		Parser pars = new CLIParser();
+		Parser pars = CLIParser.getInstance();
 		write("sh policy-map");
 		cmdBack = readUntil("#");
 		cmdBack = cmdBack.replace("sh policy-map", "");
@@ -182,7 +182,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 	@Override
 	public List<Transaction> getTransaction() {
 		List<Transaction> transactionsList = new ArrayList<Transaction>();
-		Parser pars = new CLIParser();
+		Parser pars = CLIParser.getInstance();
 		write("sh policy-map");
 		cmdBack = readUntil("#");
 		cmdBack = cmdBack.replace("sh policy-map", "");
@@ -211,8 +211,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
 		List<ClassMap> classMapList = new ArrayList<ClassMap>();
-		Parser pars = new CLIParser();
-
+		Parser pars = CLIParser.getInstance();
 		classMapList = pars.parsClassMap(cmdBack);
 
 		return classMapList;
@@ -236,7 +235,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
 		List<ACL> ACLList = new ArrayList<ACL>();
-		Parser pars = new CLIParser();
+		Parser pars = CLIParser.getInstance();
 		ACLList = pars.parsACL(cmdBack);
 		return ACLList;
 	}
@@ -251,7 +250,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
 		List<Interface_ACL> interface_ACL_List = new ArrayList<Interface_ACL>();
-		Parser pars = new CLIParser();
+		Parser pars = CLIParser.getInstance();
 		interface_ACL_List = pars.parsInterface_ACL(cmdBack);
 
 		return interface_ACL_List;
@@ -267,7 +266,7 @@ public abstract class CLIConnection implements ConnectionRouter {
 		cmdBack = cmdBack.replace("\r", " ");
 		cmdBack = cmdBack.trim();
 		List<Interface_Policy> interface_Policy_List = new ArrayList<Interface_Policy>();
-		Parser pars = new CLIParser();
+		Parser pars = CLIParser.getInstance();
 		interface_Policy_List = pars.parsInterface_Policy(cmdBack);
 
 		return interface_Policy_List;
