@@ -33,12 +33,9 @@ public class ClassMap {
 	private String matchType;
 	@Column
 	private String matchTypeValue;
-	
 
 	public ClassMap() {
 	}
-	private Set<ACL> aclList = new HashSet<ACL>(0);
-
 
 	public ClassMap(String className, String classMapConfigurationMode, String description, String matchType,
 			String matchTypeValue) {
@@ -48,6 +45,7 @@ public class ClassMap {
 		this.matchType = matchType;
 		this.matchTypeValue = matchTypeValue;
 	}
+
 	public ClassMap(String className, String classMapConfigurationMode, String description, String matchType,
 			String matchTypeValue, Set<ACL> aclList) {
 		this.className = className;
@@ -55,10 +53,12 @@ public class ClassMap {
 		this.description = description;
 		this.matchType = matchType;
 		this.matchTypeValue = matchTypeValue;
-		this.aclList=aclList;
+		this.aclList = aclList;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "aclList")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "classMapList")
+	private Set<ACL> aclList = new HashSet<ACL>(0);
+
 	public Set<ACL> getACL() {
 		return this.aclList;
 	}

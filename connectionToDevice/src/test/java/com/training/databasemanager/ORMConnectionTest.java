@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,6 +30,8 @@ public class ORMConnectionTest {
 	private ORM ORMConnection;
 	private ClassMap classmap;
 	private Interface_ACL interACL;
+	SessionFactory sf;
+	Session session;
 
 	@Before
 	public void setup() {
@@ -36,12 +39,11 @@ public class ORMConnectionTest {
 		ePEObject = new EthernetProtocolEndpoint("GigabitEthernet0/0/0", Status.up, Status.up, 1500, "1000",
 				DuplexMode.Full, "503d.e596.7400");
 		policymap = new PolicyMap("policy1", "calss1");
-		// acl= new ACL("Standard",1,10,"any","","","");
-		// classmap = new ClassMap("class1","match-all","first
-		// class","none","");
 		acl = new ACL("Standard", 1, 10, "any", "", "", "");
 		classmap = new ClassMap("class1", "match-all", "first class", "none", "");
 		interACL = new Interface_ACL(Direction.out, "11", "11");
+		sf = HibernateUtil.getSessionfactory();
+		session = sf.openSession();
 
 	}
 
@@ -52,29 +54,19 @@ public class ORMConnectionTest {
 
 		try {
 			// send the data to the dataBase
-			 ORMConnection.insert(policymap);
+			// ORMConnection.insert(policymap);
 			// ORMConnection.insert(ePEObject);
-			// ORMConnection.insert(acl);
-			// ORMConnection.insert(classmap);
+			ORMConnection.insert(acl);
+			ORMConnection.insert(classmap);
 			// ORMConnection.insert(interACL);
-			//Session session = HibernateUtil.openSession();
 
-			//session.beginTransaction();
-
-			// stock.setStockCode("7052");
-			// stock.setStockName("PADINI");
-		
-			//ORMConnection.insert(acl);
-			//Set<ClassMap> classm = new HashSet<ClassMap>();
-			//System.out.println(classm.add(classmap));
-
-			//classm.add(classmap);
-			////System.out.println(classm.add(classmap));
-			//acl.setClassMapList(classm);
-
-			//session.save(acl);
-
-			//session.getTransaction().commit();
+			session.beginTransaction();
+			Set<ClassMap> classm = new HashSet<ClassMap>();
+			classm.add(classmap);
+			acl.setClassMapList(classm);
+			session.save(acl);
+			session.getTransaction().commit();
+			session.close();
 
 		} catch (Exception e) {
 			exception = e;

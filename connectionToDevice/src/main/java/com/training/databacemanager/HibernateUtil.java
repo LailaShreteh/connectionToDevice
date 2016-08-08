@@ -71,6 +71,7 @@ public class HibernateUtil {
           cfg.setProperty("hibernate.hbm2ddl.auto", "update");
           cfg.setProperty("hibernate.cache.provider_class","org.hibernate.cache.NoCacheProvider");
           cfg.setProperty("hibernate.current_session_context_class", "thread");
+          
          // System.out.println(cfg.toString());
           return cfg;
      }
