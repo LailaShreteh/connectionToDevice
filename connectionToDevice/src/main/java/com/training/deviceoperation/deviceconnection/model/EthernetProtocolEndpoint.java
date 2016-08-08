@@ -1,12 +1,15 @@
 package com.training.deviceoperation.deviceconnection.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.training.deviceoperation.parser.DuplexMode;
@@ -42,7 +45,10 @@ public class EthernetProtocolEndpoint {
 	private DuplexMode duplexMode;
 	@Column(name = "macAddress")
 	private String macAddress;
-
+	/* @ManyToMany
+	    @JoinTable(name="interface_acl")
+	    public Set<ACL> getObj() { return phones; }
+*/
 	public EthernetProtocolEndpoint() {
 	}
 

@@ -105,4 +105,10 @@ public class JDBC implements DatabaseManager {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public Object getObj(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

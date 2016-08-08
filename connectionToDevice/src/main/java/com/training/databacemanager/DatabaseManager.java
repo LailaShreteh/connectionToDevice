@@ -18,7 +18,7 @@ public interface DatabaseManager {
 	 * @return - database Connection object.
 	 */
 	// here !! :/
-	Connection connectToDatabase();
+	Object connectToDatabase();
 
 	/**
 	 * disconnectToDataBase method to close a database connection using
@@ -41,8 +41,8 @@ public interface DatabaseManager {
 
 	boolean delete(Object obj);
 	boolean edit(Object obj);
-	/*Object getObj (int id);
-	List getAllObj ();*/
+	Object getObj (int id);
+	//List getAllObj ();
 	
 
 

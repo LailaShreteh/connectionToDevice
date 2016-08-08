@@ -43,7 +43,13 @@ public class HibernateUtil {
                throw new ExceptionInInitializerError(ex);
           }
      }
-     public static  Session openSession() {
+     public static SessionFactory getSessionfactory() {
+		return sessionFactory;
+	}
+
+
+
+	public static  Session openSession() {
           return sessionFactory.openSession();
      }
 
@@ -54,8 +60,10 @@ public class HibernateUtil {
           cfg.addAnnotatedClass(PolicyMap.class );
           cfg.addAnnotatedClass(ACL.class );
           cfg.addAnnotatedClass(EthernetProtocolEndpoint.class );
+          cfg.addAnnotatedClass(ClassMap.class );
+          cfg.addAnnotatedClass(Interface_ACL.class );
           cfg.setProperty("hibernate.connection.driver_class","com.mysql.jdbc.Driver");
-          cfg.setProperty("hibernate.connection.url","jdbc:mysql://localhost/interfaces");
+          cfg.setProperty("hibernate.connection.url","jdbc:mysql://localhost/RouterData_ORM");
           cfg.setProperty("hibernate.connection.username", "root");
           cfg.setProperty("hibernate.connection.password", "laila");
           cfg.setProperty("hibernate.show_sql", "true");

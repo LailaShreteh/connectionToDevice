@@ -15,17 +15,19 @@ import com.training.databacemanager.exception.CRUDException;
 public class ORM implements DatabaseManager {
 
 	@Autowired
-	private SessionFactory sf;
+	private SessionFactory sf;// 
+	
+	private Session session;
+
 
 	@Override
-	public Connection connectToDatabase() {
-		// TODO Auto-generated method stub
-		return null;
+	public Session connectToDatabase() {
+		session = HibernateUtil.openSession();
+		return  session;
 	}
 
 	@Override
 	public boolean disconnectToDataBase() {
-		Session session = HibernateUtil.openSession();
 		try {
 			session.close();
 		} catch (HibernateException e) {
@@ -67,5 +69,17 @@ public class ORM implements DatabaseManager {
 		sf.getCurrentSession().update(obj);
 		return false;
 	}
+
+	@Override
+	public Object getObj(int id) {
+		
+		return null;
+	}
+
+	/*@Override
+	public Object getObj(int id) {
+		
+		return sf.getCurrentSession().get(Object.class, id);
+		}*/
 
 }

@@ -1,9 +1,15 @@
 package com.training.deviceoperation.deviceconnection.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  * The ClassMap class represents each Class Map and its criteria to define a
@@ -11,6 +17,7 @@ import javax.persistence.Id;
  * 
  * @author user
  */
+@Entity
 public class ClassMap {
 	@Id
 	@Column
@@ -26,9 +33,12 @@ public class ClassMap {
 	private String matchType;
 	@Column
 	private String matchTypeValue;
+	
 
 	public ClassMap() {
 	}
+	private Set<ACL> aclList = new HashSet<ACL>(0);
+
 
 	public ClassMap(String className, String classMapConfigurationMode, String description, String matchType,
 			String matchTypeValue) {
@@ -37,6 +47,20 @@ public class ClassMap {
 		this.description = description;
 		this.matchType = matchType;
 		this.matchTypeValue = matchTypeValue;
+	}
+	public ClassMap(String className, String classMapConfigurationMode, String description, String matchType,
+			String matchTypeValue, Set<ACL> aclList) {
+		this.className = className;
+		this.classMapConfigurationMode = classMapConfigurationMode;
+		this.description = description;
+		this.matchType = matchType;
+		this.matchTypeValue = matchTypeValue;
+		this.aclList=aclList;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "aclList")
+	public Set<ACL> getACL() {
+		return this.aclList;
 	}
 
 	public String getMatchTypeValue() {
@@ -77,6 +101,10 @@ public class ClassMap {
 
 	public void setMatchType(String matchType) {
 		this.matchType = matchType;
+	}
+
+	public void setACL(Set<ACL> aclList) {
+		this.aclList = aclList;
 	}
 
 	@Override
